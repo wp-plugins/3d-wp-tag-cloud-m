@@ -20,7 +20,7 @@ This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple in
 = Manual = 
 1. Make sure you are running WordPress version 3.9 or higher. 
 2. Download the zip file and extract the content. 
-3. Upload the '3D WP Tag Cloud' folder to your plugins directory (wp-content/plugins/). 
+3. Upload the extracted folder to your plugins directory (wp-content/plugins/). 
 4. Login to your WordPress Admin menu, go to 'Appearance > Widgets' and if required enable accessibility mode in 'Screen Options' (right top corner. 
 5. Add a widget instance.
 6. If tag clouds created by previous plugin versions do not appear on your site after installation of a new version, just open and save their widget instances again without any changes.

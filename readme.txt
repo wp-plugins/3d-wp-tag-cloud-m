@@ -8,7 +8,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
 
 
-3D WP Tag Cloud-M is derivative from 3D WP Tag Cloud v. 2.3 It creates multiple 3D tag clouds widget. 
+3D WP Tag Cloud-M is derivative from 3D WP Tag Cloud v. 2.3. It creates multiple 3D tag clouds widget. 
 
 
 == Description ==

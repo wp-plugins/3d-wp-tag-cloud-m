@@ -5,7 +5,7 @@
 ?>
 	<div class="section_content">
 		<div style="float: left;">
-			<span style="padding-bottom: 5px;">GENERAL</span>
+			<span>GENERAL</span>
 			<div style="padding-top: 5px;">
 				<label style="margin: 0 5px 0 0;" title="The shape of the cloud" for="<?=$this->get_field_id('arch_shape'); ?>">
 					<br>
@@ -63,8 +63,8 @@
 						<?php for($i=50; $i<505; $i+=5){echo '<option id="aws_' . $i . '" value="' . $i/100 . '"'; if($arch_weight_size==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>
-				<div class="thick-spacer"></div>
-				<label style="margin: 0 10px 0 0;" title="Type of highlight to use" for="<?=$this->get_field_id('arch_outline_method'); ?>">
+				<div class="thin-spacer"></div>
+				<label style="margin: 0 12px 0 0;" title="Type of highlight to use" for="<?=$this->get_field_id('arch_outline_method'); ?>">
 					Outline<br>Method
 					<br>
 					<select id="<?=$this->get_field_id('arch_outline_method'); ?>" name="<?=$this->get_field_name('arch_outline_method'); ?>">
@@ -76,7 +76,7 @@
 						<option value="none" <?php if( $arch_outline_method == "none" ){ echo ' selected'; } ?>>none</option>
 					</select>
 				</label>
-				<div style="float: left; margin: 0 10px 0 0;" title="When enabled, cloud moves when dragged instead of based on mouse position.">
+				<div style="float: left; margin: 0 12px 0 0;" title="When enabled, cloud moves when dragged instead of based on mouse position.">
 					Drag<br>Control
 					<div>
 						<input class="radio" id="<?=$this->get_field_id('arch_drag_ctrl'); ?>"
@@ -88,14 +88,14 @@
 						<?php if( $arch_drag_ctrl == "false" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>
-				<label style="margin: 0 10px 0 0;" title="Minimal opacity of tags at back of cloud." for="<?=$this->get_field_id('arch_brightness'); ?>">
+				<label style="margin: 0 12px 0 0;" title="Minimal opacity of tags at back of cloud." for="<?=$this->get_field_id('arch_brightness'); ?>">
 					Min<br>Opacity
 					<br>
 					<select id="<?=$this->get_field_id('arch_brightness'); ?>" name="<?=$this->get_field_name('arch_brightness'); ?>">
 						<?php for($i=0; $i<105; $i+=5){echo '<option id="armb_' . $i . '" value="' . $i/100 . '"'; if($arch_brightness==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label> 
-				<label style="margin: 0 10px 0 0;"  title="Pulsate outline to this opacity. Choose <span class='green'>1.0</span> for no pulsation."for="<?=$this->get_field_id('arch_pulsate_to'); ?>">
+				<label style="margin: 0 12px 0 0;"  title="Pulsate outline to this opacity. Choose <span class='green'>1.0</span> for no pulsation."for="<?=$this->get_field_id('arch_pulsate_to'); ?>">
 					Pulsate<br>to Opacity
 					<br>
 					<select id="<?=$this->get_field_id('arch_pulsate_to'); ?>" name="<?=$this->get_field_name('arch_pulsate_to'); ?>">
@@ -112,7 +112,7 @@
 						<option value="none" <?php if( $arch_lock == "none" ){ echo ' selected'; } ?>>none</option>
 					</select>
 				</label>
-				<label style="width: 100%;" for="<?=$this->get_field_id('arch_tooltip'); ?>" title="Sets text for operating system tooltip of your cloud. For instance if the cloud allows <span class='green'>Drag Control</span> then you can suggest your site visitors to 'Drag & Click'.">
+				<label style="width: 100%;" for="<?=$this->get_field_id('arch_tooltip'); ?>" title="Sets your canvas tooltip. For instance if the cloud allows <span class='green'>Drag Control</span> you can suggest your site visitors to 'Drag or Click'.">
 				Tooltip
 				<div>
 					<input style="width: 100%;" id="<?=$this->get_field_id('arch_tooltip'); ?>"
@@ -152,21 +152,21 @@
 					Radius X
 					<br>
 					<select id="<?=$this->get_field_id('arch_radius_x'); ?>" name="<?=$this->get_field_name('arch_radius_x'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="arx_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="arx_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to top and bottom." for="<?=$this->get_field_id('arch_radius_y'); ?>">
 					Radius Y
 					<br>
 					<select id="<?=$this->get_field_id('arch_radius_y'); ?>" name="<?=$this->get_field_name('arch_radius_y'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="ary_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="ary_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to front and back." for="<?=$this->get_field_id('arch_radius_z'); ?>">
 					Radius Z
 					<br>
 					<select id="<?=$this->get_field_id('arch_radius_z'); ?>" name="<?=$this->get_field_name('arch_radius_z'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="arz_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="arz_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label> 
 				<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('arch_split_width'); ?>">
@@ -182,7 +182,7 @@
 		<div style="float: left; height: 137px;">
 			<span style="padding-bottom: 5px;">COLORS</span>
 			<div style="padding-top: 5px;">
-				<label style="height: 55px;" for="<?=$this->get_field_id('arch_text_color'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('arch_text_color'); ?>">
 					Tag Color
 					<br>
 					<span class="hash">#</span>
@@ -196,7 +196,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('arch_bg_color'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('arch_bg_color'); ?>">
 					Background
 					<br>
 					<span class="hash">#</span>
@@ -211,7 +211,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('arch_bg_outline'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('arch_bg_outline'); ?>">
 					Border
 					<br>
 					<span class="hash">#</span>
@@ -225,7 +225,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('arch_shadow'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('arch_shadow'); ?>">
 					Shadow
 					<br>
 					<span class="hash">#</span>
@@ -239,7 +239,7 @@
 						?>
 					</div>
 				</label>								
-				<label style="height: 55px;" for="<?=$this->get_field_id('arch_outline_color'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('arch_outline_color'); ?>">
 					Outline
 					<br>
 					<span class="hash">#</span>
@@ -254,7 +254,7 @@
 					</div>
 				</label>
 				<div class="gradient-div">	
-					<label for="<?=$this->get_field_id('arch_weight_gradient_1'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('arch_weight_gradient_1'); ?>">
 						Gradient<br>Color: 0
 						<br>
 					<span class="hash">#</span>
@@ -268,7 +268,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('arch_weight_gradient_2'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('arch_weight_gradient_2'); ?>">
 						Gradient<br>Color: 0.33
 						<br>
 					<span class="hash">#</span>
@@ -282,7 +282,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('arch_weight_gradient_3'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('arch_weight_gradient_3'); ?>">
 						Gradient<br>Color: 0.67
 						<br>
 					<span class="hash">#</span>
@@ -296,7 +296,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('arch_weight_gradient_4'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('arch_weight_gradient_4'); ?>">
 						Gradient<br>Color: 1
 						<br>
 						<span class="hash">#</span>
@@ -327,7 +327,7 @@
 						<?php for($i=6; $i<31; $i++){echo '<option id="afs_' . $i . '" value="' . $i . '"'; if($arch_fontsize==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
 					</select>px
 				</label>
-				<div style="float: left; margin: 0 12px 0 0;" title="Border of the tags">
+				<div style="float: left; margin: 0 15px 0 0;" title="Border of the tags">
 					<div>
 						Border
 					</div>
@@ -341,7 +341,7 @@
 						<?php if( $arch_borderwidth == "0" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>	
-				<div style="float: left; margin: 0 14px 0 0; padding: 0 0 2px 2px; border: 1px dotted #aaa; border-radius: 5px;" title="X and Y offset of the tag shadow">
+				<div style="float: left; margin: 0 15px 0 0; padding: 0 0 2px 2px; border: 1px dotted #aaa; border-radius: 5px;" title="X and Y offset of the tag shadow">
 					Shadow Offset [x, y]
 					<br>
 					<select id="<?=$this->get_field_id('arch_shadowoff_x'); ?>" name="<?=$this->get_field_name('arch_shadowoff_x'); ?>">
@@ -350,7 +350,7 @@
 						<?php for($i=-5; $i<6; $i++){echo '<option id="asoy_' . $i . '" value="' . $i . '"'; if($arch_shadowoff_y==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>							
 					</select>px
 				</div>
-				<label title="Shadow behind each Menu tag" for="<?=$this->get_field_id('arch_shadowblur'); ?>">
+				<label style="margin: 0 0 5px 0;" title="Shadow behind each Menu tag" for="<?=$this->get_field_id('arch_shadowblur'); ?>">
 					Shadow Blur
 					<br>
 					<select id="<?=$this->get_field_id('arch_shadowblur'); ?>" name="<?=$this->get_field_name('arch_shadowblur'); ?>">

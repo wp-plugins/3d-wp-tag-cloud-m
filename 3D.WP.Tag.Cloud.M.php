@@ -2,8 +2,8 @@
 /*
 Plugin Name: 3D WP Tag Cloud-M
 Plugin URI: http://peter.bg/archives/7373
-Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag cloud. Plugin may rotate Pages, Recent Posts, External Links (blogroll), Menus, Blog Archives, List of Authors and of course Post Tags and Post Categories. It allows showing up to 8 types of content in one widget activated from static or dynamic menu (another cloud). Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.5.1 and includes all its 70+ options in the Control Panel settings. Supports following shapes: sphere, hcylinder for a cylinder that starts off horizontal, vcylinder for a cylinder that starts off vertical, hring for a horizontal circle and vring for a vertical circle.
-Version: 1.0
+Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag cloud. Plugin may rotate Pages, Recent Posts, External Links (blogroll), Menus, Blog Archives, List of Authors and of course Post Tags and Post Categories. It allows showing up to 8 types of content in one widget activated from static or dynamic menu (another cloud). Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menus, List of Authors and External Links (blogroll) tags may consist of both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.5.1 and includes most of its 70+ options in the Control Panel settings. Supports following shapes: sphere, hcylinder for a cylinder that starts off horizontal, vcylinder for a cylinder that starts off vertical, hring for a horizontal circle and vring for a vertical circle.
+Version: 1.1
 Author: Peter Petrov
 Author URI: http://peter.bg
 Update Server: http://peter.bg/
@@ -25,7 +25,7 @@ License: LGPL v3
 
 			$inst_id = mt_rand(0,999999);
 			
-			wp_register_script('jq-tagcloud', plugin_dir_url( __FILE__ ) . 'js/jquery.tagcanvas.js', array('jquery'), '2.5.1',true);
+			wp_register_script('jq-tagcloud', plugin_dir_url( __FILE__ ) . 'js/jquery.tagcanvas.js', array('jquery'), '2.6.1',true);
 			wp_enqueue_script('jq-tagcloud');
 			
 			include 'm.variables.php';
@@ -88,8 +88,16 @@ License: LGPL v3
 					}
 				if( $auth_menu_item == 'on'){
 					echo '<div id="all_authors_container_' . $inst_id . '" hidden>';				
-					$autho_args = array ('number' => $all_authors_limit, 'optioncount' => true, 'exclude' => $all_exclude, 'show_fullname' => true, 'hide_empty' => false, 'style' => 'none' ); 
-					wp_list_authors( $autho_args );
+					$auto_args = array('number' => $all_authors_limit, 'exclude' => $all_exclude);
+					$users = get_users($auto_args);
+					foreach( $users as $user ){ 
+						$userAvatar = get_avatar($user->ID);
+						$userFName = $user->first_name;
+						$userLName = $user->last_name;
+						$userPosts = count_user_posts($user->ID);
+						$userPostsURL = get_author_posts_url($user->ID);
+						echo '<a href="'.$userPostsURL.'" style="font-size: '.$userPosts.'px">'.$userAvatar, $userFName.'<br>'.$userLName.'<br>('.$userPosts.')</a>';
+					};	
 					echo '</div>';					
 				}
 				if( $cat_menu_item == 'on'){
@@ -100,8 +108,13 @@ License: LGPL v3
 				}
 				if( $lin_menu_item == 'on'){
 					echo '<div id="all_links_container_' . $inst_id . '" hidden>';				
-					$lin_args = array ('category' => $all_links_category, 'hide_invisible' => 0, 'limit' => $all_links_limit, 'categorize' => 0, 'title_li' => 0, 'before' => '', 'after' => ''); 
-					wp_list_bookmarks($lin_args);
+					$lin_args = array ('category' => $all_links_category, 'hide_invisible' => 0, 'limit' => $all_links_limit); 
+					$bookmarks = get_bookmarks($lin_args);
+					foreach( $bookmarks as $bookmark ){
+						echo '<a href="' . $bookmark->link_url . '">';
+						if ($bookmark->link_image) { echo '<img src="' .$bookmark->link_image . '" width="96" height="96">';}
+						echo  $bookmark->link_name . '</a>';
+					}
 					echo '</div>';					
 				}
 				if( $men_menu_item == 'on'){
@@ -112,8 +125,10 @@ License: LGPL v3
 				}
 				if( $pag_menu_item == 'on'){
 					echo '<div id="all_pages_container_' . $inst_id . '" hidden>';				
-					$page_args = array ('show_home' => true); 
-					wp_page_menu( $page_args);
+					$page_args = array ('number' => $pages_limit); $pages = get_pages($page_args);
+					foreach( $pages as $page ){
+						echo '<a href="' . get_page_link( $page->ID ) . '">' . get_the_post_thumbnail( $page->ID, 'thumbnail' ), $page->post_title . '</a>';
+					}
 					echo '</div>';					
 				}
 				if( $pos_menu_item == 'on'){
@@ -133,8 +148,8 @@ License: LGPL v3
 						$recent_posts = wp_get_recent_posts($rp_args); 
 						foreach( $recent_posts as $recent ){
 							$count=$count+1; $font_size=round($bigest-$increment*$count); 
-							if($weight_mode != "none") { echo '<a href="' . get_permalink($recent["ID"]) . '" style="font-size: ' . $font_size . 'px;" title="Look '.esc_attr($recent["post_title"]).'" >' . $recent["post_title"].'</a> ';}	
-							else {echo '<a href="' . get_permalink($recent["ID"]) . '" title="Look '.esc_attr($recent["post_title"]).'" >' . $recent["post_title"].'</a> ';};
+							if($weight_mode != "none") { echo '<a href="' . get_permalink($recent["ID"]) . '" style="font-size: ' . $font_size . 'px;" title="Look '.esc_attr($recent["post_title"]).'" >' . get_the_post_thumbnail( $recent["ID"], 'thumbnail' ), $recent["post_title"].'</a> ';}	
+							else {echo '<a href="' . get_permalink($recent["ID"]) . '">' . get_the_post_thumbnail( $recent["ID"], 'thumbnail' ), $recent["post_title"].'</a> ';};
 						};
 					echo '</div>';						
 				}
@@ -145,56 +160,56 @@ License: LGPL v3
 		<div id="all_in_one_menu_container_<?= $inst_id; ?>"  style="width: <?= $width;?>px; height: <?= $all_menu_height;?>px; text-align: center; display: none;">
 		<?php
 			if( $arch_menu_item == 'on'){
-				echo '<a href="javascript:;" id="arc-link" class="all_in_one" data-id="archives_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
+				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="arc-link" class="all_in_one" data-id="archives_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Archives</a>';
 			};	
 			if( $auth_menu_item == 'on'){
-				echo '<a href="javascript:;" id="aut-link" class="all_in_one" data-id="authors_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
+				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="aut-link" class="all_in_one" data-id="authors_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Authors</a>';
 			};					
 			if( $cat_menu_item == 'on'){
-				echo '<a href="javascript:;" id="cat-link" class="all_in_one" data-id="categories_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
+				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="cat-link" class="all_in_one" data-id="categories_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Categories</a>';
 			};					
 			if( $lin_menu_item == 'on'){
-				echo '<a href="javascript:;" id="lin-link" class="all_in_one" data-id="links_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
+				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="lin-link" class="all_in_one" data-id="links_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Links</a>';
 			};
 			if( $men_menu_item == 'on'){
-				echo '<a href="javascript:;" id="men-link" class="all_in_one" data-id="menu_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
+				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="men-link" class="all_in_one" data-id="menu_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Menu</a>';
 			};
 			if( $pag_menu_item == 'on'){
-				echo '<a href="javascript:;" id="pag-link" class="all_in_one" data-id="pages_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
+				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="pag-link" class="all_in_one" data-id="pages_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Pages</a>';
 			};	
 			if( $pos_menu_item == 'on'){
-				echo '<a href="javascript:;" id="pos-link" class="all_in_one" data-id="post_tags_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
+				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="pos-link" class="all_in_one" data-id="post_tags_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Post Tags</a>';
 			};
 			if( $rec_menu_item == 'on'){
-				echo '<a href="javascript:;" id="rec-link" class="all_in_one" data-id="recent_posts_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
+				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="rec-link" class="all_in_one" data-id="recent_posts_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Recent Posts</a>';
 			};	
 		?>
 		</div>		
-        <canvas title="<?php if($all_m_tooltip == 'on'){echo 'Drag and Click';}; ?>" id="all_menu_canvas_<?= $inst_id; ?>" width="<?= $width; ?>" height="<?= $all_menu_height; ?>" style="display: none;"></canvas>	
+        <canvas title="<?php if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; ?>" id="all_menu_canvas_<?= $inst_id; ?>" width="<?= $width; ?>" height="<?= $all_menu_height; ?>" style="display: none;"></canvas>	
 			<script type="text/javascript">
 				<?php include 'js/m.functions.js'; ?>
 				<?php include 'js/m.cf.js'; ?>
@@ -315,6 +330,12 @@ License: LGPL v3
 		$tag_option['auth_drag_ctrl'] = $new_instance['auth_drag_ctrl'];
 		$tag_option['auth_fontsize'] = $new_instance['auth_fontsize'];
 		$tag_option['auth_google_font'] = $new_instance['auth_google_font'];
+		$tag_option['auth_image_align'] = $new_instance['auth_image_align'];
+		$tag_option['auth_image_mode'] = $new_instance['auth_image_mode'];
+		$tag_option['auth_image_padding'] = $new_instance['auth_image_padding'];
+		$tag_option['auth_image_position'] = $new_instance['auth_image_position'];
+		$tag_option['auth_image_scale'] = $new_instance['auth_image_scale'];
+		$tag_option['auth_image_valign'] = $new_instance['auth_image_valign'];
 		$tag_option['auth_initial_x'] = $new_instance['auth_initial_x'];
 		$tag_option['auth_initial_y'] = $new_instance['auth_initial_y'];
 		$tag_option['auth_lock'] = $new_instance['auth_lock'];
@@ -332,8 +353,10 @@ License: LGPL v3
 		$tag_option['auth_shadowoff_y'] = $new_instance['auth_shadowoff_y'];
 		$tag_option['auth_shape'] = $new_instance['auth_shape'];
 		$tag_option['auth_split_width'] = $new_instance['auth_split_width'];
+		$tag_option['auth_text_align'] = $new_instance['auth_text_align'];
 		$tag_option['auth_text_color'] = $new_instance['auth_text_color'];
 		$tag_option['auth_text_font'] = $new_instance['auth_text_font'];
+		$tag_option['auth_text_valign'] = $new_instance['auth_text_valign'];
 		$tag_option['auth_tooltip'] = $new_instance['auth_tooltip'];
 		$tag_option['auth_weight'] = $new_instance['auth_weight'];
 		$tag_option['auth_weightsizemax'] = $new_instance['auth_weightsizemax'];
@@ -399,6 +422,12 @@ License: LGPL v3
 		$tag_option['lin_google_font'] = $new_instance['lin_google_font'];
 		$tag_option['lin_image_scale'] = $new_instance['lin_image_scale'];
 		$tag_option['lin_img_url'] = $new_instance['lin_img_url'];
+		$tag_option['lin_image_align'] = $new_instance['lin_image_align'];
+		$tag_option['lin_image_mode'] = $new_instance['lin_image_mode'];
+		$tag_option['lin_image_padding'] = $new_instance['lin_image_padding'];
+		$tag_option['lin_image_position'] = $new_instance['lin_image_position'];
+		$tag_option['lin_image_scale'] = $new_instance['lin_image_scale'];
+		$tag_option['lin_image_valign'] = $new_instance['lin_image_valign'];
 		$tag_option['lin_initial_x'] = $new_instance['lin_initial_x'];
 		$tag_option['lin_initial_y'] = $new_instance['lin_initial_y'];
 		$tag_option['lin_lock'] = $new_instance['lin_lock'];
@@ -416,8 +445,10 @@ License: LGPL v3
 		$tag_option['lin_shadowoff_y'] = $new_instance['lin_shadowoff_y'];
 		$tag_option['lin_shape'] = $new_instance['lin_shape'];
 		$tag_option['lin_split_width'] = $new_instance['lin_split_width'];
+		$tag_option['lin_text_align'] = $new_instance['lin_text_align'];
 		$tag_option['lin_text_color'] = $new_instance['lin_text_color'];
 		$tag_option['lin_text_font'] = $new_instance['lin_text_font'];
+		$tag_option['lin_text_valign'] = $new_instance['lin_text_valign'];
 		$tag_option['lin_tooltip'] = $new_instance['lin_tooltip'];
 		$tag_option['lin_weight'] = $new_instance['lin_weight'];
 		$tag_option['lin_weightsizemax'] = $new_instance['lin_weightsizemax'];
@@ -439,6 +470,12 @@ License: LGPL v3
 		$tag_option['men_drag_ctrl'] = $new_instance['men_drag_ctrl'];
 		$tag_option['men_fontsize'] = $new_instance['men_fontsize'];
 		$tag_option['men_google_font'] = $new_instance['men_google_font'];
+		$tag_option['men_image_align'] = $new_instance['men_image_align'];
+		$tag_option['men_image_mode'] = $new_instance['men_image_mode'];
+		$tag_option['men_image_padding'] = $new_instance['men_image_padding'];
+		$tag_option['men_image_position'] = $new_instance['men_image_position'];
+		$tag_option['men_image_scale'] = $new_instance['men_image_scale'];
+		$tag_option['men_image_valign'] = $new_instance['men_image_valign'];
 		$tag_option['men_img_url'] = $new_instance['men_img_url'];
 		$tag_option['men_initial_x'] = $new_instance['men_initial_x'];
 		$tag_option['men_initial_y'] = $new_instance['men_initial_y'];
@@ -457,11 +494,14 @@ License: LGPL v3
 		$tag_option['men_shadowoff_y'] = $new_instance['men_shadowoff_y'];
 		$tag_option['men_shape'] = $new_instance['men_shape'];
 		$tag_option['men_split_width'] = $new_instance['men_split_width'];
+		$tag_option['men_text_align'] = $new_instance['men_text_align'];
 		$tag_option['men_text_color'] = $new_instance['men_text_color'];
 		$tag_option['men_text_font'] = $new_instance['men_text_font'];
+		$tag_option['men_text_valign'] = $new_instance['men_text_valign'];
 		$tag_option['men_tooltip'] = $new_instance['men_tooltip'];
 		
 // Pages options update
+		$tag_option['all_pages_limit'] = $new_instance['all_pages_limit'];
 		$tag_option['pag_bg_color'] = $new_instance['pag_bg_color'];
 		$tag_option['pag_bg_outline'] = $new_instance['pag_bg_outline'];
 		$tag_option['pag_borderwidth'] = $new_instance['pag_borderwidth'];
@@ -471,6 +511,12 @@ License: LGPL v3
 		$tag_option['pag_fontsize'] = $new_instance['pag_fontsize'];
 		$tag_option['pag_google_font'] = $new_instance['pag_google_font'];
 		$tag_option['pag_img_url'] = $new_instance['pag_img_url'];
+		$tag_option['pag_image_align'] = $new_instance['pag_image_align'];
+		$tag_option['pag_image_mode'] = $new_instance['pag_image_mode'];
+		$tag_option['pag_image_padding'] = $new_instance['pag_image_padding'];
+		$tag_option['pag_image_position'] = $new_instance['pag_image_position'];
+		$tag_option['pag_image_scale'] = $new_instance['pag_image_scale'];
+		$tag_option['pag_image_valign'] = $new_instance['pag_image_valign'];
 		$tag_option['pag_initial_x'] = $new_instance['pag_initial_x'];
 		$tag_option['pag_initial_y'] = $new_instance['pag_initial_y'];
 		$tag_option['pag_lock'] = $new_instance['pag_lock'];
@@ -488,8 +534,10 @@ License: LGPL v3
 		$tag_option['pag_shadowoff_y'] = $new_instance['pag_shadowoff_y'];
 		$tag_option['pag_shape'] = $new_instance['pag_shape'];
 		$tag_option['pag_split_width'] = $new_instance['pag_split_width'];
+		$tag_option['pag_text_align'] = $new_instance['pag_text_align'];
 		$tag_option['pag_text_color'] = $new_instance['pag_text_color'];
 		$tag_option['pag_text_font'] = $new_instance['pag_text_font'];
+		$tag_option['pag_text_valign'] = $new_instance['pag_text_valign'];
 		$tag_option['pag_tooltip'] = $new_instance['pag_tooltip'];
 
 // Post Tags options update
@@ -544,6 +592,12 @@ License: LGPL v3
 		$tag_option['rec_drag_ctrl'] = $new_instance['rec_drag_ctrl'];
 		$tag_option['rec_fontsize'] = $new_instance['rec_fontsize'];
 		$tag_option['rec_google_font'] = $new_instance['rec_google_font'];
+		$tag_option['rec_image_align'] = $new_instance['rec_image_align'];
+		$tag_option['rec_image_mode'] = $new_instance['rec_image_mode'];
+		$tag_option['rec_image_padding'] = $new_instance['rec_image_padding'];
+		$tag_option['rec_image_position'] = $new_instance['rec_image_position'];
+		$tag_option['rec_image_scale'] = $new_instance['rec_image_scale'];
+		$tag_option['rec_image_valign'] = $new_instance['rec_image_valign'];
 		$tag_option['rec_img_url'] = $new_instance['rec_img_url'];
 		$tag_option['rec_initial_x'] = $new_instance['rec_initial_x'];
 		$tag_option['rec_initial_y'] = $new_instance['rec_initial_y'];
@@ -562,8 +616,10 @@ License: LGPL v3
 		$tag_option['rec_shadowoff_y'] = $new_instance['rec_shadowoff_y'];
 		$tag_option['rec_shape'] = $new_instance['rec_shape'];
 		$tag_option['rec_split_width'] = $new_instance['rec_split_width'];
+		$tag_option['rec_text_align'] = $new_instance['rec_text_align'];
 		$tag_option['rec_text_color'] = $new_instance['rec_text_color'];
 		$tag_option['rec_text_font'] = $new_instance['rec_text_font'];
+		$tag_option['rec_text_valign'] = $new_instance['rec_text_valign'];
 		$tag_option['rec_tooltip'] = $new_instance['rec_tooltip'];
 		$tag_option['rec_weight'] = $new_instance['rec_weight'];
 		$tag_option['rec_weightsizemax'] = $new_instance['rec_weightsizemax'];
@@ -690,6 +746,12 @@ License: LGPL v3
 			'auth_drag_ctrl' => 'false',
 			'auth_fontsize' => '10',
 			'auth_google_font' => '',
+			'auth_image_align' => 'centre',
+			'auth_image_mode' => '',
+			'auth_image_padding' => '2',
+			'auth_image_position' => 'left',
+			'auth_image_scale' => '0.325',
+			'auth_image_valign' => 'middle',
 			'auth_initial_x' => '0',
 			'auth_initial_y' => '0',
 			'auth_lock' => 'none',
@@ -707,8 +769,10 @@ License: LGPL v3
 			'auth_shadowoff_y' => '0',
 			'auth_shape' => 'sphere',
 			'auth_split_width' => '100',
+			'auth_text_align' => 'centre',
 			'auth_text_color' => '000',
 			'auth_text_font' => 'Arial',
+			'auth_text_valign' => 'middle',
 			'auth_tooltip' => '',
 			'auth_weight' => 'false',
 			'auth_weight_mode' => 'both',
@@ -774,6 +838,12 @@ License: LGPL v3
 			'lin_google_font' => '',
 			'lin_image_scale' => '1',
 			'lin_img_url' => '',
+			'lin_image_align' => 'centre',
+			'lin_image_mode' => '',
+			'lin_image_padding' => '2',
+			'lin_image_position' => 'top',
+			'lin_image_scale' => '0.5',
+			'lin_image_valign' => 'middle',
 			'lin_initial_x' => '0',
 			'lin_initial_y' => '0',
 			'lin_lock' => 'none',
@@ -791,8 +861,10 @@ License: LGPL v3
 			'lin_shadowoff_y' => '0',
 			'lin_shape' => 'sphere',
 			'lin_split_width' => '100',
+			'lin_text_align' => 'centre',
 			'lin_text_color' => '000',
 			'lin_text_font' => 'Arial',
+			'lin_text_valign' => 'middle',
 			'lin_tooltip' => '',
 			'lin_weight' => 'false',
 			'lin_weight_mode' => 'both',
@@ -815,6 +887,12 @@ License: LGPL v3
 			'men_fontsize' => '10',
 			'men_google_font' => '',
 			'men_img_url' => '',
+			'men_image_align' => 'centre',
+			'men_image_mode' => '',
+			'men_image_padding' => '2',
+			'men_image_position' => 'left',
+			'men_image_scale' => '0.75',
+			'men_image_valign' => 'middle',
 			'men_initial_x' => '0',
 			'men_initial_y' => '0',
 			'men_lock' => 'none',
@@ -832,11 +910,14 @@ License: LGPL v3
 			'men_shadowoff_y' => '0',
 			'men_shape' => 'sphere',
 			'men_split_width' => '100',
+			'men_text_align' => 'centre',
 			'men_text_color' => '000',
 			'men_text_font' => 'Arial',
+			'men_text_valign' => 'middle',
 			'men_tooltip' => '',
 			
 // Pages Cloud Options
+			'all_pages_limit' => '',
 			'pag_bg_color' => '',
 			'pag_bg_outline' => '',
 			'pag_borderwidth' => '0',
@@ -846,6 +927,12 @@ License: LGPL v3
 			'pag_fontsize' => '10',
 			'pag_google_font' => '',
 			'pag_img_url' => '',
+			'pag_image_align' => 'centre',
+			'pag_image_mode' => '',
+			'pag_image_padding' => '2',
+			'pag_image_position' => 'left',
+			'pag_image_scale' => '0.5',
+			'pag_image_valign' => 'middle',
 			'pag_initial_x' => '0',
 			'pag_initial_y' => '0',
 			'pag_lock' => 'none',
@@ -863,8 +950,10 @@ License: LGPL v3
 			'pag_shadowoff_y' => '0',
 			'pag_shape' => 'sphere',
 			'pag_split_width' => '100',
+			'pag_text_align' => 'centre',
 			'pag_text_color' => '000',
 			'pag_text_font' => 'Arial',
+			'pag_text_valign' => 'middle',
 			'pag_tooltip' => '',
 
 // Post Tags Cloud Options
@@ -920,6 +1009,12 @@ License: LGPL v3
 			'rec_fontsize' => '10',
 			'rec_google_font' => '',
 			'rec_img_url' => '',
+			'rec_image_align' => 'centre',
+			'rec_image_mode' => '',
+			'rec_image_padding' => '2',
+			'rec_image_position' => 'left',
+			'rec_image_scale' => '0.5',
+			'rec_image_valign' => 'middle',
 			'rec_initial_x' => '0',
 			'rec_initial_y' => '0',
 			'rec_lock' => 'none',
@@ -937,8 +1032,10 @@ License: LGPL v3
 			'rec_shadowoff_y' => '0',
 			'rec_shape' => 'sphere',
 			'rec_split_width' => '100',
+			'rec_text_align' => 'centre',
 			'rec_text_color' => '000',
 			'rec_text_font' => 'Arial',
+			'rec_text_valign' => 'middle',
 			'rec_tooltip' => '',
 			'rec_weight' => 'false',
 			'rec_weight_mode' => 'both',

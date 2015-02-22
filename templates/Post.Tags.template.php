@@ -5,9 +5,9 @@
 ?>
 	<div class="section_content">
 		<div style="float: left;">
-			<span style="padding-bottom: 5px;">GENERAL</span>
+			<span>GENERAL</span>
 			<div style="padding-top: 5px;">
-				<label style="margin: 0 2px 0 0;" title="The shape of the cloud" for="<?=$this->get_field_id('pos_shape'); ?>">
+				<label style="margin: 0 3px 0 0;" title="The shape of the cloud" for="<?=$this->get_field_id('pos_shape'); ?>">
 					<br>
 					Shape
 					<br>
@@ -19,7 +19,7 @@
 						<option value="vring" <?php if( $pos_shape == "vring" ){ echo ' selected'; } ?>>vring</option>
 					</select>
 				</label>
-				<label style="margin: 0 2px 0 0;" title="Number of tags to display" for="<?=$this->get_field_id('all_post_tags_limit'); ?>">
+				<label style="margin: 0 3px 0 0;" title="Number of tags to display" for="<?=$this->get_field_id('all_post_tags_limit'); ?>">
 					<br>
 					Number 
 					<br> 							
@@ -31,8 +31,8 @@
 							echo '<option id="optl_125"'; if($all_post_tags_limit=='0'){echo ' selected';}; echo ' value="0">all</option>';
 						?>
 					</select>
-				</label>  
-				<div style="float: left; margin: 0 2px 0 0;" title="Switches on/off weighting of tags. Setting <span class='green'>off</span> overrides <span class='green'>Weight Mode</span>.">
+				</label>			
+				<div style="float: left; margin: 0 3px 0 0;" title="Switches on/off weighting of tags. Setting <span class='green'>off</span> overrides <span class='green'>Weight Mode</span>.">
 					<br>
 					Weight
 					<br>
@@ -44,14 +44,14 @@
 					name="<?=$this->get_field_name('pos_weight'); ?>" type="radio" value="false"
 					<?php if( $pos_weight == "false" ){ echo ' checked="checked"'; } ?>>off 
 				</div>
-				<label style="float: left; margin: 0 2px 0 0;" title="Method to use for displaying tag weights" for="<?=$this->get_field_id('pos_weight_mode'); ?>">
+				<label style="float: left; margin: 0 3px 0 0;" title="Method to use for displaying tag weights" for="<?=$this->get_field_id('pos_weight_mode'); ?>">
 					<br>
 					Weight Mode
 					<br>
 					<select id="<?=$this->get_field_id('pos_weight_mode'); ?>" name="<?=$this->get_field_name('pos_weight_mode'); ?>">
 						<option value="size" <?php if( $pos_weight_mode == "size" ){ echo ' selected'; } ?>>size</option>
 						<option value="color" <?php if( $pos_weight_mode == "color" ){ echo ' selected'; } ?>>color</option>
-						<option value="both" <?php if( $pos_weight_mode == "both" ){ echo ' selected'; } ?>>size & color</option>
+						<option value="both" <?php if( $pos_weight_mode == "both" ){ echo ' selected'; } ?>>size&color</option>
 						<option value="bgcolor" <?php if( $pos_weight_mode == "hring" ){ echo ' selected'; } ?>>bgcolor</option>
 						<option value="bgoutline" <?php if( $pos_weight_mode == "bgoutline" ){ echo ' selected'; } ?>>bgoutline</option>
 					</select>
@@ -63,8 +63,8 @@
 						<?php for($i=50; $i<505; $i+=5){echo '<option id="pows_' . $i . '" value="' . $i/100 . '"'; if($pos_weight_size==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>	
 					</select>
 				</label>
-				<div class="thick-spacer"></div>
-				<label style="margin: 0 10px 0 0;" title="Type of highlight to use" for="<?=$this->get_field_id('pos_outline_method'); ?>">
+				<div class="thin-spacer"></div>
+				<label style="margin: 0 12px 0 0;" title="Type of highlight to use" for="<?=$this->get_field_id('pos_outline_method'); ?>">
 					Outline<br>Method
 					<br>
 					<select id="<?=$this->get_field_id('pos_outline_method'); ?>" name="<?=$this->get_field_name('pos_outline_method'); ?>">
@@ -76,7 +76,7 @@
 						<option value="none" <?php if( $pos_outline_method == "none" ){ echo ' selected'; } ?>>none</option>
 					</select>
 				</label>
-				<div style="float: left; margin: 0 10px 0 0;" title="When enabled, cloud moves when dragged instead of based on mouse position.">
+				<div style="float: left; margin: 0 12px 0 0;" title="When enabled, cloud moves when dragged instead of based on mouse position.">
 					Drag<br>Control
 					<div>
 						<input class="radio" id="<?=$this->get_field_id('pos_drag_ctrl'); ?>"
@@ -88,14 +88,14 @@
 						<?php if( $pos_drag_ctrl == "false" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>
-				<label style="margin: 0 10px 0 0;" title="Minimal opacity of tags at back of cloud." for="<?=$this->get_field_id('pos_brightness'); ?>">
+				<label style="margin: 0 12px 0 0;" title="Minimal opacity of tags at back of cloud." for="<?=$this->get_field_id('pos_brightness'); ?>">
 					Min<br>Opacity
 					<br>
 					<select id="<?=$this->get_field_id('pos_brightness'); ?>" name="<?=$this->get_field_name('pos_brightness'); ?>">
 						<?php for($i=0; $i<105; $i+=5){echo '<option id="pomb_' . $i . '" value="' . $i/100 . '"'; if($pos_brightness==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>					
 					</select>
 				</label> 
-				<label style="margin: 0 10px 0 0;" title="Pulsate outline to this opacity. Choose <span class='green'>1.0</span> for no pulsation." for="<?=$this->get_field_id('pos_pulsate_to'); ?>">
+				<label style="margin: 0 12px 0 0;" title="Pulsate outline to this opacity. Choose <span class='green'>1.0</span> for no pulsation." for="<?=$this->get_field_id('pos_pulsate_to'); ?>">
 					Pulsate<br>to Opacity
 					<br>
 					<select id="<?=$this->get_field_id('pos_pulsate_to'); ?>" name="<?=$this->get_field_name('pos_pulsate_to'); ?>">
@@ -112,15 +112,19 @@
 						<option value="none" <?php if( $pos_lock == "none" ){ echo ' selected'; } ?>>none</option>
 					</select>
 				</label>
-				<label style="width: 100%;" for="<?=$this->get_field_id('pos_tooltip'); ?>" title="Sets text for operating system tooltip of your cloud. For instance if the cloud allows <span class='green'>Drag Control</span> then you can suggest your site visitors to 'Drag & Click'.">
-				Tooltip
-				<div>
-					<input style="width: 100%;" id="<?=$this->get_field_id('pos_tooltip'); ?>"
-					name="<?=$this->get_field_name('pos_tooltip'); ?>" type="text"
-					value="<?php echo $pos_tooltip; ?>" />
-				</div> 
-				</label>
-				<label style="float: left; width: 100%; padding: 5px 0 0;" title="URL of an image to be used for Cloud Background. Consider Widget's <span class='green'>Width</span> and <span class='green'>Height</span>." for="<?=$this->get_field_id('pos_img_url'); ?>">
+				<div class="thin-spacer"></div>
+				<div style="float: left; margin: 0 14px 0 0;" title="Turns on/off tag tooltips.">
+					Tag tooltips
+					<div>
+						<input class="radio" id="<?=$this->get_field_id('pos_tooltip'); ?>"
+						name="<?=$this->get_field_name('pos_tooltip'); ?>" type="radio" value="div"
+						<?php if( $pos_tooltip == "div" ){ echo ' checked="checked"'; } ?>>on
+						<input class="radio" id="<?=$this->get_field_id('pos_tooltip'); ?>"
+						name="<?=$this->get_field_name('pos_tooltip'); ?>" type="radio" value="none"
+						<?php if( $pos_tooltip == "" ){ echo ' checked="checked"'; } ?>>off
+					</div>
+				</div>		
+				<label style="float: left; width: 260px;" title="URL of an image to be used for Cloud Background. Consider Widget's <span class='green'>Width</span> and <span class='green'>Height</span>." for="<?=$this->get_field_id('pos_img_url'); ?>">
 					Background Image
 					<input style="width: 100%;"
 					id="<?=$this->get_field_id('pos_img_url'); ?>"
@@ -134,7 +138,7 @@
 		<div style="float: left;">
 			<span style="padding-bottom: 5px;">SIZES</span>
 			<div style="padding-top: 5px;">
-				<label style="width: 95px;" title="Minimal font size when weighted sizing is enabled." for="<?=$this->get_field_id('pos_weightsizemin'); ?>">
+				<label style="width: 100px;" title="Minimal font size when weighted sizing is enabled." for="<?=$this->get_field_id('pos_weightsizemin'); ?>">
 					Weight Size Min
 					<br>
 					<select id="<?=$this->get_field_id('pos_weightsizemin'); ?>" name="<?=$this->get_field_name('pos_weightsizemin'); ?>">
@@ -153,21 +157,21 @@
 					Radius X
 					<br>
 					<select id="<?=$this->get_field_id('pos_radius_x'); ?>" name="<?=$this->get_field_name('pos_radius_x'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="porx_' . $i . '" value="' . $i/100 . '"'; if($pos_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="porx_' . $i . '" value="' . $i/100 . '"'; if($pos_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to top and bottom." for="<?=$this->get_field_id('pos_radius_y'); ?>">
 					Radius Y
 					<br>
 					<select id="<?=$this->get_field_id('pos_radius_y'); ?>" name="<?=$this->get_field_name('pos_radius_y'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="pory_' . $i . '" value="' . $i/100 . '"'; if($pos_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="pory_' . $i . '" value="' . $i/100 . '"'; if($pos_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to front and back." for="<?=$this->get_field_id('pos_radius_z'); ?>">
 					Radius Z
 					<br>
 					<select id="<?=$this->get_field_id('pos_radius_z'); ?>" name="<?=$this->get_field_name('pos_radius_z'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="porz_' . $i . '" value="' . $i/100 . '"'; if($pos_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="porz_' . $i . '" value="' . $i/100 . '"'; if($pos_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label> 
 				<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('pos_split_width'); ?>">
@@ -183,7 +187,7 @@
 		<div style="float: left; height: 137px;">
 			<span style="padding-bottom: 5px;">COLORS</span>
 			<div style="padding-top: 5px;">
-				<label style="height: 55px;" for="<?=$this->get_field_id('pos_text_color'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('pos_text_color'); ?>">
 					Tag Color
 					<br>
 					<span class="hash">#</span>
@@ -197,7 +201,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('pos_bg_color'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('pos_bg_color'); ?>">
 					Background
 					<br>
 					<span class="hash">#</span>
@@ -212,7 +216,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('pos_bg_outline'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('pos_bg_outline'); ?>">
 					Border
 					<br>
 					<span class="hash">#</span>
@@ -226,7 +230,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('pos_shadow'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('pos_shadow'); ?>">
 					Shadow
 					<br>
 					<span class="hash">#</span>
@@ -255,7 +259,7 @@
 					</div>
 				</label>
 				<div class="gradient-div">	
-					<label for="<?=$this->get_field_id('pos_weight_gradient_1'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('pos_weight_gradient_1'); ?>">
 						Gradient<br>Color: 0
 						<br>
 					<span class="hash">#</span>
@@ -269,7 +273,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('pos_weight_gradient_2'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('pos_weight_gradient_2'); ?>">
 						Gradient<br>Color: 0.33
 						<br>
 					<span class="hash">#</span>
@@ -283,7 +287,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('pos_weight_gradient_3'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('pos_weight_gradient_3'); ?>">
 						Gradient<br>Color: 0.67
 						<br>
 					<span class="hash">#</span>
@@ -297,7 +301,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('pos_weight_gradient_4'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('pos_weight_gradient_4'); ?>">
 						Gradient<br>Color: 1
 						<br>
 						<span class="hash">#</span>
@@ -328,7 +332,7 @@
 						<?php for($i=6; $i<31; $i++){echo '<option id="pofs_' . $i . '" value="' . $i . '"'; if($pos_fontsize==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
 					</select>px
 				</label>
-				<div style="float: left; margin: 0 12px 0 0;" title="Border of the tags">
+				<div style="float: left; margin: 0 15px 0 0;" title="Border of the tags">
 					<div>
 						Border
 					</div>
@@ -342,7 +346,7 @@
 						<?php if( $pos_borderwidth == "0" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>	
-				<div style="float: left; margin: 0 14px 0 0; padding: 0 0 2px 2px; border: 1px dotted #aaa; border-radius: 5px;" title="X and Y offset of the tag shadow">
+				<div style="float: left; margin: 0 15px 0 0; padding: 0 0 2px 2px; border: 1px dotted #aaa; border-radius: 5px;" title="X and Y offset of the tag shadow">
 					Shadow Offset [x, y]
 					<br>
 					<select id="<?=$this->get_field_id('pos_shadowoff_x'); ?>" name="<?=$this->get_field_name('pos_shadowoff_x'); ?>">						
@@ -351,7 +355,7 @@
 						<?php for($i=-5; $i<6; $i++){echo '<option id="posoy_' . $i . '" value="' . $i . '"'; if($pos_shadowoff_y==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>							
 					</select>px
 				</div>
-				<label style="margin: 0 0 5px 0;" title="Shadow behind each Menu tag" for="<?=$this->get_field_id('pos_shadowblur'); ?>">
+				<label style="margin: 0 0 5px;" title="Shadow behind each Menu tag" for="<?=$this->get_field_id('pos_shadowblur'); ?>">
 					Shadow Blur
 					<br>
 					<select id="<?=$this->get_field_id('pos_shadowblur'); ?>" name="<?=$this->get_field_name('pos_shadowblur'); ?>">

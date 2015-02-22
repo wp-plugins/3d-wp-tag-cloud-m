@@ -30,14 +30,14 @@
 	</head>
 	<body bgcolor="#ffffff" lang=EN link=blue vlink=purple style="font-family: Arial; margin: 0;">
 		<a name="_top"></a>
-		<div style="width: 976px; margin: auto; background: #f1f1f1; display: block;">
-			<div style="width: 876px; margin: auto; background: #f1f1f1; display: block;">
+		<div style="width: 978px; margin: auto; background: #f1f1f1; display: block;">
+			<div style="width: 878px; margin: auto; background: #f1f1f1; display: block;">
 				<p class="normal" style='text-align:center; padding: 50px 0 0; margin: 0 0 58px;'>
 					<b>
 						<span style='font-size:16pt;'>3D WP Tag Cloud-M User Guide</span>
 					</b>
 					<br>
-					<span style='font-size:14pt;'>Version 3.0</span>
+					<span style='font-size:14pt;'>Version 1.1</span>
 					<br>
 					<a href="https://wordpress.org/plugins/3d-wp-tag-cloud-m/" target="_blank">https://wordpress.org/plugins/3d-wp-tag-cloud-m/</a>
 				</p>
@@ -45,7 +45,7 @@
 					<i>
 						<b>N.B. </b><span class='green'>3D WP Tag Cloud-M</span> creates multiple Tag Cloud. 
 						It allows showing up to 8 types of content which are activated from static menu (links) or dynamic one (another rotating cloud). 
-						Thus visitors of your site can see its: Archives, Authors, Categories, List of external Links (blogroll), Menu, Pages, Post Tags, Recent posts. 
+						Thus visitors of your site can see its: Archives, Authors, Categories, List of external Links (blogroll), Menu, Pages, Post Tags and Recent posts. 
 						Due to complexity of this multiple version some settings available in single one are excluded here.
 <!---					For 3D WP Tag Cloud-S (single version of plugin) <a href="http://peter.bg/s.user.guide.htm" target="_blank"><b>follow this link</b></a>. -->
 					</i>
@@ -53,7 +53,7 @@
 				<p class="normal">
 					This Guide is intended to help ordinary users in working with 
 					<span class='green'>3D WP Tag Cloud-M</span> This version of the plugin incorporates only options that an average user will need to set. Only two, related to adding a <span class='green'>Center Function</span>, are for advanced users. 
-					At the bottom of the Guide there are <a href="#examples"><b>Examples</b></a> of what can be done with the plugin.
+					At the bottom of the Guide there are <a href="#examples"><b>examples</b></a> of what can be done with the plugin.
 				</p>
 				<hr size=2 align=center>
 				<p class="normal">
@@ -83,7 +83,7 @@
 				</p>
 				<p class="paragraph">
 					<i>
-						<b>N.B. </b>Dynamic Menu allows Drag Control. When a mouse pointer is over it a tooltip "Drag & Click" reminds about this feature. Visually both types look this way:
+						<b>N.B. </b>Dynamic Menu allows Drag Control. When a mouse pointer is over it a tooltip "Drag or Click" reminds about this feature. Menu items are clickable at front side only. Visually both types look this way:
 					</i>
 					<img width="364" height="388" src="image031.png" align="left" style="margin: 0 0 0 95px;">
 				</p>
@@ -465,8 +465,11 @@
 						Keep in mind that when it takes that front position cloud rotation stops and begins loading of the new page.
 					</i>
 				</p>
-				<p class="paragraph">
-					That&#8217;s it. In the other 7 sections is used same format of sub sectioning where each subsection contains same options. There are just a few differences:
+				<p class="paragraph" style="margin-top: 40px;">
+					That&#8217;s it. In the other 7 sections is used same format of sub sectioning where each subsection contains same options. 
+					But in five of them (<span class='green'>Authors</span>, <span class='green'>Links</span>, <span class='green'>Menu</span>, <span class='green'>Pages</span>, 
+					<span class='green'>Recent</span> <span class='green'>Posts</span>) there is an additional subsection named <span class='green'>MIXED IMAGE & TEXT</span>, 
+					which presents one of the most exciting plugin features. Except it the differences are small. Here are all of them:
 				</p>
 				<p class="paragraph" style="margin: 40px 0 0;">
 					<span class='green'>AUTHORS CLOUD</span>
@@ -477,9 +480,29 @@
 				<p class="paragraph" style="margin: 0;">
 					<img width="346" height="277" src="image037.png" align="left">
 				</p>
-				<p class="paragraph" style="margin: 50px 0 213px;">
+				<p class="paragraph" style="margin: 50px 0 183px;">
 					<span class='green'>Number</span> of authors sets how many names will rotate in the cloud and <span class='green'>Exclude</span> &#8211; which authors should not be there. In 
 					<span class='green'>Exclude</span> field you have to type coma-separated list of authors IDs (not names!).
+				</p>
+				<a name="_mit"></a>
+				<p class="paragraph" style="margin: 0 0 5px;">
+					The main difference here is <span class='green'>MIXED IMAGE & TEXT</span> subsection, where you will have to set most probably only two settings: <span class='green'>Tag Mode</span> 
+					(to most impressive option <span class='green'>both</span>) and <span class='green'> Image Scale</span>.<br>
+					<img width="352" height="147" src="image0372.png" align="left" style="margin: 10px 5px 0 0;"> 
+				</p>
+				<p class="paragraph" style="MARGIN: 0 0 40px;">
+					<i>
+						<b>N.B. </b><span class='green'> Image Scale</span> is used for tuning size of: avatars (<span class='green'>Authors</span>); link images	(<span class='green'>Links</span>); 
+						icons (<span class='green'>Menu</span>) and featured images (<span class='green'>Pages</span> & <span class='green'>Rrecent posts</span>). Plugin resizes them to 
+						96x96px for <span class='green'>Authors</span>, <span class='green'>Links</span> & <span class='green'>Menu</span> or 120x120px for 
+						<span class='green'>Pages</span> & <span class='green'>Recent Posts</span>. Due to perspective images become smaller at Cloud's back but bigger at its front. 
+						So if their real size is 96x96px (respectively 120x120px) their resolution will worsen at Cloud's front. That's why use images that are at least 10% bigger 
+						than the above sizes. Increasing <span class='green'>Image Scale</span> over <span class='green'>1</span> may also worsen resolution if it is not considered 
+						with the real size of images.
+						<br>
+						<b>N.B. 2 </b><span class='green'>Image Position</span> is useful for changing image position relative to the text, when <span class='green'>Tag Mode</span> 
+						is <span class='green'>both</span>.
+					</i>
 				</p>
 				<p class="paragraph" style="margin: 0;">
 					<span class='green'>CATEGORIES CLOUD</span>
@@ -489,35 +512,40 @@
 				<p class="paragraph" style="margin-top: 0;">
 					<img width="349" height="256" src="image039.png" align="left">
 				</p>
-				<p class="paragraph" style="margin: 52px 0 226px">
+				<p class="paragraph" style="margin: 65px 0 213px">
 					Of course it concerns number of categories to be displayed. 
 				</p>
 				<p class="paragraph" style="margin: 0px 0 0;">
 					<span class='green'>LINKS CLOUD</span>
 					<br><br>
-					Options <span class='green'>Links Category</span> and <span class='green'>Number, </span>as well as option
-					<span class='green'> Image Scale </span>in<span class='green'> SIZES </span>subsection.
+					Options <span class='green'>Links Category</span> and <span class='green'>Number</span>
 				</p>
 				<p class="paragraph" style="margin-top: 0;">
-				<img width="460" height="380" src="image043.png" align="left">
+				<img width="350" height="277" src="image043.png" align="left">
 				</p>
-				<p class="paragraph" style='margin: 28px 0 0; padding-top: 45px;'>
+				<p class="paragraph" style='margin: 28px 0 20px; padding-top: 22px;'>
 					While <span class='green'>Number</span> understandably concerns links to be shown, 
 					<span class='green'>Links Category</span> specifies the category they belong to. As to 
 					<span class='green'>Image Scale </span>you know that it manipulates pictures which will be rotated in the cloud. So far plugin can animate images only if they are 
 					<span class='green'>links</span> type of content. For more details read: <span class='green'>How to create a Tag Cloud of images</span> in 
 					<span class='green'>HELP: GUIDE &amp; TIPS</span> section of the plugin, under <span class='green'>How to&#8230; Tips</span>.
 				</p>
-				<p class="paragraph" style="margin: 203px 0 0 0;">
+				<p class="paragraph" style="margin: 129px 0 0;">
+					<i>
+						<b>N.B. </b><span class='green'>Links</span> section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection, 
+						where images are avatar size (96x96 px), but can be reduced additionally by <span class='green'>Image Scale</span>. See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
+					</i>
+				</p>
+				<p class="paragraph" style="margin: 40px 0 0;">
 					<span class='green'>MENU CLOUD</span>
 				</p>
 				<p class="paragraph">
 					Option <span class='green'>Menu</span>
 				</p>
 				<p class="paragraph" style="margin-top: 0;">
-					<img width="348" height="592" src="image045.png" align="left">
+					<img width="348" height="233" src="image045.png" align="left">
 				</p>
-				<p class="paragraph" style='margin: 52px 0 488px;'>
+				<p class="paragraph" style='margin: 52px 0 100px;'>
 					Via this option you choose which menu to be rotated.
 					<br>
 					<br>
@@ -525,13 +553,24 @@
 					<span class='green'>Weight Mode</span>, <span class='green'>Weight Factor</span>, <span class='green'>Weight Size Max</span>, 
 					<span class='green'>Weight Size Min</span> and the 4 <span class='green'>Gradient</span> settings) are missing. This is because menu items are not subject to weighting.
 				</p>
-				<p class="paragraph" style="margin-top: 0px;">
+				<p class="paragraph">
+					<i>
+						<b>N.B. </b><span class='green'>Menu</span> section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection. See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
+					</i>
+				</p>
+				<p class="paragraph" style="margin-top: 40px;">
 					<span class='green'>PAGES CLOUD</span>
 				</p>
 				<p class="paragraph">
 					The only specific thing here is that there are no specific options. On the top of that tags related to weighting (<span class='green'>Weight</span>, 
 					<span class='green'>Weight Mode</span>, <span class='green'>Weight Factor</span>, <span class='green'>Weight Size Max</span>, 
 					<span class='green'>Weight Size Min</span> and the 4 <span class='green'>Gradient</span> settings) are missing like in previous section, by the same reason: Pages are not subject to weighting.
+				</p>
+				<p class="paragraph">
+					<i>
+						<b>N.B. </b><span class='green'>Pages</span> section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection, 
+						where images are the featured page images (thumbnail size 120x120 px), but can be resized additionally by <span class='green'>Image Scale</span>. See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
+					</i>
 				</p>
 				<p class="paragraph" style="margin: 36px 0 0 0;">
 					<span class='green'>POST TAGS CLOUD</span>
@@ -542,7 +581,7 @@
 				<p class="paragraph" style="margin: 0;">
 					<img width="348" height="260" src="image047.png" align="left">
 				</p>
-				<p class="paragraph" style="margin: 48px 0 234px;">
+				<p class="paragraph" style="margin: 65px 0 217px;">
 					Here <span class='green'>Number</span> is for number of tags to be shown.
 				</p>
 				<p class="paragraph">
@@ -560,7 +599,13 @@
 				<p class="paragraph">
 					<span class='green'>Number</span> &#8211; the posts to be rotated.
 				</p>
-				<p class="paragraph" style='margin: 225px 0 20px;'>
+				<p class="paragraph">
+					<i>
+						<b>N.B. </b><span class='green'>Recent Posts</span> section also gives the opportunity of creating tags that consists of the featured post image and post title via its <span class='green'>MIXED IMAGE & TEXT</span> subsection, 
+						where images are thumbnail size 120x120 px, but can be resized additionally by <span class='green'>Image Scale</span>. See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
+					</i>
+				</p>
+				<p class="paragraph" style='margin: 119px 0 20px;'>
 					That&#8217;s all folks. Before you go and use the plugin see below two examples of clouds made with it.
 				</p>
 			</div>

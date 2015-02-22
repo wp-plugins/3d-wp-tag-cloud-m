@@ -7,7 +7,7 @@
 		<div style="float: left;">
 			<span style="padding-bottom: 5px;">GENERAL</span>
 			<div style="padding-top: 5px;">
-				<label style="margin: 0 9px 0 0;" title="The shape of the cloud" for="<?=$this->get_field_id('auth_shape'); ?>">
+				<label style="margin: 0 12px 0 0;" title="The shape of the cloud" for="<?=$this->get_field_id('auth_shape'); ?>">
 					Shape
 					<br>
 					<select id="<?=$this->get_field_id('auth_shape'); ?>" name="<?=$this->get_field_name('auth_shape'); ?>">
@@ -38,7 +38,7 @@
 					value="<?php echo $all_exclude; ?>" />
 				</label>
 				<div class="thick-spacer"></div>
-				<div style="float: left; margin: 0 8px 0 0;" title="Switches on/off weighting of tags. Setting <span class='green'>off</span> overrides <span class='green'>Weight Mode</span>.">
+				<div style="float: left; margin: 0 15px 0 0;" title="Switches on/off weighting of tags. Setting <span class='green'>off</span> overrides <span class='green'>Weight Mode</span>.">
 					Weight
 					<br>
 						<input class="radio" id="<?=$this->get_field_id('auth_weight'); ?>"
@@ -49,7 +49,7 @@
 						name="<?=$this->get_field_name('auth_weight'); ?>" type="radio" value="false"
 						<?php if( $auth_weight == "false" ){ echo ' checked="checked"'; } ?>>off 
 				</div>
-				<label style="float: left; margin: 0 8px 0 0;" title="Method to use for displaying tag weights" for="<?=$this->get_field_id('auth_weight_mode'); ?>">
+				<label style="float: left; margin: 0 15px 0 0;" title="Method to use for displaying tag weights" for="<?=$this->get_field_id('auth_weight_mode'); ?>">
 					Weight Mode
 					<br>
 					<select id="<?=$this->get_field_id('auth_weight_mode'); ?>" name="<?=$this->get_field_name('auth_weight_mode'); ?>">
@@ -68,7 +68,7 @@
 					</select>
 				</label>				
 				<div class="thick-spacer"></div>
-				<label style="margin: 0 10px 0 0;" title="Type of highlight to use" for="<?=$this->get_field_id('auth_outline_method'); ?>">
+				<label style="margin: 0 12px 0 0;" title="Type of highlight to use" for="<?=$this->get_field_id('auth_outline_method'); ?>">
 					Outline<br>Method
 					<br>
 					<select id="<?=$this->get_field_id('auth_outline_method'); ?>" name="<?=$this->get_field_name('auth_outline_method'); ?>">
@@ -80,7 +80,7 @@
 						<option value="none" <?php if( $auth_outline_method == "none" ){ echo ' selected'; } ?>>none</option>
 					</select>
 				</label>
-				<div style="float: left; margin: 0 10px 0 0;" title="When enabled, cloud moves when dragged instead of based on mouse position.">
+				<div style="float: left; margin: 0 12px 0 0;" title="When enabled, cloud moves when dragged instead of based on mouse position.">
 					Drag<br>Control
 					<div>
 						<input class="radio" id="<?=$this->get_field_id('auth_drag_ctrl'); ?>"
@@ -92,14 +92,14 @@
 						<?php if( $auth_drag_ctrl == "false" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>
-				<label style="margin: 0 10px 0 0;" title="Minimal opacity of tags at back of cloud." for="<?=$this->get_field_id('auth_brightness'); ?>">
+				<label style="margin: 0 12px 0 0;" title="Minimal opacity of tags at back of cloud." for="<?=$this->get_field_id('auth_brightness'); ?>">
 					Min<br>Opacity
 					<br>
 					<select id="<?=$this->get_field_id('auth_brightness'); ?>" name="<?=$this->get_field_name('auth_brightness'); ?>">
 						<?php for($i=0; $i<105; $i+=5){echo '<option id="aumb_' . $i . '" value="' . $i/100 . '"'; if($auth_brightness==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>					
 					</select>
 				</label> 
-				<label style="margin: 0 10px 0 0;" title="Pulsate outline to this opacity. Choose <span class='green'>1.0</span> for no pulsation." for="<?=$this->get_field_id('auth_pulsate_to'); ?>">
+				<label style="margin: 0 12px 0 0;" title="Pulsate outline to this opacity. Choose <span class='green'>1.0</span> for no pulsation." for="<?=$this->get_field_id('auth_pulsate_to'); ?>">
 					Pulsate<br>to Opacity
 					<br>
 					<select id="<?=$this->get_field_id('auth_pulsate_to'); ?>" name="<?=$this->get_field_name('auth_pulsate_to'); ?>">
@@ -116,7 +116,7 @@
 						<option value="none" <?php if( $auth_lock == "none" ){ echo ' selected'; } ?>>none</option>
 					</select>
 				</label>
-				<label style="width: 100%;" for="<?=$this->get_field_id('auth_tooltip'); ?>" title="Sets text for operating system tooltip of your cloud. For instance if the cloud allows <span class='green'>Drag Control</span> then you can suggest your site visitors to 'Drag & Click'.">
+				<label style="width: 100%;" for="<?=$this->get_field_id('auth_tooltip'); ?>" title="Sets your canvas tooltip. For instance you can set 'Posts by author' or if the cloud allows <span class='green'>Drag Control</span> you can suggest your site visitors to 'Drag or Click'.">
 				Tooltip
 				<div>
 					<input style="width: 100%;" id="<?=$this->get_field_id('auth_tooltip'); ?>"
@@ -137,7 +137,7 @@
 		<div style="float: left;">
 			<span style="padding-bottom: 5px;">SIZES</span>
 			<div style="padding-top: 5px;">
-				<label style="width: 95px;" title="Minimal font size when weighted sizing is enabled." for="<?=$this->get_field_id('auth_weightsizemin'); ?>">
+				<label style="width: 100px;" title="Minimal font size when weighted sizing is enabled." for="<?=$this->get_field_id('auth_weightsizemin'); ?>">
 					Weight Size Min
 					<br>
 					<select id="<?=$this->get_field_id('auth_weightsizemin'); ?>" name="<?=$this->get_field_name('auth_weightsizemin'); ?>">
@@ -156,21 +156,21 @@
 					Radius X 
 					<br>
 					<select id="<?=$this->get_field_id('auth_radius_x'); ?>" name="<?=$this->get_field_name('auth_radius_x'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="aurx_' . $i . '" value="' . $i/100 . '"'; if($auth_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="aurx_' . $i . '" value="' . $i/100 . '"'; if($auth_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to top and bottom." for="<?=$this->get_field_id('auth_radius_y'); ?>">
 					Radius Y 
 					<br>
 					<select id="<?=$this->get_field_id('auth_radius_y'); ?>" name="<?=$this->get_field_name('auth_radius_y'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="aury_' . $i . '" value="' . $i/100 . '"'; if($auth_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="aury_' . $i . '" value="' . $i/100 . '"'; if($auth_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to front and back." for="<?=$this->get_field_id('auth_radius_z'); ?>">
 					Radius Z 
 					<br>
 					<select id="<?=$this->get_field_id('auth_radius_z'); ?>" name="<?=$this->get_field_name('auth_radius_z'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="aurz_' . $i . '" value="' . $i/100 . '"'; if($auth_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="aurz_' . $i . '" value="' . $i/100 . '"'; if($auth_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label> 
 				<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('auth_split_width'); ?>">
@@ -183,10 +183,92 @@
 			</div>
 		</div>
 		<div class="divider"></div>
+		<div style="float: left;">
+			<span style="padding-bottom: 5px;">MIXED IMAGE & TEXT</span>
+			<div style="padding-top: 5px;">
+				<div style="padding-top: 5px; display: inline-block;">
+					<label style="margin: 0 25px 0 0;" title="What to display when tag contains image and text:<br><span class='green'>null</span> - Image if present, otherwise text;<br><span class='green'>image</span> - Image tags only;<br><span class='green'>text</span> - Text tags only;<br><span class='green'>both</span> - Image and text on tag using <span class='green'>Image Position</span>." for="<?=$this->get_field_id('auth_image_mode'); ?>">
+						<br>
+						Tag Mode
+						<br>
+						<select id="<?=$this->get_field_id('auth_image_mode'); ?>" name="<?=$this->get_field_name('auth_image_mode'); ?>">
+							<option value="" <?php if( $auth_image_mode == "" ){ echo ' selected'; } ?>>null</option>
+							<option value="image" <?php if( $auth_image_mode == "image" ){ echo ' selected'; } ?>>image</option>
+							<option value="text" <?php if( $auth_image_mode == "text" ){ echo ' selected'; } ?>>text</option>
+							<option value="both" <?php if( $auth_image_mode == "both" ){ echo ' selected'; } ?>>both</option>
+						</select>
+					</label>
+					<label style="margin: 0 25px 0 0;" title="Position of image relative to text when using an <span class='green'>Tag Mode</span> of <span class='green'>both</span>." for="<?=$this->get_field_id('auth_image_position'); ?>">
+						Image<br>Position
+						<br>
+						<select id="<?=$this->get_field_id('auth_image_position'); ?>" name="<?=$this->get_field_name('auth_image_position'); ?>">
+							<option value="left" <?php if( $auth_image_position == "left" ){ echo ' selected'; } ?>>left</option>
+							<option value="right" <?php if( $auth_image_position == "right" ){ echo ' selected'; } ?>>right</option>
+							<option value="top" <?php if( $auth_image_position == "top" ){ echo ' selected'; } ?>>top</option>
+							<option value="bottom" <?php if( $auth_image_position == "bottom" ){ echo ' selected'; } ?>>bottom</option>
+						</select>
+					</label>
+					<label style="margin: 0 25px 0 0;" title="Distance between image and text when using an <span class='green'>Tag Mode</span> of <span class='green'>both</span>." for="<?=$this->get_field_id('auth_image_padding'); ?>">
+						Image<br>Padding
+						<br>
+						<select id="<?=$this->get_field_id('auth_image_padding'); ?>" name="<?=$this->get_field_name('auth_image_padding'); ?>">	
+							<?php for($i=1; $i<6; $i++){echo '<option id="autimpa_' . $i . '" value="' . $i . '"'; if($auth_image_padding==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
+						</select>px
+					</label>
+					<label title="Amount to scale images by. The value of <span class='green'>1.0</span> uses the size of avatars (96x96px)." for="<?=$this->get_field_id('auth_image_scale'); ?>">
+						<br>
+						Image Scale
+						<br>
+						<select id="<?=$this->get_field_id('auth_image_scale'); ?>" name="<?=$this->get_field_name('auth_image_scale'); ?>">
+							<?php for($i=25; $i<1525; $i+=25){echo '<option id="autims_' . $i . '" value="' . $i/1000 . '"'; if($auth_image_scale==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>					
+						</select>
+					</label>
+				</div>
+				<div style="padding-top: 5px; display: inline-block;">
+					<label style="margin: 0 20px 0 0;" title="Horizontal image alignment" for="<?=$this->get_field_id('auth_image_align'); ?>">
+						Horizontal<br>Image Align
+						<br>
+						<select id="<?=$this->get_field_id('auth_image_align'); ?>" name="<?=$this->get_field_name('auth_image_align'); ?>">
+							<option value="left" <?php if( $auth_image_align == "left" ){ echo ' selected'; } ?>>left</option>
+							<option value="centre" <?php if( $auth_image_align == "centre" ){ echo ' selected'; } ?>>center</option>
+							<option value="right" <?php if( $auth_image_align == "right" ){ echo ' selected'; } ?>>right</option>
+						</select>
+					</label>
+					<label style="margin: 0 20px 0 0;" title="Vertical image alignment" for="<?=$this->get_field_id('auth_image_valign'); ?>">
+						Vertical<br>Image Align
+						<br>
+						<select id="<?=$this->get_field_id('auth_image_valign'); ?>" name="<?=$this->get_field_name('auth_image_valign'); ?>">
+							<option value="top" <?php if( $auth_image_valign == "top" ){ echo ' selected'; } ?>>top</option>
+							<option value="middle" <?php if( $auth_image_valign == "middle" ){ echo ' selected'; } ?>>middle</option>
+							<option value="bottom" <?php if( $auth_image_valign == "bottom" ){ echo ' selected'; } ?>>bottom</option>
+						</select>
+					</label>
+					<label style="margin: 0 20px 0 0;" title="Horizontal text alignment" for="<?=$this->get_field_id('auth_text_align'); ?>">
+						Horizontal<br>Text Align
+						<br>
+						<select id="<?=$this->get_field_id('auth_text_align'); ?>" name="<?=$this->get_field_name('auth_text_align'); ?>">
+							<option value="left" <?php if( $auth_text_align == "left" ){ echo ' selected'; } ?>>left</option>
+							<option value="centre" <?php if( $auth_text_align == "centre" ){ echo ' selected'; } ?>>center</option>
+							<option value="right" <?php if( $auth_text_align == "right" ){ echo ' selected'; } ?>>right</option>
+						</select>
+					</label>
+					<label title="Vertical text alignment" for="<?=$this->get_field_id('auth_text_valign'); ?>">
+						Vertical<br>Text Align
+						<br>
+						<select id="<?=$this->get_field_id('auth_text_valign'); ?>" name="<?=$this->get_field_name('auth_text_valign'); ?>">
+							<option value="top" <?php if( $auth_text_valign == "top" ){ echo ' selected'; } ?>>top</option>
+							<option value="middle" <?php if( $auth_text_valign == "middle" ){ echo ' selected'; } ?>>middle</option>
+							<option value="bottom" <?php if( $auth_text_valign == "bottom" ){ echo ' selected'; } ?>>bottom</option>
+						</select>
+					</label>				
+				</div>
+			</div>
+		</div>
+		<div class="divider"></div>
 		<div style="float: left; height: 137px;">
 			<span style="padding-bottom: 5px;">COLORS</span>
 			<div style="padding-top: 5px;">
-				<label style="height: 55px;" for="<?=$this->get_field_id('auth_text_color'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('auth_text_color'); ?>">
 					Tag Color
 					<br>
 					<span class="hash">#</span>
@@ -200,7 +282,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('auth_bg_color'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('auth_bg_color'); ?>">
 					Background
 					<br>
 					<span class="hash">#</span>
@@ -215,7 +297,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('auth_bg_outline'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('auth_bg_outline'); ?>">
 					Border
 					<br>
 					<span class="hash">#</span>
@@ -229,7 +311,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('auth_shadow'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('auth_shadow'); ?>">
 					Shadow
 					<br>
 					<span class="hash">#</span>
@@ -258,7 +340,7 @@
 					</div>
 				</label>
 				<div class="gradient-div">	
-					<label for="<?=$this->get_field_id('auth_weight_gradient_1'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('auth_weight_gradient_1'); ?>">
 						Gradient<br>Color: 0
 						<br>
 					<span class="hash">#</span>
@@ -272,7 +354,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('auth_weight_gradient_2'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('auth_weight_gradient_2'); ?>">
 						Gradient<br>Color: 0.33
 						<br>
 					<span class="hash">#</span>
@@ -286,7 +368,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('auth_weight_gradient_3'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('auth_weight_gradient_3'); ?>">
 						Gradient<br>Color: 0.67
 						<br>
 					<span class="hash">#</span>
@@ -300,7 +382,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('auth_weight_gradient_4'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('auth_weight_gradient_4'); ?>">
 						Gradient<br>Color: 1
 						<br>
 						<span class="hash">#</span>
@@ -331,7 +413,7 @@
 						<?php for($i=6; $i<31; $i++){echo '<option id="aufs_' . $i . '" value="' . $i . '"'; if($auth_fontsize==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
 					</select>px
 				</label>
-				<div style="float: left; margin: 0 12px 0 0;" title="Border of the tags">
+				<div style="float: left; margin: 0 15px 0 0;" title="Border of the tags">
 					<div>
 						Border
 					</div>
@@ -345,7 +427,7 @@
 						<?php if( $auth_borderwidth == "0" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>	
-				<div style="float: left; margin: 0 14px 0 0; padding: 0 0 2px 2px; border: 1px dotted #aaa; border-radius: 5px;" title="X and Y offset of the tag shadow">
+				<div style="float: left; margin: 0 15px 0 0; padding: 0 0 2px 2px; border: 1px dotted #aaa; border-radius: 5px;" title="X and Y offset of the tag shadow">
 					Shadow Offset [x, y]
 					<br>
 					<select id="<?=$this->get_field_id('auth_shadowoff_x'); ?>" name="<?=$this->get_field_name('auth_shadowoff_x'); ?>">
@@ -354,7 +436,7 @@
 						<?php for($i=-5; $i<6; $i++){echo '<option id="ausoy_' . $i . '" value="' . $i . '"'; if($auth_shadowoff_y==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>												
 					</select>px
 				</div>
-				<label title="Shadow behind each Menu tag" for="<?=$this->get_field_id('auth_shadowblur'); ?>" style="margin: 0 0 5px 0;">
+				<label style="margin: 0 0 5px 0;" title="Shadow behind each Menu tag" for="<?=$this->get_field_id('auth_shadowblur'); ?>">
 					Shadow Blur
 					<br>
 					<select id="<?=$this->get_field_id('auth_shadowblur'); ?>" name="<?=$this->get_field_name('auth_shadowblur'); ?>">

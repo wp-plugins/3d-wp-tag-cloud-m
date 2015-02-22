@@ -5,6 +5,7 @@ jQuery(function(){
 	setTimeout(function() {
 	
 //----- Preparing variables for various purposes -----
+		var con;
 		var all_in_1 = '<?= $all_in_1; ?>';
 		var all_menu_type = '<?= $all_menu_type; ?>';
 		var container = ['uni_tags_container_<?= $inst_id; ?>'];
@@ -48,23 +49,14 @@ jQuery(function(){
 			jQuery('#'+container[i]+' span').remove();
 			jQuery(clear_links).appendTo('#'+container[i]);								
 			}
-
-//----- Weighting Authors' List according to number of their publications -----
-			if(taxonomy=="authors"){
-				var text_a = jQuery('#'+container[i]+' a');
-				var div_full_text =  jQuery('#'+container[i]).text();
-				var div_clear_text = div_full_text.replace(',','');	
-				var authors_array = div_clear_text.split(')');					
-				for (var j = 0; j < text_a.length; j++) { 
-					authors_array[j]=authors_array[j].trim();
-					var weight_val = authors_array[j].substring(authors_array[j].lastIndexOf('(')+1, authors_array[j].length);		
-					jQuery('#'+container[i]+' a').eq(j).text(authors_array[j]+')');
-					jQuery('#'+container[i]+' a').eq(j).css({'font-size': weight_val+'px'});	
-				}
-				var clear_links = jQuery('#'+container[i]+' a').detach();
-				jQuery('#'+container[i]).text('');
-				jQuery(clear_links).appendTo('#'+container[i]);					
-			}	
+			
+//-----  Adding image size attributes for Menu content -----
+			if(taxonomy=="menu"){
+			var link_img = jQuery('#'+container[i]+' a img');
+			for (var j = 0; j < link_img.length; j++) { 
+				jQuery('#'+container[i]+' div ul li a img').eq(j).attr({"width":"96","height":"96"});
+			}							
+			}
 		}
 			
 //----- Variables for Archives cloud -----
@@ -107,6 +99,7 @@ jQuery(function(){
 					maxSpeed: <?= $arch_max_speed; ?>,
 					minBrightness: <?= $arch_brightness; ?>,
 					minSpeed: <?= $arch_min_speed; ?>,
+					noTagsMessage: true,	
 					outlineColour: '#<?= $arch_outline_color; ?>',
 					outlineMethod: '<?= $arch_outline_method; ?>',					
 					outlineOffset: 0,		
@@ -126,6 +119,7 @@ jQuery(function(){
 					textColour: arch_text_color,
 					textFont: arch_text_font,
 					textHeight: <?= $arch_fontsize; ?>,
+					tooltip: 'div',
 					weight: <?= $arch_weight; ?>,					
 					weightGradient: arch_weight_gradient,
 					weightMode: '<?= $arch_weight_mode; ?>',
@@ -170,11 +164,18 @@ jQuery(function(){
 					depth: 0.1,
 					dragControl: <?= $auth_drag_ctrl; ?>,
 					fadeIn: 1500,
+					imageAlign: '<?= $auth_image_align; ?>',
+					imageMode: '<?= $auth_image_mode; ?>',
+					imagePadding: <?= $auth_image_padding; ?>,
+					imagePosition: '<?= $auth_image_position; ?>',
+					imageScale: <?= $auth_image_scale; ?>,
+					imageVAlign: '<?= $auth_image_valign; ?>',	
 					initial:  [<?= $auth_initial_x; ?>,<?= $auth_initial_y; ?>],	
 					lock: '<?= $auth_lock; ?>',
 					maxSpeed: <?= $auth_max_speed; ?>,
 					minBrightness: <?= $auth_brightness; ?>,
 					minSpeed: <?= $auth_min_speed; ?>,
+					noTagsMessage: true,	
 					outlineColour: '#<?= $auth_outline_color; ?>',
 					outlineMethod: '<?= $auth_outline_method; ?>',					
 					outlineOffset: 0,		
@@ -191,9 +192,12 @@ jQuery(function(){
 					shadowOffset: [<?= $auth_shadowoff_x; ?>,<?= $auth_shadowoff_y; ?>],		
 					shape: '<?= $auth_shape; ?>',
 					splitWidth: <?= $auth_split_width; ?>,
+					textAlign: '<?= $auth_text_align; ?>',
 					textColour: auth_text_color,
 					textFont: auth_text_font,
 					textHeight: <?= $auth_fontsize; ?>,
+					textVAlign: '<?= $auth_text_valign; ?>',
+					tooltip: 'div',
 					weight: <?= $auth_weight; ?>,					
 					weightGradient: auth_weight_gradient,
 					weightMode: '<?= $auth_weight_mode; ?>',
@@ -242,7 +246,8 @@ jQuery(function(){
 					lock: '<?= $cat_lock; ?>',					
 					maxSpeed: <?= $cat_max_speed; ?>,
 					minBrightness: <?= $cat_brightness; ?>,
-					minSpeed: <?= $cat_min_speed; ?>,		
+					minSpeed: <?= $cat_min_speed; ?>,
+					noTagsMessage: true,
 					outlineColour: '#<?= $cat_outline_color; ?>',
 					outlineMethod: '<?= $cat_outline_method; ?>',					
 					outlineOffset: 0,		
@@ -262,6 +267,7 @@ jQuery(function(){
 					textColour: cat_text_color,
 					textFont: cat_text_font,
 					textHeight: <?= $cat_fontsize; ?>,
+					tooltip: '',
 					weight: <?= $cat_weight; ?>,					
 					weightGradient: cat_weight_gradient,
 					weightMode: '<?= $cat_weight_mode; ?>',
@@ -306,12 +312,18 @@ jQuery(function(){
 					depth: 0.1,
 					dragControl: <?= $lin_drag_ctrl; ?>,
 					fadeIn: 1500,
-					imageScale: <?= $lin_image_scale; ?>,	
+					imageAlign: '<?= $lin_image_align; ?>',
+					imageMode: '<?= $lin_image_mode; ?>',
+					imagePadding: <?= $lin_image_padding; ?>,
+					imagePosition: '<?= $lin_image_position; ?>',
+					imageScale: <?= $lin_image_scale; ?>,
+					imageVAlign: '<?= $lin_image_valign; ?>',
 					initial:  [<?= $lin_initial_x; ?>,<?= $lin_initial_y; ?>],	
 					lock: '<?= $lin_lock; ?>',
 					maxSpeed: <?= $lin_max_speed; ?>,
 					minBrightness: <?= $lin_brightness; ?>,
 					minSpeed: <?= $lin_min_speed; ?>,
+					noTagsMessage: true,
 					outlineColour: '#<?= $lin_outline_color; ?>',
 					outlineMethod: '<?= $lin_outline_method; ?>',					
 					outlineOffset: 0,		
@@ -328,9 +340,12 @@ jQuery(function(){
 					shadowOffset: [<?= $lin_shadowoff_x; ?>,<?= $lin_shadowoff_y; ?>],		
 					shape: '<?= $lin_shape; ?>',
 					splitWidth: <?= $lin_split_width; ?>,
+					textAlign: '<?= $lin_text_align; ?>',
 					textColour: lin_text_color,
 					textFont: lin_text_font,
 					textHeight: <?= $lin_fontsize; ?>,
+					textVAlign: '<?= $lin_text_valign; ?>',
+					tooltip: 'div',
 					weight: <?= $lin_weight; ?>,					
 					weightGradient: lin_weight_gradient,
 					weightMode: '<?= $lin_weight_mode; ?>',
@@ -368,11 +383,18 @@ jQuery(function(){
 					depth: 0.1,
 					dragControl: <?= $men_drag_ctrl; ?>,
 					fadeIn: 1500,
+					imageAlign: '<?= $men_image_align; ?>',
+					imageMode: '<?= $men_image_mode; ?>',
+					imagePadding: <?= $men_image_padding; ?>,
+					imagePosition: '<?= $men_image_position; ?>',
+					imageScale: <?= $men_image_scale; ?>,
+					imageVAlign: '<?= $men_image_valign; ?>',
 					initial:  [<?= $men_initial_x; ?>,<?= $men_initial_y; ?>],	
 					lock: '<?= $men_lock; ?>',
 					maxSpeed: <?= $men_max_speed; ?>,
 					minBrightness: <?= $men_brightness; ?>,
 					minSpeed: <?= $men_min_speed; ?>,
+					noTagsMessage: true,
 					outlineColour: '#<?= $men_outline_color; ?>',
 					outlineMethod: '<?= $men_outline_method; ?>',					
 					outlineOffset: 0,		
@@ -389,9 +411,12 @@ jQuery(function(){
 					shadowOffset: [<?= $men_shadowoff_x; ?>,<?= $men_shadowoff_y; ?>],		
 					shape: '<?= $men_shape; ?>',
 					splitWidth: <?= $men_split_width; ?>,
+					textAlign: '<?= $men_text_align; ?>',
 					textColour: men_text_color,
 					textFont: men_text_font,
 					textHeight: <?= $men_fontsize; ?>,
+					textVAlign: '<?= $men_text_valign; ?>',
+					tooltip: 'div',
 					weight: false,		
 					wheelZoom: zoom					
 				};
@@ -424,11 +449,18 @@ jQuery(function(){
 					depth: 0.1,
 					dragControl: <?= $pag_drag_ctrl; ?>,
 					fadeIn: 1500,
+					imageAlign: '<?= $pag_image_align; ?>',
+					imageMode: '<?= $pag_image_mode; ?>',
+					imagePadding: <?= $pag_image_padding; ?>,
+					imagePosition: '<?= $pag_image_position; ?>',
+					imageScale: <?= $pag_image_scale; ?>,
+					imageVAlign: '<?= $pag_image_valign; ?>',	
 					initial:  [<?= $pag_initial_x; ?>,<?= $pag_initial_y; ?>],	
 					lock: '<?= $pag_lock; ?>',
 					maxSpeed: <?= $pag_max_speed; ?>,
 					minBrightness: <?= $pag_brightness; ?>,
-					minSpeed: <?= $pag_min_speed; ?>,	
+					minSpeed: <?= $pag_min_speed; ?>,
+					noTagsMessage: true,
 					outlineColour: '#<?= $pag_outline_color; ?>',
 					outlineMethod: '<?= $pag_outline_method; ?>',					
 					outlineOffset: 0,		
@@ -445,8 +477,12 @@ jQuery(function(){
 					shadowOffset: [<?= $pag_shadowoff_x; ?>,<?= $pag_shadowoff_y; ?>],		
 					shape: '<?= $pag_shape; ?>',
 					splitWidth: <?= $pag_split_width; ?>,
+					textAlign: '<?= $pag_text_align; ?>',
 					textColour: pag_text_color,
 					textFont: pag_text_font,
+					textHeight: <?= $pag_fontsize; ?>,
+					textVAlign: '<?= $pag_text_valign; ?>',
+					tooltip: 'div',
 					textHeight: <?= $pag_fontsize; ?>,
 					weight: false,
 					wheelZoom: zoom					
@@ -491,7 +527,8 @@ jQuery(function(){
 					lock: '<?= $pos_lock; ?>',					
 					maxSpeed: <?= $pos_max_speed; ?>,
 					minBrightness: <?= $pos_brightness; ?>,
-					minSpeed: <?= $pos_min_speed; ?>,	
+					minSpeed: <?= $pos_min_speed; ?>,
+					noTagsMessage: true,
 					outlineColour: '#<?= $pos_outline_color; ?>',
 					outlineMethod: '<?= $pos_outline_method; ?>',					
 					outlineOffset: 0,		
@@ -511,6 +548,7 @@ jQuery(function(){
 					textColour: pos_text_color,
 					textFont: pos_text_font,
 					textHeight: <?= $pos_fontsize; ?>,
+					tooltip: '',
 					weight: <?= $pos_weight; ?>,					
 					weightGradient: pos_weight_gradient,
 					weightMode: '<?= $pos_weight_mode; ?>',
@@ -555,11 +593,18 @@ jQuery(function(){
 					depth: 0.1,
 					dragControl: <?= $rec_drag_ctrl; ?>,
 					fadeIn: 1500,
+					imageAlign: '<?= $rec_image_align; ?>',
+					imageMode: '<?= $rec_image_mode; ?>',
+					imagePadding: <?= $rec_image_padding; ?>,
+					imagePosition: '<?= $rec_image_position; ?>',
+					imageScale: <?= $rec_image_scale; ?>,
+					imageVAlign: '<?= $rec_image_valign; ?>',	
 					initial:  [<?= $rec_initial_x; ?>,<?= $rec_initial_y; ?>],	
 					lock: '<?= $rec_lock; ?>',
 					maxSpeed: <?= $rec_max_speed; ?>,
 					minBrightness: <?= $rec_brightness; ?>,
 					minSpeed: <?= $rec_min_speed; ?>,
+					noTagsMessage: true,
 					outlineColour: '#<?= $rec_outline_color; ?>',
 					outlineMethod: '<?= $rec_outline_method; ?>',					
 					outlineOffset: 0,		
@@ -576,9 +621,12 @@ jQuery(function(){
 					shadowOffset: [<?= $rec_shadowoff_x; ?>,<?= $rec_shadowoff_y; ?>],		
 					shape: '<?= $rec_shape; ?>',
 					splitWidth: <?= $rec_split_width; ?>,
+					textAlign: '<?= $rec_text_align; ?>',
 					textColour: rec_text_color,
 					textFont: rec_text_font,
 					textHeight: <?= $rec_fontsize; ?>,
+					textVAlign: '<?= $rec_text_valign; ?>',
+					tooltip: 'div',
 					weight: <?= $rec_weight; ?>,					
 					weightGradient: rec_weight_gradient,
 					weightMode: '<?= $rec_weight_mode; ?>',
@@ -594,15 +642,15 @@ jQuery(function(){
 				var shadow_o = <?= $all_m_shadowoff ?>;
 				if(shadow_o == 0) {var shadow_offset = [0,0]; var shadow_blur = 0; var padding = 4;}
 				else {var shadow_offset=[1,1]; var shadow_blur = 3; var padding = 0;};
-				if(direction == 'r2l') {var speed = [-0.3, 0.0]}
-				else {var speed = [0.3, 0.0]};
+				if(direction == 'r2l') {var speed = [-0.5, 0.0]}
+				else {var speed = [0.5, 0.0]};
 		
 				var all_in_one_menu_options = {	
 					bgColour: 'tag',
 					bgOutline: '#<?= $all_m_bordercolor; ?>',
 					bgOutlineThickness: <?= $all_m_borderwidth; ?>,
 					bgRadius: 5,
-					decel: 0.85,
+					decel: 0.9,
 					depth: 0.1,
 					dragControl: true,
 					fadeIn: 1000,
@@ -611,7 +659,7 @@ jQuery(function(){
 					lock: 'y',
 					maxSpeed: 0.025,
 					minBrightness: 1,
-					minSpeed: 0.02,		
+					minSpeed: 0.025,		
 					outlineColour: '#<?= $all_m_outlcolor; ?>',		
 					outlineOffset: 0,	
 					outlineRadius: 5,
@@ -641,11 +689,11 @@ jQuery(function(){
 						jQuery('#all_in_one_menu_container_<?=$inst_id; ?> #'+shor_tax+'-link').css({'background-color':'#<?= $active_bg_color; ?>'});
 						if(shor_tax == 'arc'){bgimcar = arc_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $arch_tooltip; ?>');}
 						else{if(shor_tax == 'aut') {bgimcar = aut_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $auth_tooltip; ?>');}
-							else{if(shor_tax == 'cat'){bgimcar = cat_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $cat_tooltip; ?>');}
+							else{if(shor_tax == 'cat'){bgimcar = cat_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','');}
 								else{if(shor_tax == 'lin'){bgimcar = lin_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $lin_tooltip; ?>');}
 									else{if(shor_tax == 'men'){bgimcar = men_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $men_tooltip; ?>');}
 										else{if(shor_tax == 'pag'){bgimcar = pag_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $pag_tooltip; ?>');}
-											else{if(shor_tax == 'pos'){bgimcar = pos_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $pos_tooltip; ?>');}
+											else{if(shor_tax == 'pos'){bgimcar = pos_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','');}
 												else {bgimcar = rec_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $rec_tooltip; ?>');}
 												}
 											}
@@ -666,11 +714,11 @@ jQuery(function(){
 						jQuery('#all_in_one_menu_container_<?=$inst_id; ?> #'+shor_tax+'-link').css({'background-color':'#<?= $active_bg_color; ?>'});
 						if(shor_tax == 'arc'){bgimcar = arc_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $arch_tooltip; ?>');}
 						else{if(shor_tax == 'aut') {bgimcar = aut_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $auth_tooltip; ?>');}
-							else{if(shor_tax == 'cat'){bgimcar = cat_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $cat_tooltip; ?>');}
+							else{if(shor_tax == 'cat'){bgimcar = cat_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','');}
 								else{if(shor_tax == 'lin'){bgimcar = lin_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $lin_tooltip; ?>');}
 									else{if(shor_tax == 'men'){bgimcar = men_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $men_tooltip; ?>');}
 										else{if(shor_tax == 'pag'){bgimcar = pag_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $pag_tooltip; ?>');}
-											else{if(shor_tax == 'pos'){bgimcar = pos_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $pos_tooltip; ?>');}
+											else{if(shor_tax == 'pos'){bgimcar = pos_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','');}
 												else {bgimcar = rec_img_url; jQuery('#all_tag_canvas_<?= $inst_id; ?>').attr('title','<?= $rec_tooltip; ?>');}
 												}
 											}
@@ -694,6 +742,7 @@ jQuery(function(){
 				jQuery('#all_in_one_menu_container_<?= $inst_id; ?> a').eq(i).css({'background-color':'#<?= $all_m_bgcolor; ?>'})
 			}
 			jQuery(this).css({'background-color':'#<?= $active_bg_color; ?>'}); 
+			con = this.id;
 			if(all_menu_type == 'dynamic'){
 				TagCanvas.Update('all_menu_canvas_<?=$inst_id; ?>');
 			}
@@ -709,7 +758,7 @@ jQuery(function(){
 				TagCanvas.Start('all_tag_canvas_<?=$inst_id; ?>', all_content, all_authors_options);
 				}
 				else {if(all_options=='all_categories_options'){
-					if(shor_tax+'_img_url' != ''){jQuery('#all_tag_canvas_<?= $inst_id; ?>').css({'background-image': 'url("'+cat_img_url+'")'}).attr('title','<?= $cat_tooltip; ?>').hide().fadeIn(1000);}; 
+					if(shor_tax+'_img_url' != ''){jQuery('#all_tag_canvas_<?= $inst_id; ?>').css({'background-image': 'url("'+cat_img_url+'")'}).attr('title','').hide().fadeIn(1000);}; 
 					TagCanvas.Delete('all_tag_canvas_<?=$inst_id; ?>'); 
 					TagCanvas.Start('all_tag_canvas_<?=$inst_id; ?>', all_content, all_categories_options);
 					}
@@ -729,7 +778,7 @@ jQuery(function(){
 								TagCanvas.Start('all_tag_canvas_<?=$inst_id; ?>', all_content, all_pages_options);
 								}
 								else {if(all_options=='all_post_tags_options'){
-									if(shor_tax+'_img_url' != ''){jQuery('#all_tag_canvas_<?= $inst_id; ?>').css({'background-image': 'url("'+pos_img_url+'")'}).attr('title','<?= $pos_tooltip; ?>').hide().fadeIn(1000);}; 
+									if(shor_tax+'_img_url' != ''){jQuery('#all_tag_canvas_<?= $inst_id; ?>').css({'background-image': 'url("'+pos_img_url+'")'}).attr('title','').hide().fadeIn(1000);}; 
 									TagCanvas.Delete('all_tag_canvas_<?=$inst_id; ?>'); 
 									TagCanvas.Start('all_tag_canvas_<?=$inst_id; ?>', all_content, all_post_tags_options)
 									}
@@ -748,25 +797,7 @@ jQuery(function(){
 		
 //----- Freezing animation till loading next page -----
 		jQuery('#all_archives_container_<?= $inst_id; ?> a, #all_authors_container_<?= $inst_id; ?> a, #all_categories_container_<?= $inst_id; ?> a, #all_links_container_<?= $inst_id; ?> a, #all_menu_container_<?= $inst_id; ?> a, #all_pages_container_<?= $inst_id; ?> a, #all_post_tags_container_<?= $inst_id; ?> a, #all_recent_posts_container_<?= $inst_id; ?> a').click(function(){
-			var con = '<?= $all_taxonomy; ?>';
-			var opt;
-			if(con=='archives'){opt=arch_click_to_front;}
-			else {if(con=='authors'){opt=auth_click_to_front}
-				else {if(con=='categories'){opt=cate_click_to_front}
-					else {if(con=='links'){opt=link_click_to_front}
-						else {if(con=='menu'){opt=menu_click_to_front}
-							else {if(con=='pages'){opt=page_click_to_front}
-								else {if(con=='post_tags'){opt=post_click_to_front}
-									else {opt=rece_click_to_front};
-									}
-								}
-							}
-						}
-					}
-				};
-				
-			if(opt!='null'){setTimeout(function() {TagCanvas.Pause('all_tag_canvas_<?=$inst_id; ?>')}, parseInt(opt));};
+			TagCanvas.Pause('all_tag_canvas_<?= $inst_id; ?>');
 		});						
 	}, 0);
-
 });

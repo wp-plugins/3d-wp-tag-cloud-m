@@ -200,12 +200,12 @@
 				<div>
 					Tooltip
 				</div>
-				<div style="float: left;" title="Turns on menu's tooltip.">
+				<div style="float: left;" title="Turns on menu's tooltip 'Drag or Click'.">
 					<input class="radio" id="<?=$this->get_field_id('all_m_tooltip'); ?>"
 					name="<?=$this->get_field_name('all_m_tooltip'); ?>" type="radio" value="on"
 					<?php if( $all_m_tooltip == "on" ){ echo ' checked="checked"'; } ?>>on
 					<br>
-					<input title="Turns off menu's tooltip." class="radio" id="<?=$this->get_field_id('all_m_tooltip'); ?>"
+					<input title="Turns off menu's tooltip 'Drag or Click'." class="radio" id="<?=$this->get_field_id('all_m_tooltip'); ?>"
 					name="<?=$this->get_field_name('all_m_tooltip'); ?>" type="radio" value="off"
 					<?php if( $all_m_tooltip == "off" ){ echo ' checked="checked"'; } ?>>off
 				</div>
@@ -353,7 +353,7 @@
 		</div>
 		<div style="">
 			<div style="display: inline-block;">
-				<label style="margin: 0 20px 10px 0;" title="Height of the tag text font" for="<?=$this->get_field_id('all_m_fontsize'); ?>">
+				<label style="width: 76px; margin: 0 0 10px 0;" title="Height of the tag text font" for="<?=$this->get_field_id('all_m_fontsize'); ?>">
 					Font Size
 					<br>
 					<select id="<?=$this->get_field_id('all_m_fontsize'); ?>" name="<?=$this->get_field_name('all_m_fontsize'); ?>">
@@ -376,11 +376,11 @@
 				</label>
 			</div>
 			<div style="display: inline-block;">
-				<div title="Border of the Menu tags" style="float: left; margin: 0 0 10px 0;">
+				<div style="float: left; margin: 0 0 10px 0; width: 76px;" title="Border of the Menu tags">
 					<div>
 						Border
 					</div>
-					<div  style="float: left; margin: 0 20px 0 0;">
+					<div style="float: left;">
 						<input style="margin: 0" class="radio" id="<?=$this->get_field_id('all_m_borderwidth'); ?>"
 						name="<?=$this->get_field_name('all_m_borderwidth'); ?>" type="radio" value="1"
 						<?php if( $all_m_borderwidth == "1" ){ echo ' checked="checked"'; } ?>>on
@@ -390,7 +390,7 @@
 						<?php if( $all_m_borderwidth == "0" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>		
-				<label style="height: 46px; float: right; margin: 0 9px 5px 0;" title="Color of Menu tags' border: Use empty option for the same as the text color." for="<?=$this->get_field_id('all_m_bordercolor'); ?>">
+				<label style="height: 46px; float: right; margin: 0 0 5px;" title="Color of Menu tags' border: Use empty option for the same as the text color." for="<?=$this->get_field_id('all_m_bordercolor'); ?>">
 					Border Color
 					<br>
 					<span class="hash">#</span>
@@ -406,11 +406,11 @@
 				</label>
 			</div>
 			<div style="display: inline-block;">
-				<div title="Shadow behind each Menu tag" style="float: left;">
+				<div style="width: 76px; float: left;" title="Shadow behind each Menu tag">
 					<div>
 						Shadow
 					</div>
-					<div  style="float: left; margin: 0 20px 0 0;">
+					<div  style="float: left;">
 						<input style="margin: 0" class="radio" id="<?=$this->get_field_id('all_m_shadowoff'); ?>"
 						name="<?=$this->get_field_name('all_m_shadowoff'); ?>" type="radio" value="1"
 						<?php if( $all_m_shadowoff == "1" ){ echo ' checked="checked"';} ?>>on
@@ -420,7 +420,7 @@
 						<?php if( $all_m_shadowoff == "0" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>	
-				<label style="height: 46px; float: right; margin: 0 2px 5px 0;" title="Colour of the shadow behind each tag" for="<?=$this->get_field_id('all_m_shadow'); ?>">
+				<label style="height: 46px; float: right; margin: 0 0 5px;" title="Colour of the shadow behind each tag" for="<?=$this->get_field_id('all_m_shadow'); ?>">
 					Shadow Color
 					<br>
 					<span class="hash">#</span>
@@ -435,7 +435,7 @@
 					</div>
 				</label>
 			</div>	
-			<label style="width: 89px;" title="When <span class='green'>Menu Type</span>is set to <span class='green'>dynamic</span>: Initial size of cloud from center to sides." for="<?=$this->get_field_id('all_m_radius_x'); ?>">
+			<label style="width: 83px;" title="When <span class='green'>Menu Type</span>is set to <span class='green'>dynamic</span>: Initial size of cloud from center to sides." for="<?=$this->get_field_id('all_m_radius_x'); ?>">
 				Radius X,Y,Z 
 				<br>
 				<select id="<?=$this->get_field_id('all_m_radius_x'); ?>" name="<?=$this->get_field_name('all_m_radius_x'); ?>">
@@ -443,7 +443,7 @@
 				</select>
 			</label>	
 			<div style="display: inline-block;">
-				<label style="height: 46px; margin: 0 15px 0 0;" title="Background color of tags - empty option means no background." for="<?=$this->get_field_id('all_m_bgcolor'); ?>">
+				<label style="width: 83px; height: 46px;" title="Background color of tags - empty option means no background." for="<?=$this->get_field_id('all_m_bgcolor'); ?>">
 					Background
 					<br>
 					<span class="hash">#</span>
@@ -457,7 +457,7 @@
 								?>
 					</div>
 				</label>		
-				<label style="height: 46px; float: left; margin: 0 14px 0 0;" title="Background color of the Active Menu tag" for="<?=$this->get_field_id('active_bg_color'); ?>">
+				<label style="width: 83px; height: 46px; float: left;" title="Background color of the Active Menu tag" for="<?=$this->get_field_id('active_bg_color'); ?>">
 					Active BG
 					<br>
 					<span class="hash">#</span>
@@ -490,12 +490,12 @@
 		<div class="divider"></div>
 		<span style="float: left; margin: 5px 0 0 0;">WIDGET ATTRIBUTES</span>
 		<br>
-		<div class="thin-spacer"></div>
-		
-		<div style="width: 100%; float: left; padding: 5px 0 10px;" title="Function for drawing in the center of the cloud. You can use two ready made functions or create yours.">
+		<div style="width: 100%; float: left; padding: 5px 0;" title="Function for drawing in the center of the cloud. You can use two ready made functions or create yours.">
 			<span style="font-weight: bold;">Center Function</span>
 		</div>
-		<label style="margin: 0 39px 0 0;" for="<?=$this->get_field_id('all_cf_name'); ?>" title="<span class='green'>none</span> - no Center Function;<br><span class='green'>image_cf()</span> - for an image in cloud's center;<br><span class='green'>text_cf()</span> - for text in cloud's center and<br><span class='green'>my_cf()</span> - for your own code.">
+		<u style="display: inline-block;" title="Put an image in the center of your cloud.">General Settings</u>
+		<br>
+		<label style="margin: 0 10px 0 0;" for="<?=$this->get_field_id('all_cf_name'); ?>" title="<span class='green'>none</span> - no Center Function;<br><span class='green'>image_cf()</span> - for an image in cloud's center;<br><span class='green'>text_cf()</span> - for text in cloud's center and<br><span class='green'>my_cf()</span> - for your own code.">
 			Function
 			<br>
 			<select id="<?=$this->get_field_id('all_cf_name'); ?>" name="<?=$this->get_field_name('all_cf_name'); ?>">
@@ -517,18 +517,21 @@
 			name="<?=$this->get_field_name('all_cf_rotation'); ?>" type="radio" value="1"
 			<?php if( $all_cf_rotation == "1" ){ echo ' checked="checked"'; } ?>>
 			
-			<span style="position:relative; top: 6px; left: -9px; font-size: 30px; line-height: 4px; font-weight: normal;">&#8634;</span>
-			<input style="margin: 0 0 0 10px; position: relative; left: -43px; top: 0px;" class="radio" id="<?=$this->get_field_id('all_cf_rotation'); ?>"
+			<span style="position:relative; top: 6px; left: -14px; font-size: 30px; line-height: 4px; font-weight: normal;">&#8634;</span>
+			<input style="margin: 0 0 0 10px; position: relative; left: -48px; top: 0px;" class="radio" id="<?=$this->get_field_id('all_cf_rotation'); ?>"
 			name="<?=$this->get_field_name('all_all_cf_rotation'); ?>" type="radio" value="-1"
 			<?php if( $all_cf_rotation == "-1" ){ echo ' checked="checked"'; } ?>>
 		</div>
-		<label title="Opacity of Center <span class='green'>Function</span> image/text" for="<?=$this->get_field_id('all_cf_opacity'); ?>">
+		<label style="margin-left: -30px;" title="Opacity of Center <span class='green'>Function</span> image/text" for="<?=$this->get_field_id('all_cf_opacity'); ?>">
 			Opacity
 			<br>
 			<select id="<?=$this->get_field_id('all_cf_opacity'); ?>" name="<?=$this->get_field_name('all_cf_opacity'); ?>">
 				<?php for($i=5; $i<105; $i+=5){echo '<option id="acfo_' . $i . '" value="' . $i/100 . '"'; if($all_cf_opacity==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>					
 			</select>
 		</label> 
+		<label style="padding: 15px 0 0 8px; text-align: center;">
+			<a style="color:#1e8cbe; font-weight: bold;" title="...of Center Function" href="http://peter.bg/archives/7840" target="_blank">Examples</a>
+		</label>	
 		<div class="divider" style="display: inline-block; float: none; border-bottom: 1px dotted #bbb;"></div>
 		<u title="Put an image in the center of your cloud.">Image Center Function</u>
 		<br>
@@ -554,7 +557,7 @@
 		<div style="clear: both;">
 			<u title="Put a text object in the center of your cloud.">Text Center Function</u>
 			<br>
-			<label style="margin: 0 5px 0 0;" for="<?=$this->get_field_id('all_text_cont'); ?>" title="Choose shape of container for your text: <span class='green'>square</span> (suitable for all types of cloud <span class='green'>shape</span>), <span class='green'>landscape</span> rectangle (suitable for shape <span class='green'>hring</span> and <span class='green'>hcylinder</span> when <span class='green'>x-axis</span> rotation is locked) or <span class='green'>portrait</span> rectangle (suitable for <span class='green'>vring</span> and <span class='green'>vcylinder</span> when <span class='green'>y-axis</span> rotation is locked).">
+			<label style="width: 93px;" for="<?=$this->get_field_id('all_text_cont'); ?>" title="Choose shape of container for your text: <span class='green'>square</span> (suitable for all types of cloud <span class='green'>shape</span>), <span class='green'>landscape</span> rectangle (suitable for shape <span class='green'>hring</span> and <span class='green'>hcylinder</span> when <span class='green'>x-axis</span> rotation is locked) or <span class='green'>portrait</span> rectangle (suitable for <span class='green'>vring</span> and <span class='green'>vcylinder</span> when <span class='green'>y-axis</span> rotation is locked).">
 				Text Container
 				<br>
 				<select id="<?=$this->get_field_id('all_text_cont'); ?>" name="<?=$this->get_field_name('all_text_cont'); ?>">
@@ -563,21 +566,21 @@
 					<option value="portrait" <?php if( $all_text_cont == "portrait" ){ echo ' selected'; } ?>>portrait</option>
 				</select>
 			</label>
-			<label style="margin: 0 5px 0 0;" for="<?=$this->get_field_id('all_text_zoom'); ?>" title="Zooms your text object">
+			<label style="width: 53px;;" for="<?=$this->get_field_id('all_text_zoom'); ?>" title="Zooms your text object">
 				Zoom
 				<br>
 				<select id="<?=$this->get_field_id('all_text_zoom'); ?>" name="<?=$this->get_field_name('all_text_zoom'); ?>">
 					<?php for($i=2; $i<21; $i++){echo '<option id="atxtzoom_' . $i . '" value="' . $i/10 . '"'; if($all_text_zoom==$i/10){echo ' selected';}; echo '>' . $i/10 . '</option>'; } ?>
 				</select>
 			</label>
-			<label style="margin: 0 4px 0 0;" title="Border width of text object: 0 for no border." for="<?=$this->get_field_id('all_cont_border'); ?>">
+			<label style="width: 56px;;" title="Border width of text object: 0 for no border." for="<?=$this->get_field_id('all_cont_border'); ?>">
 				Border
 				<br>
 				<select id="<?=$this->get_field_id('all_cont_border'); ?>" name="<?=$this->get_field_name('all_cont_border'); ?>">	
 					<?php for($i=0; $i<4; $i++){echo '<option id="cntb_' . $i . '" value="' . $i . '"'; if($all_cont_border==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
 				</select>px
 			</label>
-			<label style="margin: 0 4px 0 0;" title="Height of the font" for="<?=$this->get_field_id('all_font_h'); ?>">
+			<label style="width: 63px;" title="Height of the font" for="<?=$this->get_field_id('all_font_h'); ?>">
 				Font Size
 				<br>
 				<select id="<?=$this->get_field_id('all_font_h'); ?>" name="<?=$this->get_field_name('all_font_h'); ?>">	
@@ -596,34 +599,34 @@
 				<?php if( $all_font_w == "bold" ){ echo ' checked="checked"'; } ?>>bold
 			</div>
 			<div class="thin-spacer"></div>		
-			<div style="display: inline-block; width: 128px; float: left;">
+			<div style="display: inline-block; width: 127px; float: left;">
 				<span style="font-weight: normal; padding: 0 0 0 40px;">Text</span>
 				<br>
-				<label style="clear: both; padding: 0 5px 0 0;" title="Enter short text (2-3 words)." for="<?=$this->get_field_id('all_text_line_1'); ?>">
+				<label style="clear: both; padding: 0 4px 0 0;" title="Enter short text (2-3 words)." for="<?=$this->get_field_id('all_text_line_1'); ?>">
 					<div style="display: inline-block;">Line 1</div>
 					<input style="width: 84px;" id="<?=$this->get_field_id('all_text_line_1'); ?>"
 					name="<?=$this->get_field_name('all_text_line_1'); ?>" type="text"
 					value="<?php echo $all_text_line_1; ?>" onblur="qutes_check(this, this.value)" />
 				</label>
-				<label style="padding: 0 5px 0 0;" title="Enter short text (2-3 words)." for="<?=$this->get_field_id('all_text_line_2'); ?>">
+				<label style="padding: 0 4px 0 0;" title="Enter short text (2-3 words)." for="<?=$this->get_field_id('all_text_line_2'); ?>">
 					<div style="display: inline-block;">Line 2</div>
 					<input	style="width: 84px;" id="<?=$this->get_field_id('all_text_line_2'); ?>"
 					name="<?=$this->get_field_name('all_text_line_2'); ?>" type="text"
 					value="<?php echo $all_text_line_2; ?>" onblur="qutes_check(this, this.value)" /> 
 				</label>
-				<label style="padding: 0 5px 0 0;" title="Enter short text (2-3 words)." for="<?=$this->get_field_id('all_text_line_3'); ?>">
+				<label style="padding: 0 4px 0 0;" title="Enter short text (2-3 words)." for="<?=$this->get_field_id('all_text_line_3'); ?>">
 					<div style="display: inline-block;">Line 3</div>
 					<input	style="width: 84px;" id="<?=$this->get_field_id('all_text_line_3'); ?>"
 					name="<?=$this->get_field_name('all_text_line_3'); ?>" type="text"
 					value="<?php echo $all_text_line_3; ?>" onblur="qutes_check(this, this.value)" /> 
 				</label>
-				<label style="padding: 0 5px 0 0;" title="Enter short text (2-3 words)." for="<?=$this->get_field_id('all_text_line_4'); ?>">
+				<label style="padding: 0 4px 0 0;" title="Enter short text (2-3 words)." for="<?=$this->get_field_id('all_text_line_4'); ?>">
 					<div style="display: inline-block;">Line 4</div>
 					<input	style="width: 84px;" id="<?=$this->get_field_id('all_text_line_4'); ?>"
 					name="<?=$this->get_field_name('all_text_line_4'); ?>" type="text"
 					value="<?php echo $all_text_line_4; ?>" onblur="qutes_check(this, this.value)" /> 
 				</label>
-				<label style="padding: 0 5px 0 0;" title="Enter short text (2-3 words)." for="<?=$this->get_field_id('all_text_line_5'); ?>">
+				<label style="padding: 0 4px 0 0;" title="Enter short text (2-3 words)." for="<?=$this->get_field_id('all_text_line_5'); ?>">
 					<div style="display: inline-block;">Line 5</div>
 					<input style="width: 84px;" id="<?=$this->get_field_id('all_text_line_5'); ?>"
 					name="<?=$this->get_field_name('all_text_line_5'); ?>" type="text"
@@ -631,7 +634,7 @@
 				</label>
 			</div>
 			<div style="display: inline-block;">
-				<label style="height: 55px;" for="<?=$this->get_field_id('all_text_color_cf'); ?>">
+				<label style="width: 69px; height: 55px;" for="<?=$this->get_field_id('all_text_color_cf'); ?>">
 					Text Color
 					<br>
 					<span class="hash">#</span>
@@ -645,7 +648,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('all_bg_colour_cf'); ?>">
+				<label style="width: 69px; height: 55px;" for="<?=$this->get_field_id('all_bg_colour_cf'); ?>">
 					Background
 					<br>
 					<span class="hash">#</span>
@@ -726,13 +729,13 @@
 			<br>
 			Create a js file and put in it your function named <span>my_cf</span>:
 			<div style="float: left; border-radius: 10px; border: 1px dotted #bbb;" for="<?=$this->get_field_id('all_cf_name'); ?>">
-				<div style="width: 92px; display: inline-block; margin: 5px 0 0 5px;">
+				<div style="width: 92px; display: inline-block; margin: 5px 5px 0;">
 					<i>function my_cf(){<br>
 					&nbsp; &nbsp;...<br>
 					}</i><br>
 				</div>
 			</div>
-			<label style="margin: 5px 0 0 35px; width: 200px;" title="URL of a js file containing your <span class='green'>my_cf()</span> function. For example:<br><span>http://your-domain.com/your-js-folder/your-file.js</span>. <span>IMPORTANT</span>: You can include it in as many widget instances as you want, but you can have ONLY ONE <span class='green'>my_cf()</span> function." for="<?=$this->get_field_id('all_cf_url'); ?>" style="float: left; width: 255px;">
+			<label style="margin: 5px 0 0 30px; width: 200px;" title="URL of a js file containing your <span class='green'>my_cf()</span> function. For example:<br><span>http://your-domain.com/your-js-folder/your-file.js</span>. <span>IMPORTANT</span>: You can include it in as many widget instances as you want, but you can have ONLY ONE <span class='green'>my_cf()</span> function." for="<?=$this->get_field_id('all_cf_url'); ?>" style="float: left; width: 255px;">
 				URL 
 				<input style="width: 100%;"
 				id="<?=$this->get_field_id('all_cf_url'); ?>"
@@ -761,7 +764,7 @@
 	<h3 class="help">GUIDE & TIPS</h3>
 	<div class="section_content">
 		<h3 id="guide" class="ui-guide-icons" style="margin-left: 5px; margin-right: 5px;" onclick="window.open('<?php echo plugins_url( 'help/m.user.guide.htm' , __FILE__ ) ?>')">
-			<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Guide (opens in new tab)
+			<span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Guide (opens in a new tab)
 		</h3>
 		<div id="accordion-4">
 			<?php include 'help/m.tips.php'; ?>

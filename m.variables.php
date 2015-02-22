@@ -103,6 +103,12 @@
 	$all_authors_limit = $instance['all_authors_limit'];
 	$all_exclude = $instance['all_exclude'];
 	$aut_img_url = $instance['aut_img_url'];
+	$auth_image_align = $instance['auth_image_align'];
+	$auth_image_mode = $instance['auth_image_mode'];
+	$auth_image_padding = $instance['auth_image_padding'];
+	$auth_image_position = $instance['auth_image_position'];
+	$auth_image_scale = $instance['auth_image_scale'];
+	$auth_image_valign = $instance['auth_image_valign'];
 	$auth_bg_color = $instance['auth_bg_color'];
 	$auth_bg_outline = $instance['auth_bg_outline'];
 	$auth_borderwidth = $instance['auth_borderwidth'];
@@ -128,8 +134,10 @@
 	$auth_shadowoff_y = $instance['auth_shadowoff_y'];
 	$auth_shape = $instance['auth_shape'];
 	$auth_split_width = $instance['auth_split_width'];
+	$auth_text_align = $instance['auth_text_align'];
 	$auth_text_color = $instance['auth_text_color'];
 	$auth_text_font = $instance['auth_text_font'];
+	$auth_text_valign = $instance['auth_text_valign'];
 	$auth_tooltip = $instance['auth_tooltip'];
 	$auth_weight = $instance['auth_weight'];
 	$auth_weightsizemax = $instance['auth_weightsizemax'];
@@ -193,8 +201,13 @@
 	$lin_drag_ctrl = $instance['lin_drag_ctrl'];
 	$lin_fontsize = $instance['lin_fontsize'];
 	$lin_google_font = $instance['lin_google_font'];
-	$lin_image_scale = $instance['lin_image_scale'];
 	$lin_img_url = $instance['lin_img_url'];
+	$lin_image_align = $instance['lin_image_align'];
+	$lin_image_mode = $instance['lin_image_mode'];
+	$lin_image_padding = $instance['lin_image_padding'];
+	$lin_image_position = $instance['lin_image_position'];
+	$lin_image_scale = $instance['lin_image_scale'];
+	$lin_image_valign = $instance['lin_image_valign'];
 	$lin_initial_x = $instance['lin_initial_x'];
 	$lin_initial_y = $instance['lin_initial_y'];
 	$lin_lock = $instance['lin_lock'];
@@ -212,8 +225,10 @@
 	$lin_shadowoff_y = $instance['lin_shadowoff_y'];
 	$lin_shape = $instance['lin_shape'];
 	$lin_split_width = $instance['lin_split_width'];
+	$lin_text_align = $instance['lin_text_align'];
 	$lin_text_color = $instance['lin_text_color'];
 	$lin_text_font = $instance['lin_text_font'];
+	$lin_text_valign = $instance['lin_text_valign'];
 	$lin_tooltip = $instance['lin_tooltip'];
 	$lin_weight = $instance['lin_weight'];
 	$lin_weightsizemax = $instance['lin_weightsizemax'];
@@ -236,6 +251,12 @@
 	$men_fontsize = $instance['men_fontsize'];
 	$men_google_font = $instance['men_google_font'];
 	$men_img_url = $instance['men_img_url'];
+	$men_image_align = $instance['men_image_align'];
+	$men_image_mode = $instance['men_image_mode'];
+	$men_image_padding = $instance['men_image_padding'];
+	$men_image_position = $instance['men_image_position'];
+	$men_image_scale = $instance['men_image_scale'];
+	$men_image_valign = $instance['men_image_valign'];
 	$men_initial_x = $instance['men_initial_x'];
 	$men_initial_y = $instance['men_initial_y'];
 	$men_lock = $instance['men_lock'];
@@ -253,11 +274,14 @@
 	$men_shadowoff_y = $instance['men_shadowoff_y'];
 	$men_shape = $instance['men_shape'];
 	$men_split_width = $instance['men_split_width'];
+	$men_text_align = $instance['men_text_align'];
 	$men_text_color = $instance['men_text_color'];
 	$men_text_font = $instance['men_text_font'];
+	$men_text_valign = $instance['men_text_valign'];
 	$men_tooltip = $instance['men_tooltip'];
 
 // Pages variables
+	$all_pages_limit = $instance['all_pages_limit'];
 	$pag_bg_color = $instance['pag_bg_color'];
 	$pag_bg_outline = $instance['pag_bg_outline'];
 	$pag_borderwidth = $instance['pag_borderwidth'];
@@ -267,6 +291,12 @@
 	$pag_fontsize = $instance['pag_fontsize'];
 	$pag_google_font = $instance['pag_google_font'];
 	$pag_img_url = $instance['pag_img_url'];
+	$pag_image_align = $instance['pag_image_align'];
+	$pag_image_mode = $instance['pag_image_mode'];
+	$pag_image_padding = $instance['pag_image_padding'];
+	$pag_image_position = $instance['pag_image_position'];
+	$pag_image_scale = $instance['pag_image_scale'];
+	$pag_image_valign = $instance['pag_image_valign'];
 	$pag_initial_x = $instance['pag_initial_x'];
 	$pag_initial_y = $instance['pag_initial_y'];
 	$pag_lock = $instance['pag_lock'];
@@ -284,8 +314,10 @@
 	$pag_shadowoff_y = $instance['pag_shadowoff_y'];
 	$pag_shape = $instance['pag_shape'];
 	$pag_split_width = $instance['pag_split_width'];
+	$pag_text_align = $instance['pag_text_align'];
 	$pag_text_color = $instance['pag_text_color'];
 	$pag_text_font = $instance['pag_text_font'];
+	$pag_text_valign = $instance['pag_text_valign'];
 	$pag_tooltip = $instance['pag_tooltip'];
 
 // Post Tags variables
@@ -340,6 +372,12 @@
 	$rec_drag_ctrl = $instance['rec_drag_ctrl'];
 	$rec_fontsize = $instance['rec_fontsize'];
 	$rec_google_font = $instance['rec_google_font'];
+	$rec_image_align = $instance['rec_image_align'];
+	$rec_image_mode = $instance['rec_image_mode'];
+	$rec_image_padding = $instance['rec_image_padding'];
+	$rec_image_position = $instance['rec_image_position'];
+	$rec_image_scale = $instance['rec_image_scale'];
+	$rec_image_valign = $instance['rec_image_valign'];
 	$rec_img_url = $instance['rec_img_url'];
 	$rec_initial_x = $instance['rec_initial_x'];
 	$rec_initial_y = $instance['rec_initial_y'];
@@ -358,8 +396,10 @@
 	$rec_shadowoff_y = $instance['rec_shadowoff_y'];
 	$rec_shape = $instance['rec_shape'];
 	$rec_split_width = $instance['rec_split_width'];
+	$rec_text_align = $instance['rec_text_align'];
 	$rec_text_color = $instance['rec_text_color'];
 	$rec_text_font = $instance['rec_text_font'];
+	$rec_text_valign = $instance['rec_text_valign'];
 	$rec_tooltip = $instance['rec_tooltip'];
 	$rec_weight = $instance['rec_weight'];
 	$rec_weightsizemax = $instance['rec_weightsizemax'];

@@ -64,7 +64,7 @@
 					</select>
 				</label>
 				<div class="thin-spacer"></div>
-				<label style="margin: 0 10px 0 0;" title="Type of highlight to use" for="<?=$this->get_field_id('cat_outline_method'); ?>">
+				<label style="margin: 0 12px 0 0;" title="Type of highlight to use" for="<?=$this->get_field_id('cat_outline_method'); ?>">
 					Outline<br>Method
 					<br>
 					<select id="<?=$this->get_field_id('cat_outline_method'); ?>" name="<?=$this->get_field_name('cat_outline_method'); ?>">
@@ -76,7 +76,7 @@
 						<option value="none" <?php if( $cat_outline_method == "none" ){ echo ' selected'; } ?>>none</option>
 					</select>
 				</label>
-				<div style="float: left; margin: 0 10px 0 0;" title="When enabled, cloud moves when dragged instead of based on mouse position.">
+				<div style="float: left; margin: 0 12px 0 0;" title="When enabled, cloud moves when dragged instead of based on mouse position.">
 					Drag<br>Control
 					<div>
 						<input class="radio" id="<?=$this->get_field_id('cat_drag_ctrl'); ?>"
@@ -88,14 +88,14 @@
 						<?php if( $cat_drag_ctrl == "false" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>
-				<label style="margin: 0 10px 0 0;" title="Minimal opacity of tags at back of cloud." for="<?=$this->get_field_id('cat_brightness'); ?>">
+				<label style="margin: 0 12px 0 0;" title="Minimal opacity of tags at back of cloud." for="<?=$this->get_field_id('cat_brightness'); ?>">
 					Min<br>Opacity
 					<br>
 					<select id="<?=$this->get_field_id('cat_brightness'); ?>" name="<?=$this->get_field_name('cat_brightness'); ?>">
 						<?php for($i=0; $i<105; $i+=5){echo '<option id="camb_' . $i . '" value="' . $i/100 . '"'; if($cat_brightness==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>					
 					</select>
 				</label> 
-				<label style="margin: 0 10px 0 0;" title="Pulsate outline to this opacity. Choose <span class='green'>1.0</span> for no pulsation." for="<?=$this->get_field_id('cat_pulsate_to'); ?>">
+				<label style="margin: 0 12px 0 0;" title="Pulsate outline to this opacity. Choose <span class='green'>1.0</span> for no pulsation." for="<?=$this->get_field_id('cat_pulsate_to'); ?>">
 					Pulsate<br>to Opacity
 					<br>
 					<select id="<?=$this->get_field_id('cat_pulsate_to'); ?>" name="<?=$this->get_field_name('cat_pulsate_to'); ?>">
@@ -112,15 +112,19 @@
 						<option value="none" <?php if( $cat_lock == "none" ){ echo ' selected'; } ?>>none</option>
 					</select>
 				</label>
-				<label style="width: 100%;" for="<?=$this->get_field_id('cat_tooltip'); ?>" title="Sets text for operating system tooltip of your cloud. For instance if the cloud allows <span class='green'>Drag Control</span> then you can suggest your site visitors to 'Drag & Click'.">
-				Tooltip
-				<div>
-					<input style="width: 100%;" id="<?=$this->get_field_id('cat_tooltip'); ?>"
-					name="<?=$this->get_field_name('cat_tooltip'); ?>" type="text"
-					value="<?php echo $cat_tooltip; ?>" />
-				</div> 
-				</label>
-				<label style="float: left; width: 100%; padding: 5px 0 0;" title="URL of an image to be used for Cloud Background. Consider Widget's <span class='green'>Width</span> and <span class='green'>Height</span>." for="<?=$this->get_field_id('cat_img_url'); ?>">
+				<div class="thin-spacer"></div>
+				<div style="float: left; margin: 0 14px 0 0;" title="Turns on/off tag tooltips.">
+					Tag tooltips
+					<div>
+						<input class="radio" id="<?=$this->get_field_id('cat_tooltip'); ?>"
+						name="<?=$this->get_field_name('cat_tooltip'); ?>" type="radio" value="div"
+						<?php if( $cat_tooltip == "div" ){ echo ' checked="checked"'; } ?>>on
+						<input class="radio" id="<?=$this->get_field_id('cat_tooltip'); ?>"
+						name="<?=$this->get_field_name('cat_tooltip'); ?>" type="radio" value="none"
+						<?php if( $cat_tooltip == "" ){ echo ' checked="checked"'; } ?>>off
+					</div>
+				</div>				
+				<label style="float: left; width: 255px;" title="URL of an image to be used for Cloud Background. Consider Widget's <span class='green'>Width</span> and <span class='green'>Height</span>." for="<?=$this->get_field_id('cat_img_url'); ?>">
 					Background Image
 					<input style="width: 100%;"
 					id="<?=$this->get_field_id('cat_img_url'); ?>"
@@ -133,7 +137,7 @@
 		<div style="float: left;">
 			<span style="padding-bottom: 5px;">SIZES</span>
 			<div style="padding-top: 5px;">
-				<label style="width: 95px;" title="Minimal font size when weighted sizing is enabled." for="<?=$this->get_field_id('cat_weightsizemin'); ?>">
+				<label style="width: 100px;" title="Minimal font size when weighted sizing is enabled." for="<?=$this->get_field_id('cat_weightsizemin'); ?>">
 					Weight Size Min
 					<br>
 					<select id="<?=$this->get_field_id('cat_weightsizemin'); ?>" name="<?=$this->get_field_name('cat_weightsizemin'); ?>">
@@ -152,21 +156,21 @@
 					Radius X 
 					<br>
 					<select id="<?=$this->get_field_id('cat_radius_x'); ?>" name="<?=$this->get_field_name('cat_radius_x'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="carx_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="carx_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to top and bottom." for="<?=$this->get_field_id('cat_radius_y'); ?>">
 					Radius Y 
 					<br>
 					<select id="<?=$this->get_field_id('cat_radius_y'); ?>" name="<?=$this->get_field_name('cat_radius_y'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="cary_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="cary_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to front and back." for="<?=$this->get_field_id('cat_radius_z'); ?>">
 					Radius Z 
 					<br>
 					<select id="<?=$this->get_field_id('cat_radius_z'); ?>" name="<?=$this->get_field_name('cat_radius_z'); ?>">
-						<?php for($i=10; $i<755; $i+=5){echo '<option id="carz_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=10; $i<1005; $i+=5){echo '<option id="carz_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label> 
 					<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('cat_split_width'); ?>">
@@ -182,7 +186,7 @@
 		<div style="float: left; height: 137px;">
 			<span style="padding-bottom: 5px;">COLORS</span>
 			<div style="padding-top: 5px;">
-				<label style="height: 55px;" for="<?=$this->get_field_id('cat_text_color'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('cat_text_color'); ?>">
 					Tag Color
 					<br>
 					<span class="hash">#</span>
@@ -196,7 +200,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('cat_bg_color'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('cat_bg_color'); ?>">
 					Background
 					<br>
 					<span class="hash">#</span>
@@ -210,7 +214,7 @@
 							else {if($cat_bg_color == 'tag'){echo '<span class="color" style="padding: 0 0 0 1px; letter-spacing: 0;">original color</span>';}};						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('cat_bg_outline'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('cat_bg_outline'); ?>">
 					Border
 					<br>
 					<span class="hash">#</span>
@@ -224,7 +228,7 @@
 						?>
 					</div>
 				</label>
-				<label style="height: 55px;" for="<?=$this->get_field_id('cat_shadow'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('cat_shadow'); ?>">
 					Shadow
 					<br>
 					<span class="hash">#</span>
@@ -238,7 +242,7 @@
 						?>
 					</div>
 				</label>								
-				<label style="height: 55px;" for="<?=$this->get_field_id('cat_outline_color'); ?>">
+				<label style="margin: 0 3px 0 0; height: 55px;" for="<?=$this->get_field_id('cat_outline_color'); ?>">
 					Outline
 					<br>
 					<span class="hash">#</span>
@@ -253,7 +257,7 @@
 					</div>
 				</label>
 				<div class="gradient-div">	
-					<label for="<?=$this->get_field_id('cat_weight_gradient_1'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('cat_weight_gradient_1'); ?>">
 						Gradient<br>Color: 0
 						<br>
 					<span class="hash">#</span>
@@ -267,7 +271,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('cat_weight_gradient_2'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('cat_weight_gradient_2'); ?>">
 						Gradient<br>Color: 0.33
 						<br>
 					<span class="hash">#</span>
@@ -281,7 +285,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('cat_weight_gradient_3'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('cat_weight_gradient_3'); ?>">
 						Gradient<br>Color: 0.67
 						<br>
 					<span class="hash">#</span>
@@ -295,7 +299,7 @@
 						?>
 						</div>
 					</label>
-					<label for="<?=$this->get_field_id('cat_weight_gradient_4'); ?>">
+					<label style="margin: 0 3px 0 0;" for="<?=$this->get_field_id('cat_weight_gradient_4'); ?>">
 						Gradient<br>Color: 1
 						<br>
 						<span class="hash">#</span>
@@ -326,7 +330,7 @@
 						<?php for($i=6; $i<31; $i++){echo '<option id="cafs_' . $i . '" value="' . $i . '"'; if($cat_fontsize==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
 					</select>px
 				</label>
-				<div title="Border of the tags" style="float: left; margin: 0 12px 0 0;">
+				<div title="Border of the tags" style="float: left; margin: 0 15px 0 0;">
 					<div>
 						Border
 					</div>
@@ -340,7 +344,7 @@
 						<?php if( $cat_borderwidth == "0" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>	
-				<div style="float: left; margin: 0 14px 0 0; padding: 0 0 2px 2px; border: 1px dotted #aaa; border-radius: 5px;" title="X and Y offset of the tag shadow">
+				<div style="float: left; margin: 0 15px 0 0; padding: 0 0 2px 2px; border: 1px dotted #aaa; border-radius: 5px;" title="X and Y offset of the tag shadow">
 					Shadow Offset [x, y]
 					<br>
 					<select id="<?=$this->get_field_id('cat_shadowoff_x'); ?>" name="<?=$this->get_field_name('cat_shadowoff_x'); ?>">						

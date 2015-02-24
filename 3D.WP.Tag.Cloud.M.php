@@ -3,14 +3,16 @@
 Plugin Name: 3D WP Tag Cloud-M
 Plugin URI: http://peter.bg/archives/7373
 Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag cloud. Plugin may rotate Pages, Recent Posts, External Links (blogroll), Menus, Blog Archives, List of Authors and of course Post Tags and Post Categories. It allows showing up to 8 types of content in one widget activated from static or dynamic menu (another cloud). Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menus, List of Authors and External Links (blogroll) tags may consist of both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.5.1 and includes most of its 70+ options in the Control Panel settings. Supports following shapes: sphere, hcylinder for a cylinder that starts off horizontal, vcylinder for a cylinder that starts off vertical, hring for a horizontal circle and vring for a vertical circle.
-Version: 1.1
+Version: 1.2
 Author: Peter Petrov
 Author URI: http://peter.bg
 Update Server: http://peter.bg/
 License: LGPL v3
 */
+// Enabling link manager for users of WP 3.5+
 	add_filter( 'pre_option_link_manager_enabled', '__return_true' );
-	
+// ===
+// Creating Widget
 	class wpTagCanvasWidgetM extends WP_Widget {
 		function wpTagCanvasWidgetM () {
 			parent::__construct(
@@ -19,39 +21,36 @@ License: LGPL v3
 				array( 'description' => __( 'Draws & Animates multiple 3D tag cloud.', 'text_domain' ), ) // Args
 			);
 		}
-
+// ===
 		function widget($args, $instance) {  
 			extract($args);
-
 			$inst_id = mt_rand(0,999999);
-			
+//  Registration of TagCanvas.js & including an external file				
 			wp_register_script('jq-tagcloud', plugin_dir_url( __FILE__ ) . 'js/jquery.tagcanvas.js', array('jquery'), '2.6.1',true);
 			wp_enqueue_script('jq-tagcloud');
-			
 			include 'm.variables.php';
 			echo $before_widget;
-			
-			$gmf = explode(",", str_replace(' ,', ',', str_replace(', ', ',', preg_replace('/\s\s+/', ' ', trim($multiple_fonts_g))))); 
+// ===
 ?>
 <!-- Loading Google Fonts -->
 			<script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
 			<script type="text/javascript">
 				goof = '<?= $arch_google_font; ?>';
-				if(goof != ''){WebFont.load({google: {families: ['<?= $arch_google_font; ?>']}});};
+				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				goof = '<?= $auth_google_font; ?>';						
-				if(goof != ''){WebFont.load({google: {families: ['<?= $auth_google_font; ?>']}});};
+				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				goof = '<?= $cat_google_font; ?>';
-				if(goof != ''){WebFont.load({google: {families: ['<?= $cat_google_font; ?>']}});};
+				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				goof = '<?= $lin_google_font; ?>';						
-				if(goof != ''){WebFont.load({google: {families: ['<?= $lin_google_font; ?>']}});};
+				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				goof = '<?= $men_google_font; ?>';						
-				if(goof != ''){WebFont.load({google: {families: ['<?= $men_google_font; ?>']}});};
+				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				goof = '<?= $pag_google_font; ?>';					
-				if(goof != ''){WebFont.load({google: {families: ['<?= $pag_google_font; ?>']}});};
+				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				goof = '<?= $pos_google_font; ?>';
-				if(goof != ''){WebFont.load({google: {families: ['<?= $pos_google_font; ?>']}});};
+				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				goof = '<?= $rec_google_font; ?>';
-				if(goof != ''){WebFont.load({google: {families: ['<?= $rec_google_font; ?>']}});};
+				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				WebFont.load({google: {families: ['<?= $all_font_cf; ?>']}});
 			</script>
 			<script type="text/javascript" src="<?= $all_cf_url; ?>"></script>			
@@ -1076,9 +1075,8 @@ License: LGPL v3
 <?php
 	}
 }
-
+// Registering Widget
 function wpTagCanvasMLoad() {
     register_widget( 'wpTagCanvasWidgetM' );    
 }
-
 add_action('widgets_init', 'wpTagCanvasMLoad');

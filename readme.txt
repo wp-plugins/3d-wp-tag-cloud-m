@@ -35,6 +35,11 @@ This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple in
 
 == Changelog ==
 
+= 1.2 =
+1. Changed the way Google Fonts are selected: All Google Fonts are included in a drop-down menu. Thus fonts are no more typed but selected.
+2. Automatic update of Google Fonts List from Google Font Library.
+3. Small code improvements.
+
 = 1.1 =
 1. Added a new feature for Recent posts, Pages, Menu Items, List of Authors and External Links (blogroll): Support for mixed image/text tags and choice of image, text or both. 
 2. Added text and image alignment options. 

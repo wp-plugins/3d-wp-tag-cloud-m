@@ -496,7 +496,7 @@
 			<br>
 			<select id="<?=$this->get_field_id('all_cf_name'); ?>" name="<?=$this->get_field_name('all_cf_name'); ?>">
 				<option value="" <?php if( $all_cf_name == "" ){ echo ' selected'; } ?>>none</option>
-				<option value="image_cf" <?php if( $all_cf_name == "all_image_cf" ){ echo ' selected'; } ?>>image_cf()</option>
+				<option value="image_cf" <?php if( $all_cf_name == "image_cf" ){ echo ' selected'; } ?>>image_cf()</option>
 				<option value="text_cf" <?php if( $all_cf_name == "text_cf" ){ echo ' selected'; } ?>>text_cf()</option>
 				<option value="my_cf" <?php if( $all_cf_name == "my_cf" ){ echo ' selected'; } ?>>my_cf()</option>
 			</select>

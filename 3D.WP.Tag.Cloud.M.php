@@ -154,6 +154,7 @@ License: LGPL v3
 				}
 			?>	
         <canvas title="" id="all_tag_canvas_<?= $inst_id; ?>" width="<?= $width; ?>" height="<?= $height; ?>"></canvas>
+		<br>
 		
 <!-- Preparing menu container -->
 		<div id="all_in_one_menu_container_<?= $inst_id; ?>"  style="width: <?= $width;?>px; height: <?= $all_menu_height;?>px; text-align: center; display: none;">

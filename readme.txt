@@ -35,6 +35,10 @@ This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple in
 
 == Changelog ==
 
+= 1.2.2 =
+1. Fixed bug in selecting Central Function.
+2. Fixed bug in positioning multiple menu under tag canvas when sidebar is wider.
+
 = 1.2.1 =
 1. The minimal values of Radius X, Radius Y & Radius Z are shifted to zero so clouds could be one or two dimensional.
 2. Reduced step between Radius X,Y,Z values for precise setting size of dynamic Menu.

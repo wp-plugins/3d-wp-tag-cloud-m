@@ -45,7 +45,6 @@
 			jQuery(e).parent().append('<span class="color" style="background: #fff; padding: 0 0 0 1px; letter-spacing: 0;">original color</span>');
 			}
 		else{
-			s = s.replace(/ /gi, '');
 			hex_check = /(^[0-9A-F]{6}$)|(^[0-9A-F]{3}$)/i.test(s);
 			if (hex_check == true){
 				jQuery(e).parent().find('.color').remove();
@@ -145,7 +144,7 @@
 		Height
 		<br>
 		<select id="<?=$this->get_field_id('height'); ?>" name="<?=$this->get_field_name('height'); ?>">
-			<?php for($i=160; $i<781; $i++){echo '<option id="ho_' . $i . '" value="' . $i . '"'; if($height==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
+			<?php for($i=90; $i<961; $i++){echo '<option id="ho_' . $i . '" value="' . $i . '"'; if($height==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
 		</select>px
 	</label>
 	<label style="display: inline-block; float: right; margin: 0 4px 0 0" title="Widget's width" for="<?=$this->get_field_id('width'); ?>">
@@ -153,7 +152,7 @@
 		Width
 		<br>
 		<select id="<?=$this->get_field_id('width'); ?>" name="<?=$this->get_field_name('width'); ?>">
-			<?php for($i=160; $i<781; $i++){echo '<option id="wo_' . $i . '" value="' . $i . '"'; if($width==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>		
+			<?php for($i=90; $i<961; $i++){echo '<option id="wo_' . $i . '" value="' . $i . '"'; if($width==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>		
 		</select>px
 	</label>
 </div>
@@ -432,11 +431,11 @@
 					</div>
 				</label>
 			</div>	
-			<label style="width: 83px;" title="When <span class='green'>Menu Type</span>is set to <span class='green'>dynamic</span>: Initial size of cloud from center to sides." for="<?=$this->get_field_id('all_m_radius_x'); ?>">
+			<label style="width: 83px;" title="When <span class='green'>Menu Type</span> is set to <span class='green'>dynamic</span>: Initial size of cloud from center to sides." for="<?=$this->get_field_id('all_m_radius_x'); ?>">
 				Radius X,Y,Z 
 				<br>
 				<select id="<?=$this->get_field_id('all_m_radius_x'); ?>" name="<?=$this->get_field_name('all_m_radius_x'); ?>">
-						<?php for($i=5; $i<101; $i++){echo '<option id="allmrx_' . $i . '" value="' . $i/10 . '"'; if($all_m_radius_x==$i/10){echo ' selected';}; echo '>' . $i/10 . '</option>'; } ?>							
+						<?php for($i=0; $i<1005; $i+=5){echo '<option id="allmrx_' . $i . '" value="' . $i/100 . '"'; if($all_m_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>							
 				</select>
 			</label>	
 			<div style="display: inline-block;">

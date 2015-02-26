@@ -156,21 +156,21 @@
 					Radius X 
 					<br>
 					<select id="<?=$this->get_field_id('cat_radius_x'); ?>" name="<?=$this->get_field_name('cat_radius_x'); ?>">
-						<?php for($i=10; $i<1005; $i+=5){echo '<option id="carx_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1005; $i+=5){echo '<option id="carx_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to top and bottom." for="<?=$this->get_field_id('cat_radius_y'); ?>">
 					Radius Y 
 					<br>
 					<select id="<?=$this->get_field_id('cat_radius_y'); ?>" name="<?=$this->get_field_name('cat_radius_y'); ?>">
-						<?php for($i=10; $i<1005; $i+=5){echo '<option id="cary_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1005; $i+=5){echo '<option id="cary_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to front and back." for="<?=$this->get_field_id('cat_radius_z'); ?>">
 					Radius Z 
 					<br>
 					<select id="<?=$this->get_field_id('cat_radius_z'); ?>" name="<?=$this->get_field_name('cat_radius_z'); ?>">
-						<?php for($i=10; $i<1005; $i+=5){echo '<option id="carz_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1005; $i+=5){echo '<option id="carz_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label> 
 					<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('cat_split_width'); ?>">
@@ -439,9 +439,9 @@
 					Initial Speed [x, y]
 					<br>
 					<select id="<?=$this->get_field_id('cat_initial_x'); ?>" name="<?=$this->get_field_name('cat_initial_x'); ?>">
-						<?php for($i=-100; $i<101; $i+=5){echo '<option id="cainx_' . $i . '" value="' . $i/100 . '"'; if($cat_initial_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>							
+						<?php for($i=-100; $i<101; $i++){echo '<option id="cainx_' . $i . '" value="' . $i/100 . '"'; if($cat_initial_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>							
 					</select><select id="<?=$this->get_field_id('cat_initial_y'); ?>" name="<?=$this->get_field_name('cat_initial_y'); ?>">
-						<?php for($i=-100; $i<101; $i+=5){echo '<option id="cainy_' . $i . '" value="' . $i/100 . '"'; if($cat_initial_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>							
+						<?php for($i=-100; $i<101; $i++){echo '<option id="cainy_' . $i . '" value="' . $i/100 . '"'; if($cat_initial_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>							
 					</select>
 				</div>
 				<label style="padding: 5px 40px 0 0;" title="Minimal speed of rotation when mouse leaves canvas." for="<?=$this->get_field_id('cat_min_speed'); ?>">

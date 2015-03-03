@@ -25,7 +25,6 @@
 			jQuery(function() {jQuery( "#accordion-2" ).accordion({heightStyle: "content", collapsible: true, active: false}); jQuery( "#accordion-4, #accordion-5").accordion({heightStyle: "content", collapsible: true, active: false});});
 		};					
 	});
-
 // Center Function Text check
 	function qutes_check(e,s){
 		if(/"/g.test(s) == true){
@@ -37,7 +36,14 @@
 			});
 		}
 	};
-	
+// Check for 2d shape selection and hiding Radius Z
+	function check43d(val, obid){
+		if(val=="spiral"||val=="hexagon"){var vis = "hidden"} else {var vis = "visible"};
+		var raze;
+		if(vis == 'hidden'){raze = 0} else{raze = 1};
+		jQuery('#'+obid).val(raze);
+		jQuery('#cont_'+obid).css('visibility', vis);
+	}
 // HEX check for entered colors	
 	function hex_val_check(e,s){
 		if(s == 'tag' && (e.id.search('bg_color') > -1 || e.id.search('bg_outline') > -1 )){

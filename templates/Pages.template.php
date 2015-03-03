@@ -10,12 +10,14 @@
 				<label style="margin: 0 20px 0 0;" title="The shape of the cloud" for="<?=$this->get_field_id('pag_shape'); ?>">
 					Shape
 					<br>
-					<select id="<?=$this->get_field_id('pag_shape'); ?>" name="<?=$this->get_field_name('pag_shape'); ?>">
+					<select id="<?=$this->get_field_id('pag_shape'); ?>" name="<?=$this->get_field_name('pag_shape'); ?>" onchange="check43d(this.value, '<?= $this->get_field_id('pag_radius_z'); ?>')";>
 						<option value="sphere" <?php if( $pag_shape == "sphere" ){ echo ' selected'; } ?>>sphere</option>
 						<option value="hcylinder" <?php if( $pag_shape == "hcylinder" ){ echo ' selected'; } ?>>hcylinder</option>
 						<option value="vcylinder" <?php if( $pag_shape == "vcylinder" ){ echo ' selected'; } ?>>vcylinder</option>
 						<option value="hring" <?php if( $pag_shape == "hring" ){ echo ' selected'; } ?>>hring</option>
 						<option value="vring" <?php if( $pag_shape == "vring" ){ echo ' selected'; } ?>>vring</option>
+						<option value="spiral" <?php if( $pag_shape == "spiral" ){ echo ' selected'; } ?>>spiral</option>
+						<option value="hexagon" <?php if( $pag_shape == "hexagon" ){ echo ' selected'; } ?>>hexagon</option>		
 					</select>
 				</label>
 				<label style="width: 220px;" title="Number of pages to display" for="<?=$this->get_field_id('all_pages_limit'); ?>">
@@ -114,13 +116,13 @@
 						<?php for($i=0; $i<1005; $i+=5){echo '<option id="pary_' . $i . '" value="' . $i/100 . '"'; if($pag_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
-				<label style="width: 86px;" title="Initial size of cloud from centre to front and back." for="<?=$this->get_field_id('pag_radius_z'); ?>">
+				<div style="width: 86px; float: left;<?php if($pag_shape == 'spiral'||$pag_shape == 'hexagon') {echo ' visibility: hidden;';}; ?>" title="Initial size of cloud from centre to front and back." id="cont_<?=$this->get_field_id('pag_radius_z'); ?>" <?php if($pag_shape == 'spiral'||$pag_shape == 'hexagon') {echo '; visibility: hidden;';}; ?>>
 					Radius Z 
 					<br>
 					<select id="<?=$this->get_field_id('pag_radius_z'); ?>" name="<?=$this->get_field_name('pag_radius_z'); ?>">
 						<?php for($i=0; $i<1005; $i+=5){echo '<option id="parz_' . $i . '" value="' . $i/100 . '"'; if($pag_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
-				</label> 
+				</div> 
 				<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('pag_split_width'); ?>">
 					Split Width
 					<br>

@@ -164,6 +164,47 @@ function PointsOnRingH(n, xr, yr, zr, offset) {
   offset = isNaN(offset) ? 0 : offset * 1;
   return Ring(1, n, xr, yr, zr, offset);
 }
+function PointsOnSpiral(n,xr,yr,zr) {
+  var px, py, pz=0, i, y = 1.4/sqrt(n), r, phi, pts = [], inc = Math.PI * (3-sqrt(5));
+  for(i = 0; i < n; i+=.7615){
+	phi = i*inc;
+	xr > 0 ? r = xr*y*sqrt(i) : r = yr*y*sqrt(i);
+	px = cos(phi)*r;
+	py = sin(phi)*r;
+	pts.push([px,py,pz]);
+  }
+return pts;
+}
+function PointsOnHexagon(n,xr,yr,zr) {
+  var r, l, px, py, pz = 0, pts = [], phi = Math.PI*2, phi1 = 0, phi2 = phi, l2 = 0, lev = Math.ceil((sqrt(8*(n-1)/6+1)-1)/2), h = 0, count = 0, j;
+  xr > 0 ? r = xr*lev*0.1 : r = yr*lev*0.1;
+  for(j = 0; j <= lev; j++){
+	l = r*j;
+	h = l*sin(phi/6);
+	if(Math.abs(Math.round(cos(phi2)*1000)) == 500||Math.abs(Math.round(cos(phi2)*1000)) == 1000){l2 = l} 
+	else{ 
+		if(Math.abs(Math.round(cos(phi2)*1000)) ==  866||Math.abs(Math.round(cos(phi2))) == 0) {l2=h} 
+		else {l2 = sqrt(pow((r*j-r/2),2)+pow((r*sin(phi2/6)),2))}
+	};
+	while(Math.round(phi1*1000) < Math.round(phi*1000)){
+		px=Math.round(cos(phi1)*l);
+		py=Math.round(sin(phi1)*l);
+		pts.push([px,py,pz]); 
+		count = count + 1;
+		if(count == n){break};
+		phi1 = phi1 + phi2;
+		if(Math.abs(Math.round(cos(phi1)*1000)) == 500||Math.abs(Math.round(cos(phi1)*1000)) == 1000){l = r*j} 
+		else { 
+			if(Math.abs(Math.round(cos(phi1)*1000)) == 866||Math.abs(Math.round(cos(phi1))) == 0) {l = h} 
+			else {l = sqrt(pow((r*j-r/2),2)+pow((r*sin(phi/6)),2))}
+		};
+	};
+	if(count==n){break};
+	phi1=0;
+	phi2=phi/(6*(j+1));
+  }
+return pts;
+}
 function SetAlpha(c,a) {
   var d = c, p1, p2, ae = (a*1).toPrecision(3) + ')';
   if(c[0] === '#') {
@@ -1466,7 +1507,9 @@ TCproto.Load = function() {
       vcylinder: PointsOnCylinderV,
       hcylinder: PointsOnCylinderH,
       vring: PointsOnRingV,
-      hring: PointsOnRingH
+      hring: PointsOnRingH,
+	  spiral: PointsOnSpiral,
+	  hexagon: PointsOnHexagon
     };
 
   if(tl.length) {

@@ -11,12 +11,14 @@
 					<br>
 					Shape
 					<br>
-					<select id="<?=$this->get_field_id('cat_shape'); ?>" name="<?=$this->get_field_name('cat_shape'); ?>">
+					<select id="<?=$this->get_field_id('cat_shape'); ?>" name="<?=$this->get_field_name('cat_shape'); ?>" onchange="check43d(this.value, '<?= $this->get_field_id('cat_radius_z'); ?>')";>
 						<option value="sphere" <?php if( $cat_shape == "sphere" ){ echo ' selected'; } ?>>sphere</option>
 						<option value="hcylinder" <?php if( $cat_shape == "hcylinder" ){ echo ' selected'; } ?>>hcylinder</option>
 						<option value="vcylinder" <?php if( $cat_shape == "vcylinder" ){ echo ' selected'; } ?>>vcylinder</option>
 						<option value="hring" <?php if( $cat_shape == "hring" ){ echo ' selected'; } ?>>hring</option>
 						<option value="vring" <?php if( $cat_shape == "vring" ){ echo ' selected'; } ?>>vring</option>
+						<option value="spiral" <?php if( $cat_shape == "spiral" ){ echo ' selected'; } ?>>spiral</option>
+						<option value="hexagon" <?php if( $cat_shape == "hexagon" ){ echo ' selected'; } ?>>hexagon</option>		
 					</select>
 				</label>
 				<label style="margin: 0 5px 0 0;" title="Number of categories to display" for="<?=$this->get_field_id('all_categories_limit'); ?>">
@@ -166,13 +168,13 @@
 						<?php for($i=0; $i<1005; $i+=5){echo '<option id="cary_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
-				<label style="width: 86px;" title="Initial size of cloud from centre to front and back." for="<?=$this->get_field_id('cat_radius_z'); ?>">
+				<div style="width: 86px; float: left;<?php if($cat_shape == 'spiral'||$cat_shape == 'hexagon') {echo ' visibility: hidden;';}; ?>" title="Initial size of cloud from centre to front and back." id="cont_<?=$this->get_field_id('cat_radius_z'); ?>" <?php if($cat_shape == 'spiral'||$cat_shape == 'hexagon') {echo '; visibility: hidden;';}; ?>>
 					Radius Z 
 					<br>
 					<select id="<?=$this->get_field_id('cat_radius_z'); ?>" name="<?=$this->get_field_name('cat_radius_z'); ?>">
 						<?php for($i=0; $i<1005; $i+=5){echo '<option id="carz_' . $i . '" value="' . $i/100 . '"'; if($cat_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
-				</label> 
+				</div> 
 					<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('cat_split_width'); ?>">
 						Split Width
 						<br>

@@ -8,7 +8,7 @@
 	$all_border_cf = $instance['all_border_cf'];
 	$all_cf_image_loc = $instance['all_cf_image_loc'];
 	$all_cf_name = $instance['all_cf_name'];
-	$all_cf_opacity = $instance['all_cf_opacity'];		
+	$all_cf_opacity = $instance['all_cf_opacity'];
 	$all_cf_rotation = $instance['all_cf_rotation'];
 	$all_cf_url = $instance['all_cf_url'];
 	$all_cont_border = $instance['all_cont_border'];
@@ -23,7 +23,7 @@
 	$all_text_line_3 = $instance['all_text_line_3'];
 	$all_text_line_4 = $instance['all_text_line_4'];
 	$all_text_line_5 = $instance['all_text_line_5'];
-	$all_text_zoom = $instance['all_text_zoom'];		
+	$all_text_zoom = $instance['all_text_zoom'];
 	$height = $instance['height'];
 	$taxonomy = $instance['taxonomy'];
 	$title = $instance['title'];
@@ -71,6 +71,7 @@
 	$arch_google_font = $instance['arch_google_font'];
 	$arch_initial_x = $instance['arch_initial_x'];
 	$arch_initial_y = $instance['arch_initial_y'];
+	$arch_initial_z = $instance['arch_initial_z'];
 	$arch_lock = $instance['arch_lock'];
 	$arch_max_speed = $instance['arch_max_speed'];
 	$arch_min_speed = $instance['arch_min_speed'];
@@ -119,6 +120,7 @@
 	$auth_google_font = $instance['auth_google_font'];
 	$auth_initial_x = $instance['auth_initial_x'];
 	$auth_initial_y = $instance['auth_initial_y'];
+	$auth_initial_z = $instance['auth_initial_z'];
 	$auth_lock = $instance['auth_lock'];
 	$auth_max_speed = $instance['auth_max_speed'];
 	$auth_min_speed = $instance['auth_min_speed'];
@@ -162,6 +164,7 @@
 	$cat_img_url = $instance['cat_img_url'];
 	$cat_initial_x = $instance['cat_initial_x'];
 	$cat_initial_y = $instance['cat_initial_y'];
+	$cat_initial_z = $instance['cat_initial_z'];
 	$cat_lock = $instance['cat_lock'];
 	$cat_max_speed = $instance['cat_max_speed'];
 	$cat_min_speed = $instance['cat_min_speed'];
@@ -210,6 +213,7 @@
 	$lin_image_valign = $instance['lin_image_valign'];
 	$lin_initial_x = $instance['lin_initial_x'];
 	$lin_initial_y = $instance['lin_initial_y'];
+	$lin_initial_z = $instance['lin_initial_z'];
 	$lin_lock = $instance['lin_lock'];
 	$lin_max_speed = $instance['lin_max_speed'];
 	$lin_min_speed = $instance['lin_min_speed'];
@@ -259,6 +263,7 @@
 	$men_image_valign = $instance['men_image_valign'];
 	$men_initial_x = $instance['men_initial_x'];
 	$men_initial_y = $instance['men_initial_y'];
+	$men_initial_z = $instance['men_initial_z'];
 	$men_lock = $instance['men_lock'];
 	$men_max_speed = $instance['men_max_speed'];
 	$men_min_speed = $instance['men_min_speed'];
@@ -299,13 +304,14 @@
 	$pag_image_valign = $instance['pag_image_valign'];
 	$pag_initial_x = $instance['pag_initial_x'];
 	$pag_initial_y = $instance['pag_initial_y'];
+	$pag_initial_z = $instance['pag_initial_z'];
 	$pag_lock = $instance['pag_lock'];
 	$pag_max_speed = $instance['pag_max_speed'];
 	$pag_min_speed = $instance['pag_min_speed'];
 	$pag_outline_color = $instance['pag_outline_color'];
 	$pag_outline_method = $instance['pag_outline_method'];
 	$pag_pulsate_to = $instance['pag_pulsate_to'];
-	$pag_radius_x = $instance['pag_radius_x'];			
+	$pag_radius_x = $instance['pag_radius_x'];
 	$pag_radius_y = $instance['pag_radius_y'];
 	$pag_radius_z = $instance['pag_radius_z'];
 	$pag_shadow = $instance['pag_shadow'];
@@ -333,6 +339,7 @@
 	$pos_img_url = $instance['pos_img_url'];
 	$pos_initial_x = $instance['pos_initial_x'];
 	$pos_initial_y = $instance['pos_initial_y'];
+	$pos_initial_z = $instance['pos_initial_z'];
 	$pos_lock = $instance['pos_lock'];
 	$pos_max_speed = $instance['pos_max_speed'];
 	$pos_min_speed = $instance['pos_min_speed'];
@@ -381,6 +388,7 @@
 	$rec_img_url = $instance['rec_img_url'];
 	$rec_initial_x = $instance['rec_initial_x'];
 	$rec_initial_y = $instance['rec_initial_y'];
+	$rec_initial_z = $instance['rec_initial_z'];
 	$rec_lock = $instance['rec_lock'];
 	$rec_max_speed = $instance['rec_max_speed'];
 	$rec_min_speed = $instance['rec_min_speed'];

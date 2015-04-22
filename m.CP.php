@@ -37,12 +37,119 @@
 		}
 	};
 // Check for 2d shape selection and hiding Radius Z
-	function check43d(val, obid){
-		if(val=="spiral"||val=="hexagon"){var vis = "hidden"} else {var vis = "visible"};
-		var raze;
-		if(vis == 'hidden'){raze = 0} else{raze = 1};
-		jQuery('#'+obid).val(raze);
+	function check43d(thisid, shape, obid, lim, str){
+		if(shape=='circles'||shape=='spiral'||shape=='beam'||shape=='square'||shape=='hexagon'||shape=='triangle'||shape=='heart'){var vis = "hidden"} else {var vis = "visible"};
+		var razet;
+		if(vis == 'hidden'){razet = 0} else{razet = 1};
+		jQuery('#'+obid).val(razet);
 		jQuery('#cont_'+obid).css('visibility', vis);
+		change_limits(thisid, lim, shape, str);
+	}
+// Change of tag limits for spiral, hexagon, cube, pyramid, beam, circles & antenna, axes, vcones, hcones, square, fir, sandglass, triangle and heart
+	function change_limits(thisid, lim, shape, str){
+		jQuery('#'+lim).empty();
+		if(shape!="spiral"&&shape!="hexagon"&&shape!="cube"&&shape!="pyramid"&&shape!="beam"&&shape!="circles"&&shape!="antena"&&shape!="axes"&&shape!="vcones"&&shape!="hcones"&&shape!="square"&&shape!="fir"&&shape!="sandglass"&&shape!="triangle"&&shape!="heart"){
+			switch(str){
+				case "rec": build_default_options(5,25,5,lim,"allrpli_");
+					break;
+				case "pos":
+					build_default_options(10,120,5,lim,"allpoli");
+					jQuery('#'+lim).append('<option id="allpoli_125" value="0" selected>all</option>');		
+					break;
+				case "pag":
+					build_default_options(5,50,5,lim,"allpali_");
+					jQuery('#'+lim).append('<option id="allpali" value="" selected>all</option>');
+					break;
+				case "men":
+					// ...
+					break;
+				case "lin":
+					build_default_options(5,100,5,lim,"alllili_");
+					jQuery('#'+lim).append('<option id="alllili_105" value="-1" selected>all</option>');
+					break;
+				case "arc":
+					build_default_options(6,60,6,lim,"allarli_");
+					jQuery('#'+lim).append('<option id="allarli_66" value="" selected>all</option>');
+					break;
+				case "aut":
+					build_default_options(5,50,5,lim,"allauli_");
+					jQuery('#'+lim).append('<option id="allauli_55" value="" selected>all</option>');
+					break;
+				case "cat":
+					build_default_options(5,60,5,lim,"allcali_");
+					jQuery('#'+lim).append('<option id="allcali_55" value="0" selected>all</option>');
+					break;
+			}
+		}
+		else{
+			var a=0, b=0, c=0;
+			switch(shape){
+				case "spiral": {ii=8; lirp=29; lili=99; lita=120; liar=64; lipa=50; liau=50; lica=57; istep=7;};
+					break;
+				case "hexagon": {ii=1; lirp=2; lili=5; lita=6; liar=4; lipa=3; liau=3; lica=4; istep=1; a=3; b=3; c=1;};
+					break;
+				case "cube": {ii=0; lirp=1; lili=3; lita=4; liar=2; lipa=1; liau=1; lica=2; istep=1; a=6; b=12; c=8;};
+					break;
+				case "pyramid": {ii=1; lirp=3; lili=7; lita=8; liar=6; lipa=5; liau=5; lica=6; istep=1; a=2; b=0; c=2;}; 
+					break;
+				case "beam": {ii=5; lirp=10; lili=10; lita=10; liar=10; lipa=10; liau=10; lica=10; istep=5;};
+					break;
+				case "axes": {ii=6; lirp=24; lili=102; lita=120; liar=60; lipa=48; liau=48; lica=60; istep=6;};
+					break;
+				case "vcones": {ii=2; lirp=3; lili=5; lita=6; liar=4; lipa=4; liau=4; lica=4; istep=1; a=2; b=0; c=1;};
+					break;
+				case "hcones": {ii=2; lirp=3; lili=5; lita=6; liar=4; lipa=4; liau=4; lica=4; istep=1; a=2; b=0; c=1;};
+					break;
+				case "circles": {ii=2; lirp=4; lili=6; lita=7; liar=5; lipa=4; liau=4; lica=5; istep=1;};
+					break;
+				case "antenna": {ii=2; lirp=4; lili=6; lita=7; liar=5; lipa=4; liau=4; lica=5; istep=1;};
+					break;
+				case "square": {ii=2; lirp=5; lili=10; lita=11; liar=8; lipa=7; liau=7; lica=8; istep=1;};
+					break;
+				case "fir": {ii=1; lirp=3; lili=7; lita=8; liar=5; lipa=4; liau=4; lica=5; istep=1;};
+					break;
+				case "sandglass": {ii=2; lirp=5; lili=5; lita=6; liar=4; lipa=3; liau=3; lica=4; istep=1;};
+					break;
+				case "triangle": {ii=3; lirp=6; lili=14; lita=15; liar=11; lipa=10; liau=10; lica=11; istep=1;};
+					break;
+				case "heart": {ii=12; lirp=24; lili=48; lita=48; liar=48; lipa=36; liau=36; lica=48; istep=12;};
+					break;
+				default: {ii=5; lirp=25; lili=100; lita=125; liar=60; lipa=50; liau=50; lica=60; istep=5;};
+			}
+			switch(str){
+				case "rec": build_special_options(ii,lirp,istep,lim,"allrp_",shape,a,b,c);
+					break;
+				case "lin": build_special_options(ii,lili,istep,lim,"allli_",shape,a,b,c);
+					break;
+				case "pos": build_special_options(ii,lita,istep,lim,"allpo_",shape,a,b,c);
+					break;
+				case "cat": build_special_options(ii,lica,istep,lim,"allca_",shape,a,b,c);
+					break;
+				case "arc": build_special_options(ii,liar,istep,lim,"allar_",shape,a,b,c);
+					break;
+				case "pag": build_special_options(ii,lipa,istep,lim,"allpa_",shape,a,b,c);
+					break;
+				case "aut":	build_special_options(ii,liau,istep,lim,"allau_",shape,a,b,c);
+					break;
+			}
+		}
+	}
+// Build default select options
+	function build_default_options(i,max,step,lim,idpref){
+		var j;
+		for(j=i; j<=max; j+=step){	
+			jQuery('#'+lim).append('<option id="'+idpref+j+'" value="'+j+'" '+(idpref=="allrpli_"&&j==max?"selected":"")+'>'+j+'</option>');
+		}
+	}
+// Build special select options
+	function build_special_options(ii,imax,istep,lim,idpref,shape,a,b,c){
+		var i;
+		for(i=ii; i<=imax; i+=istep){	
+			jQuery('#'+lim).append('<option id="'+idpref+(shape=='spiral'||shape=='beam'||shape=='axes'||shape=='heart'?i:shape=='square'?i*i:shape=='fir'?(2*i*i+2*i+1):shape=='vcones'||shape=='hcones'?(2*i*i*i+i)/3:shape=='circles'||shape=='antenna'?(2*i*i*i+3*i*i+i)/6:shape=='sandglass'?(4*i*i*i+2*i)/3-1:shape=='triangle'?(i*i/2+i/2):a*i*i+b*i+c)+
+								   '" value="'+(shape=='spiral'||shape=='beam'||shape=='axes'||shape=='heart'?i:shape=='square'?i*i:shape=='fir'?(2*i*i+2*i+1):shape=='vcones'||shape=='hcones'?(2*i*i*i+i)/3:shape=='circles'||shape=='antenna'?(2*i*i*i+3*i*i+i)/6:shape=='sandglass'?(4*i*i*i+2*i)/3-1:shape=='triangle'?(i*i/2+i/2):a*i*i+b*i+c)+'" '+
+								   (i==imax?"selected":"")+'>'+(shape=='spiral'||shape=='beam'||shape=='axes'?i:shape=='heart'?i-i/6:shape=='square'?i*i:shape=='fir'?(2*i*i+2*i+1):shape=='vcones'||shape=='hcones'?(2*i*i*i+i)/3:shape=='circles'||shape=='antenna'?(2*i*i*i+3*i*i+i)/6:shape=='sandglass'?(4*i*i*i+2*i)/3-1:shape=='triangle'?(i*i/2+i/2):a*i*i+b*i+c)+
+								   '</option>');
+		}
 	}
 // HEX check for entered colors	
 	function hex_val_check(e,s){
@@ -80,7 +187,7 @@
 		if(on==2&&e.checked==false){
 			jQuery(e).tooltip({ content: 'Be aware: <span style="font-weight: bold; color: red;">The Menu must offer at least 2 items.</span>', tooltipClass: 'custom-tooltip-styling' }); 
 			jQuery(e).prop('value','on');
-			jQuery(e).prop('checked',true);			
+			jQuery(e).prop('checked',true);
 			jQuery(e).focus(); 
 			jQuery(e).tooltip({content: function(){
 				var html_text=jQuery(e).attr('title'); 
@@ -93,13 +200,13 @@
 				if(jQuery(e).parent().find('.radio-check').first().is(':checked')==true){
 					jQuery(e).tooltip({ content: 'Be aware: <span style="font-weight: bold; color: red;">You can&#39;t uncheck a Menu item which is appointed Starting.</span>', tooltipClass: 'custom-tooltip-styling' }); 
 					jQuery(e).prop('value','on');
-					jQuery(e).prop('checked',true);		
+					jQuery(e).prop('checked',true);
 					jQuery(e).focus(); 
 					jQuery(e).tooltip({content: function(){
 						var html_text=jQuery(e).attr('title'); 
 						return html_text;
 						}
-					});						
+					});
 				}
 				else {jQuery(e).prop('value','off');};
 			}
@@ -132,7 +239,7 @@
 		name="<?=$this->get_field_name('tooltip_status'); ?>" type="radio" value="on" 
 		<?php if( $tooltip_status == "on" ){ echo ' checked="checked"'; } ?> onclick="jQuery('#accordion-2, #wihead').tooltip({content: function() {var element = $( this ); var html_text=element.attr('title'); return html_text;}, position: {  my: 'left top+20',  at: 'left bottom'}}); ">on
 		
-		<input style="margin: 0;" title="Turn off Option tooltips." class="radio" id="<?=$this->get_field_id('tooltip_status'); ?>"						
+		<input style="margin: 0;" title="Turn off Option tooltips." class="radio" id="<?=$this->get_field_id('tooltip_status'); ?>"
 		name="<?=$this->get_field_name('tooltip_status'); ?>" type="radio" value="off"
 		<?php if( $tooltip_status == "off" ){ echo ' checked="checked"'; } ?> onclick="jQuery('#accordion-2, #wihead').tooltip({position: { my: 'left-300 top', at: 'left bottom',  of: 'body'}});">off
 	</div>
@@ -150,7 +257,7 @@
 		Height
 		<br>
 		<select id="<?=$this->get_field_id('height'); ?>" name="<?=$this->get_field_name('height'); ?>">
-			<?php for($i=90; $i<961; $i++){echo '<option id="ho_' . $i . '" value="' . $i . '"'; if($height==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
+			<?php for($i=90; $i<1025; $i++){echo '<option id="ho_' . $i . '" value="' . $i . '"'; if($height==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
 		</select>px
 	</label>
 	<label style="display: inline-block; float: right; margin: 0 4px 0 0" title="Widget's width" for="<?=$this->get_field_id('width'); ?>">
@@ -158,7 +265,7 @@
 		Width
 		<br>
 		<select id="<?=$this->get_field_id('width'); ?>" name="<?=$this->get_field_name('width'); ?>">
-			<?php for($i=90; $i<961; $i++){echo '<option id="wo_' . $i . '" value="' . $i . '"'; if($width==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>		
+			<?php for($i=90; $i<1025; $i++){echo '<option id="wo_' . $i . '" value="' . $i . '"'; if($width==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
 		</select>px
 	</label>
 </div>
@@ -187,19 +294,19 @@
 				Height
 				<br>
 				<select id="<?=$this->get_field_id('all_menu_height'); ?>" name="<?=$this->get_field_name('all_menu_height'); ?>">
-					<?php for($i=40; $i<52; $i+=2){echo '<option id="allmh_' . $i . '" value="' . $i . '"'; if($all_menu_height==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
+					<?php for($i=40; $i<52; $i+=2){echo '<option id="allmh_' . $i . '" value="' . $i . '"'; if($all_menu_height==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
 				</select>px
 			</label>
 			<div>
 				<div>
 					Rotation
 				</div>
-				<div style="margin: 0 0 10px 0; float: left;" title="When <span class='green'>Menu Type</span>is set to <span class='green'>dynamic</span>: Initial direction of Menu Rotation: Left to Right.">
+				<div style="margin: 0 0 10px 0; float: left;" title="When <span class='green'>Menu Type</span> is set to <span class='green'>dynamic</span>: Initial direction of Menu Rotation: Left to Right.">
 					<input class="radio" id="<?=$this->get_field_id('rotation'); ?>"
 					name="<?=$this->get_field_name('rotation'); ?>" type="radio" value="l2r"
 					<?php if( $rotation == "l2r" ){ echo ' checked="checked"'; } ?>>L<span style="font-size: 14px; line-height: 12px;">&#8594;</span>R
 					<br>
-					<input title="When <span class='green'>Menu Type</span>is set to <span class='green'>dynamic</span>: Initial direction of Menu Rotation: Right to Left." class="radio" id="<?=$this->get_field_id('rotation'); ?>"
+					<input title="When <span class='green'>Menu Type</span> is set to <span class='green'>dynamic</span>: Initial direction of Menu Rotation: Right to Left." class="radio" id="<?=$this->get_field_id('rotation'); ?>"
 					name="<?=$this->get_field_name('rotation'); ?>" type="radio" value="r2l"
 					<?php if( $rotation == "r2l" ){ echo ' checked="checked"'; } ?>>L<span style="font-size: 14px; line-height: 12px;">&#8592;</span>R 
 				</div>
@@ -219,7 +326,7 @@
 				</div>
 			</div>
 		</div>		
-		<div style="float: left; display: inline-block; margin: 0 4px 0 0;">		
+		<div style="float: left; display: inline-block; margin: 0 4px 0 0;">
 			<div>
 				Include & Start with
 			</div>
@@ -243,7 +350,7 @@
 					<?php if( $all_taxonomy == "authors" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
 				</div>
 				<div class="rache">
-					<div class="type_of_cont">categories</div>	
+					<div class="type_of_cont">categories</div>
 					<input class="check-box" id="<?=$this->get_field_id('cat_menu_item'); ?>" title="Displays a list of categories created in the WP Admin Panel."
 					name="<?=$this->get_field_name('cat_menu_item'); ?>" type="checkbox" 
 					<?php if( $cat_menu_item == "on" ){ echo ' checked="checked"'; } ?> onclick="procedure_1(this)">
@@ -254,10 +361,10 @@
 				<div class="rache">
 					<div class="type_of_cont">links</div>
 					<input class="check-box" id="<?=$this->get_field_id('lin_menu_item'); ?>" title="Displays bookmarks found in the WP Admin Panel: <span class='green'>Links</span>."
-					name="<?=$this->get_field_name('lin_menu_item'); ?>" type="checkbox" 								
+					name="<?=$this->get_field_name('lin_menu_item'); ?>" type="checkbox"
 					<?php if( $lin_menu_item == "on" ){ echo ' checked="checked"'; } ?> onclick="procedure_1(this)">
 					<input class="radio-check" id="<?=$this->get_field_id('all_taxonomy'); ?>" title="Start with bookmarks, found in the WP Admin Panel: <span class='green'>Links</span>."
-					name="<?=$this->get_field_name('all_taxonomy'); ?>" type="radio" value="links"									
+					name="<?=$this->get_field_name('all_taxonomy'); ?>" type="radio" value="links"
 					<?php if( $all_taxonomy == "links" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
 				</div>
 				<div class="rache">
@@ -273,10 +380,10 @@
 					<div class="type_of_cont">pages</div>
 					<input class="check-box" id="<?=$this->get_field_id('pag_menu_item'); ?>" title="Displays a list of pages."
 					name="<?=$this->get_field_name('pag_menu_item'); ?>" type="checkbox" 
-					<?php if( $pag_menu_item == "on" ){ echo ' checked="checked"'; } ?> onclick="procedure_1(this)">	
+					<?php if( $pag_menu_item == "on" ){ echo ' checked="checked"'; } ?> onclick="procedure_1(this)">
 					<input class="radio-check" id="<?=$this->get_field_id('all_taxonomy'); ?>" title="Start with a list of pages."
 					name="<?=$this->get_field_name('all_taxonomy'); ?>" type="radio" value="pages"
-					<?php if( $all_taxonomy == "pages" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">	
+					<?php if( $all_taxonomy == "pages" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
 				</div>
 				<div class="rache">
 					<div class="type_of_cont">post tags</div>
@@ -285,7 +392,7 @@
 					<?php if( $pos_menu_item == "on" ){ echo ' checked="checked"'; } ?> onclick="procedure_1(this)">
 					<input class="radio-check" id="<?=$this->get_field_id('all_taxonomy'); ?>" title="Start with a list of post tags."
 					name="<?=$this->get_field_name('all_taxonomy'); ?>" type="radio" value="post_tags"
-					<?php if( $all_taxonomy == "post_tags" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">							
+					<?php if( $all_taxonomy == "post_tags" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
 				</div>
 				<div class="rache" style="margin-bottom: 0;">
 					<div class="type_of_cont">recent posts</div>
@@ -305,11 +412,11 @@
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Arial" <?php if( $all_menu_font == "Arial" ){ echo ' selected'; } ?>>Arial</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Arial Black" <?php if( $all_menu_font == "Arial Black" ){ echo ' selected'; } ?>>Arial Black</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Arial Narrow" <?php if( $all_menu_font == "Arial Narrow" ){ echo ' selected'; } ?>>Arial Narrow</option>
-					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Avant Garde" <?php if( $all_menu_font == "Avant Garde" ){ echo ' selected'; } ?>>Avant Garde</option>										
-					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Calibri" <?php if( $all_menu_font == "Calibri" ){ echo ' selected'; } ?>>Calibri</option>										
-					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Candara" <?php if( $all_menu_font == "Candara" ){ echo ' selected'; } ?>>Candara</option>										
+					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Avant Garde" <?php if( $all_menu_font == "Avant Garde" ){ echo ' selected'; } ?>>Avant Garde</option>
+					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Calibri" <?php if( $all_menu_font == "Calibri" ){ echo ' selected'; } ?>>Calibri</option>
+					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Candara" <?php if( $all_menu_font == "Candara" ){ echo ' selected'; } ?>>Candara</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Century Gothic" <?php if( $all_menu_font == "Century Gothic" ){ echo ' selected'; } ?>>Century Gothic</option>
-					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Comic Sans MS" <?php if( $all_menu_font == "Comic Sans MS" ){ echo ' selected'; } ?>>Comic Sans MS</option>										
+					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Comic Sans MS" <?php if( $all_menu_font == "Comic Sans MS" ){ echo ' selected'; } ?>>Comic Sans MS</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Franklin Gothic Medium" <?php if( $all_menu_font == "Franklin Gothic Medium" ){ echo ' selected'; } ?>>Franklin Gothic Medium</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Futura" <?php if( $all_menu_font == "Futura" ){ echo ' selected'; } ?>>Futura</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Geneva" <?php if( $all_menu_font == "Geneva" ){ echo ' selected'; } ?>>Geneva</option>
@@ -317,7 +424,7 @@
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Helvetica" <?php if( $all_menu_font == "Helvetica" ){ echo ' selected'; } ?>>Helvetica</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Impact" <?php if( $all_menu_font == "Impact" ){ echo ' selected'; } ?>>Impact</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Lucida Grande" <?php if( $all_menu_font == "Lucida Grande" ){ echo ' selected'; } ?>>Lucida Grande</option>
-					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Lucida Sans Unicode" <?php if( $all_menu_font == "Lucida Sans Unicode" ){ echo ' selected'; } ?>>Lucida Sans Unicode</option>												
+					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Lucida Sans Unicode" <?php if( $all_menu_font == "Lucida Sans Unicode" ){ echo ' selected'; } ?>>Lucida Sans Unicode</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Optima" <?php if( $all_menu_font == "Optima" ){ echo ' selected'; } ?>>Optima</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Segoe UI" <?php if( $all_menu_font == "Segoe UI" ){ echo ' selected'; } ?>>Segoe UI</option>
 					<option style="background: #f1f1f1;" title="Sans Serif Family" value="Tahoma" <?php if( $all_menu_font == "Tahoma" ){ echo ' selected'; } ?>>Tahoma</option>
@@ -336,7 +443,7 @@
 					<option title="Serif Family" value="Hoefler Text" <?php if( $all_menu_font == "Hoefler Text" ){ echo ' selected'; } ?>>Hoefler Text</option>
 					<option title="Serif Family" value="Lucida Bright" <?php if( $all_menu_font == "Lucida Bright" ){ echo ' selected'; } ?>>Lucida Bright</option>
 					<option title="Serif Family" value="Palatino" <?php if( $all_menu_font == "Palatino" ){ echo ' selected'; } ?>>Palatino</option>
-					<option title="Serif Family" value="Palatino Linotype" <?php if( $all_menu_font == "Palatino Linotype" ){ echo ' selected'; } ?>>Palatino Linotype</option>										
+					<option title="Serif Family" value="Palatino Linotype" <?php if( $all_menu_font == "Palatino Linotype" ){ echo ' selected'; } ?>>Palatino Linotype</option>
 					<option title="Serif Family" value="Perpetua" <?php if( $all_menu_font == "Perpetua" ){ echo ' selected'; } ?>>Perpetua</option>
 					<option title="Serif Family" value="Rockwell" <?php if( $all_menu_font == "Rockwell" ){ echo ' selected'; } ?>>Rockwell</option>
 					<option title="Serif Family" value="Rockwell Extra Bold" <?php if( $all_menu_font == "Rockwell Extra Bold" ){ echo ' selected'; } ?>>Rockwell Extra Bold</option>
@@ -349,7 +456,7 @@
 					<option style="background: #f1f1f1;" title="Monospaced Family" value="Monaco" <?php if( $all_menu_font == "Monaco" ){ echo ' selected'; } ?>>Monaco</option>
 					<option title="Fantasy Family" value="Copperplate" <?php if( $all_menu_font == "Copperplate" ){ echo ' selected'; } ?>>Copperplate</option>
 					<option title="Fantasy Family" value="Papyrus" <?php if( $all_menu_font == "Papyrus" ){ echo ' selected'; } ?>>Papyrus</option>
-					<option style="background: #f1f1f1;" title="Script Family" value="Brush Script MT" <?php if( $all_menu_font == "Brush Script MT" ){ echo ' selected'; } ?>>Brush Script MT</option>		
+					<option style="background: #f1f1f1;" title="Script Family" value="Brush Script MT" <?php if( $all_menu_font == "Brush Script MT" ){ echo ' selected'; } ?>>Brush Script MT</option>
 				</select>
 			</label>
 		</div>
@@ -359,7 +466,7 @@
 					Font Size
 					<br>
 					<select id="<?=$this->get_field_id('all_m_fontsize'); ?>" name="<?=$this->get_field_name('all_m_fontsize'); ?>">
-						<?php for($i=8; $i<15; $i++){echo '<option id="allmfs_' . $i . '" value="' . $i . '"'; if($all_m_fontsize==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>							
+						<?php for($i=8; $i<15; $i++){echo '<option id="allmfs_' . $i . '" value="' . $i . '"'; if($all_m_fontsize==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
 					</select>px
 				</label>
 				<label style="height: 46px; float: right; margin: 0 16px 5px 0;" title="Color of the tag text - empty string to use the default color." for="<?=$this->get_field_id('all_m_fontcolor'); ?>">
@@ -441,7 +548,7 @@
 				Radius X,Y,Z 
 				<br>
 				<select id="<?=$this->get_field_id('all_m_radius_x'); ?>" name="<?=$this->get_field_name('all_m_radius_x'); ?>">
-						<?php for($i=0; $i<1005; $i+=5){echo '<option id="allmrx_' . $i . '" value="' . $i/100 . '"'; if($all_m_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>							
+						<?php for($i=0; $i<1205; $i+=5){echo '<option id="allmrx_' . $i . '" value="' . $i/100 . '"'; if($all_m_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 				</select>
 			</label>	
 			<div style="display: inline-block;">
@@ -528,7 +635,7 @@
 			Opacity
 			<br>
 			<select id="<?=$this->get_field_id('all_cf_opacity'); ?>" name="<?=$this->get_field_name('all_cf_opacity'); ?>">
-				<?php for($i=5; $i<105; $i+=5){echo '<option id="acfo_' . $i . '" value="' . $i/100 . '"'; if($all_cf_opacity==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>					
+				<?php for($i=5; $i<105; $i+=5){echo '<option id="acfo_' . $i . '" value="' . $i/100 . '"'; if($all_cf_opacity==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 			</select>
 		</label> 
 		<label style="padding: 15px 0 0 8px; text-align: center;">
@@ -579,14 +686,14 @@
 				Border
 				<br>
 				<select id="<?=$this->get_field_id('all_cont_border'); ?>" name="<?=$this->get_field_name('all_cont_border'); ?>">	
-					<?php for($i=0; $i<4; $i++){echo '<option id="cntb_' . $i . '" value="' . $i . '"'; if($all_cont_border==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
+					<?php for($i=0; $i<4; $i++){echo '<option id="cntb_' . $i . '" value="' . $i . '"'; if($all_cont_border==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
 				</select>px
 			</label>
 			<label style="width: 63px;" title="Height of the font" for="<?=$this->get_field_id('all_font_h'); ?>">
 				Font Size
 				<br>
 				<select id="<?=$this->get_field_id('all_font_h'); ?>" name="<?=$this->get_field_name('all_font_h'); ?>">	
-					<?php for($i=10; $i<25; $i++){echo '<option id="fnth_' . $i . '" value="' . $i . '"'; if($all_font_h==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
+					<?php for($i=10; $i<25; $i++){echo '<option id="fnth_' . $i . '" value="' . $i . '"'; if($all_font_h==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
 				</select>px
 			</label>
 			<div style="float: left;" title="Choose weight of text.">

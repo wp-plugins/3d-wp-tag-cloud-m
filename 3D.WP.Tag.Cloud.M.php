@@ -2,8 +2,8 @@
 /*
 Plugin Name: 3D WP Tag Cloud-M
 Plugin URI: http://peter.bg/archives/7373
-Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag cloud. Plugin may rotate Pages, Recent Posts, External Links (blogroll), Menus, Blog Archives, List of Authors and of course Post Tags and Post Categories. It allows showing up to 8 types of content in one widget activated from static or dynamic menu (another cloud). Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menus, List of Authors and External Links (blogroll) tags may consist of both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.5.1 and includes most of its 70+ options in the Control Panel settings. Supports following shapes: sphere, hcylinder for a cylinder that starts off horizontal, vcylinder for a cylinder that starts off vertical, hring for a horizontal circle, vring for a vertical circle, 2D spiral and 2d hexagon.
-Version: 1.3
+Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag clouds. Plugin may rotate Pages, Recent Posts, External Links (blogroll), Menus, Blog Archives, List of Authors and of course Post Tags and Post Categories. It allows showing up to 8 types of content in one widget activated from static or dynamic menu (another cloud). Supports following shapes: 3D AXES, parabolic ANTENNA, lighthouse BEAM, BALLS, BLOSSOM, BULB, CANDY, CAPSULE, concentric CIRCLES,  CUBE, CYLINDER that starts off horizontal, CYLINDER that starts off vertical, EGG, Christmas FIR, GLASS, GLOBE of rings, HEART, HEXAGON (bee cell), KNOT, LEMON, PEG TOP that starts off horizontal, PEG TOP that starts off vertical, PYRAMID (tetrahedron), RING that starts off horizontal, RING that starts off vertical, ROLLER of rings, SANDGLASS, SPHERE, SPIRAL, SQUARE, STAIRECASE, STOOL, TIRE , TOWER of rings and TRIANGLE. Able to rotate clouds around all three axes. Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menu, List of Authors and External Links (blogroll) tags may consist of both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.6.1 and includes most of its 80+ options in the Control Panel settings.
+Version: 2.0
 Author: Peter Petrov
 Author URI: http://peter.bg
 Update Server: http://peter.bg/
@@ -25,8 +25,8 @@ License: LGPL v3
 		function widget($args, $instance) {  
 			extract($args);
 			$inst_id = mt_rand(0,999999);
-//  Registration of TagCanvas.js & including an external file				
-			wp_register_script('jq-tagcloud', plugin_dir_url( __FILE__ ) . 'js/jquery.tagcanvas.js', array('jquery'), '2.6.1',true);
+//  Registration of TagCanvas.js & including an external file
+			wp_register_script('jq-tagcloud', plugin_dir_url( __FILE__ ) . 'js/3D.WP.tagcanvas.js', array('jquery'), '2.6.1',true);
 			wp_enqueue_script('jq-tagcloud');
 			include 'm.variables.php';
 			echo $before_widget;
@@ -37,15 +37,15 @@ License: LGPL v3
 			<script type="text/javascript">
 				goof = '<?= $arch_google_font; ?>';
 				if(goof != ''){WebFont.load({google: {families: [goof]}});};
-				goof = '<?= $auth_google_font; ?>';						
+				goof = '<?= $auth_google_font; ?>';
 				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				goof = '<?= $cat_google_font; ?>';
 				if(goof != ''){WebFont.load({google: {families: [goof]}});};
-				goof = '<?= $lin_google_font; ?>';						
+				goof = '<?= $lin_google_font; ?>';
 				if(goof != ''){WebFont.load({google: {families: [goof]}});};
-				goof = '<?= $men_google_font; ?>';						
+				goof = '<?= $men_google_font; ?>';
 				if(goof != ''){WebFont.load({google: {families: [goof]}});};
-				goof = '<?= $pag_google_font; ?>';					
+				goof = '<?= $pag_google_font; ?>';
 				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				goof = '<?= $pos_google_font; ?>';
 				if(goof != ''){WebFont.load({google: {families: [goof]}});};
@@ -53,7 +53,7 @@ License: LGPL v3
 				if(goof != ''){WebFont.load({google: {families: [goof]}});};
 				WebFont.load({google: {families: ['<?= $all_font_cf; ?>']}});
 			</script>
-			<script type="text/javascript" src="<?= $all_cf_url; ?>"></script>			
+			<script type="text/javascript" src="<?= $all_cf_url; ?>"></script>
 <?php		
 	if( $title ) {
 		echo $before_title . $title . $after_title;
@@ -86,7 +86,7 @@ License: LGPL v3
 					echo '</div>';
 					}
 				if( $auth_menu_item == 'on'){
-					echo '<div id="all_authors_container_' . $inst_id . '" hidden>';				
+					echo '<div id="all_authors_container_' . $inst_id . '" hidden>';
 					$auto_args = array('number' => $all_authors_limit, 'exclude' => $all_exclude);
 					$users = get_users($auto_args);
 					foreach( $users as $user ){ 
@@ -97,16 +97,16 @@ License: LGPL v3
 						$userPostsURL = get_author_posts_url($user->ID);
 						echo '<a href="'.$userPostsURL.'" style="font-size: '.$userPosts.'px">'.$userAvatar, $userFName.'<br>'.$userLName.'<br>('.$userPosts.')</a>';
 					};	
-					echo '</div>';					
+					echo '</div>';
 				}
 				if( $cat_menu_item == 'on'){
-					echo '<div id="all_categories_container_' . $inst_id . '" hidden>';				
+					echo '<div id="all_categories_container_' . $inst_id . '" hidden>';
 					$cat_args = array ('number' => $all_categories_limit, 'taxonomy' => 'category'); 
 					wp_tag_cloud($cat_args);
-					echo '</div>';					
+					echo '</div>';
 				}
 				if( $lin_menu_item == 'on'){
-					echo '<div id="all_links_container_' . $inst_id . '" hidden>';				
+					echo '<div id="all_links_container_' . $inst_id . '" hidden>';
 					$lin_args = array ('category' => $all_links_category, 'hide_invisible' => 0, 'limit' => $all_links_limit); 
 					$bookmarks = get_bookmarks($lin_args);
 					foreach( $bookmarks as $bookmark ){
@@ -114,30 +114,30 @@ License: LGPL v3
 						if ($bookmark->link_image) { echo '<img src="' .$bookmark->link_image . '" width="96" height="96">';}
 						echo  $bookmark->link_name . '</a>';
 					}
-					echo '</div>';					
+					echo '</div>';
 				}
 				if( $men_menu_item == 'on'){
-					echo '<div id="all_menu_container_' . $inst_id . '" hidden>';				
+					echo '<div id="all_menu_container_' . $inst_id . '" hidden>';
 					$menu_args = array ('menu' => $all_menu_name); 
 					wp_nav_menu($menu_args);
-					echo '</div>';					
+					echo '</div>';
 				}
 				if( $pag_menu_item == 'on'){
-					echo '<div id="all_pages_container_' . $inst_id . '" hidden>';				
+					echo '<div id="all_pages_container_' . $inst_id . '" hidden>';
 					$page_args = array ('number' => $pages_limit); $pages = get_pages($page_args);
 					foreach( $pages as $page ){
 						echo '<a href="' . get_page_link( $page->ID ) . '">' . get_the_post_thumbnail( $page->ID, 'thumbnail' ), $page->post_title . '</a>';
 					}
-					echo '</div>';					
+					echo '</div>';
 				}
 				if( $pos_menu_item == 'on'){
-					echo '<div id="all_post_tags_container_' . $inst_id . '" hidden>';				
+					echo '<div id="all_post_tags_container_' . $inst_id . '" hidden>';
 					$post_args = array ('number' => $all_post_tags_limit, 'taxonomy' => 'post_tag');
 					wp_tag_cloud($post_args);
-					echo '</div>';					
+					echo '</div>';
 				}
 				if( $rec_menu_item == 'on'){
-					echo '<div id="all_recent_posts_container_' . $inst_id . '" hidden>';				
+					echo '<div id="all_recent_posts_container_' . $inst_id . '" hidden>';
 					$recent_posts = abs($recent_posts);
 					$count=0; 
 					$bigest=$weight_size*3; 
@@ -150,7 +150,7 @@ License: LGPL v3
 							if($weight_mode != "none") { echo '<a href="' . get_permalink($recent["ID"]) . '" style="font-size: ' . $font_size . 'px;" title="Look '.esc_attr($recent["post_title"]).'" >' . get_the_post_thumbnail( $recent["ID"], 'thumbnail' ), $recent["post_title"].'</a> ';}	
 							else {echo '<a href="' . get_permalink($recent["ID"]) . '">' . get_the_post_thumbnail( $recent["ID"], 'thumbnail' ), $recent["post_title"].'</a> ';};
 						};
-					echo '</div>';						
+					echo '</div>';
 				}
 			?>	
         <canvas title="" id="all_tag_canvas_<?= $inst_id; ?>" width="<?= $width; ?>" height="<?= $height; ?>"></canvas>
@@ -170,13 +170,13 @@ License: LGPL v3
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Authors</a>';
-			};					
+			};
 			if( $cat_menu_item == 'on'){
 				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="cat-link" class="all_in_one" data-id="categories_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Categories</a>';
-			};					
+			};
 			if( $lin_menu_item == 'on'){
 				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="lin-link" class="all_in_one" data-id="links_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
@@ -208,7 +208,7 @@ License: LGPL v3
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Recent Posts</a>';
 			};	
 		?>
-		</div>		
+		</div>
         <canvas title="<?php if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; ?>" id="all_menu_canvas_<?= $inst_id; ?>" width="<?= $width; ?>" height="<?= $all_menu_height; ?>" style="display: none;"></canvas>	
 			<script type="text/javascript">
 				<?php include 'js/m.functions.js'; ?>
@@ -242,7 +242,7 @@ License: LGPL v3
 		$tag_option['all_text_line_3'] = $new_instance['all_text_line_3'];
 		$tag_option['all_text_line_4'] = $new_instance['all_text_line_4'];
 		$tag_option['all_text_line_5'] = $new_instance['all_text_line_5'];
-		$tag_option['all_text_zoom'] = $new_instance['all_text_zoom'];	
+		$tag_option['all_text_zoom'] = $new_instance['all_text_zoom'];
 		$tag_option['height'] = $new_instance['height'];
 		$tag_option['taxonomy'] = $new_instance['taxonomy'];
 		$tag_option['title'] = $new_instance['title'];
@@ -290,10 +290,11 @@ License: LGPL v3
 		$tag_option['arch_google_font'] = $new_instance['arch_google_font'];
 		$tag_option['arch_initial_x'] = $new_instance['arch_initial_x'];
 		$tag_option['arch_initial_y'] = $new_instance['arch_initial_y'];
+		$tag_option['arch_initial_z'] = $new_instance['arch_initial_z'];
 		$tag_option['arch_lock'] = $new_instance['arch_lock'];
-		$tag_option['arch_max_speed'] = $new_instance['arch_max_speed'];		
+		$tag_option['arch_max_speed'] = $new_instance['arch_max_speed'];
 		$tag_option['arch_min_speed'] = $new_instance['arch_min_speed'];
-		$tag_option['arch_outline_color'] = $new_instance['arch_outline_color'];		
+		$tag_option['arch_outline_color'] = $new_instance['arch_outline_color'];
 		$tag_option['arch_outline_method'] = $new_instance['arch_outline_method'];
 		$tag_option['arch_pulsate_to'] = $new_instance['arch_pulsate_to'];
 		$tag_option['arch_radius_x'] = $new_instance['arch_radius_x'];
@@ -338,6 +339,7 @@ License: LGPL v3
 		$tag_option['auth_image_valign'] = $new_instance['auth_image_valign'];
 		$tag_option['auth_initial_x'] = $new_instance['auth_initial_x'];
 		$tag_option['auth_initial_y'] = $new_instance['auth_initial_y'];
+		$tag_option['auth_initial_z'] = $new_instance['auth_initial_z'];
 		$tag_option['auth_lock'] = $new_instance['auth_lock'];
 		$tag_option['auth_max_speed'] = $new_instance['auth_max_speed'];
 		$tag_option['auth_min_speed'] = $new_instance['auth_min_speed'];
@@ -381,11 +383,12 @@ License: LGPL v3
 		$tag_option['cat_img_url'] = $new_instance['cat_img_url'];
 		$tag_option['cat_initial_x'] = $new_instance['cat_initial_x'];
 		$tag_option['cat_initial_y'] = $new_instance['cat_initial_y'];
+		$tag_option['cat_initial_z'] = $new_instance['cat_initial_z'];
 		$tag_option['cat_lock'] = $new_instance['cat_lock'];
 		$tag_option['cat_max_speed'] = $new_instance['cat_max_speed'];
 		$tag_option['cat_min_speed'] = $new_instance['cat_min_speed'];
 		$tag_option['cat_outline_color'] = $new_instance['cat_outline_color'];
-		$tag_option['cat_outline_method'] = $new_instance['cat_outline_method'];	
+		$tag_option['cat_outline_method'] = $new_instance['cat_outline_method'];
 		$tag_option['cat_pulsate_to'] = $new_instance['cat_pulsate_to'];
 		$tag_option['cat_radius_x'] = $new_instance['cat_radius_x'];
 		$tag_option['cat_radius_y'] = $new_instance['cat_radius_y'];
@@ -430,6 +433,7 @@ License: LGPL v3
 		$tag_option['lin_image_valign'] = $new_instance['lin_image_valign'];
 		$tag_option['lin_initial_x'] = $new_instance['lin_initial_x'];
 		$tag_option['lin_initial_y'] = $new_instance['lin_initial_y'];
+		$tag_option['lin_initial_z'] = $new_instance['lin_initial_z'];
 		$tag_option['lin_lock'] = $new_instance['lin_lock'];
 		$tag_option['lin_max_speed'] = $new_instance['lin_max_speed'];
 		$tag_option['lin_min_speed'] = $new_instance['lin_min_speed'];
@@ -479,6 +483,7 @@ License: LGPL v3
 		$tag_option['men_img_url'] = $new_instance['men_img_url'];
 		$tag_option['men_initial_x'] = $new_instance['men_initial_x'];
 		$tag_option['men_initial_y'] = $new_instance['men_initial_y'];
+		$tag_option['men_initial_z'] = $new_instance['men_initial_z'];
 		$tag_option['men_lock'] = $new_instance['men_lock'];
 		$tag_option['men_max_speed'] = $new_instance['men_max_speed'];
 		$tag_option['men_min_speed'] = $new_instance['men_min_speed'];
@@ -519,6 +524,7 @@ License: LGPL v3
 		$tag_option['pag_image_valign'] = $new_instance['pag_image_valign'];
 		$tag_option['pag_initial_x'] = $new_instance['pag_initial_x'];
 		$tag_option['pag_initial_y'] = $new_instance['pag_initial_y'];
+		$tag_option['pag_initial_z'] = $new_instance['pag_initial_z'];
 		$tag_option['pag_lock'] = $new_instance['pag_lock'];
 		$tag_option['pag_max_speed'] = $new_instance['pag_max_speed'];
 		$tag_option['pag_min_speed'] = $new_instance['pag_min_speed'];
@@ -553,6 +559,7 @@ License: LGPL v3
 		$tag_option['pos_img_url'] = $new_instance['pos_img_url'];
 		$tag_option['pos_initial_x'] = $new_instance['pos_initial_x'];
 		$tag_option['pos_initial_y'] = $new_instance['pos_initial_y'];
+		$tag_option['pos_initial_z'] = $new_instance['pos_initial_z'];
 		$tag_option['pos_lock'] = $new_instance['pos_lock'];
 		$tag_option['pos_max_speed'] = $new_instance['pos_max_speed'];
 		$tag_option['pos_min_speed'] = $new_instance['pos_min_speed'];
@@ -601,6 +608,7 @@ License: LGPL v3
 		$tag_option['rec_img_url'] = $new_instance['rec_img_url'];
 		$tag_option['rec_initial_x'] = $new_instance['rec_initial_x'];
 		$tag_option['rec_initial_y'] = $new_instance['rec_initial_y'];
+		$tag_option['rec_initial_z'] = $new_instance['rec_initial_z'];
 		$tag_option['rec_lock'] = $new_instance['rec_lock'];
 		$tag_option['rec_max_speed'] = $new_instance['rec_max_speed'];
 		$tag_option['rec_min_speed'] = $new_instance['rec_min_speed'];
@@ -639,50 +647,50 @@ License: LGPL v3
 		
 // Basic Options
 
-			'all_bg_colour_cf' => 'fff',		
-			'all_border_cf' => '000',		
+			'all_bg_colour_cf' => 'fff',
+			'all_border_cf' => '000',
 			'all_cf_image_loc' => 'http://peter.bg/cube.png',
 			'all_cf_name' => '',
 			'all_cf_opacity' => '1',
-			'all_cf_rotation' => '0',				
-			'all_cf_url' => '',		
-			'all_cont_border' => '0',		
-			'all_font_cf' => 'Special Elite',		
-			'all_font_h' => '16',		
-			'all_font_w' => 'normal',		
+			'all_cf_rotation' => '0',
+			'all_cf_url' => '',
+			'all_cont_border' => '0',
+			'all_font_cf' => 'Special Elite',
+			'all_font_h' => '16',
+			'all_font_w' => 'normal',
 			'all_img_reduction' => '0.25',
-			'all_text_color_cf' => '000',		
-			'all_text_line_1' => 'Fill up',		
-			'all_text_line_2' => 'these lines',		
-			'all_text_line_3' => 'with your',		
-			'all_text_line_4' => 'text or',		
-			'all_text_line_5' => 'leave empty.',		
-			'all_text_cont' => 'square',		
-			'all_text_zoom' => '1.2',	
-			'height' => '260',	
+			'all_text_color_cf' => '000',
+			'all_text_line_1' => 'Fill up',
+			'all_text_line_2' => 'these lines',
+			'all_text_line_3' => 'with your',
+			'all_text_line_4' => 'text or',
+			'all_text_line_5' => 'leave empty.',
+			'all_text_cont' => 'square',
+			'all_text_zoom' => '1.2',
+			'height' => '260',
 			'taxonomy' => 'post_tag',
-			'title' => 'My 3D WP Tag Cloud',			
-			'tooltip_status' => 'on',			
-			'width' => '260',	
+			'title' => 'My 3D WP Tag Cloud',
+			'tooltip_status' => 'on',
+			'width' => '260',
 
 // Multiple menu options
-			'active_bg_color' => '00ffcc',			
-			'all_menu_font' => 'Arial',			
-			'all_menu_height' => '42',	
-			'all_menu_type' => 'dynamic',		
-			'all_m_bgcolor' => 'fff',	
-			'all_m_bordercolor' => '222',	
-			'all_m_borderwidth' => '0',		
-			'all_m_fontcolor' => '000',		
-			'all_m_fontsize' => '9',			
+			'active_bg_color' => '00ffcc',
+			'all_menu_font' => 'Arial',
+			'all_menu_height' => '42',
+			'all_menu_type' => 'dynamic',
+			'all_m_bgcolor' => 'fff',
+			'all_m_bordercolor' => '222',
+			'all_m_borderwidth' => '0',
+			'all_m_fontcolor' => '000',
+			'all_m_fontsize' => '9',
 			'all_m_outlcolor' => '369d88',
 			'all_m_radius_x' => '5',
 			'all_m_radius_y' => '5',
-			'all_m_radius_z' => '5',			
+			'all_m_radius_z' => '5',
 			'all_m_shadow' => '000',
 			'all_m_shadowoff' => '0',
-			'all_m_tooltip' => 'on',			
-			'all_taxonomy' => 'post_tags',				
+			'all_m_tooltip' => 'on',
+			'all_taxonomy' => 'post_tags',
 			'rotation' => 'l2r',
 			'arch_menu_item' => 'on',
 			'auth_menu_item' => 'on',
@@ -706,6 +714,7 @@ License: LGPL v3
 			'arch_google_font' => '',
 			'arch_initial_x' => '0',
 			'arch_initial_y' => '0',
+			'arch_initial_z' => '0',
 			'arch_lock' => 'none',
 			'arch_max_speed' => '0.05',
 			'arch_min_speed' => '0',
@@ -719,7 +728,7 @@ License: LGPL v3
 			'arch_shadowblur' => '0',
 			'arch_shadowoff_x' => '0',
 			'arch_shadowoff_y' => '0',
-			'arch_shape' => 'sphere',
+			'arch_shape' => 'cube',
 			'arch_split_width' => '100',
 			'arch_text_color' => '000',
 			'arch_text_font' => 'Arial',
@@ -754,6 +763,7 @@ License: LGPL v3
 			'auth_image_valign' => 'middle',
 			'auth_initial_x' => '0',
 			'auth_initial_y' => '0',
+			'auth_initial_z' => '0',
 			'auth_lock' => 'none',
 			'auth_max_speed' => '0.05',
 			'auth_min_speed' => '0',
@@ -767,7 +777,7 @@ License: LGPL v3
 			'auth_shadowblur' => '0',
 			'auth_shadowoff_x' => '0',
 			'auth_shadowoff_y' => '0',
-			'auth_shape' => 'sphere',
+			'auth_shape' => 'cube',
 			'auth_split_width' => '100',
 			'auth_text_align' => 'centre',
 			'auth_text_color' => '000',
@@ -797,6 +807,7 @@ License: LGPL v3
 			'cat_img_url' => '',
 			'cat_initial_x' => '0',
 			'cat_initial_y' => '0',
+			'cat_initial_z' => '0',
 			'cat_lock' => 'none',
 			'cat_max_speed' => '0.05',
 			'cat_min_speed' => '0',
@@ -810,7 +821,7 @@ License: LGPL v3
 			'cat_shadowblur' => '0',
 			'cat_shadowoff_x' => '0',
 			'cat_shadowoff_y' => '0',
-			'cat_shape' => 'sphere',
+			'cat_shape' => 'cube',
 			'cat_split_width' => '100',
 			'cat_tooltip' => '',
 			'cat_text_color' => '000',
@@ -846,6 +857,7 @@ License: LGPL v3
 			'lin_image_valign' => 'middle',
 			'lin_initial_x' => '0',
 			'lin_initial_y' => '0',
+			'lin_initial_z' => '0',
 			'lin_lock' => 'none',
 			'lin_max_speed' => '0.05',
 			'lin_min_speed' => '0',
@@ -859,7 +871,7 @@ License: LGPL v3
 			'lin_shadowblur' => '0',
 			'lin_shadowoff_x' => '0',
 			'lin_shadowoff_y' => '0',
-			'lin_shape' => 'sphere',
+			'lin_shape' => 'cube',
 			'lin_split_width' => '100',
 			'lin_text_align' => 'centre',
 			'lin_text_color' => '000',
@@ -895,6 +907,7 @@ License: LGPL v3
 			'men_image_valign' => 'middle',
 			'men_initial_x' => '0',
 			'men_initial_y' => '0',
+			'men_initial_z' => '0',
 			'men_lock' => 'none',
 			'men_max_speed' => '0.05',
 			'men_min_speed' => '0',
@@ -908,7 +921,7 @@ License: LGPL v3
 			'men_shadowblur' => '0',
 			'men_shadowoff_x' => '0',
 			'men_shadowoff_y' => '0',
-			'men_shape' => 'sphere',
+			'men_shape' => 'cube',
 			'men_split_width' => '100',
 			'men_text_align' => 'centre',
 			'men_text_color' => '000',
@@ -935,6 +948,7 @@ License: LGPL v3
 			'pag_image_valign' => 'middle',
 			'pag_initial_x' => '0',
 			'pag_initial_y' => '0',
+			'pag_initial_z' => '0',
 			'pag_lock' => 'none',
 			'pag_max_speed' => '0.05',
 			'pag_min_speed' => '0',
@@ -948,7 +962,7 @@ License: LGPL v3
 			'pag_shadowblur' => '0',
 			'pag_shadowoff_x' => '0',
 			'pag_shadowoff_y' => '0',
-			'pag_shape' => 'sphere',
+			'pag_shape' => 'cube',
 			'pag_split_width' => '100',
 			'pag_text_align' => 'centre',
 			'pag_text_color' => '000',
@@ -969,6 +983,7 @@ License: LGPL v3
 			'pos_img_url' => '',
 			'pos_initial_x' => '0',
 			'pos_initial_y' => '0',
+			'pos_initial_z' => '0',
 			'pos_lock' => 'none',
 			'pos_max_speed' => '0.05',
 			'pos_min_speed' => '0',
@@ -982,7 +997,7 @@ License: LGPL v3
 			'pos_shadowblur' => '0',
 			'pos_shadowoff_x' => '0',
 			'pos_shadowoff_y' => '0',
-			'pos_shape' => 'sphere',
+			'pos_shape' => 'cube',
 			'pos_split_width' => '100',
 			'pos_text_color' => '000',
 			'pos_text_font' => 'Arial',
@@ -1017,6 +1032,7 @@ License: LGPL v3
 			'rec_image_valign' => 'middle',
 			'rec_initial_x' => '0',
 			'rec_initial_y' => '0',
+			'rec_initial_z' => '0',
 			'rec_lock' => 'none',
 			'rec_max_speed' => '0.05',
 			'rec_min_speed' => '0',
@@ -1030,7 +1046,7 @@ License: LGPL v3
 			'rec_shadowblur' => '0',
 			'rec_shadowoff_x' => '0',
 			'rec_shadowoff_y' => '0',
-			'rec_shape' => 'sphere',
+			'rec_shape' => 'cube',
 			'rec_split_width' => '100',
 			'rec_text_align' => 'centre',
 			'rec_text_color' => '000',
@@ -1062,7 +1078,7 @@ License: LGPL v3
 				jQuery(function(){
 					setTimeout(function() {
 						jQuery(".widget-inside").css("border", "1px solid #bbb");
-						jQuery("#accordion-2, #wihead").css("visibility", "visible");	
+						jQuery("#accordion-2, #wihead").css("visibility", "visible");
 						var tooltip_status = '<?= $tooltip_status; ?>';
 						if (tooltip_status == 'on'){
 							jQuery('#accordion-2, #wihead').tooltip( {show: {effect: 'fade', duration: 300}, hide: {effect: 'fade', duration: 50}, tooltipClass: 'custom-tooltip-styling'});

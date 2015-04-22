@@ -8,7 +8,60 @@
 	<p><span>1. </span>Keep <span>Settings Tooltips</span> ON while you get familiar with plugin options.</p>
 	<p><span>2. </span>If after installation of a new plugin's version your existing clouds disappear, just open already created widget instances and save them again without any changes.</p>
 	<p><span>3. </span>It is advisable to use <span>3D WP Tag Cloud-M</span> in wider sidebars (400-500 px and over) just because big quantity of information on a small place is not good idea.
-	<p><span>4. </span>Get clue for plugin abilities from these <a style="color:#1e8cbe; font-weight: bold;" href="http://peter.bg/archives/7373" target="_blank">Multiple Clouds</a> examples.</p>
+	<p><span>4. </span>Get clue for plugin abilities from these Multiple Cloud <a style="color:#1e8cbe; font-weight: bold;" href="http://peter.bg/archives/7373" target="_blank">examples</a>.</p>
+</div>
+<h3>Shape Tips</h3>
+<div class="section_content">
+	<p><span>1. </span>Be aware that some shapes need specific number of tags in order to look completed. These are: <span>3D axes</span>, <span>Christmas fir</span>, <span>Concentric 
+	circles</span>, <span>Cube</span>, <span>Hexagon</span> (Bee Cell), <span>Lighthouse beam</span>, <span>Parabolic antenna</span>, <span>Peg top</span> (horizontal & vertical), 
+	<span>Sandglass</span>, <span>Spiral</span>, <span>Square</span>, <span>Triangle</span> and <span>Triangle pyramid</span> (Tetrahedron). Because of that if the 
+	tags in your cloud are less than what you have set in corresponding <span>Number</span> field the plugin will build a level smaller shape. When tags reach that number, 
+	plugin will build a level bigger shape. Here is an example: You want shape <span>Cube</span> for your <span>Post tags</span> and the <span>Number</span> you have selected is 
+	<span>26</span>. But the real number of tags you have is 15. In this case plugin will build a cube of 8 tags (2x2x2). When tags in your blog increase to 26, plugin will build 3x3x3 
+	cube cloud (26 and not 27 because it is a shell only).</p>
+	<p><span>2. </span>It's good to take in view following recommendations for your <span>Shape</span> choice:<br>
+	- <span>3D axes</span>: Suitable for relatively small (18 - 36) number of image tags - <span>Links</span>, <span>Pages</span>, <span>Authors</span> and <span>Menu</span>. 
+	As well as for <span>Post Tags</span> and <span>Categories</span> when tags are short words.<br>
+	- <span>Balls</span>: Nice shape, good for any type and number of tags. Those in the middle overlap each other due to specificity of the shape.<br>
+	- <span>Blossom</span>: Good for any type and number of tags.<br>
+	- <span>Bulb</span>: Good for any type and number of tags.<br>
+	- <span>Egg</span>: Good for any type and number of tags.<br>
+	- <span>Candy</span>: Good for any type and number of tags. Those in both ends overlap each other due to specificity of the shape.<br>
+	- <span>Capsule</span>: Good for any type and number of tags.<br>
+	- <span>Christmas fir</span>: Better for image tags. Nicer for rotation around Y-axis. In that case the top tag stays still and could be used for an important link.<br>
+	- <span>Concentric circles</span>: Flat shape where the tag in the center is still. This feature can be used for important tags - special pages, authors or links.
+	Suitable for image gallery. Good for bigger number of tags (30+).<br>
+	- <span>Cube</span>: Good for any type of cloud content and tags.<br>
+	- <span>Cylinder that starts off horizontal</span> & <span>Cylinder that starts off vertical</span> are good for any type of content and tags.<br>
+	- <span>Glass</span>: Good for any type and number of tags but those on the stem overlap each other.<br>
+	- <span>Globe</span>: Good for any type of content and tags but bigger number of latter make shape nicer.<br>
+	- <span>Heart</span>: Suitable for bigger cloud size and small number of tags (20 or 30), preferably icons.<br>
+	- <span>Hexagon</span> (Bee cell): Another flat shape where the tag in the center is still. This feature can be used for important tags - special pages, authors or links. 
+	Suitable for image gallery. Good for bigger number of tags (30+).<br>
+	- <span>Horizontal ring</span> & <span>Vertical ring</span> are suitable for any type of content and tags. Good for rotation around one axis - X or Y.<br>
+	- <span>Knot</span>: Good for any type and number of tags.<br>
+	- <span>Lemon</span>: Good for any type and number of tags.<br>
+	- <span>Lighthouse beam</span>: Suitable for very small (5 - 10) number of image tags - <span>Menu</span>. First tag in the beam is anchored (it could be the 
+	Home page). Set <span>Depth</span> to 1 for better result.
+	<span>Pages</span> and <span>Authors</span> are also suitable if their number is up to 10.<br>
+	- <span>Parabolic antenna</span> is a compound shape and is suitable for image tags. Not suitable for <span>Recent posts</span>, <span>Archives</span> due to the length of their tag text.
+	By the same reason not suitable for <span>Authors</span>, unless they are presented with their avatars only.<br>
+	- <span>Peg top that starts off horizontal</span> & <span>Peg top that starts off vertical</span> (Twin Cones) are suitable for bigger number of image or 
+	short text tags. Good for rotation around one axis - X or Y. Not suitable for <span>Menu</span>, <span>Recent posts</span> and other types of content with small number of tags.<br>
+	- <span>Sandglass</span>: This shape needs more tags. Looks better with images. Not suitable for <span>Menu</span>, <span>Recent posts</span> and other types 
+	of content with small number of tags.<br>
+	- <span>Sphere</span>: Good for any type of cloud content and tags.<br>
+	- <span>Spiral</span>: One more flat shape where the tag in the center is still. This feature can be used for important tags - special pages, authors or links.<br>
+	- <span>Square</span>: Also flat shape, preferable for image tags. No anchored tag in the center. Not suitable for too big number of tags. Good for image galery.<br>
+	- <span>Staircase</span>: Looks great when rotates around Y-axis and is built of bigger number of tags (preferably images) - let say 60-70. Not suitable for 
+	<span>Menu</span> and <span>Recent posts</span> and other types of content with small number of tags.<br>
+	- <span>Stool</span>: Good for any type and number of tags.<br>
+	- <span>Tower of rings</span> & <span>Roller of rings</span> are good for any type of content and tags. Nice for image gallery. The difference between them 
+	and both <span>Cylinder that starts off horizontal</span> & <span>Cylinder that starts off vertical</span> is in distribution of tags on their surface.<br>
+	- <span>Triangle</span>: Flat shape. No anchored tag in the center. Not suitable for too big number of tags. Good for image gallery<br>
+	- <span>Triangle pyramid</span> (Tetrahedron): Good for any type of cloud content and tags.</p>
+	<p><span>3. </span>Don't be surprised that <span>Radius Z</span> option disappears when 1D or 2D shape (<span>Beam</span>, <span>Concentric circles</span>, <span>Spiral</span>, 
+	<span>Square</span>, <span>Triangle</span> and <span>Hexagon</span>) is selected.</p>
 </div>
 <h3>Cloud Content Tips</h3>
 <div class="section_content">

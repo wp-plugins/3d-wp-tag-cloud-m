@@ -1,3 +1,17 @@
+// 3D WP Tag Cloud-S: Modified version of Graham Breach's Javascript class TagCanvas v. 2.6.1. 
+// 1. Replaced PointsOnSphere, PoinntsOnRingH, PointsOnRingV, PointsOnCylinderH and PointsOnCilinderV functions with an universal function PointsOnShape that  
+//	  creates 11 more shapes for any number of points on them: tire, blossom, balls, bulb, egg, candy, glass, lemon, capsule, stool and knot.
+// 2. Added functions PointsOnCube, PointsOnSpiral, PointsOnHexagon, PointsOnCircles, PointsOnBeam, PointsOnPyramid, PointsOnGlobe, PointsOnTower, PointsOnRoller,
+//	  PointsOnAxes, PointsOnConеsV, PointsOnConеsH, PointsOnAntenna, PointsOnSquare, PointsOnStairs, PointsOnFir, PointsOnTriangle, PointsOnSandglass, PointsOnKnote 
+//	  and PointsOnHeart for following cloud shapes with specific number of points: cube, spiral, hexagon (bee cell), concentric circles, lighthouse beam, 
+//	  tetrahedron (triangle pyramid), globe of rings, tower of rings, roller of rings, 3D axes, twin cones (peg top), parabolic antenna, square, triangle, 
+//	  staircase, sandglass and Christmas fir. 
+// 3. Encanced function TCproto. Transform for creating rotation around z-axis.
+//
+// The added code is enclosed in comments as follows: 
+// Peter's addition 1 of 10
+// ...
+// End of Peter's addition 1 of 10
 (function($){
 "use strict";
 var i, j, abs = Math.abs, sin = Math.sin, cos = Math.cos, max = Math.max,
@@ -19,7 +33,7 @@ function Defined(d) {
   return typeof d != 'undefined';
 }
 function IsObject(o) {
-  return typeof o == 'object' && o != null;
+  return typeof o == 'object' && o !== null;
 }
 function Clamp(v, mn, mx) {
   return isNaN(v) ? mx : min(mx, max(mn, v));
@@ -67,7 +81,7 @@ Vproto.cross = function(v) {
 };
 Vproto.angle = function(v) {
   var dot = this.dot(v), ac;
-  if(dot == 0)
+  if(dot === 0)
     return Math.PI / 2.0;
   ac = dot / (this.length() * v.length());
   if(ac >= 1)
@@ -102,7 +116,7 @@ Matrix.Rotation = function(angle, u) {
     u.y * u.x * mcos + u.z * sina, cosa + pow(u.y, 2) * mcos, u.y * u.z * mcos - u.x * sina,
     u.z * u.x * mcos - u.y * sina, u.z * u.y * mcos + u.x * sina, cosa + pow(u.z, 2) * mcos
   ]);
-}
+};
 Mproto.mul = function(m) {
   var a = [], i, j, mmatrix = (m.xform ? 1 : 0);
   for(i = 1; i <= 3; ++i)
@@ -123,88 +137,328 @@ Mproto.xform = function(p) {
   a.z = x * this[1][3] + y * this[2][3] + z * this[3][3];
   return a;
 };
-function PointsOnSphere(n,xr,yr,zr) {
-  var i, y, r, phi, pts = [], inc = Math.PI * (3-sqrt(5)), off = 2/n;
-  for(i = 0; i < n; ++i) {
-    y = i * off - 1 + (off / 2);
-    r = sqrt(1 - y*y);
-    phi = i * inc;
-    pts.push([cos(phi) * r * xr, y * yr, sin(phi) * r * zr]);
+// Peter's addition 1 of 10
+var round = Math.round, floor = Math.floor, phi = Math.PI*2, inc = Math.PI*(3-sqrt(5)), iphi, phi1, step, r;
+function PointsOnShape(n,xr,yr,zr,shape) {
+  var off = 2/n, min = -round(n/2), max = n-round(n/2), step = 1, y, i = 0, qx = 1, qy = 1, qz = 1, xp, yp, zp, phi2, corr = 0, pts = [];
+  for(j = min; j< max; j+=step){
+	y = i*off-1+(off/2);
+	qy = y;
+	phi1 = j*phi/n;
+    phi2 = i*inc;
+	switch(shape){
+	  case "hcylinder": r = 0.75; break;
+	  case "vcylinder": r = 0.75; break;
+	  case "sphere": r = sqrt(1-y*y); break;
+	  case "hring": r = 1; qy = 0; phi2 = i*phi/n; break;
+	  case "vring": r = 1; qy = 0; phi2 = i*phi/n; break;
+	  case "stool": r = sqrt(1-y*y*y*y)/cos(phi1/4); break;
+	  case "capsule": r = 2*sqrt(1-y*y*y*y)/cos(phi1/8)/4; break;
+	  case "candy": r = 1/cos(phi1/16)*cos(phi1/1.35)*0.5; break;
+	  case "lemon": r = sqrt(1+y*y)*cos(phi1/9)*cos(phi1/2)*0.6; break;
+	  case "tire": r = sqrt(1+y*y)*cos(phi1/8)*cos(phi1/3); qy = qy/2.5; break;
+	  case "balls": r = sqrt(1-y*y)*cos(phi1/4)*sin(phi1/2); qy = qy*1.2; break;
+	  case "egg": r = 0.7*sqrt(1-y*y)-cos(phi1/3)*sin(phi1/12)/3; qy = - qy; break;
+	  case "bulb": r = sqrt(1-y*y)-cos(phi1/4)*sin(phi1)/2; qx = qz= 0.75; qy = qy/1.33; break;
+	  case "blossom": r = sqrt(1-y*y*y-y/2)-Math.tan(phi1/16)/2; qx = qz= 0.6; qy = qy/1.67; break;
+	  case "glass": r = sin(phi1/3)*sin(phi1*0.9)*cos(phi1/5)-y; qx = qz = 0.8; qy = qy/1.25; break;
+	  case "knot": r = 1/sqrt(2); phi1 = phi1*2; phi2 = phi/8; qx = cos(phi1/4)*sin(phi1); qy = cos(phi1)*(i*2/n-1); qz = cos(phi1/4)*cos(phi1); break;
+	}
+	zp = sin(phi2)*r*qz*zr;
+	if(shape=="hring"||shape=="hcylinder"||shape=="knot"||shape=="lemon"||shape=="tire"||shape=="balls"){xp = qy*xr; yp = cos(phi2)*r*qx*yr;}
+	else {xp = cos(phi2)*r*qx*xr; yp = qy*yr-corr;}
+    pts.push([xp, yp, zp]);
+	i++;
   }
   return pts;
 }
-function Cylinder(n,o,xr,yr,zr) {
-  var phi, pts = [], inc = Math.PI * (3-sqrt(5)), off = 2/n, i, j, k, l;
-  for(i = 0; i < n; ++i) {
-    j = i * off - 1 + (off / 2);
-    phi = i * inc;
-    k = cos(phi);
-    l = sin(phi);
-    pts.push(o ? [j * xr, k * yr, l * zr] : [k * xr, j * yr, l * zr]);
+function PointsOnAntenna(n,xr,yr,zr) {
+  var i=1, ir, r=0, phi1=0, step=0, k, l, zp = 0, last = 0, ra, pts = [];
+  while ((2*pow(i,3)+3*pow(i,2)+i)/6 <= n) {i++;}
+  ir=xr/(i-1);
+  ra = ir*i;
+  for(j=0; j<=i-1; j++){
+	for(k=1; k<=(last===0?j*j:last); k++){
+		pts.push([cos(phi1)*r, sin(phi1)*r*yr/xr, -zp*zr/xr]);
+		phi1+=step;
+	}
+	r=ir*j;
+	zp = ra-sqrt(ra*ra-ir*j*ir*j);
+	step = phi/((j+1)*(j+1));
+	if(j == i-1){
+		for(l = 1; l <= 4; l++){
+			pts.push([0, 0, -l*ir]); 
+		}
+	}
+  }
+return pts;
+}
+function PointsOnAxes(n, xr, yr, zr) {
+  var mp = [0,0,0], xyz, c, k = round(n/3), l = k, m = n-2*k, dim = [2*xr,2*yr,2*zr], lim = [k, l, m], pts = [];
+  for(xyz = 0; xyz <= 2; xyz++){
+	inc =  dim[xyz]/(lim[xyz]+1);
+	mp[xyz] = 1;
+    for(j=1; j<= ceil(lim[xyz]/2); j++){
+	  c = inc/2 + j*inc;
+	  for(i=1;i>=-1;i-=2){
+	  	pts.push([i*c*mp[0], i*c*mp[1], i*c*mp[2]]);
+	  }
+	}
+	mp[0] = mp[1] = mp[2] = 0;
   }
   return pts;
 }
-function Ring(o, n, xr, yr, zr, j) {
-  var phi, pts = [], inc = Math.PI * 2 / n, i, k, l;
-  for(i = 0; i < n; ++i) {
-    phi = i * inc;
-    k = cos(phi);
-    l = sin(phi);
-    pts.push(o ? [j * xr, k * yr, l * zr] : [k * xr, j * yr, l * zr]);
+function PointsOnBeam(n,xr,yr,zr) {
+  var ir = 1.2*xr/n, r = 0, pts = [];
+	for(i=1; i<=n; i++){
+		pts.push([0 , 0, cos(phi)*r]); 
+		r=ir*i;
+	}
+return pts;
+}
+function PointsOnCircles(n,xr,yr,zr) {
+  var i = 1, phi1 = 0, step = 0, k, ir, r = 0, pts = [];
+  while ((2*pow(i,3)+3*pow(i,2)+i)/6 <= n) {i++;}
+  ir=xr/(i-2);
+  for(j=0; j<=i-1; j++){
+	for(k=1; k<=j*j; k++){
+		pts.push([cos(phi1)*r, sin(phi1)*r*yr/xr, 0]); 
+		phi1+=step;
+	}
+	r = ir*j;
+	step = phi/pow((j+1),2);
+  }
+return pts;
+}
+function Cones(n, o, xr, yr, zr) {
+  var i=1, k, ir, r=0, iphi=0, step=0, c = 0, j2, pts = [];
+  while ((2*pow(i,3)+i)/3 <= n) {i++;}
+  i = 2*i-3;
+  ir=xr/(i-(i==1?-1:i==3?2:3));
+  for(j=0; j<=ceil(i/2); j++){
+	for(k=1; k<=j*j; k++){
+		pts.push(o?[(r-zr/2-ir)*zr/xr, cos(iphi)*r, sin(iphi)*r*yr/xr]:[cos(iphi)*r, (r-zr/2-ir)*zr/xr, sin(iphi)*r*yr/xr]); 
+		iphi+=step;
+	}
+	r=ir*j;
+	step=phi/((j+1)*(j+1));
+  }
+  j2 = j-3;
+  step=phi/((j-2)*(j-2));
+  for(j=i-ceil(i/2); j>=0; j--){
+	c++;
+	for(k=1; k<=j*j; k++){
+		pts.push(o?[(r-zr/2-ir)*zr/xr, cos(iphi)*ir*j2, sin(iphi)*ir*j2*yr/xr]:[cos(iphi)*ir*j2, (r-zr/2-ir)*zr/xr, sin(iphi)*ir*j2*yr/xr]);
+		iphi+=step;
+	}
+	r=ir*(c+ceil(i/2));
+	step=phi/((j-1)*(j-1));
+	j2--;
+  }
+return pts;
+}
+function PointsOnConesV(n,xr,yr,zr) { return Cones(n, 0, xr, yr, zr);}
+function PointsOnConesH(n,xr,yr,zr) { return Cones(n, 1, xr, yr, zr);}
+function PointsOnCube(n,xr,yr,zr) {
+  var x, y, z, rows = n<8?1:floor(sqrt((n-2)/6)), d = 0, e = 0, f = 0, a = xr/rows, b = yr/rows, c = zr/rows, pts = [];
+  for(x=0; x<=xr; x+=a){
+	for(y=0; y<=yr; y+=b){
+	  for(z=0; z<=zr; z+=c){
+		  if(x/xr<1&&y/yr<1&&z/zr<1&&x*y*z/xr*yr*zr>0){continue;} 
+		  else{pts.push([x-xr/2,y-yr/2,z-zr/2]);} 
+	  }
+	}
+  }
+return pts;
+}
+function Cylinder(n, o, xr, yr, zr) {
+  var floors = floor(n/12), rooms = 12, ih = 2*yr/floors, step = phi/12, pts = [];
+	for(j = 0; j <= floors - 1; j++){
+    for(i=0; i< rooms; i++){
+		iphi = i*step;
+		pts.push(o?[xr*cos(iphi)/2, (floors - 1)*ih/2 - j*ih, zr*sin(iphi)/2]:[(floors - 1)*ih/2 - j*ih, xr*cos(iphi)/2, zr*sin(iphi)/2]);
+    }
   }
   return pts;
 }
-function PointsOnCylinderV(n,xr,yr,zr) { return Cylinder(n, 0, xr, yr, zr) }
-function PointsOnCylinderH(n,xr,yr,zr) { return Cylinder(n, 1, xr, yr, zr) }
-function PointsOnRingV(n, xr, yr, zr, offset) {
-  offset = isNaN(offset) ? 0 : offset * 1;
-  return Ring(0, n, xr, yr, zr, offset);
-}
-function PointsOnRingH(n, xr, yr, zr, offset) {
-  offset = isNaN(offset) ? 0 : offset * 1;
-  return Ring(1, n, xr, yr, zr, offset);
-}
-function PointsOnSpiral(n,xr,yr,zr) {
-  var px, py, pz=0, i, y = 1.4/sqrt(n), r, phi, pts = [], inc = Math.PI * (3-sqrt(5));
-  for(i = 0; i < n; i+=.7615){
-	phi = i*inc;
-	xr > 0 ? r = xr*y*sqrt(i) : r = yr*y*sqrt(i);
-	px = cos(phi)*r;
-	py = sin(phi)*r;
-	pts.push([px,py,pz]);
+function PointsOnRoller(n,xr,yr,zr) { return Cylinder(n, 0, xr, yr, zr);}
+function PointsOnTower(n,xr,yr,zr) { return Cylinder(n, 1, xr, yr, zr);}
+function PointsOnFir(n, xr, yr, zr) {
+  var i = ceil((sqrt(2*n-1)-1)/2), ir = xr/(2*i), ih = 2*yr/i, dreg = (n/(2*i*i+2*i+1))!=1?n-2*i*i+2*i-1:0, k, l, m = 1, iphi = phi/4, phi1 = 0, step = 0, pts = [];
+  pts.push([0, -yr, 0]);
+  for(j = 1; j <= i-1; j ++){
+	for(k = 4; k <= m*4; k+= 4){
+		for(l = 1; l <= 4; l++){
+			pts.push([cos(phi1)*ir*k/2, j*ih - yr, sin(phi1)*ir*k/2]);
+			phi1+= iphi;
+		}
+    }
+	phi1 = (m/2==parseInt(m/2))?phi/8:0;
+	m++;
+	if(j == i-1&&dreg > 0){
+		if (dreg>6){dreg = 6;}
+		step=phi/dreg;
+		for(k=1; k<=dreg; k++){
+			pts.push([cos(iphi)*(dreg==1||dreg==2?0:2*ir-(n<5?ir/2:0)), j*ih-yr+3*ih/4 + (k==2&&dreg==2?ih/2:0), sin(iphi)*(dreg==1||dreg==2?0:2*ir-(n<5?ir/2:0))]);
+			iphi+=step;
+		}
+	}
   }
+return pts;
+}
+function PointsOnGlobe(n, xr, yr, zr) {
+  var xyz, inc, c1, c2, k = round(n/3), l = k, m = n - 2*k, pts = [];
+  var lim = [0,1,3], dimx = [k, l, m], dimy = [round(l/2), l-round(l/2)], dimz = [round(m/4), round(m/4), round(m/4), m-3*round(m/4)];
+  for(xyz = 0; xyz <= 2; xyz++){
+    for(j=0; j<= lim[xyz]; j++){
+	  inc = (xyz===0 ? phi/dimx[j] : xyz == 1 ? (phi/2 - phi/(2*dimy[j]))/dimy[j] : (phi/4 - phi/(4*dimz[j]))/dimz[j]);
+	  for(i = 0; i < (xyz === 0 ? dimx[j] : xyz == 1 ? dimy[j] : dimz[j]); ++i) {
+		  iphi = (xyz === 0 ? i*inc : xyz == 1 ? j*phi/2 + i*inc + inc : j*phi/4 + i*inc + inc);
+		  c1 = cos(iphi);
+		  c2 = sin(iphi);
+		  pts.push([xyz<2?xr*c1:0, xyz===0?yr*c2:xyz==1?0:yr*c1, xyz>0?zr*c2:0]);
+	  }
+    }
+  }
+  return pts;
+}
+function PointsOnHeart(n,xr,yr,zr) {
+  var h = n/12, k, l = h-1, m = 1, pts = [];
+	for(k= -phi/4; k <= 3*phi/4; k+=phi/n){
+		r = 1-sin(-0.35*(k-phi/4)+2.7*Math.asin((k-phi/4)*2/phi)+phi/4);
+			if(m>=12*h/2-l&&m<=12*h/2||m>12*h/2+1&&m<=12*h/2+2+l){
+				m++;
+			}
+			else{
+				pts.push([(1+0.7*sin(k))*cos(k)*4/sqrt(2)*r*xr, -2.7825*r*(1+0.7*sin(k))*sin(k)*yr-yr/2, 0]); 
+				m++;
+			}
+		}
+	m=1;
+	l=0;
 return pts;
 }
 function PointsOnHexagon(n,xr,yr,zr) {
-  var r, l, px, py, pz = 0, pts = [], phi = Math.PI*2, phi1 = 0, phi2 = phi, l2 = 0, lev = Math.ceil((sqrt(8*(n-1)/6+1)-1)/2), h = 0, count = 0, j;
-  xr > 0 ? r = xr*lev*0.1 : r = yr*lev*0.1;
-  for(j = 0; j <= lev; j++){
-	l = r*j;
-	h = l*sin(phi/6);
-	if(Math.abs(Math.round(cos(phi2)*1000)) == 500||Math.abs(Math.round(cos(phi2)*1000)) == 1000){l2 = l} 
-	else{ 
-		if(Math.abs(Math.round(cos(phi2)*1000)) ==  866||Math.abs(Math.round(cos(phi2))) == 0) {l2=h} 
-		else {l2 = sqrt(pow((r*j-r/2),2)+pow((r*sin(phi2/6)),2))}
-	};
-	while(Math.round(phi1*1000) < Math.round(phi*1000)){
-		px=Math.round(cos(phi1)*l);
-		py=Math.round(sin(phi1)*l);
-		pts.push([px,py,pz]); 
-		count = count + 1;
-		if(count == n){break};
-		phi1 = phi1 + phi2;
-		if(Math.abs(Math.round(cos(phi1)*1000)) == 500||Math.abs(Math.round(cos(phi1)*1000)) == 1000){l = r*j} 
-		else { 
-			if(Math.abs(Math.round(cos(phi1)*1000)) == 866||Math.abs(Math.round(cos(phi1))) == 0) {l = h} 
-			else {l = sqrt(pow((r*j-r/2),2)+pow((r*sin(phi/6)),2))}
-		};
-	};
-	if(count==n){break};
-	phi1=0;
-	phi2=phi/(6*(j+1));
+  var a, l, h, disp = 0, k, pts = [];
+  var levels = floor((sqrt(8*(n-1)/6+1)-1)/2), r = xr/levels;
+	for(j = 0; j<=levels; j++){
+		for(i = 0; i <= 2*levels-j; i++){
+			for(k = 1; k<=2; k++){
+				pts.push([r*i+disp-xr,(k==2?-1:1)*j*r*sqrt(3)/2,0]);
+				if(j===0){break;}
+			}
+		}
+		disp+=r/2;
+	}
+return pts;
+}
+function PointsOnPyramid(n,xr,yr,zr) {
+  var px, py, k, rows = floor((sqrt(n/2)-1)), nr, na, nh, pts = [];
+  var a=2*xr, hp = a*sqrt(2/3), ht = a*sqrt(3)/2, ihp = hp/rows, rp = a*sqrt(3/8), dz = hp-rp, ia = a/rows, iht = ht/rows;
+  pts.push([0,0,rp*zr/xr]);
+  for(j=0;j<=rows-1; j++){
+	  nr = ht*2/3-j*ht*2/(3*rows);
+	  na = nr*sqrt(3);
+	  nh = na*sqrt(3)/2;
+	  if(rows>=3&&j>0&&j<=rows-2){
+		px=iht*j;
+  		for(i=1; i<=rows-1-j; i++){
+			py=na/2-ia*i;
+			pts.push([px-ht/3,py*yr/xr,-dz*zr/xr]);
+		}  
+	  }
+	  for(i=0; i<phi; i+=phi/3){
+		px=cos(i)*nr;
+	    py=sin(i)*nr;
+	    pts.push([px,py*yr/xr,(j*ihp-dz)*zr/xr]);
+	  }
+	  for(i = 1; i <= rows-1-j; i++){
+		py=ia*i/2;
+		px=nh-i*nh/(rows-j);
+		for(k=1;k>=-1;k-=2){
+			pts.push([px-nh/3,k*py*yr/xr,(j*ihp-dz)*zr/xr]);
+		}
+		py=na/2-ia*i;
+		pts.push([-nh/3,py*yr/xr,(j*ihp-dz)*zr/xr]);
+	  }
   }
 return pts;
 }
+function PointsOnSandglass(n, xr, yr, zr){
+  var k, l, ir, j2, r2, c = 0, i=0, iphi=0, pts = [];
+  while ((4*pow(i,3)+2*i)/3 - 1 <= n) {i++;}
+  i--;
+  pts.push([0,0,0]);
+  ir = xr/i;
+  r = ir;
+  step = phi/4;
+  for(j=2; j<=i; j++){
+	for(k=1; k<=j*j; k++){
+		for(l=1;l>=-1;l-=2){
+			pts.push([cos(iphi)*r, sin(iphi)*r*yr/xr, l*(r-zr/2+2*ir)*zr/xr]); 
+		}
+		iphi+=step;
+	}
+	r2=(r-zr/2+2*ir)*zr/xr;
+	r=ir*j;
+	step=phi/((j+1)*(j+1));
+  }
+  j2 = j-3;
+  step=phi/((j-2)*(j-2));
+  for(j=i-1; j>=0; j--){
+	c++;
+	for(k=1; k<=j*j; k++){
+		for(l=1;l>=-1;l-=2){
+			pts.push([cos(iphi)*ir*j2, sin(iphi)*ir*j2*yr/xr, l*r2*zr/xr]);
+		}
+		iphi+=step;
+	}
+	r=ir*(c+ceil((i-1)/2));
+	step=phi/((j-1)*(j-1));
+	j2--;
+  }
+return pts;
+}
+function PointsOnSpiral(n,xr,yr,zr) {
+  var y = 1.4/sqrt(n), pts = [];
+  for(i = 0; i < n; i+=0.7615){
+	iphi = i*inc;
+	if(xr > 0){ r = xr*y*sqrt(i);} else{ r = yr*y*sqrt(i);}
+	pts.push([cos(iphi)*r, sin(iphi)*r*yr/xr, 0]);
+  }
+return pts;
+}
+function PointsOnSquare(n, xr, yr, zr) {
+  var i = floor(sqrt(n)), k, iphi=0, ir=2*xr/i, pts = [];
+  for(j=1; j<=i; j++){
+	for(k=1; k<=i; k++){
+		pts.push([(ir*k-xr-ir/2)*(sqrt(2)/2), (ir*j*yr/xr-yr-ir/2)*(sqrt(2)/2), 0]); 
+	}
+  }
+return pts;
+}
+function PointsOnStairs(n, xr, yr, zr) {
+  var i = floor(n/5), ir=xr/4.5, ih=2*yr/i, k, iphi = phi/i, phi1 = 0, pts = [];
+  for(j=1; j<=i; j++){
+	for(k=1; k<=5; k++){
+		pts.push([cos(phi1)*ir*(k-1/2), ih*j-yr-ih/2, sin(phi1)*ir*(k-1/2)]);
+	}
+	phi1+=iphi;
+  }
+return pts;
+}
+function PointsOnTriangle(n,xr,yr,zr) {
+  var a, l, h, k, disp = 0, lev = floor((sqrt(8*n+1)-1)/2), pts = [];
+	r = 2*xr/lev;
+	for(j = 0; j<=lev; j++){
+		for(i = 1; i <= lev-j; i++){
+			pts.push([r*i-r/2+disp-xr,j*r*sqrt(3)/2-lev*r*sqrt(3)/6-r/2*sqrt(3)/2,0]);
+		}
+		disp+=r/2;
+	}
+return pts;
+}
+// End of Peter's addition 1 of 10
 function SetAlpha(c,a) {
   var d = c, p1, p2, ae = (a*1).toPrecision(3) + ')';
   if(c[0] === '#') {
@@ -1299,6 +1553,9 @@ function TagCanvas(cid,lctr,opt) {
   this.ctxt.textBaseline = 'top';
   this.lx = (this.lock + '').indexOf('x') + 1;
   this.ly = (this.lock + '').indexOf('y') + 1;
+// Peter's addition 2 of 10
+  this.lz = (this.lock + '').indexOf('z') + 1;
+// End of Peter's addition 2 of 10
   this.frozen = this.dx = this.dy = this.fixedAnim = this.touched = 0;
   this.fixedAlpha = 1;
   this.source = lctr || cid;
@@ -1328,6 +1585,9 @@ function TagCanvas(cid,lctr,opt) {
 
   this.yaw = this.initial ? this.initial[0] * this.maxSpeed : 0;
   this.pitch = this.initial ? this.initial[1] * this.maxSpeed : 0;
+// Peter's addition 3 of 10
+  this.roll = this.initial ? this.initial[2] * this.maxSpeed : 0;
+// End of Peter's addition 3 of 10
   if(this.tooltip) {
     this.ctitle = c.title;
     c.title = '';
@@ -1503,15 +1763,45 @@ TCproto.Weight = function(tl) {
 TCproto.Load = function() {
   var tl = this.GetTags(), taglist = [], shape, t,
     shapeArgs, rx, ry, rz, vl, i, tagmap = [], pfuncs = {
-      sphere: PointsOnSphere,
-      vcylinder: PointsOnCylinderV,
-      hcylinder: PointsOnCylinderH,
-      vring: PointsOnRingV,
-      hring: PointsOnRingH,
-	  spiral: PointsOnSpiral,
-	  hexagon: PointsOnHexagon
-    };
+// Piter's addition 4 of 10
+	  balls: PointsOnShape, // Double Peg Top
+	  blossom: PointsOnShape,
+	  bulb: PointsOnShape,
+	  candy: PointsOnShape,
+	  capsule: PointsOnShape,
+	  egg: PointsOnShape,
+	  glass: PointsOnShape,
+	  hcylinder: PointsOnShape,
+	  hring: PointsOnShape,
+	  lemon: PointsOnShape,
+	  knot: PointsOnShape,
+	  sphere: PointsOnShape,
+	  stool: PointsOnShape,
+	  tire: PointsOnShape,
+	  vcylinder: PointsOnShape,
+	  vring: PointsOnShape,
 
+	  antenna: PointsOnAntenna,
+	  axes: PointsOnAxes,
+	  beam: PointsOnBeam,
+	  circles: PointsOnCircles,
+	  cube: PointsOnCube,
+	  fir: PointsOnFir,
+	  globe: PointsOnGlobe,
+	  hcones: PointsOnConesH,
+	  hexagon: PointsOnHexagon,
+	  pyramid: PointsOnPyramid,
+	  roller: PointsOnRoller,
+	  sandglass: PointsOnSandglass,
+	  spiral: PointsOnSpiral,
+	  square: PointsOnSquare,
+	  stairs: PointsOnStairs,
+	  tower: PointsOnTower,
+	  triangle: PointsOnTriangle,
+	  vcones: PointsOnConesV,
+	  heart: PointsOnHeart
+// End of Peter's addition 4 of 10
+    };
   if(tl.length) {
     tagmap.length = tl.length;
     for(i = 0; i < tl.length; ++i)
@@ -1521,27 +1811,32 @@ TCproto.Load = function() {
     ry = 100 * this.radiusY;
     rz = 100 * this.radiusZ;
     this.max_radius = max(rx, max(ry, rz));
-
     for(i = 0; i < tl.length; ++i) {
       t = this.CreateTag(tl[tagmap[i]]);
       if(t)
         taglist.push(t);
     }
     this.weight && this.Weight(taglist, true);
-  
     if(this.shapeArgs) {
       this.shapeArgs[0] = taglist.length;
     } else {
       shapeArgs = this.shape.toString().split(/[(),]/);
       shape = shapeArgs.shift();
       this.shape = pfuncs[shape] || pfuncs.sphere;
-      this.shapeArgs = [taglist.length, rx, ry, rz].concat(shapeArgs);
+// Peter's addition 5 of 10
+      this.shapeArgs = [taglist.length, rx, ry, rz, shape].concat(shapeArgs); // Added shape
+// End of Peter's addition 5 of 10
     }
     vl = this.shape.apply(this, this.shapeArgs);
     this.listLength = taglist.length;
+// Peter's addition 6 of 10
+	taglist.splice(vl.length,taglist.length-vl.length);
+// End of Peter's addition 6 of 10
     for(i = 0; i < taglist.length; ++i)
       taglist[i].position = new Vector(vl[i][0], vl[i][1], vl[i][2]);
   }
+	
+	
   if(this.noTagsMessage && !taglist.length)
     taglist = this.Message('No tags');
   this.taglist = taglist;
@@ -1721,14 +2016,17 @@ TCproto.TooltipDiv = function(active,tag) {
     this.ttdiv.style.display = 'none';
   }
 };
-TCproto.Transform = function(tc, p, y) {
-  if(p || y) {
-    var sp = sin(p), cp = cos(p), sy = sin(y), cy = cos(y),
+// Peter's addition 7 of 10
+TCproto.Transform = function(tc, p, y, r) { // Added r
+  if(p || y || r) {
+    var sp = sin(p), cp = cos(p), sy = sin(y), cy = cos(y), sr = sin(r), cr = cos(r), // Added cr
       ym = new Matrix([cy,0,sy, 0,1,0, -sy,0,cy]),
-      pm = new Matrix([1,0,0, 0,cp,-sp, 0,sp,cp]);
-    tc.transform = tc.transform.mul(ym.mul(pm));
+      pm = new Matrix([1,0,0, 0,cp,-sp, 0,sp,cp]),
+      rm = new Matrix([cr,sr,0, -sr,cr,0, 0,0,1]); // Added rm
+    tc.transform = tc.transform.mul(ym.mul(pm.mul(rm))); // Added .mul(rm)
   }
 };
+// End of Peter's addition 7 of 10
 TCproto.AnimateFixed = function() {
   var fa, t1, angle, m, d;
   if(this.fadeIn) {
@@ -1772,7 +2070,9 @@ TCproto.AnimatePosition = function(w, h, t) {
     else
       tc.Decel(tc);
   }
-  this.Transform(tc, tc.pitch, tc.yaw);
+// Peter's addition 8 of 10
+  this.Transform(tc, tc.pitch, tc.yaw, tc.roll); // Added tc.roll
+// End of Peter's addition 8 of 10
 };
 TCproto.AnimateDrag = function(w, h, t) {
   var tc = this, rs = 100 * t * tc.maxSpeed / tc.max_radius / tc.zoom;
@@ -1784,7 +2084,9 @@ TCproto.AnimateDrag = function(w, h, t) {
   } else if(!tc.initial) {
     tc.Decel(tc);
   }
-  this.Transform(tc, tc.pitch, tc.yaw);
+// Peter's addition 9 of 10
+  this.Transform(tc, tc.pitch, tc.yaw, tc.roll); // Added tc.roll
+// End of Peter's addition 9 of 10
 };
 TCproto.Freeze = function() {
   if(!this.frozen) {
@@ -1858,6 +2160,9 @@ TCproto.SetSpeed = function(i) {
   this.initial = i;
   this.yaw = i[0] * this.maxSpeed;
   this.pitch = i[1] * this.maxSpeed;
+// Peter's addition 10 of 10
+  this.roll = i[2] * this.maxSpeed;
+// End of Peter's addition 10 of 10
 };
 TCproto.FindTag = function(t) {
   if(!Defined(t))

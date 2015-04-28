@@ -22,7 +22,7 @@
 		var check = '<?= $check_widget_1; ?>';
 		if(check != ''){
 			jQuery('#accordion-2, #wihead').tooltip({content: function() {var element = jQuery( this ); var html_text=element.attr('title'); return html_text;}, position: {  my: 'left top+20',  at: 'left bottom'}}); 
-			jQuery(function() {jQuery( "#accordion-2" ).accordion({heightStyle: "content", collapsible: true, active: false}); jQuery( "#accordion-4, #accordion-5").accordion({heightStyle: "content", collapsible: true, active: false});});
+			jQuery(function() {jQuery( "#accordion-2, #accordion-4, #accordion-5" ).accordion({heightStyle: "content", collapsible: true, active: false});});
 		};					
 	});
 // Center Function Text check

@@ -6,9 +6,9 @@
 //	  and PointsOnHeart for following cloud shapes with specific number of points: cube, spiral, hexagon (bee cell), concentric circles, lighthouse beam, 
 //	  tetrahedron (triangle pyramid), globe of rings, tower of rings, roller of rings, 3D axes, twin cones (peg top), parabolic antenna, square, triangle, 
 //	  staircase, sandglass and Christmas fir. 
-// 3. Encanced function TCproto. Transform for creating rotation around z-axis.
+// 3. Enhanced function TCproto. Transform for creating rotation around z-axis.
 //
-// The added code is enclosed in comments as follows: 
+// The added code is at lines 140 (1), 1556 (2), 1588 (3), 1766 (4), 1826 (5), 1832 (6), 2019 (7), 2073 (8), 2087 (9) & 2163 (10) and is enclosed in comments as follows: 
 // Peter's addition 1 of 10
 // ...
 // End of Peter's addition 1 of 10

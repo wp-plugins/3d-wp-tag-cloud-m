@@ -35,10 +35,10 @@ function text_cf<?= $inst_id; ?>(c, w, h, cx, cy){
 	var border_cf = '<?= $all_border_cf; ?>'; // Border color
 	var cont_border = <?= $all_cont_border; ?>;
 	var bg_colour_cf = '<?= $all_bg_colour_cf; ?>'; // Background color
-	var rx = -w*land*f/8;
-	var rw = w*land*f/4;
-	var ry = -w*port*f/8;
-	var rh = w*port*f/4;
+	var rx = -(w/h<=1?w:h)*land*f/8;
+	var rw = (w/h<=1?w:h)*land*f/4;
+	var ry = -(w/h<=1?w:h)*port*f/8;
+	var rh = (w/h<=1?w:h)*port*f/4;
 	c.rotate(d);
 	if(bg_colour_cf==''){c.fillStyle='transparent';}
 	else{c.fillStyle = '#<?= $all_bg_colour_cf; ?>';};

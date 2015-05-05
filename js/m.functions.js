@@ -480,7 +480,6 @@ jQuery(function(){
 					textHeight: <?= $pag_fontsize; ?>,
 					textVAlign: '<?= $pag_text_valign; ?>',
 					tooltip: 'div',
-					textHeight: <?= $pag_fontsize; ?>,
 					weight: false,
 					wheelZoom: zoom
 				};

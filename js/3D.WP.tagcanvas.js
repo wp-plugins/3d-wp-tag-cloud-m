@@ -1,6 +1,6 @@
-// 3D WP Tag Cloud-S: Modified version of Graham Breach's Javascript class TagCanvas v. 2.6.1. 
+// 3D WP Tag Cloud-M/S: Modified version of Graham Breach's Javascript class TagCanvas v. 2.6.1. 
 // 1. Replaced PointsOnSphere, PoinntsOnRingH, PointsOnRingV, PointsOnCylinderH and PointsOnCilinderV functions with an universal function PointsOnShape that  
-//	  creates 11 more shapes for any number of points on them: tire, blossom, balls, bulb, egg, candy, glass, lemon, capsule, stool and knot.
+//	  creates 12 more shapes for any number of points on them: 3D spiral, tire, blossom, balls, bulb, egg, candy, glass, lemon, capsule, stool and knot.
 // 2. Added functions PointsOnCube, PointsOnSpiral, PointsOnHexagon, PointsOnCircles, PointsOnBeam, PointsOnPyramid, PointsOnGlobe, PointsOnTower, PointsOnRoller,
 //	  PointsOnAxes, PointsOnConеsV, PointsOnConеsH, PointsOnAntenna, PointsOnSquare, PointsOnStairs, PointsOnFir, PointsOnTriangle, PointsOnSandglass, PointsOnKnote 
 //	  and PointsOnHeart for following cloud shapes with specific number of points: cube, spiral, hexagon (bee cell), concentric circles, lighthouse beam, 
@@ -140,7 +140,7 @@ Mproto.xform = function(p) {
 // Peter's addition 1 of 10
 var round = Math.round, floor = Math.floor, phi = Math.PI*2, inc = Math.PI*(3-sqrt(5)), iphi, phi1, step, r;
 function PointsOnShape(n,xr,yr,zr,shape) {
-  var off = 2/n, min = -round(n/2), max = n-round(n/2), step = 1, y, i = 0, qx = 1, qy = 1, qz = 1, xp, yp, zp, phi2, corr = 0, pts = [];
+  var off = 2/n, min = -round(n/2), max = n-round(n/2), step = 1, y, i = 0, qx = 1, qy = 1, qz = 1, xp, yp, zp, phi2, corr = 0, nanr = 0, pts = [];
   for(j = min; j< max; j+=step){
 	y = i*off-1+(off/2);
 	qy = y;
@@ -155,18 +155,19 @@ function PointsOnShape(n,xr,yr,zr,shape) {
 	  case "stool": r = sqrt(1-y*y*y*y)/cos(phi1/4); break;
 	  case "capsule": r = 2*sqrt(1-y*y*y*y)/cos(phi1/8)/4; break;
 	  case "candy": r = 1/cos(phi1/16)*cos(phi1/1.35)*0.5; break;
+	  case "spiral3": r = 0.75; phi2 = i*phi/18; qy = y*0.75; break;
 	  case "lemon": r = sqrt(1+y*y)*cos(phi1/9)*cos(phi1/2)*0.6; break;
 	  case "tire": r = sqrt(1+y*y)*cos(phi1/8)*cos(phi1/3); qy = qy/2.5; break;
 	  case "balls": r = sqrt(1-y*y)*cos(phi1/4)*sin(phi1/2); qy = qy*1.2; break;
 	  case "egg": r = 0.7*sqrt(1-y*y)-cos(phi1/3)*sin(phi1/12)/3; qy = - qy; break;
 	  case "bulb": r = sqrt(1-y*y)-cos(phi1/4)*sin(phi1)/2; qx = qz= 0.75; qy = qy/1.33; break;
-	  case "blossom": r = sqrt(1-y*y*y-y/2)-Math.tan(phi1/16)/2; qx = qz= 0.6; qy = qy/1.67; break;
+	  case "blossom": r = sqrt(1-y*y*y-y/5)-Math.tan(phi1/16)/2; qx = qz= 0.6; qy = qy/1.67; break;
 	  case "glass": r = sin(phi1/3)*sin(phi1*0.9)*cos(phi1/5)-y; qx = qz = 0.8; qy = qy/1.25; break;
 	  case "knot": r = 1/sqrt(2); phi1 = phi1*2; phi2 = phi/8; qx = cos(phi1/4)*sin(phi1); qy = cos(phi1)*(i*2/n-1); qz = cos(phi1/4)*cos(phi1); break;
 	}
-	zp = sin(phi2)*r*qz*zr;
+	zp = sin(phi2)*(isNaN(r)?0:r)*qz*zr;
 	if(shape=="hring"||shape=="hcylinder"||shape=="knot"||shape=="lemon"||shape=="tire"||shape=="balls"){xp = qy*xr; yp = cos(phi2)*r*qx*yr;}
-	else {xp = cos(phi2)*r*qx*xr; yp = qy*yr-corr;}
+	else {nanr=(isNaN(r)?nanr+1:nanr); xp = cos(phi2)*(isNaN(r)?0:r)*qx*xr; yp = (isNaN(r)?nanr*18:0)+qy*yr-corr;}
     pts.push([xp, yp, zp]);
 	i++;
   }
@@ -194,12 +195,12 @@ function PointsOnAntenna(n,xr,yr,zr) {
 return pts;
 }
 function PointsOnAxes(n, xr, yr, zr) {
-  var mp = [0,0,0], xyz, c, k = round(n/3), l = k, m = n-2*k, dim = [2*xr,2*yr,2*zr], lim = [k, l, m], pts = [];
+  var mp = [0,0,0], xyz, inca, c, k = round(n/3), l = k, m = n-2*k, dim = [2*xr,2*yr,2*zr], lim = [k, l, m], pts = [];
   for(xyz = 0; xyz <= 2; xyz++){
-	inc =  dim[xyz]/(lim[xyz]+1);
+	inca =  dim[xyz]/(lim[xyz]+1);
 	mp[xyz] = 1;
     for(j=1; j<= ceil(lim[xyz]/2); j++){
-	  c = inc/2 + j*inc;
+	  c = inca/2 + j*inca;
 	  for(i=1;i>=-1;i-=2){
 	  	pts.push([i*c*mp[0], i*c*mp[1], i*c*mp[2]]);
 	  }
@@ -1776,6 +1777,7 @@ TCproto.Load = function() {
 	  lemon: PointsOnShape,
 	  knot: PointsOnShape,
 	  sphere: PointsOnShape,
+	  spiral3: PointsOnShape,
 	  stool: PointsOnShape,
 	  tire: PointsOnShape,
 	  vcylinder: PointsOnShape,

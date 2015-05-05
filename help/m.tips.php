@@ -20,16 +20,19 @@
 	<span>26</span>. But the real number of tags you have is 15. In this case plugin will build a cube of 8 tags (2x2x2). When tags in your blog increase to 26, plugin will build 3x3x3 
 	cube cloud (26 and not 27 because it is a shell only).</p>
 	<p><span>2. </span>It's good to take in view following recommendations for your <span>Shape</span> choice:<br>
+	- <span>2D spiral</span>: A flat shape where the tag in the center is still. This feature can be used for important tags - special pages, authors or links.<br>
 	- <span>3D axes</span>: Suitable for relatively small (18 - 36) number of image tags - <span>Links</span>, <span>Pages</span>, <span>Authors</span> and <span>Menu</span>. 
 	As well as for <span>Post Tags</span> and <span>Categories</span> when tags are short words.<br>
+	- <span>3D Spiral</span>: Suitable when number of tags is around 30 - 60.<br>
+	As well as for <span>Post Tags</span> and <span>Categories</span> when tags are short words.<br>	
 	- <span>Balls</span>: Nice shape, good for any type and number of tags. Those in the middle overlap each other due to specificity of the shape.<br>
-	- <span>Blossom</span>: Good for any type and number of tags.<br>
+	- <span>Blossom</span>: Better for bigger number image tags: 80 - 160. The stem of blossom grows with increase of tags.<br>
 	- <span>Bulb</span>: Good for any type and number of tags.<br>
 	- <span>Egg</span>: Good for any type and number of tags.<br>
 	- <span>Candy</span>: Good for any type and number of tags. Those in both ends overlap each other due to specificity of the shape.<br>
 	- <span>Capsule</span>: Good for any type and number of tags.<br>
 	- <span>Christmas fir</span>: Better for image tags. Nicer for rotation around Y-axis. In that case the top tag stays still and could be used for an important link.<br>
-	- <span>Concentric circles</span>: Flat shape where the tag in the center is still. This feature can be used for important tags - special pages, authors or links.
+	- <span>Concentric circles</span>: One more flat shape where the tag in the center is still. This feature can be used for important tags - special pages, authors or links.
 	Suitable for image gallery. Good for bigger number of tags (30+).<br>
 	- <span>Cube</span>: Good for any type of cloud content and tags.<br>
 	- <span>Cylinder that starts off horizontal</span> & <span>Cylinder that starts off vertical</span> are good for any type of content and tags.<br>
@@ -51,7 +54,6 @@
 	- <span>Sandglass</span>: This shape needs more tags. Looks better with images. Not suitable for <span>Menu</span>, <span>Recent posts</span> and other types 
 	of content with small number of tags.<br>
 	- <span>Sphere</span>: Good for any type of cloud content and tags.<br>
-	- <span>Spiral</span>: One more flat shape where the tag in the center is still. This feature can be used for important tags - special pages, authors or links.<br>
 	- <span>Square</span>: Also flat shape, preferable for image tags. No anchored tag in the center. Not suitable for too big number of tags. Good for image galery.<br>
 	- <span>Staircase</span>: Looks great when rotates around Y-axis and is built of bigger number of tags (preferably images) - let say 60-70. Not suitable for 
 	<span>Menu</span> and <span>Recent posts</span> and other types of content with small number of tags.<br>

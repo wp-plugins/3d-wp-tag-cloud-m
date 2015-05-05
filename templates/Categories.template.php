@@ -18,6 +18,7 @@
 					<br>
 					<select id="<?=$this->get_field_id('cat_shape'); ?>" name="<?=$this->get_field_name('cat_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('cat_radius_z'); ?>', '<?=$this->get_field_id('all_categories_limit'); ?>', 'cat')";>
 						<option value="axes" <?php if( $cat_shape == "axes" ){ echo ' selected'; } ?>>3D Axes*</option>
+						<option value="spiral3" <?php if( $cat_shape == "spiral3" ){ echo ' selected'; } ?>>3D Spiral</option>
 						<option value="balls" <?php if( $cat_shape == "balls" ){ echo ' selected'; } ?>>Balls</option>
 						<option value="blossom" <?php if( $cat_shape == "blossom" ){ echo ' selected'; } ?>>Blossom</option>
 						<option value="bulb" <?php if( $cat_shape == "bulb" ){ echo ' selected'; } ?>>Bulb</option>
@@ -45,10 +46,10 @@
 						<option value="tire" <?php if( $cat_shape == "tire" ){ echo ' selected'; } ?>>Tire</option>
 						<option value="tower" <?php if( $cat_shape == "tower" ){ echo ' selected'; } ?>>Tower of rings</option>
 						<option value="vcylinder" <?php if( $cat_shape == "vcylinder" ){ echo ' selected'; } ?>>Vertical Cylinder</option>
+						<option style="background: #ccc;" value="spiral" <?php if( $cat_shape == "spiral" ){ echo ' selected'; } ?>>2D Spiral*</option>
 						<option style="background: #ccc;" value="circles" <?php if( $cat_shape == "circles" ){ echo ' selected'; } ?>>Concentric Circles*</option>
 						<option style="background: #ccc;" value="heart" <?php if( $cat_shape == "heart" ){ echo ' selected'; } ?>>Heart</option>
 						<option style="background: #ccc;" value="hexagon" <?php if( $cat_shape == "hexagon" ){ echo ' selected'; } ?>>Hexagon (Bee Cell)*</option>
-						<option style="background: #ccc;" value="spiral" <?php if( $cat_shape == "spiral" ){ echo ' selected'; } ?>>Spiral*</option>
 						<option style="background: #ccc;" value="square" <?php if( $cat_shape == "square" ){ echo ' selected'; } ?>>Square*</option>
 						<option style="background: #ccc;" value="triangle" <?php if( $cat_shape == "triangle" ){ echo ' selected'; } ?>>Triangle*</option>
 						<option style="background: #aaa;" value="beam" <?php if( $cat_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam*</option>

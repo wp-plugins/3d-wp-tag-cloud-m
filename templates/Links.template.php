@@ -18,6 +18,7 @@
 					<br>
 					<select id="<?=$this->get_field_id('lin_shape'); ?>" name="<?=$this->get_field_name('lin_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('lin_radius_z'); ?>', '<?=$this->get_field_id('all_links_limit'); ?>', 'lin')";>
 						<option value="axes" <?php if( $lin_shape == "axes" ){ echo ' selected'; } ?>>3D Axes*</option>
+						<option value="spiral3" <?php if( $lin_shape == "spiral3" ){ echo ' selected'; } ?>>3D Spiral</option>
 						<option value="balls" <?php if( $lin_shape == "balls" ){ echo ' selected'; } ?>>Balls</option>
 						<option value="blossom" <?php if( $lin_shape == "blossom" ){ echo ' selected'; } ?>>Blossom</option>
 						<option value="bulb" <?php if( $lin_shape == "bulb" ){ echo ' selected'; } ?>>Bulb</option>
@@ -45,10 +46,10 @@
 						<option value="tire" <?php if( $lin_shape == "tire" ){ echo ' selected'; } ?>>Tire</option>
 						<option value="tower" <?php if( $lin_shape == "tower" ){ echo ' selected'; } ?>>Tower of rings</option>
 						<option value="vcylinder" <?php if( $lin_shape == "vcylinder" ){ echo ' selected'; } ?>>Vertical Cylinder</option>
+						<option style="background: #ccc;" value="spiral" <?php if( $lin_shape == "spiral" ){ echo ' selected'; } ?>>2D Spiral*</option>
 						<option style="background: #ccc;" value="circles" <?php if( $lin_shape == "circles" ){ echo ' selected'; } ?>>Concentric Circles*</option>
 						<option style="background: #ccc;" value="heart" <?php if( $lin_shape == "heart" ){ echo ' selected'; } ?>>Heart</option>
 						<option style="background: #ccc;" value="hexagon" <?php if( $lin_shape == "hexagon" ){ echo ' selected'; } ?>>Hexagon (Bee Cell)*</option>
-						<option style="background: #ccc;" value="spiral" <?php if( $lin_shape == "spiral" ){ echo ' selected'; } ?>>Spiral*</option>
 						<option style="background: #ccc;" value="square" <?php if( $lin_shape == "square" ){ echo ' selected'; } ?>>Square*</option>
 						<option style="background: #ccc;" value="triangle" <?php if( $lin_shape == "triangle" ){ echo ' selected'; } ?>>Triangle*</option>
 						<option style="background: #aaa;" value="beam" <?php if( $lin_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam*</option>

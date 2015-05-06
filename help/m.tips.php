@@ -58,9 +58,10 @@
 	- <span>Staircase</span>: Looks great when rotates around Y-axis and is built of bigger number of tags (preferably images) - let say 60-70. Not suitable for 
 	<span>Menu</span> and <span>Recent posts</span> and other types of content with small number of tags.<br>
 	- <span>Stool</span>: Good for any type and number of tags.<br>
+	- <span>Tire</span>: Good for any type and number of tags.<br>
 	- <span>Tower of rings</span> & <span>Roller of rings</span> are good for any type of content and tags. Nice for image gallery. The difference between them 
 	and both <span>Cylinder that starts off horizontal</span> & <span>Cylinder that starts off vertical</span> is in distribution of tags on their surface.<br>
-	- <span>Triangle</span>: Flat shape. No anchored tag in the center. Not suitable for too big number of tags. Good for image gallery<br>
+	- <span>Triangle</span>: Flat shape. No anchored tag in the center. Not suitable for too big number of tags. Good for image gallery.<br>
 	- <span>Triangle pyramid</span> (Tetrahedron): Good for any type of cloud content and tags.</p>
 	<p><span>3. </span>Don't be surprised that <span>Radius Z</span> option disappears when 1D or 2D shape (<span>Beam</span>, <span>Concentric circles</span>, <span>Spiral</span>, 
 	<span>Square</span>, <span>Triangle</span> and <span>Hexagon</span>) is selected.</p>

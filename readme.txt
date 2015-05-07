@@ -2,7 +2,7 @@
 Contributors: hityr5yr, bisko
 Tags: tag cloud, 3D, widget, HTML5, canvas, cloud, tags, links, recent posts, menu, images
 Requires at least: 3.9
-Tested up to: 4.2.1
+Tested up to: 4.2.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html

@@ -2,8 +2,8 @@
 /*
 Plugin Name: 3D WP Tag Cloud-M
 Plugin URI: http://peter.bg/archives/7373
-Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag clouds. Plugin may rotate Pages, Recent Posts, External Links (blogroll), Menus, Blog Archives, List of Authors and of course Post Tags and Post Categories. It allows showing up to 8 types of content in one widget activated from static or dynamic menu (another cloud). Supports following shapes: 2D SPIRAL, 3D AXES, 3D SPIRAL, parabolic ANTENNA, lighthouse BEAM, BALLS, BLOSSOM, BULB, CANDY, CAPSULE, concentric CIRCLES,  CUBE, CYLINDER that starts off horizontal, CYLINDER that starts off vertical, EGG, Christmas FIR, GLASS, GLOBE of rings, HEART, HEXAGON (bee cell), KNOT, LEMON, PEG TOP that starts off horizontal, PEG TOP that starts off vertical, PYRAMID (tetrahedron), RING that starts off horizontal, RING that starts off vertical, ROLLER of rings, SANDGLASS, SPHERE, SQUARE, STAIRECASE, STOOL, TIRE , TOWER of rings and TRIANGLE. Able to rotate clouds around all three axes. Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menu, List of Authors and External Links (blogroll) tags may consist of both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.6.1 and includes most of its 80+ options in the Control Panel settings.
-Version: 2.1
+Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag clouds. Plugin may rotate Pages, Recent Posts, External Links (blogroll), Menus, Blog Archives, List of Authors, Current Page/Post Links, Links from a custom HTML container and of course Post Tags and Post Categories. It allows showing up to 8 types of content in one widget activated from static or dynamic menu (another cloud). Supports following shapes: 2D SPIRAL, 3D AXES, 3D SPIRAL, parabolic ANTENNA, lighthouse BEAM, BALLS, BLOSSOM, BULB, CANDY, CAPSULE, concentric CIRCLES, CUBE, CYLINDER that starts off horizontal, CYLINDER that starts off vertical, EGG, Christmas FIR, GLASS, GLOBE of rings, HEART, HEXAGON (bee cell), KNOT, LEMON, LOVE, PEG TOP that starts off horizontal, PEG TOP that starts off vertical, PYRAMID (tetrahedron), RING that starts off horizontal, RING that starts off vertical, RINGS knotwork, ROLLER of rings, SANDGLASS, SPHERE, SQUARE, STAIRECASE, STOOL, TIRE , TOWER of rings and TRIANGLE. Able to rotate clouds around all three axes. Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menu, List of Authors and External Links (blogroll) tags may consist of both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.6.1 and includes most of its 80+ options in the Control Panel settings.
+Version: 2.2
 Author: Peter Petrov
 Author URI: http://peter.bg
 Update Server: http://peter.bg/
@@ -80,13 +80,13 @@ License: LGPL v3
 <!-- Building tag containers -->
 			<?php
 				if( $arch_menu_item == 'on'){
-					echo '<div id="all_archives_container_' . $inst_id . '" hidden>';
+					echo '<div id="all_archives_container_' . $inst_id . '" class="excludediv" hidden>';
 					$arch_args = array ('type' => 'monthly', 'limit' => $all_archives_limit, 'format' => 'custom', 'before' => '<span>', 'after' => '</span>', 'show_post_count' => true); 
 					wp_get_archives( $arch_args );
 					echo '</div>';
 					}
 				if( $auth_menu_item == 'on'){
-					echo '<div id="all_authors_container_' . $inst_id . '" hidden>';
+					echo '<div id="all_authors_container_' . $inst_id . '" class="excludediv" hidden>';
 					$auto_args = array('number' => $all_authors_limit, 'exclude' => $all_exclude);
 					$users = get_users($auto_args);
 					foreach( $users as $user ){ 
@@ -100,13 +100,13 @@ License: LGPL v3
 					echo '</div>';
 				}
 				if( $cat_menu_item == 'on'){
-					echo '<div id="all_categories_container_' . $inst_id . '" hidden>';
+					echo '<div id="all_categories_container_' . $inst_id . '" class="excludediv" hidden>';
 					$cat_args = array ('number' => $all_categories_limit, 'taxonomy' => 'category'); 
 					wp_tag_cloud($cat_args);
 					echo '</div>';
 				}
 				if( $lin_menu_item == 'on'){
-					echo '<div id="all_links_container_' . $inst_id . '" hidden>';
+					echo '<div id="all_links_container_' . $inst_id . '" class="excludediv" hidden>';
 					$lin_args = array ('category' => $all_links_category, 'hide_invisible' => 0, 'limit' => $all_links_limit); 
 					$bookmarks = get_bookmarks($lin_args);
 					foreach( $bookmarks as $bookmark ){
@@ -117,13 +117,13 @@ License: LGPL v3
 					echo '</div>';
 				}
 				if( $men_menu_item == 'on'){
-					echo '<div id="all_menu_container_' . $inst_id . '" hidden>';
+					echo '<div id="all_menu_container_' . $inst_id . '" class="excludediv" hidden>';
 					$menu_args = array ('menu' => $all_menu_name); 
 					wp_nav_menu($menu_args);
 					echo '</div>';
 				}
 				if( $pag_menu_item == 'on'){
-					echo '<div id="all_pages_container_' . $inst_id . '" hidden>';
+					echo '<div id="all_pages_container_' . $inst_id . '" class="excludediv" hidden>';
 					$page_args = array ('number' => $pages_limit); $pages = get_pages($page_args);
 					foreach( $pages as $page ){
 						echo '<a href="' . get_page_link( $page->ID ) . '">' . get_the_post_thumbnail( $page->ID, 'thumbnail' ), $page->post_title . '</a>';
@@ -131,13 +131,13 @@ License: LGPL v3
 					echo '</div>';
 				}
 				if( $pos_menu_item == 'on'){
-					echo '<div id="all_post_tags_container_' . $inst_id . '" hidden>';
+					echo '<div id="all_post_tags_container_' . $inst_id . '" class="excludediv" hidden>';
 					$post_args = array ('number' => $all_post_tags_limit, 'taxonomy' => 'post_tag');
 					wp_tag_cloud($post_args);
 					echo '</div>';
 				}
 				if( $rec_menu_item == 'on'){
-					echo '<div id="all_recent_posts_container_' . $inst_id . '" hidden>';
+					echo '<div id="all_recent_posts_container_' . $inst_id . '" class="excludediv" hidden>';
 					$recent_posts = abs($recent_posts);
 					$count=0; 
 					$bigest=$weight_size*3; 
@@ -151,6 +151,9 @@ License: LGPL v3
 							else {echo '<a href="' . get_permalink($recent["ID"]) . '">' . get_the_post_thumbnail( $recent["ID"], 'thumbnail' ), $recent["post_title"].'</a> ';};
 						};
 					echo '</div>';
+				}
+				if( $ppl_menu_item == 'on'){
+					echo '<div id="all_ppl_container_' . $inst_id . '" hidden></div>';
 				}
 			?>	
         <canvas title="" id="all_tag_canvas_<?= $inst_id; ?>" width="<?= $width; ?>" height="<?= $height; ?>"></canvas>
@@ -189,6 +192,12 @@ License: LGPL v3
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Menu</a>';
 			};
+			if( $ppl_menu_item == 'on'){
+				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="ppl-link" class="all_in_one" data-id="ppl_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
+				if( $all_m_shadowoff == "1" ){ echo " 3";} 
+				else {echo " 0";}; 
+				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Page/Post Links</a>';
+			};
 			if( $pag_menu_item == 'on'){
 				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="pag-link" class="all_in_one" data-id="pages_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
@@ -206,7 +215,7 @@ License: LGPL v3
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
 				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Recent Posts</a>';
-			};	
+			};
 		?>
 		</div>
         <canvas title="<?php if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; ?>" id="all_menu_canvas_<?= $inst_id; ?>" width="<?= $width; ?>" height="<?= $all_menu_height; ?>" style="display: none;"></canvas>	
@@ -274,6 +283,7 @@ License: LGPL v3
 		$tag_option['men_menu_item'] = $new_instance['men_menu_item'];
 		$tag_option['pag_menu_item'] = $new_instance['pag_menu_item'];
 		$tag_option['pos_menu_item'] = $new_instance['pos_menu_item'];
+		$tag_option['ppl_menu_item'] = $new_instance['ppl_menu_item'];
 		$tag_option['rec_menu_item'] = $new_instance['rec_menu_item'];
 		$tag_option['rotation'] = $new_instance['rotation'];
 		
@@ -639,6 +649,56 @@ License: LGPL v3
 		$tag_option['rec_weight_gradient_3'] = $new_instance['rec_weight_gradient_3'];
 		$tag_option['rec_weight_gradient_4'] = $new_instance['rec_weight_gradient_4'];
 
+// Page/Post Links options update
+		$tag_option['all_ppl_id'] = $new_instance['all_ppl_id'];
+		$tag_option['ppl_bg_color'] = $new_instance['ppl_bg_color'];
+		$tag_option['ppl_bg_outline'] = $new_instance['ppl_bg_outline'];
+		$tag_option['ppl_borderwidth'] = $new_instance['ppl_borderwidth'];
+		$tag_option['ppl_brightness'] = $new_instance['ppl_brightness'];
+		$tag_option['ppl_click_to_front'] = $new_instance['ppl_click_to_front'];
+		$tag_option['ppl_drag_ctrl'] = $new_instance['ppl_drag_ctrl'];
+		$tag_option['ppl_fontsize'] = $new_instance['ppl_fontsize'];
+		$tag_option['ppl_google_font'] = $new_instance['ppl_google_font'];
+		$tag_option['ppl_image_align'] = $new_instance['ppl_image_align'];
+		$tag_option['ppl_image_mode'] = $new_instance['ppl_image_mode'];
+		$tag_option['ppl_image_padding'] = $new_instance['ppl_image_padding'];
+		$tag_option['ppl_image_position'] = $new_instance['ppl_image_position'];
+		$tag_option['ppl_image_scale'] = $new_instance['ppl_image_scale'];
+		$tag_option['ppl_image_valign'] = $new_instance['ppl_image_valign'];
+		$tag_option['ppl_img_url'] = $new_instance['ppl_img_url'];
+		$tag_option['ppl_initial_x'] = $new_instance['ppl_initial_x'];
+		$tag_option['ppl_initial_y'] = $new_instance['ppl_initial_y'];
+		$tag_option['ppl_initial_z'] = $new_instance['ppl_initial_z'];
+		$tag_option['ppl_lock'] = $new_instance['ppl_lock'];
+		$tag_option['ppl_max_speed'] = $new_instance['ppl_max_speed'];
+		$tag_option['ppl_min_speed'] = $new_instance['ppl_min_speed'];
+		$tag_option['ppl_outline_color'] = $new_instance['ppl_outline_color'];
+		$tag_option['ppl_outline_method'] = $new_instance['ppl_outline_method'];
+		$tag_option['ppl_pulsate_to'] = $new_instance['ppl_pulsate_to'];
+		$tag_option['ppl_radius_x'] = $new_instance['ppl_radius_x'];
+		$tag_option['ppl_radius_y'] = $new_instance['ppl_radius_y'];
+		$tag_option['ppl_radius_z'] = $new_instance['ppl_radius_z'];
+		$tag_option['ppl_shadow'] = $new_instance['ppl_shadow'];
+		$tag_option['ppl_shadowblur'] = $new_instance['ppl_shadowblur'];
+		$tag_option['ppl_shadowoff_x'] = $new_instance['ppl_shadowoff_x'];
+		$tag_option['ppl_shadowoff_y'] = $new_instance['ppl_shadowoff_y'];
+		$tag_option['ppl_shape'] = $new_instance['ppl_shape'];
+		$tag_option['ppl_split_width'] = $new_instance['ppl_split_width'];
+		$tag_option['ppl_text_align'] = $new_instance['ppl_text_align'];
+		$tag_option['ppl_text_color'] = $new_instance['ppl_text_color'];
+		$tag_option['ppl_text_font'] = $new_instance['ppl_text_font'];
+		$tag_option['ppl_text_valign'] = $new_instance['ppl_text_valign'];
+		$tag_option['ppl_tooltip'] = $new_instance['ppl_tooltip'];
+		$tag_option['ppl_weight'] = $new_instance['ppl_weight'];
+		$tag_option['ppl_weightsizemax'] = $new_instance['ppl_weightsizemax'];
+		$tag_option['ppl_weightsizemin'] = $new_instance['ppl_weightsizemin'];
+		$tag_option['ppl_weight_mode'] = $new_instance['ppl_weight_mode'];
+		$tag_option['ppl_weight_size'] = $new_instance['ppl_weight_size'];
+		$tag_option['ppl_weight_gradient_1'] = $new_instance['ppl_weight_gradient_1'];
+		$tag_option['ppl_weight_gradient_2'] = $new_instance['ppl_weight_gradient_2'];
+		$tag_option['ppl_weight_gradient_3'] = $new_instance['ppl_weight_gradient_3'];
+		$tag_option['ppl_weight_gradient_4'] = $new_instance['ppl_weight_gradient_4'];
+		
 		return $tag_option;
 	}
 	
@@ -684,9 +744,9 @@ License: LGPL v3
 			'all_m_fontcolor' => '000',
 			'all_m_fontsize' => '9',
 			'all_m_outlcolor' => '369d88',
-			'all_m_radius_x' => '5',
-			'all_m_radius_y' => '5',
-			'all_m_radius_z' => '5',
+			'all_m_radius_x' => '5.5',
+			'all_m_radius_y' => '5.5',
+			'all_m_radius_z' => '5.5',
 			'all_m_shadow' => '000',
 			'all_m_shadowoff' => '0',
 			'all_m_tooltip' => 'on',
@@ -699,6 +759,7 @@ License: LGPL v3
 			'men_menu_item' => 'on',
 			'pag_menu_item' => 'on',
 			'pos_menu_item' => 'on',
+			'ppl_menu_item' => 'on',
 			'rec_menu_item' => 'on',
 
 // Archives Cloud Options
@@ -1061,7 +1122,57 @@ License: LGPL v3
 			'rec_weight_gradient_1' => 'f00',
 			'rec_weight_gradient_2' => 'ff0',
 			'rec_weight_gradient_3' => '0f0',
-			'rec_weight_gradient_4' => '00f'
+			'rec_weight_gradient_4' => '00f',
+
+// Page/Post Links Cloud Options
+			'all_ppl_id' => '',
+			'ppl_bg_color' => '',
+			'ppl_bg_outline' => '',
+			'ppl_borderwidth' => '0',
+			'ppl_brightness' => '0.1',
+			'ppl_click_to_front' => '1000',
+			'ppl_drag_ctrl' => 'false',
+			'ppl_fontsize' => '10',
+			'ppl_google_font' => '',
+			'ppl_img_url' => '',
+			'ppl_image_align' => 'centre',
+			'ppl_image_mode' => '',
+			'ppl_image_padding' => '2',
+			'ppl_image_position' => 'left',
+			'ppl_image_scale' => '0.5',
+			'ppl_image_valign' => 'middle',
+			'ppl_initial_x' => '0',
+			'ppl_initial_y' => '0',
+			'ppl_initial_z' => '0',
+			'ppl_lock' => 'none',
+			'ppl_max_speed' => '0.05',
+			'ppl_min_speed' => '0',
+			'ppl_outline_color' => '369d88',
+			'ppl_outline_method' => 'block',
+			'ppl_pulsate_to' => '0',
+			'ppl_radius_x' => '1',
+			'ppl_radius_y' => '1',
+			'ppl_radius_z' => '1',
+			'ppl_shadow' => '000',
+			'ppl_shadowblur' => '0',
+			'ppl_shadowoff_x' => '0',
+			'ppl_shadowoff_y' => '0',
+			'ppl_shape' => 'cube',
+			'ppl_split_width' => '100',
+			'ppl_text_align' => 'centre',
+			'ppl_text_color' => '000',
+			'ppl_text_font' => 'Arial',
+			'ppl_text_valign' => 'middle',
+			'ppl_tooltip' => '',
+			'ppl_weight' => 'false',
+			'ppl_weight_mode' => 'both',
+			'ppl_weightsizemax' => '20',
+			'ppl_weightsizemin' => '6',
+			'ppl_weight_size' => '1.0',
+			'ppl_weight_gradient_1' => 'f00',
+			'ppl_weight_gradient_2' => 'ff0',
+			'ppl_weight_gradient_3' => '0f0',
+			'ppl_weight_gradient_4' => '00f'
 		));
 
 		include 'm.variables.php';

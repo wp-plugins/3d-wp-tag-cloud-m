@@ -62,15 +62,15 @@ input.colors{
 	display: inline-block;
 	height: 60px;
 }
-.radio-check{
-
+.rache .radio-check{
+	margin: 0 0 0 -2px!important;
 }
 .rache{
 	height: 16px;
-	margin: 7px 0;
+	margin: 4px 0;
 }
 .type_of_cont{
-	width: 69px;
+	width: 82px;
 	float: left;
 }
 .color{

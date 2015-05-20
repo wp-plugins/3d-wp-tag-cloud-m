@@ -44,6 +44,7 @@
 	- <span>Horizontal ring</span> & <span>Vertical ring</span> are suitable for any type of content and tags. Good for rotation around one axis - X or Y.<br>
 	- <span>Knot</span>: Good for any type and number of tags.<br>
 	- <span>Lemon</span>: Good for any type and number of tags.<br>
+	- <span>Love</span>: Nice shape, suitable for bigger cloud size and number of tags around 40-60, preferably icons.<br>
 	- <span>Lighthouse beam</span>: Suitable for very small (5 - 10) number of image tags - <span>Menu</span>. First tag in the beam is anchored (it could be the 
 	Home page). Set <span>Depth</span> to 1 for better result.
 	<span>Pages</span> and <span>Authors</span> are also suitable if their number is up to 10.<br>
@@ -51,6 +52,7 @@
 	By the same reason not suitable for <span>Authors</span>, unless they are presented with their avatars only.<br>
 	- <span>Peg top that starts off horizontal</span> & <span>Peg top that starts off vertical</span> (Twin Cones) are suitable for bigger number of image or 
 	short text tags. Good for rotation around one axis - X or Y. Not suitable for <span>Menu</span>, <span>Recent posts</span> and other types of content with small number of tags.<br>
+	- <span>Rings Knotwork</span>: Beautiful shape, good for bigger number of tags of any type.<br>
 	- <span>Sandglass</span>: This shape needs more tags. Looks better with images. Not suitable for <span>Menu</span>, <span>Recent posts</span> and other types 
 	of content with small number of tags.<br>
 	- <span>Sphere</span>: Good for any type of cloud content and tags.<br>
@@ -76,7 +78,8 @@
 	<p><span>4. </span>When you create a menu in WP through <span>Appearance > Menus</span> panel you may not use it in the Header of your WP Theme.
 	Instead add it into a cloud via <span>Content > Menu</span> option and locate the widget instance in preferred place of your Home Page. 
 	You may not use even WP <span>Menus</span> panel, because you can put menu's options in the WP <span>Links</span> section and create category of hidden links that will be used only by the cloud and presented as rotating 3D Menu.</p>
-	<p><span>5. </span>Be aware that subject to weighting could be all types of Cloud's content except <span>Menu</span> and <span>Pages</span>.</p>
+	<p><span>5. </span>Be aware that <span>Page/Post Links</span> will load in the cloud ALL links from current Page/Post, which may include navigation links, comments, meta tags etc. To avoid this specify a custom HTML container (div, table, ul etc.) so that only the links in it will be loaded.</p>
+	<p><span>6. </span>Be known that <span>Menu</span>, <span>Pages</span> and <span>Page/Post Links</span> CAN NOT be subject to weighting.</p>
 </div>
 <h3>Coloring Tips</h3>
 <div class="section_content">

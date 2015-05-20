@@ -7,7 +7,7 @@
 		<div>
 			<span style="padding-bottom: 5px;">GENERAL</span>
 			<div style="padding-top: 5px;">
-				<label style="margin: 0 5px 0 0;" title="Cloud shapes Legend:<br><span class='color' style='padding: 0; border: 1px solid #444; 
+				<label style="margin: 0;" title="Cloud shapes Legend:<br><span class='color' style='padding: 0; border: 1px solid #444; 
 					font-size: 10px; color: #fff;'>██</span> 3D Shape, <span class='color' style='padding: 0; border: 1px solid #444; font-size: 10px; 
 					color: #ccc;'>██</span> 2D Shape, <span class='color' style='padding: 0; border: 1px solid #444; font-size: 10px; color: #aaa;'>██</span> 
 					1D Shape, <b style='font-size: 26px; line-height: 5px; position: relative; top: 10px;'>*</b> Specific set of tag numbers in 
@@ -32,11 +32,13 @@
 						<option value="hcylinder" <?php if( $rec_shape == "hcylinder" ){ echo ' selected'; } ?>>Horisontal Cylinder</option>
 						<option value="knot" <?php if( $rec_shape == "knot" ){ echo ' selected'; } ?>>Knot</option>
 						<option value="lemon" <?php if( $rec_shape == "lemon" ){ echo ' selected'; } ?>>Lemon</option>
+						<option value="love" <?php if( $rec_shape == "love" ){ echo ' selected'; } ?>>Love</option>
 						<option value="antenna" <?php if( $rec_shape == "antenna" ){ echo ' selected'; } ?>>Parabolic Antenna*</option>
 						<option value="hcones" <?php if( $rec_shape == "hcones" ){ echo ' selected'; } ?>>Peg top around X-axis*</option>
 						<option value="vcones" <?php if( $rec_shape == "vcones" ){ echo ' selected'; } ?>>Peg top around Y-axis*</option>
 						<option value="hring" <?php if( $rec_shape == "hring" ){ echo ' selected'; } ?>>Ring around X-axis</option>
 						<option value="vring" <?php if( $rec_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
+						<option value="rings" <?php if( $rec_shape == "rings" ){ echo ' selected'; } ?>>Ring Knotwork</option>
 						<option value="roller" <?php if( $rec_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $rec_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
 						<option value="sphere" <?php if( $rec_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
@@ -55,7 +57,8 @@
 						<option style="background: #aaa;" value="beam" <?php if( $rec_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam*</option>
 					</select>
 				</label>
-				<label style="max-width: 175px; margin: 0 5px 0 0;" title="Post Category to be displayed" for="<?=$this->get_field_id('all_recent_posts_category'); ?>">
+				<div class="thick-spacer"></div>
+				<label style="max-width: 175px; margin: 0 12px 0 0;" title="Post Category to be displayed" for="<?=$this->get_field_id('all_recent_posts_category'); ?>">
 					Post Category
 					<br>
 					<select style="max-width: 175px;" id="<?=$this->get_field_id('all_recent_posts_category'); ?>" name="<?=$this->get_field_name('all_recent_posts_category'); ?>">
@@ -136,7 +139,11 @@
 											break;
 										case "heart":
 											$heart_rec = 0;
-											for($i=12; $i<36; $i+=12){echo '<option id="allrpli' . $i . '" value="' . $i . '"'; if($all_recent_posts_limit==$i){echo ' selected'; $heart_rec = 1;} else{if($i==24&&$heart_rec==0){echo ' selected'; $heart_rec = 1;}}; echo '>' . ($i-$i/6) . '</option>'; };
+											for($i=12; $i<36; $i+=12){echo '<option id="allrpli' . $i . '" value="' . $i . '"'; if($all_recent_posts_limit==$i){echo ' selected'; $heart_rec = 1;} else{if($i==24&&$heart_rec==0){echo ' selected'; $heart_rec = 1;}}; echo '>' . $i . '</option>'; };
+											break;
+										case "love":
+											$love_rec = 0;
+											for($i=24; $i<48; $i+=12){echo '<option id="allrpli' . $i . '" value="' . $i . '"'; if($all_recent_posts_limit==$i){echo ' selected'; $love_rec = 1;} else{if($i==36&&$love_rec==0){echo ' selected'; $love_rec = 1;}}; echo '>' . $i . '</option>'; };
 											break;
 										default:
 											$default_rec = 0;
@@ -264,21 +271,21 @@
 					Radius X 
 					<br>
 					<select id="<?=$this->get_field_id('rec_radius_x'); ?>" name="<?=$this->get_field_name('rec_radius_x'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="rerx_' . $i . '" value="' . $i/100 . '"'; if($rec_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="rerx_' . $i . '" value="' . $i/100 . '"'; if($rec_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to top and bottom." for="<?=$this->get_field_id('rec_radius_y'); ?>">
 					Radius Y 
 					<br>
 					<select id="<?=$this->get_field_id('rec_radius_y'); ?>" name="<?=$this->get_field_name('rec_radius_y'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="rery_' . $i . '" value="' . $i/100 . '"'; if($rec_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="rery_' . $i . '" value="' . $i/100 . '"'; if($rec_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<div style="width: 86px; float: left;<?php if($rec_shape == 'spiral'||$rec_shape == 'hexagon'||$rec_shape == 'circles'||$rec_shape == 'beam') {echo ' visibility: hidden;';}; ?>" title="Initial size of cloud from centre to front and back." id="cont_<?=$this->get_field_id('rec_radius_z'); ?>">
 					Radius Z 
 					<br>
 					<select id="<?=$this->get_field_id('rec_radius_z'); ?>" name="<?=$this->get_field_name('rec_radius_z'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="rerz_' . $i . '" value="' . $i/100 . '"'; if($rec_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="rerz_' . $i . '" value="' . $i/100 . '"'; if($rec_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</div> 
 				<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('rec_split_width'); ?>">

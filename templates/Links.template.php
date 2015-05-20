@@ -32,11 +32,13 @@
 						<option value="hcylinder" <?php if( $lin_shape == "hcylinder" ){ echo ' selected'; } ?>>Horisontal Cylinder</option>
 						<option value="knot" <?php if( $lin_shape == "knot" ){ echo ' selected'; } ?>>Knot</option>
 						<option value="lemon" <?php if( $lin_shape == "lemon" ){ echo ' selected'; } ?>>Lemon</option>
+						<option value="love" <?php if( $lin_shape == "love" ){ echo ' selected'; } ?>>Love</option>
 						<option value="antenna" <?php if( $lin_shape == "antenna" ){ echo ' selected'; } ?>>Parabolic Antenna*</option>
 						<option value="hcones" <?php if( $lin_shape == "hcones" ){ echo ' selected'; } ?>>Peg top around X-axis*</option>
 						<option value="vcones" <?php if( $lin_shape == "vcones" ){ echo ' selected'; } ?>>Peg top around Y-axis*</option>
 						<option value="hring" <?php if( $lin_shape == "hring" ){ echo ' selected'; } ?>>Ring around X-axis</option>
 						<option value="vring" <?php if( $lin_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
+						<option value="rings" <?php if( $lin_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $lin_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $lin_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
 						<option value="sphere" <?php if( $lin_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
@@ -55,6 +57,7 @@
 						<option style="background: #aaa;" value="beam" <?php if( $lin_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam*</option>
 					</select>
 				</label>
+				<div class="thick-spacer"></div>
 				<label style="max-width: 175px; margin: 0 12px 0 0;" title="Links Category to be displayed." for="<?=$this->get_field_id('all_links_category'); ?>">
 				Links Category 
 				<br>
@@ -136,7 +139,11 @@
 											break;
 										case "heart";
 											$heart_lin = 0;
-											for($i=12; $i<60; $i+=12){echo '<option id="alllili' . $i . '" value="' . $i . '"'; if($all_links_limit==$i){echo ' selected'; $heart_lin = 1;} else{if($i==102&&$heart_lin==0){echo ' selected'; $heart_lin = 1;}}; echo '>' . ($i-$i/6) . '</option>'; };
+											for($i=12; $i<60; $i+=12){echo '<option id="alllili' . $i . '" value="' . $i . '"'; if($all_links_limit==$i){echo ' selected'; $heart_lin = 1;} else{if($i==48&&$heart_lin==0){echo ' selected'; $heart_lin = 1;}}; echo '>' . $i . '</option>'; };
+											break;
+										case "love";
+											$love_lin = 0;
+											for($i=24; $i<72; $i+=12){echo '<option id="alllili' . $i . '" value="' . $i . '"'; if($all_links_limit==$i){echo ' selected'; $love_lin = 1;} else{if($i==60&&$love_lin==0){echo ' selected'; $love_lin = 1;}}; echo '>' . $i . '</option>'; };
 											break;
 										default:
 											$default_lin = 0;
@@ -264,21 +271,21 @@
 					Radius X 
 					<br>
 					<select id="<?=$this->get_field_id('lin_radius_x'); ?>" name="<?=$this->get_field_name('lin_radius_x'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="lirx_' . $i . '" value="' . $i/100 . '"'; if($lin_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="lirx_' . $i . '" value="' . $i/100 . '"'; if($lin_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to top and bottom." for="<?=$this->get_field_id('lin_radius_y'); ?>">
 					Radius Y 
 					<br>
 					<select id="<?=$this->get_field_id('lin_radius_y'); ?>" name="<?=$this->get_field_name('lin_radius_y'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="liry_' . $i . '" value="' . $i/100 . '"'; if($lin_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="liry_' . $i . '" value="' . $i/100 . '"'; if($lin_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<div style="width: 86px; float: left;<?php if($lin_shape == 'spiral'||$lin_shape == 'hexagon'||$lin_shape == 'circles'||$lin_shape == 'beam') {echo ' visibility: hidden;';}; ?>" title="Initial size of cloud from centre to front and back." id="cont_<?=$this->get_field_id('lin_radius_z'); ?>">
 					Radius Z 
 					<br>
 					<select id="<?=$this->get_field_id('lin_radius_z'); ?>" name="<?=$this->get_field_name('lin_radius_z'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="lirz_' . $i . '" value="' . $i/100 . '"'; if($lin_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="lirz_' . $i . '" value="' . $i/100 . '"'; if($lin_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</div> 
 					<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('lin_split_width'); ?>">

@@ -2,10 +2,10 @@
 // 1. Replaced PointsOnSphere, PoinntsOnRingH, PointsOnRingV, PointsOnCylinderH and PointsOnCilinderV functions with an universal function PointsOnShape that  
 //	  creates 12 more shapes for any number of points on them: 3D spiral, tire, blossom, balls, bulb, egg, candy, glass, lemon, capsule, stool and knot.
 // 2. Added functions PointsOnCube, PointsOnSpiral, PointsOnHexagon, PointsOnCircles, PointsOnBeam, PointsOnPyramid, PointsOnGlobe, PointsOnTower, PointsOnRoller,
-//	  PointsOnAxes, PointsOnConеsV, PointsOnConеsH, PointsOnAntenna, PointsOnSquare, PointsOnStairs, PointsOnFir, PointsOnTriangle, PointsOnSandglass, PointsOnKnote 
-//	  and PointsOnHeart for following cloud shapes with specific number of points: cube, spiral, hexagon (bee cell), concentric circles, lighthouse beam, 
-//	  tetrahedron (triangle pyramid), globe of rings, tower of rings, roller of rings, 3D axes, twin cones (peg top), parabolic antenna, square, triangle, 
-//	  staircase, sandglass and Christmas fir. 
+//	  PointsOnAxes, PointsOnConеsV, PointsOnConеsH, PointsOnAntenna, PointsOnSquare, PointsOnStairs, PointsOnFir, PointsOnTriangle, PointsOnSandglass, PointsOnKnote, 
+//	  PointsOnHeart, PointsOnLove and PointsOnRings for following cloud shapes with specific number of points: cube, spiral, hexagon (bee cell), 
+//	  concentric circles, lighthouse beam, tetrahedron (triangle pyramid), globe of rings, tower of rings, roller of rings, 3D axes, twin cones (peg top), 
+//	  parabolic antenna, square, staircase, Christmas fir, triangle, sandglass, knot, heart, love and rings knotwork. 
 // 3. Enhanced function TCproto. Transform for creating rotation around z-axis.
 //
 // The added code is at lines 140 (1), 1556 (2), 1588 (3), 1766 (4), 1826 (5), 1832 (6), 2019 (7), 2073 (8), 2087 (9) & 2163 (10) and is enclosed in comments as follows: 
@@ -335,8 +335,23 @@ function PointsOnHeart(n,xr,yr,zr) {
 				m++;
 			}
 		}
-	m=1;
-	l=0;
+return pts;
+}
+function PointsOnLove(n,xr,yr,zr) {
+  var hn = round(n/2), h = hn/12, k, l = h-1, m = 1, pts = [], x, yz, o = xr/3;
+	for(k= -phi/4; k <= 3*phi/4; k+=phi*2/n){
+		r = 1-sin(-0.35*(k-phi/4)+2.7*Math.asin((k-phi/4)*2/phi)+phi/4);
+			if(m>=12*h/2-l&&m<=12*h/2||m>12*h/2+1&&m<=12*h/2+2+l){
+				m++;
+			}
+			else{
+				x = (1+0.7*sin(k))*cos(k)*4/sqrt(2)*r*xr*2/3;
+				yz =  -2.7825*r*(1+0.7*sin(k))*sin(k);
+				pts.push([x-o,yz*yr*2/3-yr/3, 0]);
+				pts.push([x+o, 0, yz*zr*2/3-zr/3]);
+				m++;
+			}
+		}
 return pts;
 }
 function PointsOnHexagon(n,xr,yr,zr) {
@@ -458,6 +473,20 @@ function PointsOnTriangle(n,xr,yr,zr) {
 		disp+=r/2;
 	}
 return pts;
+}
+function PointsOnRings(n,xr,yr,zr) {
+  var k = round(n/3), pts = [], ix = xr/k, iy = yr/k, iz = zr/k, rx=xr, ry=yr, rz=zr, phi2=phi*2/k, x, y, y2, z, j;
+	for(i=0; i<=k/2-1; i++){
+		x = y2 = rx*cos(i*phi2)/2-xr/4;
+		y = ry*sin(i*phi2)/2-yr/4;
+		z = rz*sin(i*phi2)/2-zr/4;
+		for(j=1; j>=-1; j-=2){
+			pts.push([x*j,y*j,zr*j/2]);
+			pts.push([x*j,yr*j/2,z*j]);
+			pts.push([xr*j/2,y2*j,z*j]);
+		}
+	}
+  return pts;
 }
 // End of Peter's addition 1 of 10
 function SetAlpha(c,a) {
@@ -1777,7 +1806,7 @@ TCproto.Load = function() {
 	  lemon: PointsOnShape,
 	  knot: PointsOnShape,
 	  sphere: PointsOnShape,
-	  spiral3: PointsOnShape,
+	  spiral3: PointsOnShape,	  
 	  stool: PointsOnShape,
 	  tire: PointsOnShape,
 	  vcylinder: PointsOnShape,
@@ -1801,7 +1830,9 @@ TCproto.Load = function() {
 	  tower: PointsOnTower,
 	  triangle: PointsOnTriangle,
 	  vcones: PointsOnConesV,
-	  heart: PointsOnHeart
+	  heart: PointsOnHeart,
+	  love: PointsOnLove,
+	  rings: PointsOnRings
 // End of Peter's addition 4 of 10
     };
   if(tl.length) {

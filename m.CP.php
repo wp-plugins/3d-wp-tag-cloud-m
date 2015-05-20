@@ -45,10 +45,10 @@
 		jQuery('#cont_'+obid).css('visibility', vis);
 		change_limits(thisid, lim, shape, str);
 	}
-// Change of tag limits for spiral, hexagon, cube, pyramid, beam, circles & antenna, axes, vcones, hcones, square, fir, sandglass, triangle and heart
+// Change of tag limits for spiral, hexagon, cube, pyramid, beam, circles & antenna, axes, vcones, hcones, square, fir, sandglass, triangle, heart and love
 	function change_limits(thisid, lim, shape, str){
 		jQuery('#'+lim).empty();
-		if(shape!="spiral"&&shape!="hexagon"&&shape!="cube"&&shape!="pyramid"&&shape!="beam"&&shape!="circles"&&shape!="antena"&&shape!="axes"&&shape!="vcones"&&shape!="hcones"&&shape!="square"&&shape!="fir"&&shape!="sandglass"&&shape!="triangle"&&shape!="heart"){
+		if(shape!="spiral"&&shape!="hexagon"&&shape!="cube"&&shape!="pyramid"&&shape!="beam"&&shape!="circles"&&shape!="antena"&&shape!="axes"&&shape!="vcones"&&shape!="hcones"&&shape!="square"&&shape!="fir"&&shape!="sandglass"&&shape!="triangle"&&shape!="heart"&&shape!="love"){
 			switch(str){
 				case "rec": build_default_options(5,25,5,lim,"allrpli_");
 					break;
@@ -61,6 +61,9 @@
 					jQuery('#'+lim).append('<option id="allpali" value="" selected>all</option>');
 					break;
 				case "men":
+					// ...
+					break;
+				case "ppl":
 					// ...
 					break;
 				case "lin":
@@ -113,6 +116,8 @@
 				case "triangle": {ii=3; lirp=6; lili=14; lita=15; liar=11; lipa=10; liau=10; lica=11; istep=1;};
 					break;
 				case "heart": {ii=12; lirp=24; lili=48; lita=48; liar=48; lipa=36; liau=36; lica=48; istep=12;};
+					break;
+				case "love": {ii=24; lirp=36; lili=60; lita=60; liar=60; lipa=48; liau=48; lica=60; istep=12;};
 					break;
 				default: {ii=5; lirp=25; lili=100; lita=125; liar=60; lipa=50; liau=50; lica=60; istep=5;};
 			}
@@ -326,11 +331,11 @@
 				</div>
 			</div>
 		</div>		
-		<div style="float: left; display: inline-block; margin: 0 4px 0 0;">
+		<div style="float: left; display: inline-block; margin: 0 2px 0 0;">
 			<div>
 				Include & Start with
 			</div>
-			<div style="padding: 3px; float: left; display: inline-block; border: 1px dotted #aaa; border-radius: 10px;">
+			<div style="padding: 2px; float: left; display: inline-block; border: 1px dotted #aaa; border-radius: 10px;">
 				<div class="rache" style="margin-top: 0;">
 					<div class="type_of_cont">archives</div>
 					<input class="check-box" id="<?=$this->get_field_id('arch_menu_item'); ?>" title="Displays a list of archives."
@@ -359,7 +364,7 @@
 					<?php if( $all_taxonomy == "categories" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
 				</div>
 				<div class="rache">
-					<div class="type_of_cont">links</div>
+					<div class="type_of_cont">blogroll</div>
 					<input class="check-box" id="<?=$this->get_field_id('lin_menu_item'); ?>" title="Displays bookmarks found in the WP Admin Panel: <span class='green'>Links</span>."
 					name="<?=$this->get_field_name('lin_menu_item'); ?>" type="checkbox"
 					<?php if( $lin_menu_item == "on" ){ echo ' checked="checked"'; } ?> onclick="procedure_1(this)">
@@ -402,6 +407,15 @@
 					<input class="radio-check" id="<?=$this->get_field_id('all_taxonomy'); ?>" title="Start with most recent posts."
 					name="<?=$this->get_field_name('all_taxonomy'); ?>" type="radio" value="recent_posts"
 					<?php if( $all_taxonomy == "recent_posts" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
+				</div>
+				<div class="rache" style="margin-bottom: 0;">
+					<div class="type_of_cont">page/post links</div>
+					<input  class="check-box" id="<?=$this->get_field_id('ppl_menu_item'); ?>" title="Displays current page/post links."
+					name="<?=$this->get_field_name('ppl_menu_item'); ?>" type="checkbox" 
+					<?php if( $ppl_menu_item == "on" ){ echo ' checked="checked"'; } ?> onclick="procedure_1(this)">
+					<input class="radio-check" id="<?=$this->get_field_id('all_taxonomy'); ?>" title="Start with current page/post links."
+					name="<?=$this->get_field_name('all_taxonomy'); ?>" type="radio" value="ppl"
+					<?php if( $all_taxonomy == "ppl" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
 				</div>
 			</div>
 		</div>
@@ -864,10 +878,12 @@
 	<?php include 'templates/Authors.template.php'; ?>
 	<h3>CATEGORIES CLOUD</h3>
 	<?php include 'templates/Categories.template.php'; ?>
-	<h3>LINKS CLOUD</h3>
+	<h3>BLOGROLL CLOUD</h3>
 	<?php include 'templates/Links.template.php'; ?>
 	<h3>MENU CLOUD</h3>
 	<?php include 'templates/Menu.template.php'; ?>
+	<h3>PAGE/POST LINKS CLOUD</h3>
+	<?php include 'templates/PPL.template.php'; ?>
 	<h3>PAGES CLOUD</h3>
 	<?php include 'templates/Pages.template.php'; ?>
 	<h3>POST TAGS CLOUD</h3>

@@ -55,6 +55,7 @@
 	$men_menu_item = $instance['men_menu_item'];
 	$pag_menu_item = $instance['pag_menu_item'];
 	$pos_menu_item = $instance['pos_menu_item'];
+	$ppl_menu_item = $instance['ppl_menu_item'];
 	$rec_menu_item = $instance['rec_menu_item'];
 	$rotation = $instance['rotation'];
 	
@@ -418,4 +419,54 @@
 	$rec_weight_gradient_2 = $instance['rec_weight_gradient_2'];
 	$rec_weight_gradient_3 = $instance['rec_weight_gradient_3'];
 	$rec_weight_gradient_4 = $instance['rec_weight_gradient_4'];
+	
+// Page/Post Links variables
+	$all_ppl_id = $instance['all_ppl_id'];
+	$ppl_bg_color = $instance['ppl_bg_color'];
+	$ppl_bg_outline = $instance['ppl_bg_outline'];
+	$ppl_borderwidth = $instance['ppl_borderwidth'];
+	$ppl_brightness = $instance['ppl_brightness'];
+	$ppl_click_to_front = $instance['ppl_click_to_front'];
+	$ppl_drag_ctrl = $instance['ppl_drag_ctrl'];
+	$ppl_fontsize = $instance['ppl_fontsize'];
+	$ppl_google_font = $instance['ppl_google_font'];
+	$ppl_image_align = $instance['ppl_image_align'];
+	$ppl_image_mode = $instance['ppl_image_mode'];
+	$ppl_image_padding = $instance['ppl_image_padding'];
+	$ppl_image_position = $instance['ppl_image_position'];
+	$ppl_image_scale = $instance['ppl_image_scale'];
+	$ppl_image_valign = $instance['ppl_image_valign'];
+	$ppl_img_url = $instance['ppl_img_url'];
+	$ppl_initial_x = $instance['ppl_initial_x'];
+	$ppl_initial_y = $instance['ppl_initial_y'];
+	$ppl_initial_z = $instance['ppl_initial_z'];
+	$ppl_lock = $instance['ppl_lock'];
+	$ppl_max_speed = $instance['ppl_max_speed'];
+	$ppl_min_speed = $instance['ppl_min_speed'];
+	$ppl_outline_color = $instance['ppl_outline_color'];
+	$ppl_outline_method = $instance['ppl_outline_method'];
+	$ppl_pulsate_to = $instance['ppl_pulsate_to'];
+	$ppl_radius_x = $instance['ppl_radius_x'];
+	$ppl_radius_y = $instance['ppl_radius_y'];
+	$ppl_radius_z = $instance['ppl_radius_z'];
+	$ppl_shadow = $instance['ppl_shadow'];
+	$ppl_shadowblur = $instance['ppl_shadowblur'];
+	$ppl_shadowoff_x = $instance['ppl_shadowoff_x'];
+	$ppl_shadowoff_y = $instance['ppl_shadowoff_y'];
+	$ppl_shape = $instance['ppl_shape'];
+	$ppl_split_width = $instance['ppl_split_width'];
+	$ppl_text_align = $instance['ppl_text_align'];
+	$ppl_text_color = $instance['ppl_text_color'];
+	$ppl_text_font = $instance['ppl_text_font'];
+	$ppl_text_valign = $instance['ppl_text_valign'];
+	$ppl_tooltip = $instance['ppl_tooltip'];
+	$ppl_weight = $instance['ppl_weight'];
+	$ppl_weightsizemax = $instance['ppl_weightsizemax'];
+	$ppl_weightsizemin = $instance['ppl_weightsizemin'];
+	$ppl_weight_mode = $instance['ppl_weight_mode'];
+	$ppl_weight_size = $instance['ppl_weight_size'];
+	$ppl_weight_gradient_1 = $instance['ppl_weight_gradient_1'];
+	$ppl_weight_gradient_2 = $instance['ppl_weight_gradient_2'];
+	$ppl_weight_gradient_3 = $instance['ppl_weight_gradient_3'];
+	$ppl_weight_gradient_4 = $instance['ppl_weight_gradient_4'];
 ?>

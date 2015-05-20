@@ -32,11 +32,13 @@
 						<option value="hcylinder" <?php if( $arch_shape == "hcylinder" ){ echo ' selected'; } ?>>Horisontal Cylinder</option>
 						<option value="knot" <?php if( $arch_shape == "knot" ){ echo ' selected'; } ?>>Knot</option>
 						<option value="lemon" <?php if( $arch_shape == "lemon" ){ echo ' selected'; } ?>>Lemon</option>
+						<option value="love" <?php if( $arch_shape == "love" ){ echo ' selected'; } ?>>Love</option>
 						<option value="antenna" <?php if( $arch_shape == "antenna" ){ echo ' selected'; } ?>>Parabolic Antenna*</option>
 						<option value="hcones" <?php if( $arch_shape == "hcones" ){ echo ' selected'; } ?>>Peg top around X-axis*</option>
 						<option value="vcones" <?php if( $arch_shape == "vcones" ){ echo ' selected'; } ?>>Peg top around Y-axis*</option>
 						<option value="hring" <?php if( $arch_shape == "hring" ){ echo ' selected'; } ?>>Ring around X-axis</option>
 						<option value="vring" <?php if( $arch_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
+						<option value="rings" <?php if( $arch_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $arch_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $arch_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
 						<option value="sphere" <?php if( $arch_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
@@ -119,7 +121,11 @@
 									break;
 								case "heart":
 									$heart_arc = 0;
-									for($i=12; $i<60; $i+=12){echo '<option id="allarli_' . $i . '" value="' . $i . '"'; if($all_archives_limit==$i){echo ' selected'; $heart_arc = 1;} else{if($i==60&&$heart_arc==0){echo ' selected'; $heart_arc = 1;}}; echo '>' . ($i-$i/6) . '</option>'; };
+									for($i=12; $i<60; $i+=12){echo '<option id="allarli_' . $i . '" value="' . $i . '"'; if($all_archives_limit==$i){echo ' selected'; $heart_arc = 1;} else{if($i==48&&$heart_arc==0){echo ' selected'; $heart_arc = 1;}}; echo '>' . $i . '</option>'; };
+									break;
+								case "love":
+									$love_arc = 0;
+									for($i=24; $i<72; $i+=12){echo '<option id="allarli_' . $i . '" value="' . $i . '"'; if($all_archives_limit==$i){echo ' selected'; $love_arc = 1;} else{if($i==60&&$love_arc==0){echo ' selected'; $love_arc = 1;}}; echo '>' . $i . '</option>'; };
 									break;
 								default:
 									$default_arc = 0;
@@ -248,21 +254,21 @@
 					Radius X
 					<br>
 					<select id="<?=$this->get_field_id('arch_radius_x'); ?>" name="<?=$this->get_field_name('arch_radius_x'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="arx_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="arx_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to top and bottom." for="<?=$this->get_field_id('arch_radius_y'); ?>">
 					Radius Y
 					<br>
 					<select id="<?=$this->get_field_id('arch_radius_y'); ?>" name="<?=$this->get_field_name('arch_radius_y'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="ary_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="ary_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<div style="width: 86px; float: left;<?php if($arch_shape == 'spiral'||$arch_shape == 'hexagon'||$arch_shape == 'circles'||$arch_shape == 'beam') {echo ' visibility: hidden;';}; ?>" title="Initial size of cloud from centre to front and back." id="cont_<?=$this->get_field_id('arch_radius_z'); ?>">
 					Radius Z
 					<br>
 					<select id="<?=$this->get_field_id('arch_radius_z'); ?>" name="<?=$this->get_field_name('arch_radius_z'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="arz_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="arz_' . $i . '" value="' . $i/100 . '"'; if($arch_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</div> 
 				<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('arch_split_width'); ?>">

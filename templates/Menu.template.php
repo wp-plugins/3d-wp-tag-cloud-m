@@ -16,7 +16,7 @@
 					for="<?=$this->get_field_id('men_shape'); ?>">
 					Shape
 					<br>
-					<select id="<?=$this->get_field_id('men_shape'); ?>" name="<?=$this->get_field_name('men_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('men_radius_z'); ?>', '<?=$this->get_field_id('all_menu_limit'); ?>', 'men')";>
+					<select id="<?=$this->get_field_id('men_shape'); ?>" name="<?=$this->get_field_name('men_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('men_radius_z'); ?>', '', 'men')";>
 						<option value="axes" <?php if( $men_shape == "axes" ){ echo ' selected'; } ?>>3D Axes*</option>
 						<option value="spiral3" <?php if( $men_shape == "spiral3" ){ echo ' selected'; } ?>>3D Spiral</option>
 						<option value="balls" <?php if( $men_shape == "balls" ){ echo ' selected'; } ?>>Balls</option>
@@ -32,11 +32,13 @@
 						<option value="hcylinder" <?php if( $men_shape == "hcylinder" ){ echo ' selected'; } ?>>Horisontal Cylinder</option>
 						<option value="knot" <?php if( $men_shape == "knot" ){ echo ' selected'; } ?>>Knot</option>
 						<option value="lemon" <?php if( $men_shape == "lemon" ){ echo ' selected'; } ?>>Lemon</option>
+						<option value="love" <?php if( $men_shape == "love" ){ echo ' selected'; } ?>>Love</option>
 						<option value="antenna" <?php if( $men_shape == "antenna" ){ echo ' selected'; } ?>>Parabolic Antenna*</option>
 						<option value="hcones" <?php if( $men_shape == "hcones" ){ echo ' selected'; } ?>>Peg top around X-axis*</option>
 						<option value="vcones" <?php if( $men_shape == "vcones" ){ echo ' selected'; } ?>>Peg top around Y-axis*</option>
 						<option value="hring" <?php if( $men_shape == "hring" ){ echo ' selected'; } ?>>Ring around X-axis</option>
 						<option value="vring" <?php if( $men_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
+						<option value="rings" <?php if( $men_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $men_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $men_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
 						<option value="sphere" <?php if( $men_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
@@ -145,21 +147,21 @@
 					Radius X 
 					<br>
 					<select id="<?=$this->get_field_id('men_radius_x'); ?>" name="<?=$this->get_field_name('men_radius_x'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="merx_' . $i . '" value="' . $i/100 . '"'; if($men_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="merx_' . $i . '" value="' . $i/100 . '"'; if($men_radius_x==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<label style="width: 86px;" title="Initial size of cloud from centre to top and bottom." for="<?=$this->get_field_id('men_radius_y'); ?>" >
 					Radius Y 
 					<br>
 					<select id="<?=$this->get_field_id('men_radius_y'); ?>" name="<?=$this->get_field_name('men_radius_y'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="mery_' . $i . '" value="' . $i/100 . '"'; if($men_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="mery_' . $i . '" value="' . $i/100 . '"'; if($men_radius_y==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</label>				
 				<div style="width: 86px; float: left;<?php if($men_shape == 'spiral'||$men_shape == 'hexagon'||$men_shape == 'circles'||$men_shape == 'beam') {echo ' visibility: hidden;';}; ?>" title="Initial size of cloud from centre to front and back." id="cont_<?=$this->get_field_id('men_radius_z'); ?>">
 					Radius Z 
 					<br>
 					<select id="<?=$this->get_field_id('men_radius_z'); ?>" name="<?=$this->get_field_name('men_radius_z'); ?>">
-						<?php for($i=0; $i<1205; $i+=5){echo '<option id="merz_' . $i . '" value="' . $i/100 . '"'; if($men_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
+						<?php for($i=0; $i<1505; $i+=5){echo '<option id="merz_' . $i . '" value="' . $i/100 . '"'; if($men_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</div> 
 				<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('men_split_width'); ?>">

@@ -18,12 +18,12 @@
 					<br>
 					<select id="<?=$this->get_field_id('rec_shape'); ?>" name="<?=$this->get_field_name('rec_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('rec_radius_z'); ?>', '<?=$this->get_field_id('all_recent_posts_limit'); ?>', 'rec')";>
 						<option value="axes" <?php if( $rec_shape == "axes" ){ echo ' selected'; } ?>>3D Axes*</option>
-						<option value="spiral3" <?php if( $rec_shape == "spiral3" ){ echo ' selected'; } ?>>3D Spiral</option>
 						<option value="balls" <?php if( $rec_shape == "balls" ){ echo ' selected'; } ?>>Balls</option>
 						<option value="blossom" <?php if( $rec_shape == "blossom" ){ echo ' selected'; } ?>>Blossom</option>
 						<option value="bulb" <?php if( $rec_shape == "bulb" ){ echo ' selected'; } ?>>Bulb</option>
 						<option value="candy" <?php if( $rec_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $rec_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
+						<option value="dna" <?php if( $rec_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
 						<option value="egg" <?php if( $rec_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $rec_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $rec_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -42,6 +42,7 @@
 						<option value="roller" <?php if( $rec_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $rec_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
 						<option value="sphere" <?php if( $rec_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
+						<option value="spiral3" <?php if( $rec_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $rec_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>
 						<option value="stool" <?php if( $rec_shape == "stool" ){ echo ' selected'; } ?>>Stool</option>
 						<option value="pyramid" <?php if( $rec_shape == "pyramid" ){ echo ' selected'; } ?>>Tetrahedron (Triangle Pyramid)*</option>
@@ -151,7 +152,14 @@
 							}
 						?>
 					</select>
-				</div>  
+				</div>
+				<div style="float: left; margin: 0 0 0 12px;" title="The minimum number of tags to show in the cloud. If the number of links available is lower than this value, the list will be repeated. Shapes marked with an asterisk (*) may use the nearest downward value.">
+					Min Tags
+					<br>
+					<select id="<?=$this->get_field_id('rec_min_tags'); ?>" name="<?=$this->get_field_name('rec_min_tags'); ?>">
+						<?php for($i=0; $i<201; $i++){echo '<option id="remint_' . $i . '" value="' . $i . '"'; if($rec_min_tags==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
+					</select>
+				</div>
 				<div class="thick-spacer"></div>
 				<div style="margin: 0 35px 0 0; float: left;" title="Switches on/off weighting of tags. Setting <span class='green'>off</span> overrides <span class='green'>Weight Mode</span>.">
 					Weight

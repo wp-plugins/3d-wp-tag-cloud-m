@@ -28,6 +28,7 @@
 	- <span>Balls</span>: Nice shape, good for any type and number of tags. Those in the middle overlap each other due to specificity of the shape.<br>
 	- <span>Blossom</span>: Better for bigger number image tags: 80 - 160. The stem of blossom grows with increase of tags.<br>
 	- <span>Bulb</span>: Good for any type and number of tags.<br>
+	- <span>DNA</span>: Most suitable for about 30 - 40 image tags or 60 - 80 text tags.<br>
 	- <span>Egg</span>: Good for any type and number of tags.<br>
 	- <span>Candy</span>: Good for any type and number of tags. Those in both ends overlap each other due to specificity of the shape.<br>
 	- <span>Capsule</span>: Good for any type and number of tags.<br>

@@ -76,6 +76,7 @@
 	$arch_lock = $instance['arch_lock'];
 	$arch_max_speed = $instance['arch_max_speed'];
 	$arch_min_speed = $instance['arch_min_speed'];
+	$arch_min_tags = $instance['arch_min_tags'];
 	$arch_outline_color = $instance['arch_outline_color'];
 	$arch_outline_method = $instance['arch_outline_method'];
 	$arch_pulsate_to = $instance['arch_pulsate_to'];
@@ -125,6 +126,7 @@
 	$auth_lock = $instance['auth_lock'];
 	$auth_max_speed = $instance['auth_max_speed'];
 	$auth_min_speed = $instance['auth_min_speed'];
+	$auth_min_tags = $instance['auth_min_tags'];
 	$auth_outline_color = $instance['auth_outline_color'];
 	$auth_outline_method = $instance['auth_outline_method'];
 	$auth_pulsate_to = $instance['auth_pulsate_to'];
@@ -169,6 +171,7 @@
 	$cat_lock = $instance['cat_lock'];
 	$cat_max_speed = $instance['cat_max_speed'];
 	$cat_min_speed = $instance['cat_min_speed'];
+	$cat_min_tags = $instance['cat_min_tags'];
 	$cat_outline_color = $instance['cat_outline_color'];
 	$cat_outline_method = $instance['cat_outline_method'];
 	$cat_pulsate_to = $instance['cat_pulsate_to'];
@@ -218,6 +221,7 @@
 	$lin_lock = $instance['lin_lock'];
 	$lin_max_speed = $instance['lin_max_speed'];
 	$lin_min_speed = $instance['lin_min_speed'];
+	$lin_min_tags = $instance['lin_min_tags'];
 	$lin_outline_color = $instance['lin_outline_color'];
 	$lin_outline_method = $instance['lin_outline_method'];
 	$lin_pulsate_to = $instance['lin_pulsate_to'];
@@ -268,6 +272,7 @@
 	$men_lock = $instance['men_lock'];
 	$men_max_speed = $instance['men_max_speed'];
 	$men_min_speed = $instance['men_min_speed'];
+	$men_min_tags = $instance['men_min_tags'];
 	$men_outline_color = $instance['men_outline_color'];
 	$men_outline_method = $instance['men_outline_method'];
 	$men_pulsate_to = $instance['men_pulsate_to'];
@@ -309,6 +314,7 @@
 	$pag_lock = $instance['pag_lock'];
 	$pag_max_speed = $instance['pag_max_speed'];
 	$pag_min_speed = $instance['pag_min_speed'];
+	$pag_min_tags = $instance['pag_min_tags'];
 	$pag_outline_color = $instance['pag_outline_color'];
 	$pag_outline_method = $instance['pag_outline_method'];
 	$pag_pulsate_to = $instance['pag_pulsate_to'];
@@ -344,6 +350,7 @@
 	$pos_lock = $instance['pos_lock'];
 	$pos_max_speed = $instance['pos_max_speed'];
 	$pos_min_speed = $instance['pos_min_speed'];
+	$pos_min_tags = $instance['pos_min_tags'];
 	$pos_outline_color = $instance['pos_outline_color'];
 	$pos_outline_method = $instance['pos_outline_method'];
 	$pos_pulsate_to = $instance['pos_pulsate_to'];
@@ -393,6 +400,7 @@
 	$rec_lock = $instance['rec_lock'];
 	$rec_max_speed = $instance['rec_max_speed'];
 	$rec_min_speed = $instance['rec_min_speed'];
+	$rec_min_tags = $instance['rec_min_tags'];
 	$rec_outline_color = $instance['rec_outline_color'];
 	$rec_outline_method = $instance['rec_outline_method'];
 	$rec_pulsate_to = $instance['rec_pulsate_to'];
@@ -443,6 +451,7 @@
 	$ppl_lock = $instance['ppl_lock'];
 	$ppl_max_speed = $instance['ppl_max_speed'];
 	$ppl_min_speed = $instance['ppl_min_speed'];
+	$ppl_min_tags = $instance['ppl_min_tags'];
 	$ppl_outline_color = $instance['ppl_outline_color'];
 	$ppl_outline_method = $instance['ppl_outline_method'];
 	$ppl_pulsate_to = $instance['ppl_pulsate_to'];

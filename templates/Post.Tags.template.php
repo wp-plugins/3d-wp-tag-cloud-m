@@ -7,7 +7,7 @@
 		<div style="float: left;">
 			<span>GENERAL</span>
 			<div style="padding-top: 5px;">
-				<label style="margin: 0 12px 0 0;" title="Cloud shapes Legend:<br><span class='color' style='padding: 0; border: 1px solid #444; 
+				<label style="margin: 0 10px 0 0;" title="Cloud shapes Legend:<br><span class='color' style='padding: 0; border: 1px solid #444; 
 					font-size: 10px; color: #fff;'>██</span> 3D Shape, <span class='color' style='padding: 0; border: 1px solid #444; font-size: 10px; 
 					color: #ccc;'>██</span> 2D Shape, <span class='color' style='padding: 0; border: 1px solid #444; font-size: 10px; color: #aaa;'>██</span> 
 					1D Shape, <b style='font-size: 26px; line-height: 5px; position: relative; top: 10px;'>*</b> Specific set of tag numbers in 
@@ -18,12 +18,12 @@
 					<br>
 					<select id="<?=$this->get_field_id('pos_shape'); ?>" name="<?=$this->get_field_name('pos_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('pos_radius_z'); ?>', '<?=$this->get_field_id('all_post_tags_limit'); ?>', 'pos')";>
 						<option value="axes" <?php if( $pos_shape == "axes" ){ echo ' selected'; } ?>>3D Axes*</option>
-						<option value="spiral3" <?php if( $pos_shape == "spiral3" ){ echo ' selected'; } ?>>3D Spiral</option>
 						<option value="balls" <?php if( $pos_shape == "balls" ){ echo ' selected'; } ?>>Balls</option>
 						<option value="blossom" <?php if( $pos_shape == "blossom" ){ echo ' selected'; } ?>>Blossom</option>
 						<option value="bulb" <?php if( $pos_shape == "bulb" ){ echo ' selected'; } ?>>Bulb</option>
 						<option value="candy" <?php if( $pos_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $pos_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
+						<option value="dna" <?php if( $pos_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
 						<option value="egg" <?php if( $pos_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $pos_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $pos_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -42,6 +42,7 @@
 						<option value="roller" <?php if( $pos_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $pos_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
 						<option value="sphere" <?php if( $pos_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
+						<option value="spiral3" <?php if( $pos_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $pos_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>
 						<option value="stool" <?php if( $pos_shape == "stool" ){ echo ' selected'; } ?>>Stool</option>
 						<option value="pyramid" <?php if( $pos_shape == "pyramid" ){ echo ' selected'; } ?>>Tetrahedron (Triangle Pyramid)*</option>
@@ -134,7 +135,14 @@
 							}
 						?>
 					</select>
-				</label>	
+				</label>
+				<div style="float: left; margin: 0 0 0 10px;" title="The minimum number of tags to show in the cloud. If the number of links available is lower than this value, the list will be repeated. Shapes marked with an asterisk (*) may use the nearest downward value.">
+					Min Tags
+					<br>
+					<select id="<?=$this->get_field_id('pos_min_tags'); ?>" name="<?=$this->get_field_name('pos_min_tags'); ?>">
+						<?php for($i=0; $i<201; $i++){echo '<option id="pomint_' . $i . '" value="' . $i . '"'; if($pos_min_tags==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
+					</select>
+				</div>
 				<div class="thick-spacer"></div>
 				<div style="float: left; margin: 0 12px 0 0;" title="Switches on/off weighting of tags. Setting <span class='green'>off</span> overrides <span class='green'>Weight Mode</span>.">
 					Weight

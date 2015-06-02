@@ -18,12 +18,12 @@
 					<br>
 					<select id="<?=$this->get_field_id('auth_shape'); ?>" name="<?=$this->get_field_name('auth_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('auth_radius_z'); ?>', '<?=$this->get_field_id('all_authors_limit'); ?>', 'aut')";>
 						<option value="axes" <?php if( $auth_shape == "axes" ){ echo ' selected'; } ?>>3D Axes*</option>
-						<option value="spiral3" <?php if( $auth_shape == "spiral3" ){ echo ' selected'; } ?>>3D Spiral</option>
 						<option value="balls" <?php if( $auth_shape == "balls" ){ echo ' selected'; } ?>>Balls</option>
 						<option value="blossom" <?php if( $auth_shape == "blossom" ){ echo ' selected'; } ?>>Blossom</option>
 						<option value="bulb" <?php if( $auth_shape == "bulb" ){ echo ' selected'; } ?>>Bulb</option>
 						<option value="candy" <?php if( $auth_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $auth_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
+						<option value="dna" <?php if( $auth_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
 						<option value="egg" <?php if( $auth_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $auth_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $auth_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -42,6 +42,7 @@
 						<option value="roller" <?php if( $auth_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $auth_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
 						<option value="sphere" <?php if( $auth_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
+						<option value="spiral3" <?php if( $auth_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $auth_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>
 						<option value="stool" <?php if( $auth_shape == "stool" ){ echo ' selected'; } ?>>Stool</option>
 						<option value="pyramid" <?php if( $auth_shape == "pyramid" ){ echo ' selected'; } ?>>Tetrahedron (Triangle Pyramid)*</option>
@@ -58,7 +59,7 @@
 					</select>
 				</label>
 				<div class="thick-spacer"></div>
-				<label style="margin: 0 12px 0 0;" title="Number of authors to display" for="<?=$this->get_field_id('all_authors_limit'); ?>">
+				<label style="margin: 0 10px 0 0;" title="Number of authors to display" for="<?=$this->get_field_id('all_authors_limit'); ?>">
 					Number 
 					<br>
 					<select id="<?=$this->get_field_id('all_authors_limit'); ?>" name="<?=$this->get_field_name('all_authors_limit'); ?>">
@@ -136,6 +137,13 @@
 						?>
 					</select>
 				</label>
+				<div style="float: left; margin: 0 10px 0 0;" title="The minimum number of tags to show in the cloud. If the number of links available is lower than this value, the list will be repeated. Shapes marked with an asterisk (*) may use the nearest downward value.">
+					Min Tags
+					<br>
+					<select id="<?=$this->get_field_id('auth_min_tags'); ?>" name="<?=$this->get_field_name('auth_min_tags'); ?>">
+						<?php for($i=0; $i<201; $i++){echo '<option id="aumint_' . $i . '" value="' . $i . '"'; if($auth_min_tags==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
+					</select>
+				</div>
 				<label style="width: 140px;" title="Exclude one or more authors from the results. Enter a comma-separated list of authors IDs." for="<?=$this->get_field_id('all_exclude'); ?>">
 					Exclude 
 					<input style="width: 140px; height: 18px; font-size: 12px; line-height: 12px; padding: 2px" id="<?=$this->get_field_id('all_exclude'); ?>"

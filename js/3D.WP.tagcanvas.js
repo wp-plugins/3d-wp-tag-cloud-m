@@ -1,4 +1,4 @@
-// 3D WP Tag Cloud-M/S: Modified version of Graham Breach's Javascript class TagCanvas v. 2.6.1. 
+// 3D WP Tag Cloud-M/S: Modified version of Graham Breach's Javascript class TagCanvas v. 2.7. 
 // 1. Replaced PointsOnSphere, PoinntsOnRingH, PointsOnRingV, PointsOnCylinderH and PointsOnCilinderV functions with an universal function PointsOnShape that  
 //	  creates 12 more shapes for any number of points on them: 3D spiral, tire, blossom, balls, bulb, egg, candy, glass, lemon, capsule, stool and knot.
 // 2. Added functions PointsOnCube, PointsOnSpiral, PointsOnHexagon, PointsOnCircles, PointsOnBeam, PointsOnPyramid, PointsOnGlobe, PointsOnTower, PointsOnRoller,
@@ -8,7 +8,7 @@
 //	  parabolic antenna, square, staircase, Christmas fir, triangle, sandglass, knot, heart, love and rings knotwork. 
 // 3. Enhanced function TCproto. Transform for creating rotation around z-axis.
 //
-// The added code is at lines 140 (1), 1556 (2), 1588 (3), 1766 (4), 1826 (5), 1832 (6), 2019 (7), 2073 (8), 2087 (9) & 2163 (10) and is enclosed in comments as follows: 
+// The added code is at lines 140 (1), 1638 (2), 1675 (3), 1855 (4), 1922 (5), 1930 (6), 2115 (7), 2169 (8), 2183 (9) & 2280 (10) and is enclosed in comments as follows: 
 // Peter's addition 1 of 10
 // ...
 // End of Peter's addition 1 of 10
@@ -33,7 +33,7 @@ function Defined(d) {
   return typeof d != 'undefined';
 }
 function IsObject(o) {
-  return typeof o == 'object' && o !== null;
+  return typeof o == 'object' && o != null;
 }
 function Clamp(v, mn, mx) {
   return isNaN(v) ? mx : min(mx, max(mn, v));
@@ -81,7 +81,7 @@ Vproto.cross = function(v) {
 };
 Vproto.angle = function(v) {
   var dot = this.dot(v), ac;
-  if(dot === 0)
+  if(dot == 0)
     return Math.PI / 2.0;
   ac = dot / (this.length() * v.length());
   if(ac >= 1)
@@ -116,7 +116,7 @@ Matrix.Rotation = function(angle, u) {
     u.y * u.x * mcos + u.z * sina, cosa + pow(u.y, 2) * mcos, u.y * u.z * mcos - u.x * sina,
     u.z * u.x * mcos - u.y * sina, u.z * u.y * mcos + u.x * sina, cosa + pow(u.z, 2) * mcos
   ]);
-};
+}
 Mproto.mul = function(m) {
   var a = [], i, j, mmatrix = (m.xform ? 1 : 0);
   for(i = 1; i <= 3; ++i)
@@ -140,37 +140,46 @@ Mproto.xform = function(p) {
 // Peter's addition 1 of 10
 var round = Math.round, floor = Math.floor, phi = Math.PI*2, inc = Math.PI*(3-sqrt(5)), iphi, phi1, step, r;
 function PointsOnShape(n,xr,yr,zr,shape) {
-  var off = 2/n, min = -round(n/2), max = n-round(n/2), step = 1, y, i = 0, qx = 1, qy = 1, qz = 1, xp, yp, zp, phi2, corr = 0, nanr = 0, pts = [];
-  for(j = min; j< max; j+=step){
-	y = i*off-1+(off/2);
-	qy = y;
-	phi1 = j*phi/n;
-    phi2 = i*inc;
-	switch(shape){
-	  case "hcylinder": r = 0.75; break;
-	  case "vcylinder": r = 0.75; break;
-	  case "sphere": r = sqrt(1-y*y); break;
-	  case "hring": r = 1; qy = 0; phi2 = i*phi/n; break;
-	  case "vring": r = 1; qy = 0; phi2 = i*phi/n; break;
-	  case "stool": r = sqrt(1-y*y*y*y)/cos(phi1/4); break;
-	  case "capsule": r = 2*sqrt(1-y*y*y*y)/cos(phi1/8)/4; break;
-	  case "candy": r = 1/cos(phi1/16)*cos(phi1/1.35)*0.5; break;
-	  case "spiral3": r = 0.75; phi2 = i*phi/18; qy = y*0.75; break;
-	  case "lemon": r = sqrt(1+y*y)*cos(phi1/9)*cos(phi1/2)*0.6; break;
-	  case "tire": r = sqrt(1+y*y)*cos(phi1/8)*cos(phi1/3); qy = qy/2.5; break;
-	  case "balls": r = sqrt(1-y*y)*cos(phi1/4)*sin(phi1/2); qy = qy*1.2; break;
-	  case "egg": r = 0.7*sqrt(1-y*y)-cos(phi1/3)*sin(phi1/12)/3; qy = - qy; break;
-	  case "bulb": r = sqrt(1-y*y)-cos(phi1/4)*sin(phi1)/2; qx = qz= 0.75; qy = qy/1.33; break;
-	  case "blossom": r = sqrt(1-y*y*y-y/5)-Math.tan(phi1/16)/2; qx = qz= 0.6; qy = qy/1.67; break;
-	  case "glass": r = sin(phi1/3)*sin(phi1*0.9)*cos(phi1/5)-y; qx = qz = 0.8; qy = qy/1.25; break;
-	  case "knot": r = 1/sqrt(2); phi1 = phi1*2; phi2 = phi/8; qx = cos(phi1/4)*sin(phi1); qy = cos(phi1)*(i*2/n-1); qz = cos(phi1/4)*cos(phi1); break;
-	}
-	zp = sin(phi2)*(isNaN(r)?0:r)*qz*zr;
-	if(shape=="hring"||shape=="hcylinder"||shape=="knot"||shape=="lemon"||shape=="tire"||shape=="balls"){xp = qy*xr; yp = cos(phi2)*r*qx*yr;}
-	else {nanr=(isNaN(r)?nanr+1:nanr); xp = cos(phi2)*(isNaN(r)?0:r)*qx*xr; yp = (isNaN(r)?nanr*18:0)+qy*yr-corr;}
-    pts.push([xp, yp, zp]);
-	i++;
-  }
+  var off = 2/n, min = -round(n/2), max = n + min, step = 1, y, i = 0, qx = 1, qy = 1, qz = 1, xp, yp, zp, phi2, corr = 0, nanr = 0, pts = [];
+  var k, l = 1, m = -min, o = max, p = n, q, min1 = -round(m/2), max1 = m+min1, min2 = -round(o/2), max2 = o + min2;
+  if(shape=='balls'){l=2;}
+  for(k = 1; k <= l; k++){
+	  if(l==2&&k==1){min=min1; max=max1; p = m; q = 1.5; off = 2/p;} else {if(l==2&&k==2){min=min2; max=max2; p = o; q = -1.5; off = 2/p;}}
+		  for(j = min; j< max; j+=step){
+			y = i*off-1+(off/2);
+			qy = y;
+			phi1 = j*phi/p;
+			phi2 = i*inc;
+			switch(shape){
+			  case "hcylinder": r = 0.75; break;
+			  case "vcylinder": r = 0.75; break;
+			  case "sphere": r = sqrt(1-y*y); break;
+			  case "balls": r = sqrt(1-y*y); break;
+			  case "hring": r = 1; qy = 0; phi2 = i*phi/n; break;
+			  case "vring": r = 1; qy = 0; phi2 = i*phi/n; break;
+			  case "stool": r = sqrt(1-y*y*y*y)/cos(phi1/4); break;
+			  case "capsule": r = 2*sqrt(1-y*y*y*y)/cos(phi1/8)/4; break;
+			  case "candy": r = 1/cos(phi1/16)*cos(phi1/1.35)*0.5; break;
+			  case "spiral3": r = 0.75; phi2 = i*phi/18; qy = y*0.75; break;
+			  case "lemon": r = sqrt(1+y*y)*cos(phi1/9)*cos(phi1/2)*0.6; break;
+			  case "tire": r = sqrt(1+y*y)*cos(phi1/8)*cos(phi1/3); qy = qy/2.5; break;
+		//	  case "turbans": r = sqrt(1-y*y)*cos(phi1/2)*sin(phi1/1.5); qy = qy; break; //tamples
+		//	  case "turbans": r = sqrt(1-y*y)*cos(phi1)*sin(phi1/1.15); qy = qy; break; // donuts
+		//	  case "turbans": r = sqrt(1-y*y)*cos(phi1/4)*sin(phi1/2); qy = qy*cos(phi1/3); break; // sandglass
+			  case "egg": r = 0.7*sqrt(1-y*y)-cos(phi1/3)*sin(phi1/12)/3; qy = - qy; break;
+			  case "bulb": r = sqrt(1-y*y)-cos(phi1/4)*sin(phi1)/2; qx = qz= 0.75; qy = qy/1.33; break;
+			  case "blossom": r = sqrt(1-y*y*y-y/5)-Math.tan(phi1/16)/2; qx = qz= 0.6; qy = qy/1.67; break;
+			  case "glass": r = sin(phi1/3)*sin(phi1*0.9)*cos(phi1/5)-y; qx = qz = 0.8; qy = qy/1.25; break;
+			  case "knot": r = 1/sqrt(2); phi1 = phi1*2; phi2 = phi/8; qx = cos(phi1/4)*sin(phi1); qy = cos(phi1)*(i*2/n-1); qz = cos(phi1/4)*cos(phi1); break;
+			}
+			zp = sin(phi2)*(isNaN(r)?0:r)*qz*zr;
+			if(shape=="hring"||shape=="hcylinder"||shape=="knot"||shape=="lemon"||shape=="tire"||shape=='turbans'){xp = qy*xr; yp = cos(phi2)*r*qx*yr;}
+			else {nanr=(isNaN(r)?nanr+1:nanr); xp = cos(phi2)*(isNaN(r)?0:r)*qx*xr/(l==2?2:1); yp = (isNaN(r)?nanr*18:0)+qy*yr-corr;}
+			pts.push([xp+(l==2&&k==1?xr/2+10:l==2&&k==2?-xr/2-10:0), yp/(l==2?2:1), zp/(l==2?2:1)]);
+			i++;
+		  }
+		i=0;
+	  }
   return pts;
 }
 function PointsOnAntenna(n,xr,yr,zr) {
@@ -488,7 +497,29 @@ function PointsOnRings(n,xr,yr,zr) {
 	}
   return pts;
 }
+function PointsOnDNA(n, rx, ry, rz) {
+  var i, j, p = [],
+    z = rz * 2 / n;
+  for(i = 0; i < n; ++i) {
+    if(i % 2){j += phi/2;}
+	else{j = phi*i/n;}
+    p.push([rx*cos(j)/2, rz-z * i, ry*sin(j)/2]);
+  }
+  return p;
+}
 // End of Peter's addition 1 of 10
+function CentreImage(t) {
+  var i = new Image;
+  i.onload = function() {
+    var dx = i.width / 2, dy = i.height / 2;
+    t.centreFunc = function(c, w, h, cx, cy) {
+      c.setTransform(1, 0, 0, 1, 0, 0);
+      c.globalAlpha = 1;
+      c.drawImage(i, cx - dx, cy - dy);
+    };
+  };
+  i.src = t.centreImage;
+}
 function SetAlpha(c,a) {
   var d = c, p1, p2, ae = (a*1).toPrecision(3) + ')';
   if(c[0] === '#') {
@@ -1015,25 +1046,47 @@ function MouseUp(e) {
   if(tg && e.button == cb && t.tc[tg]) {
     tc = t.tc[tg];
     MouseMove(e);
-    if(!tc.EndDrag() && !tc.touched)
+    if(!tc.EndDrag() && !tc.touchState)
       tc.Clicked(e);
   }
 }
 function TouchDown(e) {
-  var t = TagCanvas, tg = EventToCanvasId(e);
-  if(tg && e.changedTouches && t.tc[tg]) {
-    t.tc[tg].touched = 1;
-    t.tc[tg].BeginDrag(e);
+  var tg = EventToCanvasId(e), tc = (tg && TagCanvas.tc[tg]), p;
+  if(tc && e.changedTouches) {
+    if(e.touches.length == 1 && tc.touchState == 0) {
+      tc.touchState = 1;
+      tc.BeginDrag(e);
+      if(p = EventXY(e, tc.canvas)) {
+        tc.mx = p.x;
+        tc.my = p.y;
+        tc.drawn = 0;
+      }
+    } else if(e.targetTouches.length == 2 && tc.pinchZoom) {
+      tc.touchState = 3;
+      tc.EndDrag();
+      tc.BeginPinch(e);
+    } else {
+      tc.EndDrag();
+      tc.EndPinch();
+      tc.touchState = 0;
+    }
   }
 }
 function TouchUp(e) {
-  var t = TagCanvas, tg = EventToCanvasId(e);
-  if(tg && e.changedTouches && t.tc[tg]) {
-    TouchMove(e);
-    if(!t.tc[tg].EndDrag()){
-      t.tc[tg].Draw();
-      t.tc[tg].Clicked(e);
+  var tg = EventToCanvasId(e), tc = (tg && TagCanvas.tc[tg]);
+  if(tc && e.changedTouches) {
+    switch(tc.touchState) {
+    case 1:
+      tc.Draw();
+      tc.Clicked();
+      break;
+    case 2:
+      tc.EndDrag();
+      break;
+    case 3:
+      tc.EndPinch();
     }
+    tc.touchState = 0;
   }
 }
 function TouchMove(e) {
@@ -1045,12 +1098,20 @@ function TouchMove(e) {
       tc.tttimer = null;
     }
   }
-  if(tg && t.tc[tg] && e.changedTouches) {
-    tc = t.tc[tg];
-    if(p = EventXY(e, tc.canvas)) {
-      tc.mx = p.x;
-      tc.my = p.y;
-      tc.Drag(e, p);
+  tc = (tg && t.tc[tg]);
+  if(tc && e.changedTouches && tc.touchState) {
+    switch(tc.touchState) {
+    case 1:
+    case 2:
+      if(p = EventXY(e, tc.canvas)) {
+        tc.mx = p.x;
+        tc.my = p.y;
+        if(tc.Drag(e, p))
+          tc.touchState = 2;
+      }
+      break;
+    case 3:
+      tc.Pinch(e);
     }
     tc.drawn = 0;
   }
@@ -1570,9 +1631,10 @@ function TagCanvas(cid,lctr,opt) {
 
   this.canvas = c;
   this.ctxt = c.getContext('2d');
-  this.z1 = 250 / this.depth;
+  this.z1 = 250 / max(this.depth, 0.001);
   this.z2 = this.z1 / this.zoom;
   this.radius = min(c.height, c.width) * 0.0075; // fits radius of 100 in canvas
+  this.max_radius = 100;
   this.max_weight = [];
   this.min_weight = [];
   this.textFont = this.textFont && FixFont(this.textFont);
@@ -1585,13 +1647,18 @@ function TagCanvas(cid,lctr,opt) {
   this.ly = (this.lock + '').indexOf('y') + 1;
 // Peter's addition 2 of 10
   this.lz = (this.lock + '').indexOf('z') + 1;
-// End of Peter's addition 2 of 10
-  this.frozen = this.dx = this.dy = this.fixedAnim = this.touched = 0;
+// End of Peter's addition 2 of 10 
+  this.frozen = this.dx = this.dy = this.fixedAnim = this.touchState = 0;
   this.fixedAlpha = 1;
   this.source = lctr || cid;
+  this.repeatTags = min(64, ~~this.repeatTags);
+  this.minTags = min(200, ~~this.minTags);
+  if(this.minTags > 0 && this.repeatTags < 1 && (i = this.GetTags().length))
+    this.repeatTags = ceil(this.minTags / i) - 1;
   this.transform = Matrix.Identity();
   this.startTime = this.time = TimeNow();
   this.mx = this.my = -1;
+  this.centreImage && CentreImage(this);
   this.Animate = this.dragControl ? this.AnimateDrag : this.AnimatePosition;
   this.animTiming = (typeof TagCanvas[this.animTiming] == 'function' ?
     TagCanvas[this.animTiming] : TagCanvas.Smooth);
@@ -1681,11 +1748,13 @@ TCproto.HideTags = function() {
     el[i].style.display = 'none';
 };
 TCproto.GetTags = function() {
-  var el = this.SourceElements(), etl, tl = [], i, j;
-  for(i = 0; i < el.length; ++i) {
-    etl = el[i].getElementsByTagName('a');
-    for(j = 0; j < etl.length; ++j) {
-      tl.push(etl[j]);
+  var el = this.SourceElements(), etl, tl = [], i, j, k;
+  for(k = 0; k <= this.repeatTags; ++k) {
+    for(i = 0; i < el.length; ++i) {
+      etl = el[i].getElementsByTagName('a');
+      for(j = 0; j < etl.length; ++j) {
+        tl.push(etl[j]);
+      }
     }
   }
   return tl;
@@ -1794,7 +1863,7 @@ TCproto.Load = function() {
   var tl = this.GetTags(), taglist = [], shape, t,
     shapeArgs, rx, ry, rz, vl, i, tagmap = [], pfuncs = {
 // Piter's addition 4 of 10
-	  balls: PointsOnShape, // Double Peg Top
+	  balls: PointsOnShape,
 	  blossom: PointsOnShape,
 	  bulb: PointsOnShape,
 	  candy: PointsOnShape,
@@ -1806,7 +1875,7 @@ TCproto.Load = function() {
 	  lemon: PointsOnShape,
 	  knot: PointsOnShape,
 	  sphere: PointsOnShape,
-	  spiral3: PointsOnShape,	  
+	  spiral3: PointsOnShape,
 	  stool: PointsOnShape,
 	  tire: PointsOnShape,
 	  vcylinder: PointsOnShape,
@@ -1832,9 +1901,11 @@ TCproto.Load = function() {
 	  vcones: PointsOnConesV,
 	  heart: PointsOnHeart,
 	  love: PointsOnLove,
-	  rings: PointsOnRings
+	  rings: PointsOnRings,
+	  dna: PointsOnDNA
 // End of Peter's addition 4 of 10
     };
+
   if(tl.length) {
     tagmap.length = tl.length;
     for(i = 0; i < tl.length; ++i)
@@ -1844,32 +1915,35 @@ TCproto.Load = function() {
     ry = 100 * this.radiusY;
     rz = 100 * this.radiusZ;
     this.max_radius = max(rx, max(ry, rz));
+
     for(i = 0; i < tl.length; ++i) {
       t = this.CreateTag(tl[tagmap[i]]);
       if(t)
         taglist.push(t);
     }
     this.weight && this.Weight(taglist, true);
+  
     if(this.shapeArgs) {
       this.shapeArgs[0] = taglist.length;
     } else {
       shapeArgs = this.shape.toString().split(/[(),]/);
       shape = shapeArgs.shift();
-      this.shape = pfuncs[shape] || pfuncs.sphere;
+      if(typeof window[shape] === 'function')
+        this.shape = window[shape];
+      else
+        this.shape = pfuncs[shape] || pfuncs.sphere;
 // Peter's addition 5 of 10
-      this.shapeArgs = [taglist.length, rx, ry, rz, shape].concat(shapeArgs); // Added shape
+        this.shapeArgs = [taglist.length, rx, ry, rz, shape].concat(shapeArgs); // Added shape
 // End of Peter's addition 5 of 10
     }
     vl = this.shape.apply(this, this.shapeArgs);
     this.listLength = taglist.length;
 // Peter's addition 6 of 10
 	taglist.splice(vl.length,taglist.length-vl.length);
-// End of Peter's addition 6 of 10
+// End of Peter's addition 6 of 10	
     for(i = 0; i < taglist.length; ++i)
       taglist[i].position = new Vector(vl[i][0], vl[i][1], vl[i][2]);
   }
-	
-	
   if(this.noTagsMessage && !taglist.length)
     taglist = this.Message('No tags');
   this.taglist = taglist;
@@ -2181,11 +2255,32 @@ TCproto.Drag = function(e, p) {
       this.down = p;
     }
   }
+  return this.dragging;
 };
 TCproto.EndDrag = function() {
   var res = this.dragging;
   this.dragging = this.down = null;
   return res;
+};
+function PinchDistance(e) {
+  var t1 = e.targetTouches[0], t2 = e.targetTouches[1];
+  return sqrt(pow(t2.pageX - t1.pageX, 2) + pow(t2.pageY - t1.pageY, 2));
+}
+TCproto.BeginPinch = function(e) {
+  this.pinched = [PinchDistance(e), this.zoom];
+  e.preventDefault && e.preventDefault();
+};
+TCproto.Pinch = function(e) {
+  var z, d, p = this.pinched;
+  if(!p)
+    return;
+  d = PinchDistance(e);
+  z = p[1] * d / p[0];
+  this.zoom = min(this.zoomMax,max(this.zoomMin,z));
+  this.Zoom(this.zoom);
+};
+TCproto.EndPinch = function(e) {
+  this.pinched = null;
 };
 TCproto.Pause = function() { this.paused = true; };
 TCproto.Resume = function() { this.paused = false; };
@@ -2375,7 +2470,11 @@ imagePosition: null,
 imagePadding: 2,
 imageAlign: 'centre',
 imageVAlign: 'middle',
-noTagsMessage: true
+noTagsMessage: true,
+centreImage: null,
+pinchZoom: false,
+repeatTags: 0,
+minTags: 0
 };
 for(i in TagCanvas.options) TagCanvas[i] = TagCanvas.options[i];
 window.TagCanvas = TagCanvas;

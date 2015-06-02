@@ -355,15 +355,6 @@
 					<?php if( $all_taxonomy == "authors" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
 				</div>
 				<div class="rache">
-					<div class="type_of_cont">categories</div>
-					<input class="check-box" id="<?=$this->get_field_id('cat_menu_item'); ?>" title="Displays a list of categories created in the WP Admin Panel."
-					name="<?=$this->get_field_name('cat_menu_item'); ?>" type="checkbox" 
-					<?php if( $cat_menu_item == "on" ){ echo ' checked="checked"'; } ?> onclick="procedure_1(this)">
-					<input class="radio-check" id="<?=$this->get_field_id('all_taxonomy'); ?>" title="Start with a list of categories created in the WP Admin Panel."
-					name="<?=$this->get_field_name('all_taxonomy'); ?>" type="radio" value="categories"
-					<?php if( $all_taxonomy == "categories" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
-				</div>
-				<div class="rache">
 					<div class="type_of_cont">blogroll</div>
 					<input class="check-box" id="<?=$this->get_field_id('lin_menu_item'); ?>" title="Displays bookmarks found in the WP Admin Panel: <span class='green'>Links</span>."
 					name="<?=$this->get_field_name('lin_menu_item'); ?>" type="checkbox"
@@ -371,6 +362,15 @@
 					<input class="radio-check" id="<?=$this->get_field_id('all_taxonomy'); ?>" title="Start with bookmarks, found in the WP Admin Panel: <span class='green'>Links</span>."
 					name="<?=$this->get_field_name('all_taxonomy'); ?>" type="radio" value="links"
 					<?php if( $all_taxonomy == "links" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
+				</div>
+				<div class="rache">
+					<div class="type_of_cont">categories</div>
+					<input class="check-box" id="<?=$this->get_field_id('cat_menu_item'); ?>" title="Displays a list of categories created in the WP Admin Panel."
+					name="<?=$this->get_field_name('cat_menu_item'); ?>" type="checkbox" 
+					<?php if( $cat_menu_item == "on" ){ echo ' checked="checked"'; } ?> onclick="procedure_1(this)">
+					<input class="radio-check" id="<?=$this->get_field_id('all_taxonomy'); ?>" title="Start with a list of categories created in the WP Admin Panel."
+					name="<?=$this->get_field_name('all_taxonomy'); ?>" type="radio" value="categories"
+					<?php if( $all_taxonomy == "categories" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
 				</div>
 				<div class="rache">
 					<div class="type_of_cont">menu</div>
@@ -851,14 +851,14 @@
 			<u>My Center Function</u>
 			<br>
 			Create a js file and put in it your function named <span>my_cf</span>:
-			<div style="float: left; border-radius: 10px; border: 1px dotted #bbb;" for="<?=$this->get_field_id('all_cf_name'); ?>">
-				<div style="width: 92px; display: inline-block; margin: 5px 5px 0;">
-					<i>function my_cf(){<br>
+			<div style="float: left; border-radius: 11px; border: 1px dotted #bbb;" for="<?=$this->get_field_id('all_cf_name'); ?>">
+				<div style="font-family: monospace, serif; width: 115px; display: inline-block; margin: 5px 5px 0;">
+					function my_cf(){<br>
 					&nbsp; &nbsp;...<br>
-					}</i><br>
+					}<br>
 				</div>
 			</div>
-			<label style="margin: 5px 0 0 30px; width: 200px;" title="URL of a js file containing your <span class='green'>my_cf()</span> function. For example:<br><span>http://your-domain.com/your-js-folder/your-file.js</span>. <span>IMPORTANT</span>: You can include it in as many widget instances as you want, but you can have ONLY ONE <span class='green'>my_cf()</span> function." for="<?=$this->get_field_id('all_cf_url'); ?>" style="float: left; width: 255px;">
+			<label style="margin: 5px 0 0 20px; width: 190px;" title="URL of a js file containing your <span class='green'>my_cf()</span> function. For example:<br><span>http://your-domain.com/your-js-folder/your-file.js</span>. <span>IMPORTANT</span>: You can include it in as many widget instances as you want, but you can have ONLY ONE <span class='green'>my_cf()</span> function." for="<?=$this->get_field_id('all_cf_url'); ?>" style="float: left; width: 255px;">
 				URL 
 				<input style="width: 100%;"
 				id="<?=$this->get_field_id('all_cf_url'); ?>"
@@ -876,10 +876,10 @@
 	<?php include 'templates/Archives.template.php'; ?>
 	<h3>AUTHORS CLOUD</h3>
 	<?php include 'templates/Authors.template.php'; ?>
-	<h3>CATEGORIES CLOUD</h3>
-	<?php include 'templates/Categories.template.php'; ?>
 	<h3>BLOGROLL CLOUD</h3>
 	<?php include 'templates/Links.template.php'; ?>
+	<h3>CATEGORIES CLOUD</h3>
+	<?php include 'templates/Categories.template.php'; ?>
 	<h3>MENU CLOUD</h3>
 	<?php include 'templates/Menu.template.php'; ?>
 	<h3>PAGE/POST LINKS CLOUD</h3>

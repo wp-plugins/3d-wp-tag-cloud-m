@@ -18,12 +18,12 @@
 					<br>
 					<select id="<?=$this->get_field_id('ppl_shape'); ?>" name="<?=$this->get_field_name('ppl_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('ppl_radius_z'); ?>', '', 'ppl')";>
 						<option value="axes" <?php if( $ppl_shape == "axes" ){ echo ' selected'; } ?>>3D Axes*</option>
-						<option value="spiral3" <?php if( $ppl_shape == "spiral3" ){ echo ' selected'; } ?>>3D Spiral</option>
 						<option value="balls" <?php if( $ppl_shape == "balls" ){ echo ' selected'; } ?>>Balls</option>
 						<option value="blossom" <?php if( $ppl_shape == "blossom" ){ echo ' selected'; } ?>>Blossom</option>
 						<option value="bulb" <?php if( $ppl_shape == "bulb" ){ echo ' selected'; } ?>>Bulb</option>
 						<option value="candy" <?php if( $ppl_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $ppl_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
+						<option value="dna" <?php if( $ppl_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
 						<option value="egg" <?php if( $ppl_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $ppl_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $ppl_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -42,6 +42,7 @@
 						<option value="roller" <?php if( $ppl_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $ppl_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
 						<option value="sphere" <?php if( $ppl_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
+						<option value="spiral3" <?php if( $ppl_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $ppl_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>
 						<option value="stool" <?php if( $ppl_shape == "stool" ){ echo ' selected'; } ?>>Stool</option>
 						<option value="pyramid" <?php if( $ppl_shape == "pyramid" ){ echo ' selected'; } ?>>Tetrahedron (Triangle Pyramid)*</option>
@@ -64,7 +65,15 @@
 					name="<?=$this->get_field_name('all_ppl_id'); ?>" type="text"
 					value="<?php echo $all_ppl_id; ?>" />					
 					</select>
-				</label> 
+				</label>
+				<div class="thick-spacer"></div>
+				<div style="float: left; margin: 0;" title="The minimum number of tags to show in the cloud. If the number of links available is lower than this value, the list will be repeated. Shapes marked with an asterisk (*) may use the nearest downward value.">
+					Min Tags
+					<br>
+					<select id="<?=$this->get_field_id('ppl_min_tags'); ?>" name="<?=$this->get_field_name('ppl_min_tags'); ?>">
+						<?php for($i=0; $i<201; $i++){echo '<option id="ppmint_' . $i . '" value="' . $i . '"'; if($ppl_min_tags==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
+					</select>
+				</div>
 				<div class="thick-spacer"></div>
 				<label style="margin: 0 12px 0 0;" title="Type of highlight to use" for="<?=$this->get_field_id('ppl_outline_method'); ?>">
 					Outline<br>Method

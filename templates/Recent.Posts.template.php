@@ -42,6 +42,7 @@
 						<option value="rings" <?php if( $rec_shape == "rings" ){ echo ' selected'; } ?>>Ring Knotwork</option>
 						<option value="roller" <?php if( $rec_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $rec_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
+						<option value="saturn" <?php if( $rec_shape == "saturn" ){ echo ' selected'; } ?>>Saturn</option>
 						<option value="sphere" <?php if( $rec_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $rec_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $rec_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>

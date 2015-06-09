@@ -57,6 +57,8 @@
 	- <span>Rings Knotwork</span>: Beautiful shape, good for bigger number of tags of any type.<br>
 	- <span>Sandglass</span>: This shape needs more tags. Looks better with images. Not suitable for <span>Menu</span>, <span>Recent posts</span> and other types 
 	of content with small number of tags.<br>
+	- <span>Saturn</span>: This shape is nice for big number of any type tags, but in the same time is suitable for mixed image and text <span>Recent Posts</span> when their number is 20-25 and canvas is over 700x700 px.  
+	of content with small number of tags.<br>
 	- <span>Sphere</span>: Good for any type of cloud content and tags.<br>
 	- <span>Square</span>: Also flat shape, preferable for image tags. No anchored tag in the center. Not suitable for too big number of tags. Good for image galery.<br>
 	- <span>Staircase</span>: Looks great when rotates around Y-axis and is built of bigger number of tags (preferably images) - let say 60-70. Not suitable for 

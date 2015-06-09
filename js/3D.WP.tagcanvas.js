@@ -1,6 +1,6 @@
 // 3D WP Tag Cloud-M/S: Modified version of Graham Breach's Javascript class TagCanvas v. 2.7. 
 // 1. Replaced PointsOnSphere, PoinntsOnRingH, PointsOnRingV, PointsOnCylinderH and PointsOnCilinderV functions with an universal function PointsOnShape that  
-//	  creates 13 more shapes for any number of points on them: spring, tire, blossom, balls, bulb, egg, candy, glass, lemon, capsule, stool, domes and knot.
+//	  creates 14 more shapes for any number of points on them: spring, tire, blossom, balls, bulb, egg, candy, glass, lemon, capsule, stool, domes, Saturn and knot.
 // 2. Added functions PointsOnCube, PointsOnSpiral, PointsOnHexagon, PointsOnCircles, PointsOnBeam, PointsOnPyramid, PointsOnGlobe, PointsOnTower, PointsOnRoller,
 //	  PointsOnAxes, PointsOnConеsV, PointsOnConеsH, PointsOnAntenna, PointsOnSquare, PointsOnStairs, PointsOnFir, PointsOnTriangle, PointsOnSandglass, PointsOnKnote, 
 //	  PointsOnHeart, PointsOnLove, PointsOnDNA and PointsOnRings for following cloud shapes with specific number of points: cube, spiral, hexagon (bee cell), 
@@ -141,8 +141,7 @@ Mproto.xform = function(p) {
 var round = Math.round, floor = Math.floor, phi = Math.PI*2, inc = Math.PI*(3-sqrt(5)), iphi, phi1, step, r;
 function PointsOnShape(n,xr,yr,zr,shape) {
   var off = 2/(shape=='glass'&&n>20?n-20:n), min = -round((shape=='glass'&&n>20?n-20:n)/2), max = (shape=='glass'&&n>20?n-20:n) + min, step = 1, y, i = 0, qx = 1, qy = 1, qz = 1, xp, yp, zp, phi2, corr = 0, nanr = 0, pts = [];
-  var k, l = 1, m = -min, o = max, p = (shape=='glass'&&n>20?n-20:n), q, min1 = -round(m/2), max1 = m+min1, min2 = -round(o/2), max2 = o + min2;
-  if(shape=='balls'){l=2;}
+  var k, l = shape=='balls'||shape=='saturn'?2:1, m = -min, o = max, p = (shape=='glass'&&n>20?n-20:n), q, min1 = -round(m/2), max1 = m+min1, min2 = -round(o/2), max2 = o + min2, corr1 = 0;
   for(k = 1; k <= l; k++){
 	  if(l==2&&k==1){min=min1; max=max1; p = m; q = 1.5; off = 2/p;} else {if(l==2&&k==2){min=min2; max=max2; p = o; q = -1.5; off = 2/p;}}
 		  for(j = min; j< max; j+=step){
@@ -153,8 +152,8 @@ function PointsOnShape(n,xr,yr,zr,shape) {
 			switch(shape){
 			  case "hcylinder": r = 0.75; break;
 			  case "vcylinder": r = 0.75; break;
-			  case "sphere": r = sqrt(1-y*y); break;
-			  case "balls": r = sqrt(1-y*y); break;
+			  case "balls": r = sqrt(1-y*y); break; 
+			  case "sphere": r = sqrt(1-y*y); break; 
 			  case "hring": r = 1; qy = 0; phi2 = i*phi/n; break;
 			  case "vring": r = 1; qy = 0; phi2 = i*phi/n; break;
 			  case "stool": r = sqrt(1-y*y*y*y)/cos(phi1/4); break;
@@ -168,13 +167,14 @@ function PointsOnShape(n,xr,yr,zr,shape) {
 			  case "bulb": r = sqrt(1-y*y)-cos(phi1/4)*sin(phi1)/2; qx = qz= 0.75; qy = qy/1.33; break;
 			  case "sandglass": r = sqrt(1-y*y)*cos(phi1/4)*sin(phi1/2); qy = qy*cos(phi1/3)*1.67; break;
 			  case "blossom": r = sqrt(1-y*y*y-y/5)-Math.tan(phi1/16)/2; qx = qz= 0.6; qy = qy/1.67; break;
+			  case "saturn": r = sqrt(1-y*y); corr = xr/2+10; if(k==2){r = 2; qy = 0; phi2 = i*phi/o;} break;
 			  case "glass": r = sin(phi1/3)*sin(phi1*0.75)*cos(phi1/3)-y; qx = qz = 0.6; qy = qy/1.25; phi2=phi2/3.67; break;
 			  case "knot": r = 1/sqrt(2); phi1 = phi1*2; phi2 = phi/8; qx = cos(phi1/4)*sin(phi1); qy = cos(phi1)*(i*2/n-1); qz = cos(phi1/4)*cos(phi1); break;
 			}
 			zp = sin(phi2)*(isNaN(r)?0:r)*qz*zr;
 			if(shape=="hring"||shape=="hcylinder"||shape=="knot"||shape=="lemon"||shape=="tire"||shape=='domes'){xp = qy*xr; yp = cos(phi2)*r*qx*yr;}
-			else {nanr=(isNaN(r)?nanr+1:nanr); xp = cos(phi2)*(isNaN(r)?0:r)*qx*xr/(l==2?2:1); yp = (isNaN(r)?nanr*18:0)+qy*yr-corr;}
-			pts.push([xp+(l==2&&k==1?xr/2+10:l==2&&k==2?-xr/2-10:0), yp/(l==2?2:1), zp/(l==2?2:1)]);
+			else {nanr=(isNaN(r)?nanr+1:nanr); xp = cos(phi2)*(isNaN(r)?0:r)*qx*xr/(l==2?2:1)-corr; yp = (isNaN(r)?nanr*18:0)+qy*yr;}
+			pts.push([xp+(l==2&&k==1?xr/2+10:l==2&&k==2?-xr/2-10+2*corr:0), yp/(l==2?2:1), zp/(l==2?2:1)]);
 			i++;
 		  }
 		i=0;

@@ -42,6 +42,7 @@
 						<option value="rings" <?php if( $arch_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $arch_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $arch_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
+						<option value="saturn" <?php if( $arch_shape == "saturn" ){ echo ' selected'; } ?>>Saturn</option>
 						<option value="sphere" <?php if( $arch_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $arch_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $arch_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>

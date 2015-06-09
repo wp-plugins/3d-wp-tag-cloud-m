@@ -42,6 +42,7 @@
 						<option value="rings" <?php if( $lin_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $lin_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
 						<option value="sandglass" <?php if( $lin_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
+						<option value="saturn" <?php if( $lin_shape == "saturn" ){ echo ' selected'; } ?>>Saturn</option>
 						<option value="sphere" <?php if( $lin_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $lin_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $lin_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>

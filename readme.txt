@@ -14,7 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 == Description ==
 
 This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag clouds. Plugin may 
-rotate Pages, Recent Posts, External Links (blogroll), Menus, Blog Archives, List of Authors, Current Page/Post Links, Links from a custom HTML container and of course Post Tags and 
+rotate Pages, Recent Posts, Blogroll (External Links), Menus, Blog Archives, List of Authors, Current Page/Post Links, Links from a custom HTML container and of course Post Tags and 
 Post Categories. It allows showing up to 8 types of content in one widget activated from static or dynamic menu (another cloud). Supports following shapes: 2D SPIRAL, 3D AXES, 
 parabolic ANTENNA, lighthouse BEAM, BALLS, BLOSSOM, BULB, CANDY, CAPSULE, concentric CIRCLES, CUBE, CYLINDER that starts off horizontal, CYLINDER that starts off vertical, 
 DNA, DOMES, EGG, Christmas FIR, GLASS, GLOBE of rings, HEART, HEXAGON (bee cell), KNOT, LEMON, LOVE, PEG TOP that starts off horizontal, PEG TOP that starts off vertical, PYRAMID 

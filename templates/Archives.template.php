@@ -24,6 +24,7 @@
 						<option value="candy" <?php if( $arch_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $arch_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
 						<option value="dna" <?php if( $arch_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
+						<option value="domes" <?php if( $arch_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $arch_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $arch_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $arch_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -40,7 +41,7 @@
 						<option value="vring" <?php if( $arch_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
 						<option value="rings" <?php if( $arch_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $arch_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
-						<option value="sandglass" <?php if( $arch_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
+						<option value="sandglass" <?php if( $arch_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
 						<option value="sphere" <?php if( $arch_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $arch_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $arch_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>
@@ -103,10 +104,6 @@
 								case "hcones":
 									$hcones_arc = 0;
 									for($i=2; $i<5; $i++){$calc = (2*$i*$i*$i+$i)/3; echo '<option id="allarli_' . $calc . '" value="' . $calc . '"'; if($all_archives_limit==$calc){echo ' selected'; $hcones_arc = 1;} else{if($i==4&&$hcones_arc==0){echo ' selected'; $hcones_arc = 1;}}; echo '>' . $calc . '</option>'; };
-									break;
-								case "sandglass":
-									$sandglass_arc = 0;
-									for($i=2; $i<5; $i++){$calc = (4*$i*$i*$i+2*$i)/3-1; echo '<option id="allarli_' . $calc . '" value="' . $calc . '"'; if($all_archives_limit==$calc){echo ' selected'; $sandglass_arc = 1;} else{if($i==4&&$sandglass_arc==0){echo ' selected'; $sandglass_arc = 1;}}; echo '>' . $calc . '</option>'; };
 									break;
 								case "square":
 									$square_arc = 0;

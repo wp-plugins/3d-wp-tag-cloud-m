@@ -24,6 +24,7 @@
 						<option value="candy" <?php if( $men_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $men_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
 						<option value="dna" <?php if( $men_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
+						<option value="domes" <?php if( $men_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $men_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $men_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $men_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -40,7 +41,7 @@
 						<option value="vring" <?php if( $men_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
 						<option value="rings" <?php if( $men_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $men_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
-						<option value="sandglass" <?php if( $men_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
+						<option value="sandglass" <?php if( $men_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
 						<option value="sphere" <?php if( $men_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $men_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $men_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>

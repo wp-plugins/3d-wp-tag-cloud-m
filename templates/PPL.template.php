@@ -23,7 +23,7 @@
 						<option value="bulb" <?php if( $ppl_shape == "bulb" ){ echo ' selected'; } ?>>Bulb</option>
 						<option value="candy" <?php if( $ppl_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $ppl_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
-						<option value="dna" <?php if( $ppl_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
+						<option value="domes" <?php if( $ppl_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $ppl_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $ppl_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $ppl_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -40,7 +40,7 @@
 						<option value="vring" <?php if( $ppl_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
 						<option value="rings" <?php if( $ppl_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $ppl_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
-						<option value="sandglass" <?php if( $ppl_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
+						<option value="sandglass" <?php if( $ppl_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
 						<option value="sphere" <?php if( $ppl_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $ppl_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $ppl_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>

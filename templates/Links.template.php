@@ -24,6 +24,7 @@
 						<option value="candy" <?php if( $lin_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $lin_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
 						<option value="dna" <?php if( $lin_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
+						<option value="domes" <?php if( $lin_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $lin_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $lin_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $lin_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -40,7 +41,7 @@
 						<option value="vring" <?php if( $lin_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
 						<option value="rings" <?php if( $lin_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $lin_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
-						<option value="sandglass" <?php if( $lin_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
+						<option value="sandglass" <?php if( $lin_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
 						<option value="sphere" <?php if( $lin_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $lin_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $lin_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>
@@ -121,10 +122,6 @@
 										case "hcones";
 											$hcones_lin = 0;
 											for($i=2; $i<6; $i++){$calc = (2*$i*$i*$i+$i)/3; echo '<option id="alllili' . $calc . '" value="' . $calc . '"'; if($all_links_limit==$calc){echo ' selected'; $hcones_lin = 1; } else{if($i==5&&$hcones_lin==0){echo ' selected'; $hcones_lin = 1;}}; echo '>' . $calc . '</option>'; };
-											break;
-										case "sandglass";
-											$sandglass_lin = 0;
-											for($i=2; $i<6; $i++){$calc = (4*$i*$i*$i+2*$i)/3-1; echo '<option id="alllili' . $calc . '" value="' . $calc . '"'; if($all_links_limit==$calc){echo ' selected'; $sandglass_lin = 1;} else{if($i==5&&$sandglass_lin==0){echo ' selected'; $sandglass_lin = 1;}}; echo '>' . $calc . '</option>'; };
 											break;
 										case "square";
 											$square_lin = 0;

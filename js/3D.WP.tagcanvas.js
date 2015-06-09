@@ -1,11 +1,11 @@
 // 3D WP Tag Cloud-M/S: Modified version of Graham Breach's Javascript class TagCanvas v. 2.7. 
 // 1. Replaced PointsOnSphere, PoinntsOnRingH, PointsOnRingV, PointsOnCylinderH and PointsOnCilinderV functions with an universal function PointsOnShape that  
-//	  creates 12 more shapes for any number of points on them: 3D spiral, tire, blossom, balls, bulb, egg, candy, glass, lemon, capsule, stool and knot.
+//	  creates 13 more shapes for any number of points on them: spring, tire, blossom, balls, bulb, egg, candy, glass, lemon, capsule, stool, domes and knot.
 // 2. Added functions PointsOnCube, PointsOnSpiral, PointsOnHexagon, PointsOnCircles, PointsOnBeam, PointsOnPyramid, PointsOnGlobe, PointsOnTower, PointsOnRoller,
 //	  PointsOnAxes, PointsOnConеsV, PointsOnConеsH, PointsOnAntenna, PointsOnSquare, PointsOnStairs, PointsOnFir, PointsOnTriangle, PointsOnSandglass, PointsOnKnote, 
-//	  PointsOnHeart, PointsOnLove and PointsOnRings for following cloud shapes with specific number of points: cube, spiral, hexagon (bee cell), 
+//	  PointsOnHeart, PointsOnLove, PointsOnDNA and PointsOnRings for following cloud shapes with specific number of points: cube, spiral, hexagon (bee cell), 
 //	  concentric circles, lighthouse beam, tetrahedron (triangle pyramid), globe of rings, tower of rings, roller of rings, 3D axes, twin cones (peg top), 
-//	  parabolic antenna, square, staircase, Christmas fir, triangle, sandglass, knot, heart, love and rings knotwork. 
+//	  parabolic antenna, square, staircase, Christmas fir, triangle, sandglass, knot, heart, love, DNA spiral, and rings knotwork. 
 // 3. Enhanced function TCproto. Transform for creating rotation around z-axis.
 //
 // The added code is at lines 140 (1), 1638 (2), 1675 (3), 1855 (4), 1922 (5), 1930 (6), 2115 (7), 2169 (8), 2183 (9) & 2280 (10) and is enclosed in comments as follows: 
@@ -140,8 +140,8 @@ Mproto.xform = function(p) {
 // Peter's addition 1 of 10
 var round = Math.round, floor = Math.floor, phi = Math.PI*2, inc = Math.PI*(3-sqrt(5)), iphi, phi1, step, r;
 function PointsOnShape(n,xr,yr,zr,shape) {
-  var off = 2/n, min = -round(n/2), max = n + min, step = 1, y, i = 0, qx = 1, qy = 1, qz = 1, xp, yp, zp, phi2, corr = 0, nanr = 0, pts = [];
-  var k, l = 1, m = -min, o = max, p = n, q, min1 = -round(m/2), max1 = m+min1, min2 = -round(o/2), max2 = o + min2;
+  var off = 2/(shape=='glass'&&n>20?n-20:n), min = -round((shape=='glass'&&n>20?n-20:n)/2), max = (shape=='glass'&&n>20?n-20:n) + min, step = 1, y, i = 0, qx = 1, qy = 1, qz = 1, xp, yp, zp, phi2, corr = 0, nanr = 0, pts = [];
+  var k, l = 1, m = -min, o = max, p = (shape=='glass'&&n>20?n-20:n), q, min1 = -round(m/2), max1 = m+min1, min2 = -round(o/2), max2 = o + min2;
   if(shape=='balls'){l=2;}
   for(k = 1; k <= l; k++){
 	  if(l==2&&k==1){min=min1; max=max1; p = m; q = 1.5; off = 2/p;} else {if(l==2&&k==2){min=min2; max=max2; p = o; q = -1.5; off = 2/p;}}
@@ -161,25 +161,38 @@ function PointsOnShape(n,xr,yr,zr,shape) {
 			  case "capsule": r = 2*sqrt(1-y*y*y*y)/cos(phi1/8)/4; break;
 			  case "candy": r = 1/cos(phi1/16)*cos(phi1/1.35)*0.5; break;
 			  case "spiral3": r = 0.75; phi2 = i*phi/18; qy = y*0.75; break;
+			  case "domes": r = sqrt(1-y*y)*cos(phi1/1.9)*sin(phi1/1.5); break;
 			  case "lemon": r = sqrt(1+y*y)*cos(phi1/9)*cos(phi1/2)*0.6; break;
 			  case "tire": r = sqrt(1+y*y)*cos(phi1/8)*cos(phi1/3); qy = qy/2.5; break;
-		//	  case "turbans": r = sqrt(1-y*y)*cos(phi1/2)*sin(phi1/1.5); qy = qy; break; //tamples
-		//	  case "turbans": r = sqrt(1-y*y)*cos(phi1)*sin(phi1/1.15); qy = qy; break; // donuts
-		//	  case "turbans": r = sqrt(1-y*y)*cos(phi1/4)*sin(phi1/2); qy = qy*cos(phi1/3); break; // sandglass
 			  case "egg": r = 0.7*sqrt(1-y*y)-cos(phi1/3)*sin(phi1/12)/3; qy = - qy; break;
 			  case "bulb": r = sqrt(1-y*y)-cos(phi1/4)*sin(phi1)/2; qx = qz= 0.75; qy = qy/1.33; break;
+			  case "sandglass": r = sqrt(1-y*y)*cos(phi1/4)*sin(phi1/2); qy = qy*cos(phi1/3)*1.67; break;
 			  case "blossom": r = sqrt(1-y*y*y-y/5)-Math.tan(phi1/16)/2; qx = qz= 0.6; qy = qy/1.67; break;
-			  case "glass": r = sin(phi1/3)*sin(phi1*0.9)*cos(phi1/5)-y; qx = qz = 0.8; qy = qy/1.25; break;
+			  case "glass": r = sin(phi1/3)*sin(phi1*0.75)*cos(phi1/3)-y; qx = qz = 0.6; qy = qy/1.25; phi2=phi2/3.67; break;
 			  case "knot": r = 1/sqrt(2); phi1 = phi1*2; phi2 = phi/8; qx = cos(phi1/4)*sin(phi1); qy = cos(phi1)*(i*2/n-1); qz = cos(phi1/4)*cos(phi1); break;
 			}
 			zp = sin(phi2)*(isNaN(r)?0:r)*qz*zr;
-			if(shape=="hring"||shape=="hcylinder"||shape=="knot"||shape=="lemon"||shape=="tire"||shape=='turbans'){xp = qy*xr; yp = cos(phi2)*r*qx*yr;}
+			if(shape=="hring"||shape=="hcylinder"||shape=="knot"||shape=="lemon"||shape=="tire"||shape=='domes'){xp = qy*xr; yp = cos(phi2)*r*qx*yr;}
 			else {nanr=(isNaN(r)?nanr+1:nanr); xp = cos(phi2)*(isNaN(r)?0:r)*qx*xr/(l==2?2:1); yp = (isNaN(r)?nanr*18:0)+qy*yr-corr;}
 			pts.push([xp+(l==2&&k==1?xr/2+10:l==2&&k==2?-xr/2-10:0), yp/(l==2?2:1), zp/(l==2?2:1)]);
 			i++;
 		  }
 		i=0;
 	  }
+  if(shape=='glass'){
+	  phi2-=3*phi/8;
+	  var rb=sqrt(pow(pts[pts.length-1][2],2)+pow(pts[pts.length-1][0],2)), rt=sqrt(pow(pts[0][2],2)+pow(pts[0][0],2));
+	  for(i=1; i<=7;i++){
+		pts.push([cos(phi2)*rb, pts[pts.length-1][1], sin(phi2)*rb]); 
+		phi2+=phi/8;
+	  }
+	  phi2+=phi/12;
+      for(i=1; i<=12;i++){
+		pts.push([cos(phi2)*rt, -pts[0][0]-10, sin(phi2)*rt]);
+		phi2+=phi/12;
+	  }
+	  i=0;
+  }
   return pts;
 }
 function PointsOnAntenna(n,xr,yr,zr) {
@@ -1874,6 +1887,7 @@ TCproto.Load = function() {
 	  hring: PointsOnShape,
 	  lemon: PointsOnShape,
 	  knot: PointsOnShape,
+	  sandglass: PointsOnShape, // Shifted
 	  sphere: PointsOnShape,
 	  spiral3: PointsOnShape,
 	  stool: PointsOnShape,
@@ -1892,7 +1906,7 @@ TCproto.Load = function() {
 	  hexagon: PointsOnHexagon,
 	  pyramid: PointsOnPyramid,
 	  roller: PointsOnRoller,
-	  sandglass: PointsOnSandglass,
+//	  sandglass: PointsOnSandglass,
 	  spiral: PointsOnSpiral,
 	  square: PointsOnSquare,
 	  stairs: PointsOnStairs,

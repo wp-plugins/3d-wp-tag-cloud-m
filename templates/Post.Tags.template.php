@@ -24,6 +24,7 @@
 						<option value="candy" <?php if( $pos_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $pos_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
 						<option value="dna" <?php if( $pos_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
+						<option value="domes" <?php if( $pos_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $pos_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $pos_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $pos_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -40,7 +41,7 @@
 						<option value="vring" <?php if( $pos_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
 						<option value="rings" <?php if( $pos_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $pos_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
-						<option value="sandglass" <?php if( $pos_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
+						<option value="sandglass" <?php if( $pos_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
 						<option value="sphere" <?php if( $pos_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $pos_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $pos_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>
@@ -104,10 +105,6 @@
 										$hcones_pos = 0;
 										for($i=2; $i<7; $i++){$calc = (2*$i*$i*$i+$i)/3; echo '<option id="allpoli_' . $calc . '" value="' . $calc . '"'; if($all_post_tags_limit==$calc){echo ' selected'; $hcones_pos = 1;} else{if($i==6&&$hcones_pos==0){echo ' selected'; $hcones_pos = 1;}}; echo '>' . $calc . '</option>'; };
 										break;
-									case "sandglass":
-										$sandglass_pos = 0;
-										for($i=2; $i<7; $i++){$calc = (4*$i*$i*$i+2*$i)/3-1; echo '<option id="allpoli_' . $calc . '" value="' . $calc . '"'; if($all_post_tags_limit==$calc){echo ' selected'; $sandglass_pos = 1;} else{if($i==6&&$sandglass_pos==0){echo ' selected'; $sandglass_pos = 1;}}; echo '>' . $calc . '</option>'; };
-										break;
 									case "square":
 										$square_pos = 0;
 										for($i=2; $i<12; $i++){echo '<option id="allpoli_' . $i*$i . '" value="' . $i*$i . '"'; if($all_post_tags_limit==$i*$i){echo ' selected'; $square_pos = 1;} else{if($i==11&&$square_pos==0){echo ' selected'; $square_pos = 1;}}; echo '>' . $i*$i . '</option>'; };
@@ -130,7 +127,7 @@
 										break;
 									default:
 										$default_pos = 0;
-										for($i=10; $i<125; $i+=5){echo '<option id="allpoli_' . $i . '" value="' . $i . '"'; if($all_post_tags_limit==$i){echo ' selected'; $default_pos = 1;} else{if($i==120&&$default_pos==0){echo ' selected'; $default_pos = 1;}}; echo '>' . $i . '</option>'; };
+										for($i=5; $i<125; $i+=5){echo '<option id="allpoli_' . $i . '" value="' . $i . '"'; if($all_post_tags_limit==$i){echo ' selected'; $default_pos = 1;} else{if($i==120&&$default_pos==0){echo ' selected'; $default_pos = 1;}}; echo '>' . $i . '</option>'; };
 										echo '<option id="allpoli_125"'; if($all_post_tags_limit=='0'){echo ' selected';}; echo ' value="0">all</option>';
 							}
 						?>

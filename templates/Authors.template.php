@@ -24,6 +24,7 @@
 						<option value="candy" <?php if( $auth_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $auth_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
 						<option value="dna" <?php if( $auth_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
+						<option value="domes" <?php if( $auth_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $auth_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $auth_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $auth_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -40,7 +41,7 @@
 						<option value="vring" <?php if( $auth_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
 						<option value="rings" <?php if( $auth_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $auth_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
-						<option value="sandglass" <?php if( $auth_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
+						<option value="sandglass" <?php if( $auth_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
 						<option value="sphere" <?php if( $auth_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $auth_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $auth_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>
@@ -104,10 +105,6 @@
 								case "hcones":
 									$hcones_aut = 0;
 									for($i=2; $i<5; $i++){$calc = (2*$i*$i*$i+$i)/3; echo '<option id="allauli_' . $calc . '" value="' . $calc . '"'; if($all_authors_limit==$calc){echo ' selected'; $hcones_aut = 1;} else{if($i==4&&$hcones_aut==0){echo ' selected'; $hcones_aut = 1;}}; echo '>' . $calc . '</option>'; };
-									break;
-								case "sandglass":
-									$sandglass_aut = 0;
-									for($i=2; $i<4; $i++){$calc = (4*$i*$i*$i+2*$i)/3-1; echo '<option id="allauli_' . $calc . '" value="' . $calc . '"'; if($all_authors_limit==$calc){echo ' selected'; $sandglass_aut = 1;} else{if($i==3&&$sandglass_aut==0){echo ' selected'; $sandglass_aut = 1;}}; echo '>' . $calc . '</option>'; };
 									break;
 								case "square":
 									$square_aut = 0;

@@ -45,15 +45,15 @@
 		jQuery('#cont_'+obid).css('visibility', vis);
 		change_limits(thisid, lim, shape, str);
 	}
-// Change of tag limits for spiral, hexagon, cube, pyramid, beam, circles & antenna, axes, vcones, hcones, square, fir, sandglass, triangle, heart and love
+// Change of tag limits for spiral, hexagon, cube, pyramid, beam, circles & antenna, axes, vcones, hcones, square, fir, triangle, heart and love
 	function change_limits(thisid, lim, shape, str){
 		jQuery('#'+lim).empty();
-		if(shape!="spiral"&&shape!="hexagon"&&shape!="cube"&&shape!="pyramid"&&shape!="beam"&&shape!="circles"&&shape!="antena"&&shape!="axes"&&shape!="vcones"&&shape!="hcones"&&shape!="square"&&shape!="fir"&&shape!="sandglass"&&shape!="triangle"&&shape!="heart"&&shape!="love"){
+		if(shape!="spiral"&&shape!="hexagon"&&shape!="cube"&&shape!="pyramid"&&shape!="beam"&&shape!="circles"&&shape!="antena"&&shape!="axes"&&shape!="vcones"&&shape!="hcones"&&shape!="square"&&shape!="fir"&&shape!="triangle"&&shape!="heart"&&shape!="love"){
 			switch(str){
 				case "rec": build_default_options(5,25,5,lim,"allrpli_");
 					break;
 				case "pos":
-					build_default_options(10,120,5,lim,"allpoli");
+					build_default_options(5,120,5,lim,"allpoli");
 					jQuery('#'+lim).append('<option id="allpoli_125" value="0" selected>all</option>');		
 					break;
 				case "pag":
@@ -110,8 +110,6 @@
 				case "square": {ii=2; lirp=5; lili=10; lita=11; liar=8; lipa=7; liau=7; lica=8; istep=1;};
 					break;
 				case "fir": {ii=1; lirp=3; lili=7; lita=8; liar=5; lipa=4; liau=4; lica=5; istep=1;};
-					break;
-				case "sandglass": {ii=2; lirp=5; lili=5; lita=6; liar=4; lipa=3; liau=3; lica=4; istep=1;};
 					break;
 				case "triangle": {ii=3; lirp=6; lili=14; lita=15; liar=11; lipa=10; liau=10; lica=11; istep=1;};
 					break;

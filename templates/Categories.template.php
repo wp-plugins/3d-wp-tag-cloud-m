@@ -24,6 +24,7 @@
 						<option value="candy" <?php if( $cat_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $cat_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
 						<option value="dna" <?php if( $cat_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
+						<option value="domes" <?php if( $cat_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $cat_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $cat_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $cat_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -40,7 +41,7 @@
 						<option value="vring" <?php if( $cat_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
 						<option value="rings" <?php if( $cat_shape == "rings" ){ echo ' selected'; } ?>>Rings Knotwork</option>
 						<option value="roller" <?php if( $cat_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
-						<option value="sandglass" <?php if( $cat_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
+						<option value="sandglass" <?php if( $cat_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
 						<option value="sphere" <?php if( $cat_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $cat_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $cat_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>
@@ -103,10 +104,6 @@
 									case "hcones":
 										$hcones_cat = 0;
 										for($i=2; $i<5; $i++){$calc = (2*$i*$i*$i+$i)/3; echo '<option id=allcali' . $calc . '" value="' . $calc . '"'; if($all_categories_limit==$calc){echo ' selected'; $hcones_cat = 1;} else{if($i==4&&$hcones_cat==0){echo ' selected'; $hcones_cat = 1;}}; echo '>' . $calc . '</option>'; };
-										break;
-									case "sandglass":
-										$sandglass_cat = 0;
-										for($i=2; $i<5; $i++){$calc = (4*$i*$i*$i+2*$i)/3-1; echo '<option id=allcali' . $calc . '" value="' . $calc . '"'; if($all_categories_limit==$calc){echo ' selected'; $sandglass_cat = 1;} else{if($i==4&&$sandglass_cat==0){echo ' selected'; $sandglass_cat = 1;}}; echo '>' . $calc . '</option>'; };
 										break;
 									case "square":
 										$square_cat = 0;

@@ -25,11 +25,9 @@
 	As well as for <span>Post Tags</span> and <span>Categories</span> when tags are short words.<br>
 	- <span>3D Spiral</span>: Suitable when number of tags is around 30 - 60.<br>
 	As well as for <span>Post Tags</span> and <span>Categories</span> when tags are short words.<br>	
-	- <span>Balls</span>: Nice shape, good for any type and number of tags. Those in the middle overlap each other due to specificity of the shape.<br>
+	- <span>Balls</span>: Nice shape, good for any type and number of tags.<br>
 	- <span>Blossom</span>: Better for bigger number image tags: 80 - 160. The stem of blossom grows with increase of tags.<br>
 	- <span>Bulb</span>: Good for any type and number of tags.<br>
-	- <span>DNA</span>: Most suitable for about 30 - 40 image tags or 60 - 80 text tags.<br>
-	- <span>Egg</span>: Good for any type and number of tags.<br>
 	- <span>Candy</span>: Good for any type and number of tags. Those in both ends overlap each other due to specificity of the shape.<br>
 	- <span>Capsule</span>: Good for any type and number of tags.<br>
 	- <span>Christmas fir</span>: Better for image tags. Nicer for rotation around Y-axis. In that case the top tag stays still and could be used for an important link.<br>
@@ -37,7 +35,10 @@
 	Suitable for image gallery. Good for bigger number of tags (30+).<br>
 	- <span>Cube</span>: Good for any type of cloud content and tags.<br>
 	- <span>Cylinder that starts off horizontal</span> & <span>Cylinder that starts off vertical</span> are good for any type of content and tags.<br>
-	- <span>Glass</span>: Good for any type and number of tags but those on the stem overlap each other.<br>
+	- <span>DNA</span>: Most suitable for about 30 - 40 image tags or 60 - 80 text tags.<br>
+	- <span>Domes</span>: Nice shape, good for bigger number of any type of tags.<br>
+	- <span>Egg</span>: Good for any type and number of tags.<br>
+	- <span>Glass</span>: Best for 90+ number of any type of tags but those on the stem overlap each other.<br>
 	- <span>Globe</span>: Good for any type of content and tags but bigger number of latter make shape nicer.<br>
 	- <span>Heart</span>: Suitable for bigger cloud size and small number of tags (20 or 30), preferably icons.<br>
 	- <span>Hexagon</span> (Bee cell): Another flat shape where the tag in the center is still. This feature can be used for important tags - special pages, authors or links. 

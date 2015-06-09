@@ -24,6 +24,7 @@
 						<option value="candy" <?php if( $rec_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $rec_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
 						<option value="dna" <?php if( $rec_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
+						<option value="domes" <?php if( $rec_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $rec_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $rec_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
 						<option value="cube" <?php if( $rec_shape == "cube" ){ echo ' selected'; } ?>>Cube*</option>
@@ -40,7 +41,7 @@
 						<option value="vring" <?php if( $rec_shape == "vring" ){ echo ' selected'; } ?>>Ring around Y-axis</option>
 						<option value="rings" <?php if( $rec_shape == "rings" ){ echo ' selected'; } ?>>Ring Knotwork</option>
 						<option value="roller" <?php if( $rec_shape == "roller" ){ echo ' selected'; } ?>>Roller of rings</option>
-						<option value="sandglass" <?php if( $rec_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass*</option>
+						<option value="sandglass" <?php if( $rec_shape == "sandglass" ){ echo ' selected'; } ?>>Sandglass</option>
 						<option value="sphere" <?php if( $rec_shape == "sphere" ){ echo ' selected'; } ?>>Sphere</option>
 						<option value="spiral3" <?php if( $rec_shape == "spiral3" ){ echo ' selected'; } ?>>Spring</option>
 						<option value="stairs" <?php if( $rec_shape == "stairs" ){ echo ' selected'; } ?>>Staircase</option>
@@ -121,10 +122,6 @@
 										case "hcones":
 											$hcones_rec = 0;
 											for($i=2; $i<4; $i++){$calc = (2*$i*$i*$i+$i)/3; echo '<option id="allrpli' . $calc . '" value="' . $calc . '"'; if($all_recent_posts_limit==$calc){echo ' selected'; $hcones_rec = 1;} else{if($i==3&&$hcones_rec==0){echo ' selected'; $hcones_rec = 1;}}; echo '>' . $calc . '</option>'; };
-											break;
-										case "sandglass":
-											$sandglass_rec = 0;
-											for($i=2; $i<4; $i++){$calc = (4*$i*$i*$i+2*$i)/3-1; echo '<option id="allrpli' . $calc . '" value="' . $calc . '"'; if($all_recent_posts_limit==$calc){echo ' selected'; $sandglass_rec = 1;} else{if($i==3&&$sandglass_rec==0){echo ' selected'; $sandglass_rec = 1;}}; echo '>' . $calc . '</option>'; };
 											break;
 										case "square":
 											$square_rec = 0;

@@ -17,12 +17,13 @@
 					Shape
 					<br>
 					<select id="<?=$this->get_field_id('lin_shape'); ?>" name="<?=$this->get_field_name('lin_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('lin_radius_z'); ?>', '<?=$this->get_field_id('all_links_limit'); ?>', 'lin')";>
-						<option value="axes" <?php if( $lin_shape == "axes" ){ echo ' selected'; } ?>>3D Axes*</option>
+						<option value="axes" <?php if( $lin_shape == "axes" ){ echo ' selected'; } ?>>Axes</option>
 						<option value="balls" <?php if( $lin_shape == "balls" ){ echo ' selected'; } ?>>Balls</option>
 						<option value="blossom" <?php if( $lin_shape == "blossom" ){ echo ' selected'; } ?>>Blossom</option>
 						<option value="bulb" <?php if( $lin_shape == "bulb" ){ echo ' selected'; } ?>>Bulb</option>
 						<option value="candy" <?php if( $lin_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $lin_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
+						<option value="crown" <?php if( $lin_shape == "crown" ){ echo ' selected'; } ?>>Crown</option>
 						<option value="dna" <?php if( $lin_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
 						<option value="domes" <?php if( $lin_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $lin_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
@@ -51,13 +52,13 @@
 						<option value="tire" <?php if( $lin_shape == "tire" ){ echo ' selected'; } ?>>Tire</option>
 						<option value="tower" <?php if( $lin_shape == "tower" ){ echo ' selected'; } ?>>Tower of rings</option>
 						<option value="vcylinder" <?php if( $lin_shape == "vcylinder" ){ echo ' selected'; } ?>>Vertical Cylinder</option>
-						<option style="background: #ccc;" value="spiral" <?php if( $lin_shape == "spiral" ){ echo ' selected'; } ?>>2D Spiral*</option>
 						<option style="background: #ccc;" value="circles" <?php if( $lin_shape == "circles" ){ echo ' selected'; } ?>>Concentric Circles*</option>
 						<option style="background: #ccc;" value="heart" <?php if( $lin_shape == "heart" ){ echo ' selected'; } ?>>Heart</option>
 						<option style="background: #ccc;" value="hexagon" <?php if( $lin_shape == "hexagon" ){ echo ' selected'; } ?>>Hexagon (Bee Cell)*</option>
+						<option style="background: #ccc;" value="spiral" <?php if( $lin_shape == "spiral" ){ echo ' selected'; } ?>>Spiral*</option>
 						<option style="background: #ccc;" value="square" <?php if( $lin_shape == "square" ){ echo ' selected'; } ?>>Square*</option>
 						<option style="background: #ccc;" value="triangle" <?php if( $lin_shape == "triangle" ){ echo ' selected'; } ?>>Triangle*</option>
-						<option style="background: #aaa;" value="beam" <?php if( $lin_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam*</option>
+						<option style="background: #aaa;" value="beam" <?php if( $lin_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam</option>
 					</select>
 				</label>
 				<div class="thick-spacer"></div>
@@ -86,7 +87,7 @@
 							switch($lin_shape){
 										case "spiral":
 											$spiral_lin = 0;
-											for($i=8; $i<106; $i+=7){echo '<option id="alllili' . $i . '" value="' . $i . '"'; if($all_links_limit==$i){echo ' selected'; $spiral_lin = 1;} else{if($i==99&&$spiral_lin==0){echo ' selected'; $spiral_lin = 1;}}; echo '>' . $i . '</option>'; };
+											for($i=8; $i<127; $i+=7){echo '<option id="alllili' . $i . '" value="' . $i . '"'; if($all_links_limit==$i){echo ' selected'; $spiral_lin = 1;} else{if($i==99&&$spiral_lin==0){echo ' selected'; $spiral_lin = 1;}}; echo '>' . $i . '</option>'; };
 											break;
 										case "hexagon":
 											$hexagon_lin = 0;
@@ -114,7 +115,7 @@
 											break;
 										case "axes";
 											$axes_lin = 0;
-											for($i=6; $i<108; $i+=6){echo '<option id="alllili' . $i . '" value="' . $i . '"'; if($all_links_limit==$i){echo ' selected'; $axes_lin = 1;} else{if($i==102&&$axes_lin==0){echo ' selected'; $axes_lin = 1;}}; echo '>' . $i . '</option>'; };
+											for($i=6; $i<126; $i+=6){echo '<option id="alllili' . $i . '" value="' . $i . '"'; if($all_links_limit==$i){echo ' selected'; $axes_lin = 1;} else{if($i==102&&$axes_lin==0){echo ' selected'; $axes_lin = 1;}}; echo '>' . $i . '</option>'; };
 											break;
 										case "vcones";
 											$vcones_lin = 0;
@@ -146,8 +147,8 @@
 											break;
 										default:
 											$default_lin = 0;
-											for($i=5; $i<105; $i+=5){echo '<option id="alllili' . $i . '" value="' . $i . '"'; if($all_links_limit==$i){echo ' selected'; $default_lin = 1;} else{if($i==100&&$default_lin==0){echo ' selected'; $default_lin = 1;}}; echo '>' . $i . '</option>'; };
-											echo '<option id="alllili105"'; if($all_links_limit=='-1'){echo ' selected';}; echo ' value="-1">all</option>';
+											for($i=5; $i<125; $i+=5){echo '<option id="alllili' . $i . '" value="' . $i . '"'; if($all_links_limit==$i){echo ' selected'; $default_lin = 1;} else{if($i==100&&$default_lin==0){echo ' selected'; $default_lin = 1;}}; echo '>' . $i . '</option>'; };
+											echo '<option id="alllili125"'; if($all_links_limit=='-1'){echo ' selected';}; echo ' value="-1">all</option>';
 							}
 						?>
 					</select>

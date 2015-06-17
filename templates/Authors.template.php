@@ -17,12 +17,13 @@
 					Shape
 					<br>
 					<select id="<?=$this->get_field_id('auth_shape'); ?>" name="<?=$this->get_field_name('auth_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('auth_radius_z'); ?>', '<?=$this->get_field_id('all_authors_limit'); ?>', 'aut')";>
-						<option value="axes" <?php if( $auth_shape == "axes" ){ echo ' selected'; } ?>>3D Axes*</option>
+						<option value="axes" <?php if( $auth_shape == "axes" ){ echo ' selected'; } ?>>Axes</option>
 						<option value="balls" <?php if( $auth_shape == "balls" ){ echo ' selected'; } ?>>Balls</option>
 						<option value="blossom" <?php if( $auth_shape == "blossom" ){ echo ' selected'; } ?>>Blossom</option>
 						<option value="bulb" <?php if( $auth_shape == "bulb" ){ echo ' selected'; } ?>>Bulb</option>
 						<option value="candy" <?php if( $auth_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $auth_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
+						<option value="crown" <?php if( $auth_shape == "crown" ){ echo ' selected'; } ?>>Crown</option>
 						<option value="dna" <?php if( $auth_shape == "dna" ){ echo ' selected'; } ?>>DNA</option>
 						<option value="domes" <?php if( $auth_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $auth_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
@@ -51,13 +52,13 @@
 						<option value="tire" <?php if( $auth_shape == "tire" ){ echo ' selected'; } ?>>Tire</option>
 						<option value="tower" <?php if( $auth_shape == "tower" ){ echo ' selected'; } ?>>Tower of rings</option>
 						<option value="vcylinder" <?php if( $auth_shape == "vcylinder" ){ echo ' selected'; } ?>>Vertical Cylinder</option>
-						<option style="background: #ccc;" value="spiral" <?php if( $auth_shape == "spiral" ){ echo ' selected'; } ?>>2D Spiral*</option>
 						<option style="background: #ccc;" value="circles" <?php if( $auth_shape == "circles" ){ echo ' selected'; } ?>>Concentric Circles*</option>
 						<option style="background: #ccc;" value="heart" <?php if( $auth_shape == "heart" ){ echo ' selected'; } ?>>Heart</option>
 						<option style="background: #ccc;" value="hexagon" <?php if( $auth_shape == "hexagon" ){ echo ' selected'; } ?>>Hexagon (Bee Cell)*</option>
+						<option style="background: #ccc;" value="spiral" <?php if( $auth_shape == "spiral" ){ echo ' selected'; } ?>>Spiral*</option>
 						<option style="background: #ccc;" value="square" <?php if( $auth_shape == "square" ){ echo ' selected'; } ?>>Square*</option>
 						<option style="background: #ccc;" value="triangle" <?php if( $auth_shape == "triangle" ){ echo ' selected'; } ?>>Triangle*</option>
-						<option style="background: #aaa;" value="beam" <?php if( $auth_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam*</option>
+						<option style="background: #aaa;" value="beam" <?php if( $auth_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam</option>
 					</select>
 				</label>
 				<div class="thick-spacer"></div>

@@ -67,8 +67,8 @@
 					// ...
 					break;
 				case "lin":
-					build_default_options(5,100,5,lim,"alllili_");
-					jQuery('#'+lim).append('<option id="alllili_105" value="-1" selected>all</option>');
+					build_default_options(5,120,5,lim,"alllili_");
+					jQuery('#'+lim).append('<option id="alllili_125" value="-1" selected>all</option>');
 					break;
 				case "arc":
 					build_default_options(6,60,6,lim,"allarli_");
@@ -87,7 +87,7 @@
 		else{
 			var a=0, b=0, c=0;
 			switch(shape){
-				case "spiral": {ii=8; lirp=29; lili=99; lita=120; liar=64; lipa=50; liau=50; lica=57; istep=7;};
+				case "spiral": {ii=8; lirp=29; lili=120; lita=120; liar=64; lipa=50; liau=50; lica=57; istep=7;};
 					break;
 				case "hexagon": {ii=1; lirp=2; lili=5; lita=6; liar=4; lipa=3; liau=3; lica=4; istep=1; a=3; b=3; c=1;};
 					break;
@@ -97,13 +97,13 @@
 					break;
 				case "beam": {ii=5; lirp=10; lili=10; lita=10; liar=10; lipa=10; liau=10; lica=10; istep=5;};
 					break;
-				case "axes": {ii=6; lirp=24; lili=102; lita=120; liar=60; lipa=48; liau=48; lica=60; istep=6;};
+				case "axes": {ii=6; lirp=24; lili=120; lita=120; liar=60; lipa=48; liau=48; lica=60; istep=6;};
 					break;
-				case "vcones": {ii=2; lirp=3; lili=5; lita=6; liar=4; lipa=4; liau=4; lica=4; istep=1; a=2; b=0; c=1;};
+				case "vcones": 
 					break;
 				case "hcones": {ii=2; lirp=3; lili=5; lita=6; liar=4; lipa=4; liau=4; lica=4; istep=1; a=2; b=0; c=1;};
 					break;
-				case "circles": {ii=2; lirp=4; lili=6; lita=7; liar=5; lipa=4; liau=4; lica=5; istep=1;};
+				case "circles": 
 					break;
 				case "antenna": {ii=2; lirp=4; lili=6; lita=7; liar=5; lipa=4; liau=4; lica=5; istep=1;};
 					break;
@@ -117,7 +117,7 @@
 					break;
 				case "love": {ii=24; lirp=36; lili=60; lita=60; liar=60; lipa=48; liau=48; lica=60; istep=12;};
 					break;
-				default: {ii=5; lirp=25; lili=100; lita=125; liar=60; lipa=50; liau=50; lica=60; istep=5;};
+				default: {ii=5; lirp=25; lili=120; lita=120; liar=60; lipa=50; liau=50; lica=60; istep=5;};
 			}
 			switch(str){
 				case "rec": build_special_options(ii,lirp,istep,lim,"allrp_",shape,a,b,c);

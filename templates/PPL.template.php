@@ -17,12 +17,13 @@
 					Shape
 					<br>
 					<select id="<?=$this->get_field_id('ppl_shape'); ?>" name="<?=$this->get_field_name('ppl_shape'); ?>" onchange="check43d(this.id, this.value, '<?= $this->get_field_id('ppl_radius_z'); ?>', '', 'ppl')";>
-						<option value="axes" <?php if( $ppl_shape == "axes" ){ echo ' selected'; } ?>>3D Axes*</option>
+						<option value="axes" <?php if( $ppl_shape == "axes" ){ echo ' selected'; } ?>>Axes</option>
 						<option value="balls" <?php if( $ppl_shape == "balls" ){ echo ' selected'; } ?>>Balls</option>
 						<option value="blossom" <?php if( $ppl_shape == "blossom" ){ echo ' selected'; } ?>>Blossom</option>
 						<option value="bulb" <?php if( $ppl_shape == "bulb" ){ echo ' selected'; } ?>>Bulb</option>
 						<option value="candy" <?php if( $ppl_shape == "candy" ){ echo ' selected'; } ?>>Candy</option>
 						<option value="capsule" <?php if( $ppl_shape == "capsule" ){ echo ' selected'; } ?>>Capsule</option>
+						<option value="crown" <?php if( $ppl_shape == "crown" ){ echo ' selected'; } ?>>Crown</option>
 						<option value="domes" <?php if( $ppl_shape == "domes" ){ echo ' selected'; } ?>>Domes</option>
 						<option value="egg" <?php if( $ppl_shape == "egg" ){ echo ' selected'; } ?>>Egg</option>
 						<option value="fir" <?php if( $ppl_shape == "fir" ){ echo ' selected'; } ?>>Chrismas Fir*</option>
@@ -50,13 +51,13 @@
 						<option value="tire" <?php if( $ppl_shape == "tire" ){ echo ' selected'; } ?>>Tire</option>
 						<option value="tower" <?php if( $ppl_shape == "tower" ){ echo ' selected'; } ?>>Tower of rings</option>
 						<option value="vcylinder" <?php if( $ppl_shape == "vcylinder" ){ echo ' selected'; } ?>>Vertical Cylinder</option>
-						<option style="background: #ccc;" value="spiral" <?php if( $ppl_shape == "spiral" ){ echo ' selected'; } ?>>2D Spiral*</option>
 						<option style="background: #ccc;" value="circles" <?php if( $ppl_shape == "circles" ){ echo ' selected'; } ?>>Concentric Circles*</option>
 						<option style="background: #ccc;" value="heart" <?php if( $ppl_shape == "heart" ){ echo ' selected'; } ?>>Heart</option>
 						<option style="background: #ccc;" value="hexagon" <?php if( $ppl_shape == "hexagon" ){ echo ' selected'; } ?>>Hexagon (Bee Cell)*</option>
+						<option style="background: #ccc;" value="spiral" <?php if( $ppl_shape == "spiral" ){ echo ' selected'; } ?>>Spiral*</option>
 						<option style="background: #ccc;" value="square" <?php if( $ppl_shape == "square" ){ echo ' selected'; } ?>>Square*</option>
 						<option style="background: #ccc;" value="triangle" <?php if( $ppl_shape == "triangle" ){ echo ' selected'; } ?>>Triangle*</option>
-						<option style="background: #aaa;" value="beam" <?php if( $ppl_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam*</option>
+						<option style="background: #aaa;" value="beam" <?php if( $ppl_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam</option>
 					</select>
 				</label>
 				<label style="max-width: 175px;" title="The ID of a custom HTML links container. Leaving empty will load ALL current page/post links, which may include navigation links, meta tags, comments etc." for="<?=$this->get_field_id('all_ppl_id'); ?>">

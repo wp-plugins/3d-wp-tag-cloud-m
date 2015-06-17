@@ -33,6 +33,7 @@
 	- <span>Christmas fir</span>: Better for image tags. Nicer for rotation around Y-axis. In that case the top tag stays still and could be used for an important link.<br>
 	- <span>Concentric circles</span>: One more flat shape where the tag in the center is still. This feature can be used for important tags - special pages, authors or links.
 	Suitable for image gallery. Good for bigger number of tags (30+).<br>
+	- <span>Crown</span>: Good for big number of tags (100+), preferably images.<br>
 	- <span>Cube</span>: Good for any type of cloud content and tags.<br>
 	- <span>Cylinder that starts off horizontal</span> & <span>Cylinder that starts off vertical</span> are good for any type of content and tags.<br>
 	- <span>DNA</span>: Most suitable for about 30 - 40 image tags or 60 - 80 text tags.<br>

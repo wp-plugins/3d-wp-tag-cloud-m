@@ -2,7 +2,7 @@
 Contributors: hityr5yr, bisko
 Tags: tag cloud, 3D, widget, HTML5, canvas, cloud, tags, links, recent posts, menu, images
 Requires at least: 3.9
-Tested up to: 4.2.2
+Tested up to: 4.2.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -46,6 +46,9 @@ Control Panel settings.
 
 
 == Changelog ==
+
+= 2.6.2 =
+1. Added a Target option for opening tag links in a new tab/window, parent or top frame. Available to Authors, Blogroll, Pages and Recent Posts.
 
 = 2.6.1 =
 1. Prevented Firefox from showing an error when image_cf() is selected without supplying an image URL for it.

@@ -61,6 +61,16 @@
 						<option style="background: #aaa;" value="beam" <?php if( $rec_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam</option>
 					</select>
 				</label>
+				<div style="float: left; margin: 0 0 0 12px;" title="The target option specifies where to open <span class='green'>Authors</span>, <span class='green'>Blogroll</span>, <span class='green'>Pages</span> and <span class='green'>Recent Posts</span> tag links:<br><br><span class='green'>_blank</span> - in a new window or tab;<br><span class='green'>_parent</span> - in the parent frame;<br><span class='green'>_self</span> - in the same frame as it was clicked (default);<br><span class='green'>_top</span> - in the full body of the window.">
+					Target
+					<br>
+					<select id="<?=$this->get_field_id('rec_target'); ?>" name="<?=$this->get_field_name('rec_target'); ?>">
+						<option value="_blank" <?php if( $rec_target == "_blank" ){ echo ' selected'; } ?>>_blank</option>
+						<option value="_parent" <?php if( $rec_target == "_parent" ){ echo ' selected'; } ?>>_parent</option>
+						<option value="_self" <?php if( $rec_target == "_self" ){ echo ' selected'; } ?>>_self</option>
+						<option value="_top" <?php if( $rec_target == "_top" ){ echo ' selected'; } ?>>_top</option>
+					</select>
+				</div>
 				<div class="thick-spacer"></div>
 				<label style="max-width: 175px; margin: 0 12px 0 0;" title="Post Category to be displayed" for="<?=$this->get_field_id('all_recent_posts_category'); ?>">
 					Post Category

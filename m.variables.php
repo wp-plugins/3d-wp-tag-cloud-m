@@ -139,6 +139,7 @@
 	$auth_shadowoff_y = $instance['auth_shadowoff_y'];
 	$auth_shape = $instance['auth_shape'];
 	$auth_split_width = $instance['auth_split_width'];
+	$auth_target = $instance['auth_target'];
 	$auth_text_align = $instance['auth_text_align'];
 	$auth_text_color = $instance['auth_text_color'];
 	$auth_text_font = $instance['auth_text_font'];
@@ -234,6 +235,7 @@
 	$lin_shadowoff_y = $instance['lin_shadowoff_y'];
 	$lin_shape = $instance['lin_shape'];
 	$lin_split_width = $instance['lin_split_width'];
+	$lin_target = $instance['lin_target'];
 	$lin_text_align = $instance['lin_text_align'];
 	$lin_text_color = $instance['lin_text_color'];
 	$lin_text_font = $instance['lin_text_font'];
@@ -327,6 +329,7 @@
 	$pag_shadowoff_y = $instance['pag_shadowoff_y'];
 	$pag_shape = $instance['pag_shape'];
 	$pag_split_width = $instance['pag_split_width'];
+	$pag_target = $instance['pag_target'];
 	$pag_text_align = $instance['pag_text_align'];
 	$pag_text_color = $instance['pag_text_color'];
 	$pag_text_font = $instance['pag_text_font'];
@@ -413,6 +416,7 @@
 	$rec_shadowoff_y = $instance['rec_shadowoff_y'];
 	$rec_shape = $instance['rec_shape'];
 	$rec_split_width = $instance['rec_split_width'];
+	$rec_target = $instance['rec_target'];
 	$rec_text_align = $instance['rec_text_align'];
 	$rec_text_color = $instance['rec_text_color'];
 	$rec_text_font = $instance['rec_text_font'];

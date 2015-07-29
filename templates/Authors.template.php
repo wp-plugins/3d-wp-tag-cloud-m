@@ -7,7 +7,7 @@
 		<div style="float: left;">
 			<span style="padding-bottom: 5px;">GENERAL</span>
 			<div style="padding-top: 5px;">
-				<label style="margin: 0 3px 0 0;" title="Cloud shapes Legend:<br><span class='color' style='padding: 0; border: 1px solid #444; 
+				<label style="margin: 0;" title="Cloud shapes Legend:<br><span class='color' style='padding: 0; border: 1px solid #444; 
 					font-size: 10px; color: #fff;'>██</span> 3D Shape, <span class='color' style='padding: 0; border: 1px solid #444; font-size: 10px; 
 					color: #ccc;'>██</span> 2D Shape, <span class='color' style='padding: 0; border: 1px solid #444; font-size: 10px; color: #aaa;'>██</span> 
 					1D Shape, <b style='font-size: 26px; line-height: 5px; position: relative; top: 10px;'>*</b> Specific set of tag numbers in 
@@ -61,6 +61,16 @@
 						<option style="background: #aaa;" value="beam" <?php if( $auth_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam</option>
 					</select>
 				</label>
+				<div style="float: left; margin: 0 0 0 12px;" title="The target option specifies where to open tag links:<br><br><span class='green'>_blank</span> - in a new window or tab;<br><span class='green'>_parent</span> - in the parent frame;<br><span class='green'>_self</span> - in the same frame as it was clicked (default);<br><span class='green'>_top</span> - in the full body of the window.">
+					Target
+					<br>
+					<select id="<?=$this->get_field_id('auth_target'); ?>" name="<?=$this->get_field_name('auth_target'); ?>">
+						<option value="_blank" <?php if( $auth_target == "_blank" ){ echo ' selected'; } ?>>_blank</option>
+						<option value="_parent" <?php if( $auth_target == "_parent" ){ echo ' selected'; } ?>>_parent</option>
+						<option value="_self" <?php if( $auth_target == "_self" ){ echo ' selected'; } ?>>_self</option>
+						<option value="_top" <?php if( $auth_target == "_top" ){ echo ' selected'; } ?>>_top</option>
+					</select>
+				</div>
 				<div class="thick-spacer"></div>
 				<label style="margin: 0 10px 0 0;" title="Number of authors to display" for="<?=$this->get_field_id('all_authors_limit'); ?>">
 					Number 

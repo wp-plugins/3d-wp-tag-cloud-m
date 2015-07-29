@@ -195,7 +195,18 @@
 						<option value="none" <?php if( $pag_lock == "none" ){ echo ' selected'; } ?>>none</option>
 					</select>
 				</label>
-				<label style="width: 100%;" for="<?=$this->get_field_id('pag_tooltip'); ?>" title="Sets your canvas tooltip. For instance if the cloud allows <span class='green'>Drag Control</span> you can suggest your site visitors to 'Drag or Click'.">
+				<div class="thick-spacer"></div>
+				<div style="float: left; margin: 0;" title="The target option specifies where to open tag links:<br><br><span class='green'>_blank</span> - in a new window or tab;<br><span class='green'>_parent</span> - in the parent frame;<br><span class='green'>_self</span> - in the same frame as it was clicked (default);<br><span class='green'>_top</span> - in the full body of the window.">
+					Target
+					<br>
+					<select id="<?=$this->get_field_id('pag_target'); ?>" name="<?=$this->get_field_name('pag_target'); ?>">
+						<option value="_blank" <?php if( $pag_target == "_blank" ){ echo ' selected'; } ?>>_blank</option>
+						<option value="_parent" <?php if( $pag_target == "_parent" ){ echo ' selected'; } ?>>_parent</option>
+						<option value="_self" <?php if( $pag_target == "_self" ){ echo ' selected'; } ?>>_self</option>
+						<option value="_top" <?php if( $pag_target == "_top" ){ echo ' selected'; } ?>>_top</option>
+					</select>
+				</div>
+				<label style="margin: 0 0 0 12px; width: 251px;" for="<?=$this->get_field_id('pag_tooltip'); ?>" title="Sets your canvas tooltip. For instance if the cloud allows <span class='green'>Drag Control</span> you can suggest your site visitors to 'Drag or Click'.">
 				Tooltip
 				<div>
 					<input style="width: 100%;" id="<?=$this->get_field_id('pag_tooltip'); ?>"

@@ -3,7 +3,7 @@
 Plugin Name: 3D WP Tag Cloud-M
 Plugin URI: http://peter.bg/archives/7373
 Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag clouds. Plugin may rotate Pages, Recent Posts, Blogroll (External Links), Menus, Blog Archives, List of Authors, Current Page/Post Links, Links from a custom HTML container, Post Tags and Post Categories. It allows showing up to 9 types of content in one widget activated from static or dynamic menu (another cloud). Supports following shapes: parabolic ANTENNA, AXES, lighthouse BEAM, BALLS, BLOSSOM, BULB, CANDY, CAPSULE, concentric CIRCLES, CROWN, CUBE, CYLINDER that starts off horizontal, CYLINDER that starts off vertical, DNA, DOMES, EGG, Christmas FIR, GLASS, GLOBE of rings, HEART, HEXAGON (bee cell), KNOT, LEMON, LOVE, PEG TOP that starts off horizontal, PEG TOP that starts off vertical, PYRAMID (tetrahedron), RING that starts off horizontal, RING that starts off vertical, RINGS knotwork, ROLLER of rings, SANDGLASS, SATURN, SPHERE, SPIRAL, SPRING, SQUARE, STAIRECASE, STOOL, TIRE, TOWER of rings and TRIANGLE. Able to rotate clouds around all three axes. Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menu, List of Authors and Blogroll (External Links) tags may consist of both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.7 and includes most of its 80+ options in the Control Panel settings.
-Version: 2.6.1
+Version: 2.6.2
 Author: Peter Petrov
 Author URI: http://peter.bg
 Update Server: http://peter.bg/
@@ -95,7 +95,7 @@ License: LGPL v3
 						$userLName = $user->last_name;
 						$userPosts = count_user_posts($user->ID);
 						$userPostsURL = get_author_posts_url($user->ID);
-						echo '<a href="'.$userPostsURL.'" style="font-size: '.$userPosts.'px">'.$userAvatar, $userFName.'<br>'.$userLName.'<br>('.$userPosts.')</a>';
+						echo '<a href="'.$userPostsURL.'" style="font-size: '.$userPosts.'px" target="'.$auth_target.'">'.$userAvatar, $userFName.'<br>'.$userLName.'<br>('.$userPosts.')</a>';
 					};	
 					echo '</div>';
 				}
@@ -110,7 +110,7 @@ License: LGPL v3
 					$lin_args = array ('category' => $all_links_category, 'hide_invisible' => 0, 'limit' => $all_links_limit); 
 					$bookmarks = get_bookmarks($lin_args);
 					foreach( $bookmarks as $bookmark ){
-						echo '<a href="' . $bookmark->link_url . '">';
+						echo '<a href="' . $bookmark->link_url . '" target="'.$lin_target.'">';
 						if ($bookmark->link_image) { echo '<img src="' .$bookmark->link_image . '" width="96" height="96">';}
 						echo  $bookmark->link_name . '</a>';
 					}
@@ -126,7 +126,7 @@ License: LGPL v3
 					echo '<div id="all_pages_container_' . $inst_id . '" class="excludediv" hidden>';
 					$page_args = array ('number' => $pages_limit); $pages = get_pages($page_args);
 					foreach( $pages as $page ){
-						echo '<a href="' . get_page_link( $page->ID ) . '">' . get_the_post_thumbnail( $page->ID, 'thumbnail' ), $page->post_title . '</a>';
+						echo '<a href="' . get_page_link( $page->ID ) . '" target="'.$pag_target.'">' . get_the_post_thumbnail( $page->ID, 'thumbnail' ), $page->post_title . '</a>';
 					}
 					echo '</div>';
 				}
@@ -147,8 +147,8 @@ License: LGPL v3
 						$recent_posts = wp_get_recent_posts($rp_args); 
 						foreach( $recent_posts as $recent ){
 							$count=$count+1; $font_size=round($bigest-$increment*$count); 
-							if($weight_mode != "none") { echo '<a href="' . get_permalink($recent["ID"]) . '" style="font-size: ' . $font_size . 'px;" title="Look '.esc_attr($recent["post_title"]).'" >' . get_the_post_thumbnail( $recent["ID"], 'thumbnail' ), $recent["post_title"].'</a> ';}	
-							else {echo '<a href="' . get_permalink($recent["ID"]) . '">' . get_the_post_thumbnail( $recent["ID"], 'thumbnail' ), $recent["post_title"].'</a> ';};
+							if($weight_mode != "none") { echo '<a href="' . get_permalink($recent["ID"]) . '" style="font-size: ' . $font_size . 'px;" title="Look '.esc_attr($recent["post_title"]).'" target="'.$rec_target.'">' . get_the_post_thumbnail( $recent["ID"], 'thumbnail' ), $recent["post_title"].'</a> ';}	
+							else {echo '<a href="' . get_permalink($recent["ID"]) . '" target="'.$rec_target.'">' . get_the_post_thumbnail( $recent["ID"], 'thumbnail' ), $recent["post_title"].'</a> ';};
 						};
 					echo '</div>';
 				}
@@ -367,6 +367,7 @@ License: LGPL v3
 		$tag_option['auth_shadowoff_y'] = $new_instance['auth_shadowoff_y'];
 		$tag_option['auth_shape'] = $new_instance['auth_shape'];
 		$tag_option['auth_split_width'] = $new_instance['auth_split_width'];
+		$tag_option['auth_target'] = $new_instance['auth_target'];
 		$tag_option['auth_text_align'] = $new_instance['auth_text_align'];
 		$tag_option['auth_text_color'] = $new_instance['auth_text_color'];
 		$tag_option['auth_text_font'] = $new_instance['auth_text_font'];
@@ -463,6 +464,7 @@ License: LGPL v3
 		$tag_option['lin_shadowoff_y'] = $new_instance['lin_shadowoff_y'];
 		$tag_option['lin_shape'] = $new_instance['lin_shape'];
 		$tag_option['lin_split_width'] = $new_instance['lin_split_width'];
+		$tag_option['lin_target'] = $new_instance['lin_target'];
 		$tag_option['lin_text_align'] = $new_instance['lin_text_align'];
 		$tag_option['lin_text_color'] = $new_instance['lin_text_color'];
 		$tag_option['lin_text_font'] = $new_instance['lin_text_font'];
@@ -556,6 +558,7 @@ License: LGPL v3
 		$tag_option['pag_shadowoff_y'] = $new_instance['pag_shadowoff_y'];
 		$tag_option['pag_shape'] = $new_instance['pag_shape'];
 		$tag_option['pag_split_width'] = $new_instance['pag_split_width'];
+		$tag_option['pag_target'] = $new_instance['pag_target'];
 		$tag_option['pag_text_align'] = $new_instance['pag_text_align'];
 		$tag_option['pag_text_color'] = $new_instance['pag_text_color'];
 		$tag_option['pag_text_font'] = $new_instance['pag_text_font'];
@@ -642,6 +645,7 @@ License: LGPL v3
 		$tag_option['rec_shadowoff_y'] = $new_instance['rec_shadowoff_y'];
 		$tag_option['rec_shape'] = $new_instance['rec_shape'];
 		$tag_option['rec_split_width'] = $new_instance['rec_split_width'];
+		$tag_option['rec_target'] = $new_instance['rec_target'];
 		$tag_option['rec_text_align'] = $new_instance['rec_text_align'];
 		$tag_option['rec_text_color'] = $new_instance['rec_text_color'];
 		$tag_option['rec_text_font'] = $new_instance['rec_text_font'];
@@ -851,6 +855,7 @@ License: LGPL v3
 			'auth_shadowoff_y' => '0',
 			'auth_shape' => 'cube',
 			'auth_split_width' => '100',
+			'auth_target' => '_self',
 			'auth_text_align' => 'centre',
 			'auth_text_color' => '000',
 			'auth_text_font' => 'Arial',
@@ -947,6 +952,7 @@ License: LGPL v3
 			'lin_shadowoff_y' => '0',
 			'lin_shape' => 'cube',
 			'lin_split_width' => '100',
+			'lin_target' => '_self',
 			'lin_text_align' => 'centre',
 			'lin_text_color' => '000',
 			'lin_text_font' => 'Arial',
@@ -1040,6 +1046,7 @@ License: LGPL v3
 			'pag_shadowoff_y' => '0',
 			'pag_shape' => 'cube',
 			'pag_split_width' => '100',
+			'pag_target' => '_self',
 			'pag_text_align' => 'centre',
 			'pag_text_color' => '000',
 			'pag_text_font' => 'Arial',
@@ -1126,6 +1133,7 @@ License: LGPL v3
 			'rec_shadowoff_y' => '0',
 			'rec_shape' => 'cube',
 			'rec_split_width' => '100',
+			'rec_target' => '_self',
 			'rec_text_align' => 'centre',
 			'rec_text_color' => '000',
 			'rec_text_font' => 'Arial',

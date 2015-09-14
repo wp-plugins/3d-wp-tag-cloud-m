@@ -3,7 +3,7 @@
 Plugin Name: 3D WP Tag Cloud-M
 Plugin URI: http://peter.bg/archives/7373
 Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag clouds. Plugin may rotate Pages, Recent Posts, Blogroll (External Links), Menus, Blog Archives, List of Authors, Current Page/Post Links, Links from a custom HTML container, Post Tags and Post Categories. It allows showing up to 9 types of content in one widget activated from static or dynamic menu (another cloud). Supports following shapes: parabolic ANTENNA, AXES, lighthouse BEAM, BALLS, BLOSSOM, BULB, CANDY, CAPSULE, concentric CIRCLES, CROWN, CUBE, CYLINDER that starts off horizontal, CYLINDER that starts off vertical, DNA, DOMES, EGG, Christmas FIR, GLASS, GLOBE of rings, HEART, HEXAGON (bee cell), KNOT, LEMON, LOVE, PEG TOP that starts off horizontal, PEG TOP that starts off vertical, PYRAMID (tetrahedron), RING that starts off horizontal, RING that starts off vertical, RINGS knotwork, ROLLER of rings, SANDGLASS, SATURN, SPHERE, SPIRAL, SPRING, SQUARE, STAIRECASE, STOOL, TIRE, TOWER of rings and TRIANGLE. Able to rotate clouds around all three axes. Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menu, List of Authors and Blogroll (External Links) tags may consist of both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.7 and includes most of its 80+ options in the Control Panel settings.
-Version: 2.6.2
+Version: 2.7
 Author: Peter Petrov
 Author URI: http://peter.bg
 Update Server: http://peter.bg/
@@ -346,6 +346,7 @@ License: LGPL v3
 		$tag_option['auth_image_mode'] = $new_instance['auth_image_mode'];
 		$tag_option['auth_image_padding'] = $new_instance['auth_image_padding'];
 		$tag_option['auth_image_position'] = $new_instance['auth_image_position'];
+		$tag_option['auth_image_radius'] = $new_instance['auth_image_radius'];
 		$tag_option['auth_image_scale'] = $new_instance['auth_image_scale'];
 		$tag_option['auth_image_valign'] = $new_instance['auth_image_valign'];
 		$tag_option['auth_initial_x'] = $new_instance['auth_initial_x'];
@@ -443,6 +444,7 @@ License: LGPL v3
 		$tag_option['lin_image_mode'] = $new_instance['lin_image_mode'];
 		$tag_option['lin_image_padding'] = $new_instance['lin_image_padding'];
 		$tag_option['lin_image_position'] = $new_instance['lin_image_position'];
+		$tag_option['lin_image_radius'] = $new_instance['lin_image_radius'];
 		$tag_option['lin_image_scale'] = $new_instance['lin_image_scale'];
 		$tag_option['lin_image_valign'] = $new_instance['lin_image_valign'];
 		$tag_option['lin_initial_x'] = $new_instance['lin_initial_x'];
@@ -494,6 +496,7 @@ License: LGPL v3
 		$tag_option['men_image_mode'] = $new_instance['men_image_mode'];
 		$tag_option['men_image_padding'] = $new_instance['men_image_padding'];
 		$tag_option['men_image_position'] = $new_instance['men_image_position'];
+		$tag_option['men_image_radius'] = $new_instance['men_image_radius'];
 		$tag_option['men_image_scale'] = $new_instance['men_image_scale'];
 		$tag_option['men_image_valign'] = $new_instance['men_image_valign'];
 		$tag_option['men_img_url'] = $new_instance['men_img_url'];
@@ -537,6 +540,7 @@ License: LGPL v3
 		$tag_option['pag_image_mode'] = $new_instance['pag_image_mode'];
 		$tag_option['pag_image_padding'] = $new_instance['pag_image_padding'];
 		$tag_option['pag_image_position'] = $new_instance['pag_image_position'];
+		$tag_option['pag_image_radius'] = $new_instance['pag_image_radius'];
 		$tag_option['pag_image_scale'] = $new_instance['pag_image_scale'];
 		$tag_option['pag_image_valign'] = $new_instance['pag_image_valign'];
 		$tag_option['pag_initial_x'] = $new_instance['pag_initial_x'];
@@ -623,6 +627,7 @@ License: LGPL v3
 		$tag_option['rec_image_mode'] = $new_instance['rec_image_mode'];
 		$tag_option['rec_image_padding'] = $new_instance['rec_image_padding'];
 		$tag_option['rec_image_position'] = $new_instance['rec_image_position'];
+		$tag_option['rec_image_radius'] = $new_instance['rec_image_radius'];
 		$tag_option['rec_image_scale'] = $new_instance['rec_image_scale'];
 		$tag_option['rec_image_valign'] = $new_instance['rec_image_valign'];
 		$tag_option['rec_img_url'] = $new_instance['rec_img_url'];
@@ -675,6 +680,7 @@ License: LGPL v3
 		$tag_option['ppl_image_mode'] = $new_instance['ppl_image_mode'];
 		$tag_option['ppl_image_padding'] = $new_instance['ppl_image_padding'];
 		$tag_option['ppl_image_position'] = $new_instance['ppl_image_position'];
+		$tag_option['ppl_image_radius'] = $new_instance['ppl_image_radius'];
 		$tag_option['ppl_image_scale'] = $new_instance['ppl_image_scale'];
 		$tag_option['ppl_image_valign'] = $new_instance['ppl_image_valign'];
 		$tag_option['ppl_img_url'] = $new_instance['ppl_img_url'];
@@ -834,6 +840,7 @@ License: LGPL v3
 			'auth_image_mode' => '',
 			'auth_image_padding' => '2',
 			'auth_image_position' => 'left',
+			'auth_image_radius' => '0',
 			'auth_image_scale' => '0.325',
 			'auth_image_valign' => 'middle',
 			'auth_initial_x' => '0',
@@ -931,6 +938,7 @@ License: LGPL v3
 			'lin_image_mode' => '',
 			'lin_image_padding' => '2',
 			'lin_image_position' => 'top',
+			'lin_image_radius' => '0',
 			'lin_image_scale' => '0.5',
 			'lin_image_valign' => 'middle',
 			'lin_initial_x' => '0',
@@ -983,6 +991,7 @@ License: LGPL v3
 			'men_image_mode' => '',
 			'men_image_padding' => '2',
 			'men_image_position' => 'left',
+			'men_image_radius' => '0',
 			'men_image_scale' => '0.75',
 			'men_image_valign' => 'middle',
 			'men_initial_x' => '0',
@@ -1025,6 +1034,7 @@ License: LGPL v3
 			'pag_image_mode' => '',
 			'pag_image_padding' => '2',
 			'pag_image_position' => 'left',
+			'pag_image_radius' => '0',
 			'pag_image_scale' => '0.5',
 			'pag_image_valign' => 'middle',
 			'pag_initial_x' => '0',
@@ -1112,6 +1122,7 @@ License: LGPL v3
 			'rec_image_mode' => '',
 			'rec_image_padding' => '2',
 			'rec_image_position' => 'left',
+			'rec_image_radius' => '0',
 			'rec_image_scale' => '0.5',
 			'rec_image_valign' => 'middle',
 			'rec_initial_x' => '0',
@@ -1164,6 +1175,7 @@ License: LGPL v3
 			'ppl_image_mode' => '',
 			'ppl_image_padding' => '2',
 			'ppl_image_position' => 'left',
+			'ppl_image_radius' => '0',
 			'ppl_image_scale' => '0.5',
 			'ppl_image_valign' => 'middle',
 			'ppl_initial_x' => '0',

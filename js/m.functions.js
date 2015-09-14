@@ -63,10 +63,10 @@ jQuery(function(){
 			
 //-----  Adding image size attributes for Menu content -----
 			if(taxonomy=="menu"){
-			var link_img = jQuery('#'+container[i]+' a img');
-			for (var j = 0; j < link_img.length; j++) { 
-				jQuery('#'+container[i]+' div ul li a img').eq(j).attr({"width":"96","height":"96"});
-			}
+				var link_img = jQuery('#'+container[i]+' a img');
+				for (var j = 0; j < link_img.length; j++) { 
+					jQuery('#'+container[i]+' div ul li a img').eq(j).attr({"width":"96","height":"96"});
+				}
 			}
 		}
 			
@@ -180,6 +180,7 @@ jQuery(function(){
 					imageMode: '<?= $auth_image_mode; ?>',
 					imagePadding: <?= $auth_image_padding; ?>,
 					imagePosition: '<?= $auth_image_position; ?>',
+					imageRadius: <?= $auth_image_radius; ?>,
 					imageScale: <?= $auth_image_scale; ?>,
 					imageVAlign: '<?= $auth_image_valign; ?>',
 					initial:  [<?= $auth_initial_x; ?>,<?= $auth_initial_y; ?>,<?= $auth_initial_z; ?>],
@@ -330,6 +331,7 @@ jQuery(function(){
 					imageMode: '<?= $lin_image_mode; ?>',
 					imagePadding: <?= $lin_image_padding; ?>,
 					imagePosition: '<?= $lin_image_position; ?>',
+					imageRadius: <?= $lin_image_radius; ?>,
 					imageScale: <?= $lin_image_scale; ?>,
 					imageVAlign: '<?= $lin_image_valign; ?>',
 					initial:  [<?= $lin_initial_x; ?>,<?= $lin_initial_y; ?>,<?= $lin_initial_z; ?>],
@@ -402,6 +404,7 @@ jQuery(function(){
 					imageMode: '<?= $men_image_mode; ?>',
 					imagePadding: <?= $men_image_padding; ?>,
 					imagePosition: '<?= $men_image_position; ?>',
+					imageRadius: <?= $men_image_radius; ?>,
 					imageScale: <?= $men_image_scale; ?>,
 					imageVAlign: '<?= $men_image_valign; ?>',
 					initial:  [<?= $men_initial_x; ?>,<?= $men_initial_y; ?>,<?= $men_initial_z; ?>],
@@ -469,6 +472,7 @@ jQuery(function(){
 					imageMode: '<?= $pag_image_mode; ?>',
 					imagePadding: <?= $pag_image_padding; ?>,
 					imagePosition: '<?= $pag_image_position; ?>',
+					imageRadius: <?= $pag_image_radius; ?>,
 					imageScale: <?= $pag_image_scale; ?>,
 					imageVAlign: '<?= $pag_image_valign; ?>',
 					initial:  [<?= $pag_initial_x; ?>,<?= $pag_initial_y; ?>,<?= $pag_initial_z; ?>],
@@ -614,6 +618,7 @@ jQuery(function(){
 					imageMode: '<?= $rec_image_mode; ?>',
 					imagePadding: <?= $rec_image_padding; ?>,
 					imagePosition: '<?= $rec_image_position; ?>',
+					imageRadius: <?= $rec_image_radius; ?>,
 					imageScale: <?= $rec_image_scale; ?>,
 					imageVAlign: '<?= $rec_image_valign; ?>',
 					initial:  [<?= $rec_initial_x; ?>,<?= $rec_initial_y; ?>,<?= $rec_initial_z; ?>],
@@ -686,6 +691,7 @@ jQuery(function(){
 					imageMode: '<?= $ppl_image_mode; ?>',
 					imagePadding: <?= $ppl_image_padding; ?>,
 					imagePosition: '<?= $ppl_image_position; ?>',
+					imageRadius: <?= $ppl_image_radius; ?>,
 					imageScale: <?= $ppl_image_scale; ?>,
 					imageVAlign: '<?= $ppl_image_valign; ?>',
 					initial:  [<?= $ppl_initial_x; ?>,<?= $ppl_initial_y; ?>,<?= $ppl_initial_z; ?>],

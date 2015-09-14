@@ -47,6 +47,10 @@ Control Panel settings.
 
 == Changelog ==
 
+= 2.7 =
+1. Added Image Radius option for rounding off image corners.
+2. Updated to Graham Breach's Javascript class TagCanvas v. 2.8.
+
 = 2.6.2 =
 1. Added a Target option for opening tag links in a new tab/window, parent or top frame. Available to Authors, Blogroll, Pages and Recent Posts.
 

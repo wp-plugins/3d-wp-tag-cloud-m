@@ -174,6 +174,22 @@
 						<?php for($i=50; $i<155; $i+=5){echo '<option id="mespw_' . $i . '" value="' . $i . '"'; if($ppl_split_width==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>					
 					</select>px
 				</label>
+				<div class="thick-spacer"></div>
+				<label style="width: 86px;" title="Amount to scale images by. The value of <span class='green'>1.0</span> uses the size of avatars (96x96px)." for="<?=$this->get_field_id('ppl_image_scale'); ?>">
+					Image Scale
+					<br>
+					<select id="<?=$this->get_field_id('ppl_image_scale'); ?>" name="<?=$this->get_field_name('ppl_image_scale'); ?>">
+						<?php for($i=25; $i<1525; $i+=25){echo '<option id="autims_' . $i . '" value="' . $i/1000 . '"'; if($ppl_image_scale==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>					
+					</select>
+				</label>
+				<label style="width: 86px;" title="Radius for image corners" for="<?=$this->get_field_id('ppl_image_radius'); ?>">
+					Image Radius
+					<br>
+					<select id="<?=$this->get_field_id('ppl_image_radius'); ?>" name="<?=$this->get_field_name('ppl_image_radius'); ?>">
+						<?php for($i=0; $i<62; $i++){echo '<option id="autimr_' . $i . '" value="' . $i . '"'; if($ppl_image_radius==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>					
+					</select>px
+				</label>
+				<div class="thin-spacer"></div>
 			</div>
 		</div>
 		<div class="divider"></div>
@@ -206,16 +222,8 @@
 					Image<br>Padding
 					<br>
 					<select id="<?=$this->get_field_id('ppl_image_padding'); ?>" name="<?=$this->get_field_name('ppl_image_padding'); ?>">	
-						<?php for($i=1; $i<6; $i++){echo '<option id="meimpa_' . $i . '" value="' . $i . '"'; if($ppl_image_padding==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
+						<?php for($i=1; $i<6; $i++){echo '<option id="ppimpa_' . $i . '" value="' . $i . '"'; if($ppl_image_padding==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
 					</select>px
-				</label>
-				<label title="Amount to scale images by. The default of <span class='green'>1.0</span> refers to image size 96x96px." for="<?=$this->get_field_id('ppl_image_scale'); ?>">
-					<br>
-					Image Scale
-					<br>
-					<select id="<?=$this->get_field_id('ppl_image_scale'); ?>" name="<?=$this->get_field_name('ppl_image_scale'); ?>">
-						<?php for($i=25; $i<1525; $i+=25){echo '<option id="meims_' . $i . '" value="' . $i/1000 . '"'; if($ppl_image_scale==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>					
-					</select>
 				</label>
 			</div>
 			<div style="padding-top: 5px; display: inline-block;">
@@ -342,7 +350,7 @@
 					Font Size
 					<br>
 					<select id="<?=$this->get_field_id('ppl_fontsize'); ?>" name="<?=$this->get_field_name('ppl_fontsize'); ?>">
-						<?php for($i=6; $i<31; $i++){echo '<option id="mefs_' . $i . '" value="' . $i . '"'; if($ppl_fontsize==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
+						<?php for($i=6; $i<31; $i++){echo '<option id="ppfs_' . $i . '" value="' . $i . '"'; if($ppl_fontsize==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
 					</select>px
 				</label>
 				<div style="float: left; margin: 0 15px 0 0;" title="Border of the tags">
@@ -363,16 +371,16 @@
 					Shadow Offset [x, y]
 					<br>
 					<select id="<?=$this->get_field_id('ppl_shadowoff_x'); ?>" name="<?=$this->get_field_name('ppl_shadowoff_x'); ?>">						
-						<?php for($i=-5; $i<6; $i++){echo '<option id="mesox_' . $i . '" value="' . $i . '"'; if($ppl_shadowoff_x==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>							
+						<?php for($i=-5; $i<6; $i++){echo '<option id="ppsox_' . $i . '" value="' . $i . '"'; if($ppl_shadowoff_x==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>							
 					</select><select id="<?=$this->get_field_id('ppl_shadowoff_y'); ?>" name="<?=$this->get_field_name('ppl_shadowoff_y'); ?>">						
-						<?php for($i=-5; $i<6; $i++){echo '<option id="mesoy_' . $i . '" value="' . $i . '"'; if($ppl_shadowoff_y==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>							
+						<?php for($i=-5; $i<6; $i++){echo '<option id="ppsoy_' . $i . '" value="' . $i . '"'; if($ppl_shadowoff_y==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>							
 					</select>px
 				</div>
 				<label style="margin: 0 0 5px;" title="Shadow behind each Menu tag" for="<?=$this->get_field_id('ppl_shadowblur'); ?>">
 					Shadow Blur
 					<br>
 					<select id="<?=$this->get_field_id('ppl_shadowblur'); ?>" name="<?=$this->get_field_name('ppl_shadowblur'); ?>">
-						<?php for($i=0; $i<6; $i++){echo '<option id="meshb_' . $i . '" value="' . $i . '"'; if($ppl_shadowblur==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>												
+						<?php for($i=0; $i<6; $i++){echo '<option id="ppshb_' . $i . '" value="' . $i . '"'; if($ppl_shadowblur==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>												
 					</select>px
 				</label>
 				<div class="thin-spacer"></div>
@@ -465,14 +473,14 @@
 					Min Speed
 					<br>
 					<select id="<?=$this->get_field_id('ppl_min_speed'); ?>" name="<?=$this->get_field_name('ppl_min_speed'); ?>">
-						<?php for($i=0; $i<55; $i+=5){echo '<option id="memis_' . $i . '" value="' . $i/1000 . '"'; if($ppl_min_speed==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>
+						<?php for($i=0; $i<55; $i+=5){echo '<option id="ppmis_' . $i . '" value="' . $i/1000 . '"'; if($ppl_min_speed==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>
 					</select>
 				</label>	
 				<label style="padding: 5px 0 0;" title="Maximum speed of rotation: This setting is just a multiplier of speed." for="<?=$this->get_field_id('ppl_max_speed'); ?>">
 					Max Speed
 					<br>
 					<select id="<?=$this->get_field_id('ppl_max_speed'); ?>" name="<?=$this->get_field_name('ppl_max_speed'); ?>">
-						<?php for($i=5; $i<105; $i+=5){echo '<option id="memas_' . $i . '" value="' . $i/1000 . '"'; if($ppl_max_speed==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>
+						<?php for($i=5; $i<105; $i+=5){echo '<option id="ppmas_' . $i . '" value="' . $i/1000 . '"'; if($ppl_max_speed==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>
 					</select>
 				</label>
 				<div class="thin-spacer"></div>
@@ -480,8 +488,8 @@
 					Click to Front
 					<br>
 					<select id="<?=$this->get_field_id('ppl_click_to_front'); ?>" name="<?=$this->get_field_name('ppl_click_to_front'); ?>">
-						<option id="mectf_0" value="null" <?php if( $ppl_click_to_front == "null" ){ echo ' selected'; } ?>>off</option>
-						<?php for($i=500; $i<2500; $i+=500){echo '<option id="mectf_' . $i . '" value="' . $i . '"'; if($ppl_click_to_front==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
+						<option id="ppctf_0" value="null" <?php if( $ppl_click_to_front == "null" ){ echo ' selected'; } ?>>off</option>
+						<?php for($i=500; $i<2500; $i+=500){echo '<option id="ppctf_' . $i . '" value="' . $i . '"'; if($ppl_click_to_front==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>
 					</select>msec
 				</label>
 			</div>

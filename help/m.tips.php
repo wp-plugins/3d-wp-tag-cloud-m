@@ -99,10 +99,11 @@
 	Since those numbers are base for weighting that will lead to extremely big size of some tags and extremely small for others. That is why you have to put limits using <span>Weight Size Max</span> and <span>Weight Size Min</span>. 
 	Good practise is to limit maximal font height to around 24px and minimal to around 9px.</p>
 	<p><span>4. </span>The size of your images in the Cloud can be changed by <span>Image Scale</span>. Nevertheless you have to know following: Plugin automatically resizes them to 
-	96x96px for <span>Authors</span>, <span>Links</span> & <span>Menu</span> or 120x120px for <span>Pages</span> & <span>Recent Posts</span>. 
+	96x96px for <span>Authors</span>, <span>Blogroll</span>, <span>Page/Post Links</span> & <span>Menu</span> or 120x120px for <span>Pages</span> & <span>Recent Posts</span>. 
 	Due to perspective images become smaller at Cloud's back but bigger at its front. So if their real size is 96x96px (respectively 120x120px) 
 	their resolution will worsen at Cloud's front. That's why use images that are at least 10% bigger than the above sizes. Increasing 
 	<span>Image Scale</span> over <span>1</span> may also worsen resolution if it is not considered with the real size of images, so don't forget it.</p>
+	<p><span>5. </span>By applying a proper value for <span>Image Radius</span> (49 or 61) the images can become circles.</p>
 </div>
 <h3>Speed Tips</h3>
 <div class="section_content">

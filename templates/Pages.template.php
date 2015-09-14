@@ -255,6 +255,22 @@
 							<?php for($i=50; $i<155; $i+=5){echo '<option id="paspw_' . $i . '" value="' . $i . '"'; if($pag_split_width==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>					
 					</select>px
 				</label>
+				<div class="thick-spacer"></div>
+				<label style="width: 86px;" title="Amount to scale images by. The value of <span class='green'>1.0</span> uses the size of avatars (96x96px)." for="<?=$this->get_field_id('pag_image_scale'); ?>">
+					Image Scale
+					<br>
+					<select id="<?=$this->get_field_id('pag_image_scale'); ?>" name="<?=$this->get_field_name('pag_image_scale'); ?>">
+						<?php for($i=25; $i<1525; $i+=25){echo '<option id="paims_' . $i . '" value="' . $i/1000 . '"'; if($pag_image_scale==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>					
+					</select>
+				</label>
+				<label style="width: 86px;" title="Radius for image corners" for="<?=$this->get_field_id('pag_image_radius'); ?>">
+					Image Radius
+					<br>
+					<select id="<?=$this->get_field_id('pag_image_radius'); ?>" name="<?=$this->get_field_name('pag_image_radius'); ?>">
+						<?php for($i=0; $i<62; $i++){echo '<option id="paimr_' . $i . '" value="' . $i . '"'; if($pag_image_radius==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>					
+					</select>px
+				</label>
+				<div class="thin-spacer"></div>
 			</div>
 		</div>
 		<div class="divider"></div>
@@ -289,14 +305,6 @@
 					<select id="<?=$this->get_field_id('pag_image_padding'); ?>" name="<?=$this->get_field_name('pag_image_padding'); ?>">	
 						<?php for($i=1; $i<6; $i++){echo '<option id="paimpa_' . $i . '" value="' . $i . '"'; if($pag_image_padding==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
 					</select>px
-				</label>
-				<label title="Amount to scale images by. Featured post images come into the Cloud as thumbnails so the value of <span class='green'>1.0</span> uses that WP thumbnail size (120x120px)." for="<?=$this->get_field_id('pag_image_scale'); ?>">
-					<br>
-					Image Scale
-					<br>
-					<select id="<?=$this->get_field_id('pag_image_scale'); ?>" name="<?=$this->get_field_name('pag_image_scale'); ?>">
-						<?php for($i=25; $i<1525; $i+=25){echo '<option id="paims_' . $i . '" value="' . $i/1000 . '"'; if($pag_image_scale==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>					
-					</select>
 				</label>
 			</div>
 			<div style="padding-top: 5px; display: inline-block;">

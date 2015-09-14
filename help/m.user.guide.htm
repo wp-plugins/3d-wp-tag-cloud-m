@@ -37,7 +37,7 @@
 						<span style='font-size:16pt;'>3D WP Tag Cloud-M User Guide</span>
 					</b>
 					<br>
-					<span style='font-size:14pt;'>Version 2.6.2</span>
+					<span style='font-size:14pt;'>Version 2.7</span>
 					<br>
 					<a href="https://wordpress.org/plugins/3d-wp-tag-cloud-m/" target="_blank">https://wordpress.org/plugins/3d-wp-tag-cloud-m/</a>
 				</p>
@@ -487,22 +487,31 @@
 					<span class='green'>Exclude</span> field you have to type coma-separated list of authors IDs (not names!). <span class='green'>Target</span> determines where to open your tag links.
 				</p>
 				<a name="_mit"></a>
+				<p class="paragraph" style="margin: 0; padding-top: 5px;">
+					<img width="350" height="156" src="image0371.png" align="left" style="margin: 5px 5px 0 0;"> 
+					<span class='green'>Image Scale</span> option, used for tuning size of: avatars 
+					(<span class='green'>Authors</span>); link images	(<span class='green'>Links</span>); icons (<span class='green'>Menu</span>) and featured images 
+					(<span class='green'>Pages</span> & <span class='green'>Rrecent posts</span>). Plugin resizes them to 96x96px for <span class='green'>Authors</span>, 
+					<span class='green'>Links</span> & <span class='green'>Menu</span> or 120x120px for <span class='green'>Pages</span> & <span class='green'>Recent Posts</span>. 
+					Due to perspective images become smaller at Cloud's back but bigger at its front. So if their real size is 96x96px (respectively 120x120px) their resolution will 
+					worsen at Cloud's front. That's why use images that are at least 10% bigger than the above sizes. Increasing <span class='green'>Image Scale</span> over 
+					<span class='green'>1</span> may also worsen resolution if it is not considered with the real size of images.<br>
+					<span class='green'>Image Radius</span> option - for setting image corners.
+				</p>
+				<p class="paragraph" style="margin: 0;">
+					<i>
+						<b>N.B. </b>By setting a proper value (49 or 61) images can become circles.
+					</i>
+				</p>
+				</p>				
 				<p class="paragraph" style="margin: 0 0 5px;">
-					The main difference here is <span class='green'>MIXED IMAGE & TEXT</span> subsection, where you will have to set most probably only two settings: <span class='green'>Tag Mode</span> 
-					(to most impressive option <span class='green'>both</span>) and <span class='green'> Image Scale</span>.<br>
+					The main difference here is <span class='green'>MIXED IMAGE & TEXT</span> subsection, where you will have to set most probably only one setting - <span class='green'>Tag Mode</span> 
+					to most impressive option <span class='green'>both</span>.<br>
 					<img width="352" height="147" src="image0372.png" align="left" style="margin: 10px 5px 0 0;"> 
 				</p>
-				<p class="paragraph" style="MARGIN: 0 0 40px;">
+				<p class="paragraph" style="margin: 157px 0 40px;">
 					<i>
-						<b>N.B. </b><span class='green'> Image Scale</span> is used for tuning size of: avatars (<span class='green'>Authors</span>); link images	(<span class='green'>Links</span>); 
-						icons (<span class='green'>Menu</span>) and featured images (<span class='green'>Pages</span> & <span class='green'>Rrecent posts</span>). Plugin resizes them to 
-						96x96px for <span class='green'>Authors</span>, <span class='green'>Links</span> & <span class='green'>Menu</span> or 120x120px for 
-						<span class='green'>Pages</span> & <span class='green'>Recent Posts</span>. Due to perspective images become smaller at Cloud's back but bigger at its front. 
-						So if their real size is 96x96px (respectively 120x120px) their resolution will worsen at Cloud's front. That's why use images that are at least 10% bigger 
-						than the above sizes. Increasing <span class='green'>Image Scale</span> over <span class='green'>1</span> may also worsen resolution if it is not considered 
-						with the real size of images.
-						<br>
-						<b>N.B. 2 </b><span class='green'>Image Position</span> is useful for changing image position relative to the text, when <span class='green'>Tag Mode</span> 
+						<b>N.B. </b><span class='green'>Image Position</span> is useful for changing image position relative to the text, when <span class='green'>Tag Mode</span> 
 						is <span class='green'>both</span>.
 					</i>
 				</p>
@@ -521,7 +530,8 @@
 				<p class="paragraph" style="margin: 224px 0 40px;">
 					<i>
 						<b>N.B. </b><span class='green'>Blogroll</span> section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection, 
-						where images are avatar size (96x96 px), but can be reduced additionally by <span class='green'>Image Scale</span>. See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
+						where images are avatar size (96x96 px), but can be reduced additionally by <span class='green'>Image Scale</span> and rounded by <span class='green'>Image Radius</span> 
+						(<span class='green'>SIZE</span> subsection). See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
 					</i>
 				</p>
 				<p class="paragraph" style="margin: 0;">
@@ -554,7 +564,9 @@
 				</p>
 				<p class="paragraph">
 					<i>
-						<b>N.B. </b><span class='green'>Menu</span> section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection. See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
+						<b>N.B. </b><span class='green'>Menu</span> section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection, 
+						where images are avatar size (96x96 px), but can be reduced additionally by <span class='green'>Image Scale</span> and rounded by <span class='green'>Image Radius</span> 
+						(<span class='green'>SIZE</span> subsection). See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
 					</i>
 				</p>
 				<p class="paragraph" style="margin: 40px 0 0;">
@@ -576,7 +588,9 @@
 				</p>
 				<p class="paragraph">
 					<i>
-						<b>N.B. </b>This section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection. See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
+						<b>N.B. </b>This section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection, 
+						where images are avatar size (96x96 px), but can be reduced additionally by <span class='green'>Image Scale</span> and rounded by <span class='green'>Image Radius</span> 
+						(<span class='green'>SIZE</span> subsection). See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
 					</i>
 				</p>			
 				<p class="paragraph" style="margin-top: 40px;">
@@ -595,8 +609,9 @@
 				</p>
 				<p class="paragraph">
 					<i>
-						<b>N.B. </b><span class='green'>Pages</span> section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection. 
-						Images in it are the featured page images (thumbnail size 120x120 px), but they can be resized additionally by <span class='green'>Image Scale</span>. See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
+						<b>N.B. </b><span class='green'>Pages</span> section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection, 
+						where images are avatar size (120x120 px), but can be reduced additionally by <span class='green'>Image Scale</span> and rounded by <span class='green'>Image Radius</span> 
+						(<span class='green'>SIZE</span> subsection). See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
 					</i>
 				</p>
 				<p class="paragraph" style="margin: 88px 0 0 0;">
@@ -631,8 +646,9 @@
 				</p>
 				<p class="paragraph">
 					<i>
-						<b>N.B. </b><span class='green'>Recent Posts</span> section also gives the opportunity of creating tags that consists of the featured post image and post title via its <span class='green'>MIXED IMAGE & TEXT</span> subsection, 
-						where images are thumbnail size 120x120 px, but can be resized additionally by <span class='green'>Image Scale</span>. See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
+						<b>N.B. </b><span class='green'>Recent Posts</span> section also gives the opportunity of creating mixed image/text tags via its <span class='green'>MIXED IMAGE & TEXT</span> subsection, 
+						where images are avatar size (120x120 px), but can be reduced additionally by <span class='green'>Image Scale</span> and rounded by <span class='green'>Image Radius</span> 
+						(<span class='green'>SIZE</span> subsection). See <a href="#_mit">explanations</a> in <span class='green'>AUTHORS CLOUD</span> section.
 					</i>
 				</p>
 				<p class="paragraph" style='margin: 132px 0 20px;'>

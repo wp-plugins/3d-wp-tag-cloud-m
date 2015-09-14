@@ -110,6 +110,7 @@
 	$auth_image_mode = $instance['auth_image_mode'];
 	$auth_image_padding = $instance['auth_image_padding'];
 	$auth_image_position = $instance['auth_image_position'];
+	$auth_image_radius = $instance['auth_image_radius'];
 	$auth_image_scale = $instance['auth_image_scale'];
 	$auth_image_valign = $instance['auth_image_valign'];
 	$auth_bg_color = $instance['auth_bg_color'];
@@ -214,6 +215,7 @@
 	$lin_image_mode = $instance['lin_image_mode'];
 	$lin_image_padding = $instance['lin_image_padding'];
 	$lin_image_position = $instance['lin_image_position'];
+	$lin_image_radius = $instance['lin_image_radius'];
 	$lin_image_scale = $instance['lin_image_scale'];
 	$lin_image_valign = $instance['lin_image_valign'];
 	$lin_initial_x = $instance['lin_initial_x'];
@@ -266,6 +268,7 @@
 	$men_image_mode = $instance['men_image_mode'];
 	$men_image_padding = $instance['men_image_padding'];
 	$men_image_position = $instance['men_image_position'];
+	$men_image_radius = $instance['men_image_radius'];
 	$men_image_scale = $instance['men_image_scale'];
 	$men_image_valign = $instance['men_image_valign'];
 	$men_initial_x = $instance['men_initial_x'];
@@ -308,6 +311,7 @@
 	$pag_image_mode = $instance['pag_image_mode'];
 	$pag_image_padding = $instance['pag_image_padding'];
 	$pag_image_position = $instance['pag_image_position'];
+	$pag_image_radius = $instance['pag_image_radius'];
 	$pag_image_scale = $instance['pag_image_scale'];
 	$pag_image_valign = $instance['pag_image_valign'];
 	$pag_initial_x = $instance['pag_initial_x'];
@@ -394,6 +398,7 @@
 	$rec_image_mode = $instance['rec_image_mode'];
 	$rec_image_padding = $instance['rec_image_padding'];
 	$rec_image_position = $instance['rec_image_position'];
+	$rec_image_radius = $instance['rec_image_radius'];
 	$rec_image_scale = $instance['rec_image_scale'];
 	$rec_image_valign = $instance['rec_image_valign'];
 	$rec_img_url = $instance['rec_img_url'];
@@ -446,6 +451,7 @@
 	$ppl_image_mode = $instance['ppl_image_mode'];
 	$ppl_image_padding = $instance['ppl_image_padding'];
 	$ppl_image_position = $instance['ppl_image_position'];
+	$ppl_image_radius = $instance['ppl_image_radius'];
 	$ppl_image_scale = $instance['ppl_image_scale'];
 	$ppl_image_valign = $instance['ppl_image_valign'];
 	$ppl_img_url = $instance['ppl_img_url'];

@@ -305,13 +305,29 @@
 						<?php for($i=0; $i<1505; $i+=5){echo '<option id="lirz_' . $i . '" value="' . $i/100 . '"'; if($lin_radius_z==$i/100){echo ' selected';}; echo '>' . $i/100 . '</option>'; } ?>
 					</select>
 				</div> 
-					<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('lin_split_width'); ?>">
-						Split Width
-						<br>
-						<select id="<?=$this->get_field_id('lin_split_width'); ?>" name="<?=$this->get_field_name('lin_split_width'); ?>">						
-							<?php for($i=50; $i<155; $i+=5){echo '<option id="lispw_' . $i . '" value="' . $i . '"'; if($lin_split_width==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>					
-						</select>px
-					</label>
+				<label style="width: 70px;" title="If greater than 0, breaks the tag into multiple lines at word boundaries when the line would be longer than this value. Lines are automatically broken at line break tags." for="<?=$this->get_field_id('lin_split_width'); ?>">
+					Split Width
+					<br>
+					<select id="<?=$this->get_field_id('lin_split_width'); ?>" name="<?=$this->get_field_name('lin_split_width'); ?>">						
+						<?php for($i=50; $i<155; $i+=5){echo '<option id="lispw_' . $i . '" value="' . $i . '"'; if($lin_split_width==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>					
+					</select>px
+				</label>
+				<div class="thick-spacer"></div>
+				<label style="width: 86px;" title="Amount to scale images by. The value of <span class='green'>1.0</span> uses the size of avatars (96x96px)." for="<?=$this->get_field_id('lin_image_scale'); ?>">
+					Image Scale
+					<br>
+					<select id="<?=$this->get_field_id('lin_image_scale'); ?>" name="<?=$this->get_field_name('lin_image_scale'); ?>">
+						<?php for($i=25; $i<1525; $i+=25){echo '<option id="linims_' . $i . '" value="' . $i/1000 . '"'; if($lin_image_scale==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>					
+					</select>
+				</label>
+				<label style="width: 86px;" title="Radius for image corners" for="<?=$this->get_field_id('lin_image_radius'); ?>">
+					Image Radius
+					<br>
+					<select id="<?=$this->get_field_id('lin_image_radius'); ?>" name="<?=$this->get_field_name('lin_image_radius'); ?>">
+						<?php for($i=0; $i<62; $i++){echo '<option id="linimr_' . $i . '" value="' . $i . '"'; if($lin_image_radius==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>					
+					</select>px
+				</label>
+				<div class="thin-spacer"></div>
 			</div>
 		</div>
 		<div class="divider"></div>
@@ -346,14 +362,6 @@
 					<select id="<?=$this->get_field_id('lin_image_padding'); ?>" name="<?=$this->get_field_name('lin_image_padding'); ?>">	
 						<?php for($i=1; $i<6; $i++){echo '<option id="liimpa_' . $i . '" value="' . $i . '"'; if($lin_image_padding==$i){echo ' selected';}; echo '>' . $i . '</option>'; } ?>	
 					</select>px
-				</label>
-				<label title="Amount to scale images by. The value of <span class='green'>1.0</span> refers to image size 96x96px." for="<?=$this->get_field_id('lin_image_scale'); ?>">
-					<br>
-					Image Scale
-					<br>
-					<select id="<?=$this->get_field_id('lin_image_scale'); ?>" name="<?=$this->get_field_name('lin_image_scale'); ?>">
-						<?php for($i=25; $i<1525; $i+=25){echo '<option id="liims_' . $i . '" value="' . $i/1000 . '"'; if($lin_image_scale==$i/1000){echo ' selected';}; echo '>' . $i/1000 . '</option>'; } ?>					
-					</select>
 				</label>
 			</div>
 			<div style="padding-top: 5px; display: inline-block;">

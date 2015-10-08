@@ -13,18 +13,18 @@ License URI: http://www.gnu.org/licenses/gpl.html
 
 == Description ==
 
-This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag clouds. Plugin may 
-rotate Pages, Recent Posts, Blogroll (External Links), Menus, Blog Archives, List of Authors, Current Page/Post Links, Links from a customer's HTML container, Post Tags and 
-Post Categories. It allows showing up to 9 types of content in one widget activated from static or dynamic menu (another cloud). Supports following shapes: parabolic ANTENNA, AXES, 
-lighthouse BEAM, BALLS, BLOSSOM, BULB, CANDY, CAPSULE, concentric CIRCLES, CROWN, CUBE, CYLINDER that starts off horizontal, CYLINDER that starts off vertical, DNA, DOMES, EGG, Christmas FIR, 
-GLASS, GLOBE of rings, HEART, HEXAGON (bee cell), KNOT, LEMON, LOVE, PEG TOP that starts off horizontal, PEG TOP that starts off vertical, PYRAMID (tetrahedron), RING that starts off 
-horizontal, RING that starts off vertical, RINGS knotwork, ROLLER of rings, SANDGLASS, SATURN, SPHERE, SPIRAL, SPRING, SQUARE, STAIRECASE, STOOL, TIRE , TOWER of rings and TRIANGLE. 
-Able to rotate clouds around all three axes. Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied 
-to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menu, List of Authors 
-and Blogroll (External Links), Current Page/Post Links and Custom HTML container tags may consist of both image and text. It gives an option to put images and/or text in the center of 
-the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since 
-v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.8 and includes most of its 80+ options in the 
-Control Panel settings.
+This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag clouds. Plugin may rotate Pages, Recent 
+Posts, Blogroll (External Links), Menus, Blog Archives, List of Authors, Current Page/Post Links, Links from a customer's HTML container, Post Tags, Post Categories, Portfolio 
+Categories, Portfolio Items, Portfolio Filters, Slider Categories and Slider Items. It allows showing up to 9 types of content in one widget activated from static or dynamic menu 
+(another cloud). Supports following shapes: parabolic ANTENNA, AXES, lighthouse BEAM, BALLS, BLOSSOM, BULB, CANDY, CAPSULE, concentric CIRCLES, CROWN, CUBE, CYLINDER that starts off 
+horizontal, CYLINDER that starts off vertical, DNA, DOMES, EGG, Christmas FIR, GLASS, GLOBE of rings, HEART, HEXAGON (bee cell), KNOT, LEMON, LOVE, PEG TOP that starts off horizontal, 
+PEG TOP that starts off vertical, PYRAMID (tetrahedron), RING that starts off horizontal, RING that starts off vertical, RINGS knotwork, ROLLER of rings, SANDGLASS, SATURN, SPHERE, 
+SPIRAL, SPRING, SQUARE, STAIRECASE, STOOL, TIRE , TOWER of rings and TRIANGLE. Able to rotate clouds around all three axes. Option values are preset and don't have to be typed but 
+selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows 
+creating clouds of images. In case of Recent posts, Pages, Menu, List of Authors and Blogroll (External Links), Current Page/Post Links and Custom HTML container tags may consist of 
+both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The 
+plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham 
+Breach's Javascript class TagCanvas v. 2.8 and includes most of its 80+ options in the Control Panel settings.
 
 
 == Installation ==
@@ -46,6 +46,11 @@ Control Panel settings.
 
 
 == Changelog ==
+
+= 2.7.1 =
+1. Added automatic reminder to the site administrator after installation of new version to open and save the old Widget Instances for making them compatible if necessary.
+2. Added instructions in 'GUIDE & TIPS > Cloud Content Tips' section on how to put Portfolio Categories, Portfolio Items, Portfolio Filters, Slider Categories and/or Slider Items into the 
+cloud via Menus content type.
 
 = 2.7 =
 1. Added Image Radius option for rounding off image corners.

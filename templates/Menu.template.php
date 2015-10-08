@@ -7,7 +7,7 @@
 		<div style="float: left;">
 			<span style="padding-bottom: 5px;">GENERAL</span>
 			<div style="padding-top: 5px;">
-				<label style="margin: 0 12px 0 0;" title="Cloud shapes Legend:<br><span class='color' style='padding: 0; border: 1px solid #444; 
+				<label title="Cloud shapes Legend:<br><span class='color' style='padding: 0; border: 1px solid #444; 
 					font-size: 10px; color: #fff;'>██</span> 3D Shape, <span class='color' style='padding: 0; border: 1px solid #444; font-size: 10px; 
 					color: #ccc;'>██</span> 2D Shape, <span class='color' style='padding: 0; border: 1px solid #444; font-size: 10px; color: #aaa;'>██</span> 
 					1D Shape, <b style='font-size: 26px; line-height: 5px; position: relative; top: 10px;'>*</b> Specific set of tag numbers required.
@@ -61,10 +61,10 @@
 						<option style="background: #aaa;" value="beam" <?php if( $men_shape == "beam" ){ echo ' selected'; } ?>>Lighthouse Beam</option>
 					</select>
 				</label>
-				<label style="max-width: 175px;" title="The menu to be displayed" for="<?=$this->get_field_id('all_menu_name'); ?>">
+				<label style="max-width: 129px;" title="The menu to be displayed" for="<?=$this->get_field_id('all_menu_name'); ?>">
 					Menu 
 					<br>
-					<select style="max-width: 175px;" id="<?=$this->get_field_id('all_menu_name'); ?>" name="<?=$this->get_field_name('all_menu_name'); ?>">
+					<select style="max-width: 129px;" id="<?=$this->get_field_id('all_menu_name'); ?>" name="<?=$this->get_field_name('all_menu_name'); ?>">
 					<?php
 						$terms_menu = get_terms("nav_menu");
 						 if ( !empty( $terms_menu ) && !is_wp_error( $terms_menu ) ){

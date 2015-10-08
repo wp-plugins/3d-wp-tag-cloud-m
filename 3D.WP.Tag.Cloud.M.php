@@ -2,16 +2,13 @@
 /*
 Plugin Name: 3D WP Tag Cloud-M
 Plugin URI: http://peter.bg/archives/7373
-Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag clouds. Plugin may rotate Pages, Recent Posts, Blogroll (External Links), Menus, Blog Archives, List of Authors, Current Page/Post Links, Links from a custom HTML container, Post Tags and Post Categories. It allows showing up to 9 types of content in one widget activated from static or dynamic menu (another cloud). Supports following shapes: parabolic ANTENNA, AXES, lighthouse BEAM, BALLS, BLOSSOM, BULB, CANDY, CAPSULE, concentric CIRCLES, CROWN, CUBE, CYLINDER that starts off horizontal, CYLINDER that starts off vertical, DNA, DOMES, EGG, Christmas FIR, GLASS, GLOBE of rings, HEART, HEXAGON (bee cell), KNOT, LEMON, LOVE, PEG TOP that starts off horizontal, PEG TOP that starts off vertical, PYRAMID (tetrahedron), RING that starts off horizontal, RING that starts off vertical, RINGS knotwork, ROLLER of rings, SANDGLASS, SATURN, SPHERE, SPIRAL, SPRING, SQUARE, STAIRECASE, STOOL, TIRE, TOWER of rings and TRIANGLE. Able to rotate clouds around all three axes. Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menu, List of Authors and Blogroll (External Links) tags may consist of both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.8 and includes most of its 80+ options in the Control Panel settings.
-Version: 2.7
+Description: This is the Multiple Clouds variation of 3D WP Tag Cloud. It creates multiple instances widget that draws and animates a HTML5 canvas based tag clouds. Plugin may rotate Pages, Recent Posts, Blogroll (External Links), Menus, Blog Archives, List of Authors, Current Page/Post Links, Links from a custom HTML container, Post Tags, Post Categories, Portfolio Categories, Portfolio Items, Portfolio Filters, Slider Categories and Slider Items. It allows showing up to 9 types of content in one widget activated from static or dynamic menu (another cloud). Supports following shapes: parabolic ANTENNA, AXES, lighthouse BEAM, BALLS, BLOSSOM, BULB, CANDY, CAPSULE, concentric CIRCLES, CROWN, CUBE, CYLINDER that starts off horizontal, CYLINDER that starts off vertical, DNA, DOMES, EGG, Christmas FIR, GLASS, GLOBE of rings, HEART, HEXAGON (bee cell), KNOT, LEMON, LOVE, PEG TOP that starts off horizontal, PEG TOP that starts off vertical, PYRAMID (tetrahedron), RING that starts off horizontal, RING that starts off vertical, RINGS knotwork, ROLLER of rings, SANDGLASS, SATURN, SPHERE, SPIRAL, SPRING, SQUARE, STAIRECASE, STOOL, TIRE, TOWER of rings and TRIANGLE. Able to rotate clouds around all three axes. Option values are preset and don't have to be typed but selected. Multiple fonts, multiple colors and multiple backgrounds can be applied to the cloud content. Full variety of fonts from Google Font Library is available. The plugin allows creating clouds of images. In case of Recent posts, Pages, Menu, List of Authors and Blogroll (External Links) tags may consist of both image and text. It gives an option to put images and/or text in the center of the cloud. It accepts background images as well. The Number of tags in the cloud is adjustable. The plugin automatically includes WP Links panel for users who started using WP since v 3.5, when Links Manager and blogroll were made hidden by default. 3D WP Tag Cloud uses Graham Breach's Javascript class TagCanvas v. 2.8 and includes most of its 80+ options in the Control Panel settings.
+Version: 2.7.1
 Author: Peter Petrov
 Author URI: http://peter.bg
 Update Server: http://peter.bg/
 License: LGPL v3
 */
-// Enabling link manager for users of WP 3.5+
-	add_filter( 'pre_option_link_manager_enabled', '__return_true' );
-// ===
 // Creating Widget
 	class wpTagCanvasWidgetM extends WP_Widget {
 		function wpTagCanvasWidgetM () {
@@ -26,7 +23,7 @@ License: LGPL v3
 			extract($args);
 			$inst_id = mt_rand(0,999999);
 //  Registration of TagCanvas.js & including an external file
-			wp_register_script('jq-tagcloud', plugin_dir_url( __FILE__ ) . 'js/3D.WP.tagcanvas.js', array('jquery'), '2.7',true);
+			wp_register_script('jq-tagcloud', plugin_dir_url( __FILE__ ) . 'js/3D.WP.tagcanvas.js', array('jquery'), '2.8',true);
 			wp_enqueue_script('jq-tagcloud');
 			include 'm.variables.php';
 			echo $before_widget;
@@ -190,7 +187,7 @@ License: LGPL v3
 				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="men-link" class="all_in_one" data-id="menu_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
 				if( $all_m_shadowoff == "1" ){ echo " 3";} 
 				else {echo " 0";}; 
-				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">Menu</a>';
+				echo 'px #' . $all_m_shadow . '; color: #' . $all_m_fontcolor . '; font-size: ' . $all_m_fontsize . 'px; background-color: #' . $all_m_bgcolor . ';">'  . $menu_label . '</a>';
 			};
 			if( $ppl_menu_item == 'on'){
 				echo '<a title="'; if($all_m_tooltip == 'on' && $all_menu_type == 'dynamic'){echo 'Drag or Click';}; echo '" href="javascript:;" id="ppl-link" class="all_in_one" data-id="ppl_container_' . $inst_id . '" style="box-shadow:' . $all_m_shadowoff . 'px ' . $all_m_shadowoff . 'px '; 
@@ -281,6 +278,7 @@ License: LGPL v3
 		$tag_option['cat_menu_item'] = $new_instance['cat_menu_item'];
 		$tag_option['lin_menu_item'] = $new_instance['lin_menu_item'];
 		$tag_option['men_menu_item'] = $new_instance['men_menu_item'];
+		$tag_option['menu_label'] = $new_instance['menu_label'];
 		$tag_option['pag_menu_item'] = $new_instance['pag_menu_item'];
 		$tag_option['pos_menu_item'] = $new_instance['pos_menu_item'];
 		$tag_option['ppl_menu_item'] = $new_instance['ppl_menu_item'];
@@ -776,6 +774,7 @@ License: LGPL v3
 			'cat_menu_item' => 'on',
 			'lin_menu_item' => 'on',
 			'men_menu_item' => 'on',
+			'menu_label' => 'Menu',
 			'pag_menu_item' => 'on',
 			'pos_menu_item' => 'on',
 			'ppl_menu_item' => 'on',
@@ -1241,8 +1240,29 @@ License: LGPL v3
 <?php
 	}
 }
+// Check for plugin version
+function my_m_admin_notice() {
+    $plugin_m_data = get_plugin_data( __FILE__ , $translate = false);
+	define('PLUGIN_M_VERSION', $plugin_m_data['Version']);
+	$message = "In order to make your old <b>" . $plugin_m_data['Name'] . "</b> widget instances compatible with the new version just go to <b><a href='widgets.php'>Widgets</a></b>, open each one of them and save it without any change.<br>Starting from this version of the plugin you can put in the cloud <b>Portfolio Categories</b>, <b>Portfolio Items</b>, <b>Portfolio Filters</b>, <b>Slider Categories</b> and <b>Slider Items</b>. For instructions on how to do it go to <b>Cloud Content Tips</b>, item <b>5</b>, under <b>GUIDE & TIPS</b> section of the widget.";
+	$display_info = false;
+	$local_version = get_option('plugin_m_version');
+	if ($local_version && $local_version !== PLUGIN_M_VERSION) {
+		$display_info = true;
+		update_option('plugin_m_version', PLUGIN_M_VERSION);
+	}
+	elseif (!$local_version) {update_option('plugin_m_version', PLUGIN_M_VERSION);}
+	if ($display_info === true) {
+		echo"<div class='updated'><p>$message</p></div>"; 
+	}
+}
+add_action( 'admin_notices', 'my_m_admin_notice' ); 
+// ===
 // Registering Widget
 function wpTagCanvasMLoad() {
     register_widget( 'wpTagCanvasWidgetM' );    
 }
 add_action('widgets_init', 'wpTagCanvasMLoad');
+// Enabling link manager for users of WP 3.5+
+add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+// ===

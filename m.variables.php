@@ -53,6 +53,7 @@
 	$cat_menu_item = $instance['cat_menu_item'];
 	$lin_menu_item = $instance['lin_menu_item'];
 	$men_menu_item = $instance['men_menu_item'];
+	$menu_label = $instance['menu_label'];
 	$pag_menu_item = $instance['pag_menu_item'];
 	$pos_menu_item = $instance['pos_menu_item'];
 	$ppl_menu_item = $instance['ppl_menu_item'];

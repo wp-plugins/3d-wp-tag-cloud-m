@@ -371,7 +371,7 @@
 					<?php if( $all_taxonomy == "categories" ){ echo ' checked="checked"'; } ?> onclick="procedure_2(this)">
 				</div>
 				<div class="rache">
-					<div class="type_of_cont">menu</div>
+					<div class="type_of_cont">menu*</div>
 					<input class="check-box" id="<?=$this->get_field_id('men_menu_item'); ?>" title="Displays a navigation menu created via WP Admin Panel."
 					name="<?=$this->get_field_name('men_menu_item'); ?>" type="checkbox" 
 					<?php if( $men_menu_item == "on" ){ echo ' checked="checked"'; } ?> onclick="procedure_1(this)">
@@ -541,7 +541,7 @@
 						<?php if( $all_m_shadowoff == "0" ){ echo ' checked="checked"'; } ?>>off
 					</div>
 				</div>	
-				<label style="height: 46px; float: right; margin: 0 0 5px;" title="Colour of the shadow behind each tag" for="<?=$this->get_field_id('all_m_shadow'); ?>">
+				<label style="height: 46px; float: right;" title="Colour of the shadow behind each tag" for="<?=$this->get_field_id('all_m_shadow'); ?>">
 					Shadow Color
 					<br>
 					<span class="hash">#</span>
@@ -556,6 +556,15 @@
 					</div>
 				</label>
 			</div>	
+			<label style="padding: 0 0 0 60px; width: 100%; margin: 0 0 5px;" title="Change this label if you are going to show <span class='green'>portfolio</span> or <span class='green'>slider</span> type of content under <span class='green'>menu</span> option. For instructions on how to put <span class='green'>portfolio</span> or <span class='green'>slider</span> types of content in the cloud go to <span class='green'>Cloud Content Tips</span>, item <span class='green'>5</span>, under <span style='font-weight: bold; color: #dc143c'>GUIDE & TIPS</span> section." for="<?=$this->get_field_id('menu_label'); ?>">
+				*
+				<select id="<?=$this->get_field_id('menu_label'); ?>" name="<?=$this->get_field_name('menu_label'); ?>">
+					<option value="Menu" <?php if( $menu_label == "" ){ echo ' selected'; } ?>>Menu</option>
+					<option value="Portfolio" <?php if( $menu_label == "Portfolio" ){ echo ' selected'; } ?>>Portfolio</option>
+					<option value="Slider" <?php if( $menu_label == "Slider" ){ echo ' selected'; } ?>>Slider</option>
+				</select>
+			</label>
+			<div class="divider"></div>		
 			<label style="width: 83px;" title="When <span class='green'>Menu Type</span> is set to <span class='green'>dynamic</span>: Initial size of cloud from center to sides." for="<?=$this->get_field_id('all_m_radius_x'); ?>">
 				Radius X,Y,Z 
 				<br>
@@ -878,7 +887,7 @@
 	<?php include 'templates/Links.template.php'; ?>
 	<h3>CATEGORIES CLOUD</h3>
 	<?php include 'templates/Categories.template.php'; ?>
-	<h3>MENU CLOUD</h3>
+	<h3>MENU/PORTFOLIO/SLIDER CLOUD</h3>
 	<?php include 'templates/Menu.template.php'; ?>
 	<h3>PAGE/POST LINKS CLOUD</h3>
 	<?php include 'templates/PPL.template.php'; ?>
